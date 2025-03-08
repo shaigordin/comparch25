@@ -1,0 +1,164 @@
+/*
+  Custom CSS for RevealJS presentation
+*/
+
+/* Global presentation styling */
+.reveal {
+  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: normal;
+  color: #222;
+}
+
+/* Slide title styling */
+.reveal h1 {
+  font-size: 2.5em;
+  font-weight: 600;
+  color: #2a76dd;
+  margin-bottom: 0.5em;
+}
+
+.reveal h2 {
+  font-size: 1.6em;
+  font-weight: 600;
+  color: #2a76dd;
+}
+
+.reveal h3 {
+  font-size: 1.3em;
+  font-weight: 600;
+  color: #1a66cd;
+}
+
+/* Code styling */
+.reveal pre {
+  font-family: monospace;
+  display: block;
+  font-size: 0.7em;
+  width: 90%;
+  margin: 20px auto;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+
+.reveal code {
+  font-family: monospace;
+}
+
+/* Styling for center aligned content */
+.center {
+  text-align: center;
+}
+
+/* Enhanced styling for callouts */
+.callout {
+  margin: 1em 0;
+  padding: 1em;
+  border-radius: 5px;
+  border-left: 5px solid #2a76dd;
+  background-color: rgba(42, 118, 221, 0.1);
+}
+
+.callout-tip {
+  border-left-color: #5cb85c;
+  background-color: rgba(92, 184,, 92, 0.1);
+}
+
+.callout-note {
+  border-left-color: #5bc0de;
+  background-color: rgba(91, 192, 222, 0.1);
+}
+
+.callout-important {
+  border-left-color: #d9534f;
+  background-color: rgba(217, 83, 79, 0.1);
+}
+
+/* Slide transition enhancements */
+.slide-transition {
+  transition: transform 0.8s ease, opacity 0.8s ease;
+}
+
+/* Fragment animations enhancement */
+.fragment.fade-in {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.fragment.fade-in.visible {
+  opacity: 1;
+}
+
+.fragment.fade-right {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: all 0.8s ease;
+}
+
+.fragment.fade-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Footer styling */
+.footer {
+  font-size: 0.6em;
+  color: #666;
+  position: absolute;
+  bottom: 1em;
+  left: 1em;
+}
+
+/* Panel tabs styling */
+.panel-tabset .panel-tabset-tabby {
+  font-size: 0.8em;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1em;
+}
+
+.panel-tabset .panel-tabset-tabby button {
+  background: none;
+  border: none;
+  padding: 0.5em 1em;
+  margin-right: 0.5em;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.panel-tabset .panel-tabset-tabby button.active {
+  border-bottom: 2px solid #2a76dd;
+  opacity: 1;
+}
+
+/* Image styling */
+.reveal img {
+  margin: 0.5em auto;
+  border-radius: 5px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Column layout enhancements */
+.reveal .columns {
+  display: flex;
+  margin-top: 1em;
+}
+
+.reveal .columns .column {
+  padding: 0 0.5em;
+}
+
+/* Notes design */
+.notes {
+  display: none;
+}
+
+/* Print styles */
+@media print {
+  .reveal {
+    font-size: 20pt;
+  }
+  
+  .reveal pre {
+    font-size: 0.6em;
+  }
+}

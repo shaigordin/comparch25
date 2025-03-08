@@ -1,0 +1,36 @@
+---
+title: "רשימת מקורות"
+---
+
+### **ראה גם [רשימת מקורות מלאה](https://www.zotero.org/groups/5480887/comp_arch-history_r) להורדה בתוכנת זוטרו**
+
+## **ספרי הקורס**
+
+-   Carlson, David L. 2017. *Quantitative Methods in Archaeology Using R*. Cambridge Manuals in Archaeology. Cambridge: Cambridge University Press. <https://doi.org/10.1017/9781139628730>. To download [see link](https://drive.google.com/file/d/1NxeqOBNFiJRl-fu7hRxiSBR4cNK9oKpF/view?usp=sharing).
+
+    -   שריד, עדי. 2024. *המדריך העברי למשתמש ב-R*\
+        23 March 2024. [https://www.hebrewr.co.il](https://www.hebrewr.co.il/)
+
+    -   א׳ פאוסט וז׳ ספראי. 2015. *תולדות ההתיישבות בארץ ישראל. ניתוח כמותי לאור ממצאי חפירות ההצלה והחפירות היזומות*. רמת גן: פרסומי מרכז אינגבורג רנרט ללימודי ירושלים, אונ׳ בר-אילן.
+
+## **ביבליוגרפיה מפורטת**
+
+-   Ahnert, Ruth, Sebastian E. Ahnert, Catherine Nicole Coleman, and Scott B. Weingart. 2021. *The Network Turn: Changing Perspectives in the Humanities*. Elements in Publishing and Book Culture. Cambridge: Cambridge University Press. <https://doi.org/10.1017/9781108866804>
+-   Banning, Edward B. 2020. *The Archaeologist's Laboratory: The Analysis of Archaeological Evidence*. Interdisciplinary Contributions to Archaeology. Cham: Springer International Publishing. <https://doi.org/10.1007/978-3-030-47992-3>.
+-   Barker, Elton, Chiara Palladino, and Shai Gordin. 2024. 'Digital Approaches to Investigating Sapce and Place in Classical Studies'. *The Classical Review* 74 (1): 1--19. <https://doi.org/10.1017/S0009840X23002858>.
+-   Batist, Z. and Roe, J. 2024. 'Open Archaeology, Open Source? Collaborative practices in an emerging community of archaeological software engineers'. *Internet Archaeology* 67. <https://doi.org/10.11141/ia.67.13>
+-   Brughmans, Tom and Matthew A. Peeples (2023). *Network Science in Archaeology. Cambridge Manuals in Archaeology*. Cambridge University Press, Cambridge, UK. <https://doi.org/10.1017/9781009170659>
+-   Clarke, Alison. 2022. 'Alisonrclarke/R-Archaelogy-Lesson: Data Carpentry: Data Analysis and Visualization in R for Archaeologists, June 2019'. Edited by Ana Costa Conrado, Auriel M.V. Fournier, Brian Seok, and Francois Michonneau. <https://doi.org/10.5281/zenodo.3264888>.
+-   Hayon, O. *et al.* 2024. 'ArcAid: Analysis of archaeological artifacts using drawings', in *2024 IEEE/CVF winter conference on applications of computer vision (WACV)*, pp. 7249--7259. Available at: <https://doi.org/10.1109/WACV57701.2024.00710>.
+-   Hinz, Martin. n.d. *Statistical Methods for Archaeological Data Analysis*. Accessed 10 April 2024. <https://martinhinz.github.io/smada2021/book/preface.html>.
+-   (Lovelace, Geocomp) Lovelace, Robin, Jakub Nowosad, and Jannes Muenchow. 2019. *Geocomputation with R*. [https://r.geocompx.org](https://r.geocompx.org/){.uri}.
+-   McCall, Grant S. 2018. *Strategies for Quantitative Research: Archaeology by Numbers*. London: Routledge.
+-   Ognyanova, Katya 2023. 'Network visualization with R.' Retrieved from [www.kateto.net/network-visualization](http://www.kateto.net/network-visualization)
+-   Orton, Clive. 2004. 'Mathematical Modelling.' *Internet Archaeology* 15. <https://doi.org/10.11141/ia.15.6>.
+-   Peeples, Matthew A. and Tom Brughmans 2023. *Online Companion to Network Science in Archaeology*. [https://archnetworks.net](https://archnetworks.net/), Accessed 2024-03-07.
+-   Titolo, Andrea, Alessio Palmisano. 2024. 'Using Kart and GitHub for versioning and collaborating with spatial data in archaeological research'. *Archeologia e Calcolatori* 35 (2): 107-118. <https://doi.org/10.19282/ac.35.2.2024.12>
+-   Titolo, A. and Palmisano, A. (no date) 'A tutorial for versioning archaeological data using Kart'. Available at: <https://unitoassyriangovernance.github.io/kart4arch/> (Accessed: 4 March 2025).
+-   Titolo, A. 2024. UnitoAssyrianGovernance/tales-of-two-kingdoms: Fix conference version (1.2). Zenodo. <https://doi.org/10.5281/zenodo.14447027>
+-   (Wickham DS) Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. 2023. *R for Data Science: Import, Tidy, Transform, Visualize, and Model Data*. 2nd edition. Boston: O'Reilly. [https://r4ds.hadley.nz](https://r4ds.hadley.nz/){.uri}.
+-   (Wickham ggplot2) Wickham, Hadley, Danielle Navarro, and Thomas Lin Pedersen. 2023. *Ggplot2: Elegant Graphics for Data Analysis*. 3rd ed. Use R! New York, NY: Springer. [https://ggplot2-book.org](https://ggplot2-book.org/){.uri}.
+-   Wiseman, Rob, Bulik, Olivia, Lobo, José, Lodwick, Lisa and Ortman, Scott G. 2023. "The Impact of Transportation on Pottery Industries in Roman Britain" *Open Archaeology* 9, no. 1: 20220286. <https://doi.org/10.1515/opar-2022-0286>

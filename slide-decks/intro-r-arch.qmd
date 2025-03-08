@@ -1,0 +1,757 @@
+---
+title: "Computerized Morphological Classification of Ceramics"
+subtitle: "Computational Methods in Archaeology and Historical Research"
+author: "Dr. [Your Name]"
+date: "March 8, 2025"
+format:
+  revealjs:
+    theme: serif
+    transition: slide
+    slide-number: true
+    chalkboard: true
+    overview: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    code-fold: true
+    code-tools: true
+    code-line-numbers: true
+    highlight-style: github
+    footer: "Computational Research in Archaeology and Historical Sources"
+    logo: "https://i.imgur.com/Hnbpwp4.png"
+    css: custom.css
+editor: visual
+---
+
+## Course Overview {.center background-color="#f0f0f0"}
+
+::: {.incremental}
+-   Course explores **computational methods** for archaeological research
+-   Focus on **R programming** for archaeological analysis
+-   Today: Case study of **computerized pottery classification**
+-   Based on groundbreaking work by **Karasik & Smilansky (2011)**
+:::
+
+::: {.notes}
+Introduce yourself and the course. Emphasize the importance of computational methods in modern archaeological research. This is the first of several lectures that will build programming skills specifically for archaeological applications.
+:::
+
+## Traditional Pottery Classification: Challenges {.smaller}
+
+::: {.columns}
+::: {.column width="60%"}
+::: {.incremental}
+-   **Time-consuming**: Documentation of hundreds or thousands of fragments
+-   **Subjective**: Typology determined by excavator's judgment
+-   **Irreversible data reduction**: Original data often inaccessible after publication
+-   **Lack of standardization**: Terminological inconsistencies
+-   **Limited comparability**: Difficult to test or reassess classifications
+:::
+:::
+
+::: {.column width="40%"}
+![Traditional pottery classification process](https://i.imgur.com/tpzpU8W.jpg)
+:::
+:::
+
+::: {.notes}
+Discuss how traditional pottery classification is labor-intensive and relies heavily on expert judgment. This creates issues with reproducibility and standardization across different archaeological sites and researchers.
+:::
+
+## The Need for Computational Approaches {background-color="#f8f8f8"}
+
+::: {.panel-tabset}
+### Requirements
+
+::: {.incremental}
+-   Efficiency and cost-effectiveness
+-   Hierarchical data storage and retrieval
+-   Optional preliminary sorting
+-   Interactive archaeological input
+-   Analysis of complete profiles, not just discrete measurements
+:::
+
+### Additional Needs
+
+::: {.incremental}
+-   Ability to compare fragments of different sizes
+-   Hierarchical and flexible classification
+-   Potential for generalization to non-morphological parameters
+-   Archaeological relevance and interpretability
+:::
+:::
+
+::: {.notes}
+Emphasize that computational approaches can address many of the challenges of traditional classification while maintaining archaeological relevance. The key is creating systems that archaeologists can actually use and interpret.
+:::
+
+## Mathematical Representation of Profiles {transition="zoom"}
+
+::: {.columns}
+::: {.column width="50%"}
+![Mathematical representations of profiles](https://i.imgur.com/0zZLlKr.png)
+:::
+
+::: {.column width="50%"}
+Three key mathematical representations:
+
+::: {.fragment .fade-in}
+-   **Radius function R(s)**: Distance from axis of symmetry
+:::
+
+::: {.fragment .fade-in}
+-   **Tangent function θ(s)**: Angle of tangent line at each point
+:::
+
+::: {.fragment .fade-in}
+-   **Curvature function κ(s)**: Rate of change of orientation
+:::
+:::
+:::
+
+::: {.notes}
+The mathematical representation is the foundation of this approach. Each function captures different aspects of the pottery profile, allowing for comprehensive analysis. The image shows how these functions represent the same profile in different ways.
+:::
+
+## Key Aspects of Mathematical Representation {.smaller}
+
+::: {.incremental}
+-   Profiles positioned with axis of symmetry correctly determined
+-   Highest rim-point serves as reference point (s = 0)
+-   Negative/positive s-values assigned to exterior/interior points
+-   Each function captures different morphological aspects:
+    -   **Radius function**: Overall shape and size differences
+    -   **Tangent function**: Wall orientation and rim treatment
+    -   **Curvature function**: Fine details and inflection points
+-   Complete morphological information preserved in each representation
+:::
+
+::: {.notes}
+These technical details explain how the pottery profiles are standardized and represented mathematically. This standardization is crucial for making meaningful comparisons between different pottery fragments.
+:::
+
+## Comparing Profiles: Distance Measurement {background-color="#f0f0f0" transition="fade"}
+
+::: {.columns}
+::: {.column width="60%"}
+Distance between profiles (a,b) using radius function:
+
+$$d_R(a, b) = \sqrt{\frac{1}{L} \int_{S_{min}}^{S_{max}} [R_a(s) - R_b(s)]^2 U(s) ds}$$
+
+Similar equations for tangent and curvature functions:
+
+$$d_θ(a, b) = \sqrt{\frac{1}{L} \int_{S_{min}}^{S_{max}} [θ_a(s) - θ_b(s)]^2 U(s) ds}$$
+
+$$d_κ(a, b) = \sqrt{\frac{1}{L} \int_{S_{min}}^{S_{max}} [κ_a(s) - κ_b(s)]^2 U(s) ds}$$
+:::
+
+::: {.column width="40%"}
+::: {.callout-important}
+## Key Features
+
+-   Root mean square deviation
+-   Weight function U(s) allows emphasis on different parts
+-   Comparison over mutual segments
+-   Mathematically rigorous similarity measure
+:::
+:::
+:::
+
+::: {.notes}
+These equations define how we measure similarity between pottery profiles. The distance is essentially the root mean square deviation between the functions representing each profile. The weight function allows archaeologists to emphasize certain parts of the profile over others.
+:::
+
+## Combined Distance Measurements {transition="slide"}
+
+Combined distance using all three functions:
+
+$$d(a, b) = \frac{ω_R}{⟨R⟩} \cdot d_R(a, b) + \frac{ω_θ}{⟨θ⟩} \cdot d_θ(a, b) + \frac{ω_κ}{⟨κ⟩} \cdot d_κ(a, b)$$
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.fragment .fade-in}
+**Weighting Parameters:**
+
+-   Weights (ωR, ωθ, ωκ) control relative importance
+-   Must sum to 1: ωR + ωθ + ωκ = 1
+-   Can be adjusted at different analysis stages
+:::
+:::
+
+::: {.column width="50%"}
+::: {.fragment .fade-in}
+**Archaeological Input:**
+
+-   Archaeologists can emphasize global shape vs. fine details
+-   Weights can prioritize rim area or other diagnostic features
+-   Different weights for different classification stages
+:::
+:::
+:::
+
+::: {.notes}
+The combined distance function allows for a holistic comparison of pottery profiles. The normalization factors (⟨R⟩, ⟨θ⟩, ⟨κ⟩) ensure that each function contributes appropriately despite having different units and scales. The weights provide flexibility in the analysis.
+:::
+
+## Principal Component Analysis (PCA) {transition="convex"}
+
+::: {.columns}
+::: {.column width="60%"}
+![PCA results showing dimensionality reduction](https://i.imgur.com/FcRPKBp.png)
+:::
+
+::: {.column width="40%"}
+::: {.incremental}
+-   Reduces redundancy in distance matrix
+-   Transforms original variables into linearly independent components
+-   Components ordered by contribution to variability
+-   First 10-20 components typically capture >90% of variability
+-   Efficient representation of morphological differences
+:::
+:::
+:::
+
+::: {.notes}
+PCA is a statistical technique that reduces the dimensionality of the data while preserving most of the variation. This makes subsequent analysis more computationally efficient and helps identify the most important dimensions of variation in the pottery assemblage.
+:::
+
+## Cluster Analysis (CA): Creating Typology {background-color="#f8f8f8"}
+
+::: {.columns}
+::: {.column width="50%"}
+![Hierarchical cluster tree](https://i.imgur.com/TbwQB7H.png)
+:::
+
+::: {.column width="50%"}
+::: {.incremental}
+-   **Hierarchical organization** of pottery fragments
+-   Similar objects placed on same branch
+-   Branch height proportional to distance
+-   Horizontal cutting line determines number of types
+-   Type-codes assigned based on hierarchy (e.g., 100, 200, 300)
+:::
+:::
+:::
+
+::: {.notes}
+Cluster analysis organizes the pottery fragments into a hierarchical structure based on their morphological similarity. This creates a flexible classification system that can be explored at different levels of detail. The resulting tree provides a visual representation of the relationships between pottery types.
+:::
+
+## Multi-Step Refinement Process {.smaller transition="concave"}
+
+::: {.columns}
+::: {.column width="45%"}
+**Three-step refinement with varying weights:**
+
+::: {.fragment .fade-in}
+1.  **First step**: Emphasize radius and tangent (global shape)
+    -   Weights: [40, 50, 10] (%)
+    -   Separates major vessel categories
+:::
+
+::: {.fragment .fade-in}
+2.  **Second step**: More balanced weights
+    -   Weights: [25, 50, 25] (%)
+    -   Distinguishes vessel types within categories
+:::
+
+::: {.fragment .fade-in}
+3.  **Third step**: Emphasize curvature (fine details)
+    -   Weights: [0, 45, 55] (%)
+    -   Identifies subtle variants and sub-types
+:::
+:::
+
+::: {.column width="55%"}
+::: {.fragment .fade-in}
+![Hierarchical classification with type-codes](https://i.imgur.com/D5qE3R4.png)
+
+Each branch analyzed separately with updated PCA parameters
+:::
+:::
+:::
+
+::: {.notes}
+The refinement process allows for a multi-scale analysis of pottery morphology. Starting with global features and gradually focusing on finer details, this approach mimics how archaeologists naturally classify pottery but with mathematical rigor and objectivity.
+:::
+
+## Discriminant Analysis (DA): Validation {transition="fade-in"}
+
+::: {.columns}
+::: {.column width="55%"}
+![DA validation results showing classification success](https://i.imgur.com/DPnNgJm.png)
+:::
+
+::: {.column width="45%"}
+::: {.incremental}
+-   Tests statistical significance of classification
+-   Verifies if groups are meaningfully distinct
+-   Cross-validation procedure:
+    1.  Split assemblage randomly in half
+    2.  Train on first half, test on second
+    3.  Repeat 1000+ times
+    4.  Analyze classification success rates
+:::
+:::
+:::
+
+::: {.callout-note appearance="simple"}
+High classification accuracy indicates statistically valid typology
+:::
+
+::: {.notes}
+Discriminant analysis provides statistical validation of the resulting classification. By repeatedly testing how well the classification performs on new data, we can assess its robustness and significance. This adds a quantitative measure of confidence to the typological classification.
+:::
+
+## Test Case: Tel Dor Excavation {background-color="#f0f0f0" transition="zoom"}
+
+::: {.columns}
+::: {.column width="60%"}
+::: {.incremental}
+-   358 pottery fragments from Early Iron Age
+-   Previously classified by ceramic expert Dr. Ayelet Gilboa
+-   Five vessel types:
+    -   Jars
+    -   Jugs
+    -   Kraters
+    -   Cooking pots
+    -   Bowls
+:::
+:::
+
+::: {.column width="40%"}
+![Tel Dor archaeological site](https://i.imgur.com/KqO5Qgn.jpg)
+
+::: {.fragment .fade-in}
+**Refinement Weights:**
+
+-   Step 1: [40, 50, 10]
+-   Step 2: [25, 50, 25]
+-   Step 3: [0, 45, 55]
+:::
+:::
+:::
+
+::: {.notes}
+The Tel Dor assemblage provides an excellent test case because it was previously classified by an expert archaeologist. This allows for direct comparison between the traditional and computational approaches. The site is a major archaeological source for understanding Iron Age material culture.
+:::
+
+## Classification Results: Main Groups {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+![Distribution of vessel types by classification](https://i.imgur.com/QZj6mWS.png)
+:::
+
+::: {.column width="50%"}
+::: {.fragment .fade-right}
+**Type-code 100: Mainly bowls**
+- Open shapes
+- Simple rim forms
+- One krater outlier
+:::
+
+::: {.fragment .fade-right}
+**Type-code 200: Kraters and cooking pots**
+- Semi-closed vessels
+- Thickened rims
+- Similar morphological features
+:::
+
+::: {.fragment .fade-right}
+**Type-code 300: Jars and jugs**
+- Closed vessels
+- Narrow necks
+- Distinct rim treatments
+:::
+:::
+:::
+
+::: {.notes}
+The main groups identified by the computational analysis align well with traditional functional categories. This shows that the morphological analysis captures meaningful archaeological distinctions. The distribution chart shows how the traditional types map onto the computational classification.
+:::
+
+## Sub-Classification: Bowls {transition="slide"}
+
+::: {.r-stack}
+![Bowl subtypes showing morphological variations](https://i.imgur.com/VNL7HWh.png){.fragment width="900" height="500"}
+
+::: {.fragment}
+::: {.callout-tip appearance="minimal"}
+## Bowl Sub-Types
+
+-   **Type 110**: Larger bowls with thickened rim
+-   **Type 121**: Bowls with no rim treatment
+-   **Type 122**: Bowls with elaborated rim treatment
+-   **Type 123**: Non-standard examples
+:::
+:::
+:::
+
+::: {.notes}
+The analysis identifies meaningful subtypes within the bowl category. These subtypes correspond to real morphological variations that have archaeological significance. The ability to identify and quantify these subtypes automatically is a major advantage of the computational approach.
+:::
+
+## Sub-Classification: Cooking Pots {.smaller background-color="#f8f8f8"}
+
+::: {.columns}
+::: {.column width="55%"}
+![Cooking pot subtypes and their mean curvature functions](https://i.imgur.com/K5Lwwxq.png)
+:::
+
+::: {.column width="45%"}
+::: {.incremental}
+-   Differences in rim thickness, orientation, and inflection points
+-   Curvature function effectively distinguishes subtle variations
+-   Type-code 211: Classic rim shape with vertical upper part
+-   Type-code 212: Inward-leaning rim
+-   Type-code 213: Larger variability with similar curvature pattern
+-   Type-code 214: Distinct variant with unique peak positions
+:::
+:::
+:::
+
+::: {.notes}
+The cooking pot analysis demonstrates how the curvature function can capture subtle morphological differences. The mean curvature function for each type provides a mathematical signature that characterizes that type. This allows for objective comparison between types and assemblages.
+:::
+
+## Implementing in R: Building Blocks {auto-animate="true"}
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "|1-3|5-8|10-13|15-17|19-21|"
+
+# Load required libraries
+library(stats)    # For PCA, clustering
+library(MASS)     # For discriminant analysis
+
+# Extract profile coordinates from images
+profiles <- extract_profiles(image_files)
+# Function would need to be created for your specific data
+# Could use R packages for image processing and feature extraction
+
+# Calculate representative functions
+radius_func <- calculate_radius(profiles)
+tangent_func <- calculate_tangent(profiles)
+curvature_func <- calculate_curvature(profiles)
+
+# Calculate distance matrix
+dist_matrix <- calculate_distances(radius_func, tangent_func, 
+                                  curvature_func, weights=c(0.4, 0.5, 0.1))
+
+# Perform PCA
+pca_result <- prcomp(dist_matrix)
+components <- pca_result$x[,1:10]  # First 10 components
+```
+
+::: {.notes}
+This slide shows the basic structure of how you might implement this analysis in R. While the specific functions for profile extraction and analysis would need to be created, the statistical analyses use standard R packages. This gives students a starting point for their own implementations.
+:::
+
+## Implementing in R: Classification {auto-animate="true"}
+
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "|1-4|6-8|10-12|14-17|"
+
+# Perform hierarchical clustering
+dist_pca <- dist(components)  # Euclidean distance in PCA space
+clusters <- hclust(dist_pca, method="ward.D2")
+typology <- cutree(clusters, k=3)  # Cut tree into 3 main types
+
+# Visualize cluster tree
+plot(clusters, hang=-1, cex=0.6,
+     main="Hierarchical Classification of Pottery Fragments")
+
+# Validate classification with discriminant analysis
+set.seed(123)  # For reproducibility
+lda_model <- lda(components, grouping=typology)
+lda_predict <- predict(lda_model, components)$class
+
+# Calculate accuracy
+accuracy <- mean(lda_predict == typology)
+cat("Classification accuracy:", round(accuracy * 100, 1), "%\n")
+```
+
+::: {.notes}
+This code continues the implementation, showing how to perform the clustering and discriminant analysis. The `hclust` function in R performs hierarchical clustering, and the `lda` function from the MASS package performs linear discriminant analysis. These are standard tools that can be applied to archaeological data once it's in the right format.
+:::
+
+## Visualization in R {transition="convex"}
+
+::: {.panel-tabset}
+### Cluster Tree
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Enhanced cluster visualization
+library(ggdendro)
+library(ggplot2)
+
+# Convert hclust to dendrogram and plot
+dendro_data <- dendro_data(clusters)
+ggdendrogram(clusters, rotate=FALSE, size=2) +
+  labs(title="Hierarchical Classification of Pottery Types",
+       x="Fragment ID", y="Distance") +
+  theme_minimal() +
+  theme(axis.text.x=element_blank())
+```
+
+### Type Visualization
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Visualize pottery types in PCA space
+library(ggplot2)
+
+ggplot(data.frame(PC1=components[,1], 
+                 PC2=components[,2], 
+                 Type=factor(typology)), 
+       aes(x=PC1, y=PC2, color=Type)) +
+  geom_point(size=3, alpha=0.7) +
+  stat_ellipse(level=0.95) +
+  labs(title="Pottery Types in PCA Space",
+       x="Principal Component 1", 
+       y="Principal Component 2") +
+  theme_minimal()
+```
+
+### Profile Comparison
+
+```{r}
+#| echo: true
+#| eval: false
+
+# Plot profile comparison
+library(ggplot2)
+
+# Select two profiles to compare
+profile1 <- 10  # Example index
+profile2 <- 25  # Example index
+
+# Create data frame for plotting
+plot_data <- data.frame(
+  s = seq(Smin, Smax, length.out=100),
+  R1 = radius_func[[profile1]](seq(Smin, Smax, length.out=100)),
+  R2 = radius_func[[profile2]](seq(Smin, Smax, length.out=100))
+)
+
+# Plot comparison
+ggplot(plot_data, aes(x=s)) +
+  geom_line(aes(y=R1, color="Profile 1"), size=1) +
+  geom_line(aes(y=R2, color="Profile 2"), size=1) +
+  labs(title="Profile Comparison", 
+       x="Arc length (s)", y="Radius R(s)",
+       color="Profile") +
+  theme_minimal()
+```
+:::
+
+::: {.notes}
+These examples show how to create visualizations for different aspects of the analysis. R's powerful visualization capabilities, especially through packages like ggplot2, allow for effective communication of results. These visualizations can help archaeologists interpret and validate the computational classifications.
+:::
+
+## Key R Packages for Archaeological Analysis {background-color="#f0f0f0"}
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.incremental}
+-   **spatstat**: Spatial point pattern analysis
+-   **raster/terra**: Gridded spatial data analysis
+-   **sf**: GIS data handling and spatial analysis
+-   **cluster**: Advanced clustering methods
+-   **ggplot2**: High-quality data visualization
+:::
+:::
+
+::: {.column width="50%"}
+::: {.incremental}
+-   **rgl**: 3D visualization
+-   **Morpho**: Shape analysis
+-   **imager**: Image processing
+-   **Momocs**: Morphometric analysis
+-   **plyr/dplyr**: Data manipulation
+:::
+:::
+:::
+
+::: {.fragment .fade-in}
+```{r}
+#| echo: true
+#| eval: false
+# Installing key packages
+install.packages(c("spatstat", "terra", "sf", "cluster", 
+                  "ggplot2", "rgl", "Morpho", "imager",
+                  "Momocs", "dplyr"))
+```
+:::
+
+::: {.notes}
+These R packages provide the foundational tools needed for archaeological analysis. Many of them are general-purpose statistical or data analysis packages, but they can be applied to archaeological data with appropriate data preparation. Some, like Momocs, are specifically designed for morphometric analysis, which is directly relevant to pottery classification.
+:::
+
+## Hands-on Exercise Ideas {transition="zoom"}
+
+::: {.incremental}
+1.  Extract profile coordinates from pottery drawings
+2.  Calculate radius, tangent, and curvature functions
+3.  Compute distance matrices with different weight combinations
+4.  Perform PCA and visualize component contributions
+5.  Create cluster trees and define type groupings
+6.  Validate classifications with discriminant analysis
+7.  Compare results with traditional classifications
+8.  Create interactive visualization of pottery types
+:::
+
+::: {.fragment .fade-in}
+::: {.callout-tip}
+## Project Idea
+Create an R Shiny app that allows archaeologists to upload pottery drawings, perform automated classification, and visualize the results.
+:::
+:::
+
+::: {.notes}
+These exercises provide a progression from basic data preparation to advanced analysis and visualization. They can be adapted based on the students' programming experience and the available data. The Shiny app project would be an excellent culminating assignment that integrates all the concepts and techniques.
+:::
+
+## Advantages of Computerized Classification {background-color="#f8f8f8"}
+
+::: {.columns}
+::: {.column width="50%"}
+::: {.incremental}
+1.  **Objectivity**: Algorithmic comparison independent of subjective judgment
+2.  **Data completeness**: Uses entire morphological information
+3.  **Comparison completeness**: Entire profile considered in analysis
+4.  **Hierarchical typology**: Represents multiple scales of variation
+:::
+:::
+
+::: {.column width="50%"}
+::: {.incremental}
+5.  **Adjustable refinement**: Customizable to research questions
+6.  **Statistical validation**: Quantitative assessment of groupings
+7.  **Reproducibility**: Results can be verified by others
+8.  **Scalability**: Can handle large assemblages efficiently
+:::
+:::
+:::
+
+::: {.notes}
+These advantages address many of the limitations of traditional pottery classification. The computational approach offers objectivity, reproducibility, and scalability while still allowing for archaeological input and interpretation. This creates a powerful combination of computational rigor and archaeological expertise.
+:::
+
+## Limitations to Consider {.smaller}
+
+::: {.incremental}
+-   Requires correctly positioned profiles (axis of symmetry)
+-   Limited to wheel-produced, axially symmetric vessels
+-   Primarily applicable to rim fragments
+-   Resource-intensive for extremely large assemblages (>10,000 items)
+-   Expertise still needed for weight parameter selection
+-   Complementary to, not replacement for, archaeological judgment
+-   Implementation requires programming expertise
+-   Non-morphological features (clay, decoration) not included in basic analysis
+:::
+
+::: {.notes}
+It's important to acknowledge the limitations of the approach. The method works best for certain types of pottery and requires some technical expertise to implement. However, many of these limitations can be addressed through extensions of the method or by combining computational and traditional approaches.
+:::
+
+## Future Developments {transition="fade"}
+
+::: {.r-stack}
+::: {.fragment .fade-out}
+![Integration with 3D scanning](https://i.imgur.com/jLNVKvq.jpg){width="600" height="400"}
+:::
+
+::: {.fragment .fade-in-then-out}
+::: {.incremental}
+-   Incorporate non-morphological parameters (clay, varnish, decoration)
+-   Machine learning approaches for new data classification
+-   Enhanced visualization tools and interfaces
+-   Integration with 3D scanning technologies
+-   Web-based platforms for archaeological community
+-   Application to other artifact types
+:::
+:::
+
+::: {.fragment .fade-in}
+![Web-based interface concept](https://i.imgur.com/9mZLHRy.jpg){width="700" height="450"}
+:::
+:::
+
+::: {.notes}
+The field of computational archaeology is rapidly evolving. Future developments will likely include more sophisticated machine learning approaches, better integration with 3D scanning technologies, and more user-friendly interfaces. These developments will make computational methods more accessible to archaeologists without programming expertise.
+:::
+
+## Conclusion {.center background-color="#f0f0f0"}
+
+::: {.incremental}
+-   Computerized classification offers objective, reproducible pottery analysis
+-   Mathematical representations capture full morphological information
+-   Statistical tools provide rigorous validation of typologies
+-   Results correspond well with expert classifications
+-   R provides powerful platform for implementation
+-   Combined computational-archaeological approach enhances research
+:::
+
+::: {.fragment .fade-in}
+::: {.callout-note}
+## Key Takeaway
+Computational methods don't replace archaeological expertise but enhance it by providing objective, reproducible, and scalable analysis tools.
+:::
+:::
+
+::: {.notes}
+The key message is that computational methods and traditional archaeological expertise are complementary. By combining the objectivity and scalability of computational approaches with the contextual knowledge and interpretive skills of archaeologists, we can achieve better understanding of archaeological materials.
+:::
+
+## References {.smaller}
+
+::: {.incremental}
+-   Karasik, A., & Smilansky, U. (2011). Computerized morphological classification of ceramics. *Journal of Archaeological Science, 38*(10), 2644-2657.
+
+-   Gilboa, A., Karasik, A., Sharon, I., & Smilansky, U. (2004). Towards computerized typology and classification of ceramics. *Journal of Archaeological Science, 31*, 681-694.
+
+-   Karasik, A., & Smilansky, U. (2008). 3D scanning technology as a standard archaeological tool for pottery analysis: practice and theory. *Journal of Archaeological Science, 35*, 1148-1168.
+
+-   Wickham, H. (2016). *ggplot2: Elegant Graphics for Data Analysis*. Springer-Verlag New York.
+
+-   Venables, W. N., & Ripley, B. D. (2002). *Modern Applied Statistics with S* (4th ed.). Springer.
+:::
+
+::: {.notes}
+These references provide the foundational literature for the computational approach to pottery classification, as well as key resources for the R implementation. Students can refer to these sources for more detailed information on specific aspects of the analysis.
+:::
+
+## Thank You! {background-image="https://i.imgur.com/u7jYtZn.jpg" background-opacity="0.3"}
+
+::: {.columns}
+::: {.column width="60%"}
+### Questions?
+
+Contact Information:
+- Email: [shaigo@ariel.ac.il](mailto:your.email@university.edu)
+- Office Hours: Wednesdays 13:00-15:00
+- Lab: Archaeology Building, Room 302
+:::
+
+::: {.column width="40%"}
+### Next Class
+- Introduction to R for Archaeological Data
+- Importing and cleaning excavation data
+- Basic statistical analysis
+
+**Preparation**: Install R and RStudio
+:::
+:::
+
+::: {.notes}
+End the presentation with contact information and a preview of the next class. This helps students prepare and provides a clear path forward in the course. The background image adds visual interest while maintaining readability of the text.
+:::

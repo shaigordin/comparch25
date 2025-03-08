@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>חקר חישובי של ארכיאולוגיה ומקורות היסטוריים / שי גורדין - תכנית הוראה מפורטת</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="חקר חישובי של ארכיאולוגיה ומקורות היסטוריים / שי גורדין - תכנית הוראה מפורטת">
+<meta property="og:site-name" content="חקר חישובי של ארכיאולוגיה ומקורות היסטוריים / שי גורדין">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./ariel_logo_navbar.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">חקר חישובי של ארכיאולוגיה ומקורות היסטוריים / שי גורדין</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./about.html" rel="" target="" aria-current="page">
+ <span class="menu-text">תכנית הקורס</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">מטלות</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="./assignments/index.html" rel="" target="">
+ <span class="dropdown-text">מרכיבי הציון</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assignments/research-template.html" rel="" target="">
+ <span class="dropdown-text">תבנית אתר מחקרי</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assignments/data-analysis.html" rel="" target="">
+ <span class="dropdown-text">ניתוח נתונים ויצירת גרפים</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assignments/scraping.html" rel="" target="">
+ <span class="dropdown-text">תרגיל בשליפת נותנים</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./assignments/final-project.html" rel="" target="">
+ <span class="dropdown-text">פרויקט גמר</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu--1" role="button" data-bs-toggle="dropdown" aria-expanded="false" rel="" target="">
+ <span class="menu-text">מקורות, כלים, ופרויקטים</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu--1">    
+        <li>
+    <a class="dropdown-item" href="./resources/index.html" rel="" target="">
+ <span class="dropdown-text">מקורות ובבליוגרפיה</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./resources/tools-projects.html" rel="" target="">
+ <span class="dropdown-text">כלים ופרויקטים</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">בעמוד זה</h2>
+   
+  <ul>
+  <li><a href="#יחידה-1-מבוא-לתכנות-בשפת-r-לארכיאולוגיה-ושחזור-מחקרי" id="toc-יחידה-1-מבוא-לתכנות-בשפת-r-לארכיאולוגיה-ושחזור-מחקרי" class="nav-link active" data-scroll-target="#יחידה-1-מבוא-לתכנות-בשפת-r-לארכיאולוגיה-ושחזור-מחקרי">יחידה 1: מבוא לתכנות בשפת R לארכיאולוגיה ושחזור מחקרי</a></li>
+  <li><a href="#יחידה-2-עיבוד-נתונים-והצגתם" id="toc-יחידה-2-עיבוד-נתונים-והצגתם" class="nav-link" data-scroll-target="#יחידה-2-עיבוד-נתונים-והצגתם">יחידה 2: עיבוד נתונים והצגתם</a></li>
+  <li><a href="#יחידה-3-עיבוד-מתקדם-והעשרת-נתונים-מהמרשתת" id="toc-יחידה-3-עיבוד-מתקדם-והעשרת-נתונים-מהמרשתת" class="nav-link" data-scroll-target="#יחידה-3-עיבוד-מתקדם-והעשרת-נתונים-מהמרשתת">יחידה 3: עיבוד מתקדם והעשרת נתונים מהמרשתת</a></li>
+  <li><a href="#הצגת-דוח-מחקרי" id="toc-הצגת-דוח-מחקרי" class="nav-link" data-scroll-target="#הצגת-דוח-מחקרי">הצגת דוח מחקרי</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">תכנית הוראה מפורטת</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="יחידה-1-מבוא-לתכנות-בשפת-r-לארכיאולוגיה-ושחזור-מחקרי" class="level2">
+<h2 class="anchored" data-anchor-id="יחידה-1-מבוא-לתכנות-בשפת-r-לארכיאולוגיה-ושחזור-מחקרי">יחידה 1: מבוא לתכנות בשפת R לארכיאולוגיה ושחזור מחקרי</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>תאריך</th>
+<th>נושא השיעור</th>
+<th>פרקים טכניים<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></th>
+<th>קריאה<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></th>
+<th>תרגול<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>09/03/25</td>
+<td><strong>מבוא לקורס</strong><br>
+<a href="./slide-decks/basic-arch-data-heb.html" target="_blank">התקנת כלים, והיכרות עם נתוני החפירות בארץ ישראל</a></td>
+<td><ul>
+<li><p>שריד, <a href="https://www.hebrewr.co.il/" target="_blank">פרקים 1-2</a></p></li>
+<li><p>Wickham DS,<a href="https://r4ds.hadley.nz/" target="_blank">ch.&nbsp;1-2</a></p></li>
+<li><p><a href="https://alisonrclarke.github.io/R-archaeology-lesson/01-intro-to-r.html" target="_blank">Clarke 2022, R for Arch. Intro</a></p></li>
+</ul></td>
+<td><ul>
+<li><p>פאוסט וספראי, “<a href="https://lisa.biu.ac.il/sites/lisa/files/shared/faust_safrai_introduction.pdf" target="_blank">שיטת העבודה</a>”</p></li>
+<li><p>McCall 2018,<a href="https://drive.google.com/file/d/1fjrSc0imtPzqK6GSlAYAgfXoqmOwGAHo/view?usp=sharing">ch.&nbsp;1</a></p></li>
+</ul></td>
+<td>התקנת R ו-RStudio; פקודות בסיסיות; טעינת קבצי נתונים; היכרות עם מבנה נתונים</td>
+</tr>
+<tr class="even">
+<td>23/03/25</td>
+<td><strong>מבוא ל-GitHub ו-AI</strong> הטמעת גיטהאב ב-RStudio gptstudio כעוזר קוד AI</td>
+<td><ul>
+<li><p><a href="https://happygitwithr.com/" target="_blank">Happy Git with R</a></p></li>
+<li><p><a href="https://guides.github.com/" target="_blank">GitHub Guides</a></p></li>
+<li><p><a href="https://intro2r.library.duke.edu/ai.html" target="_blank">Getting started with AI assisted coding</a></p></li>
+<li><p><a href="https://michelnivard.github.io/gptstudio" target="_blank">gptstudio</a></p></li>
+</ul></td>
+<td><p>Bryan 2018,<a href="https://peerj.com/preprints/3159/" target="_blank">“Excuse me, do you have a moment to talk about version control?”</a></p>
+<p><a href="https://www.codingwithsaar.co.il/articles/git-github-and-common-terms-a-beginners-guide" target="_blank">GitHub - המדריך המלא למתחילים</a></p></td>
+<td>התחברות ל-GitHub דרך RStudio; יצירת repository; עבודה בסיסית עם git (add, commit, push, pull); מהו API? הטמעת gptstudio</td>
+</tr>
+<tr class="odd">
+<td>30/03/25</td>
+<td><p><strong>כתיבה מחקרית ברשת</strong></p>
+<p>חבילת rrtools ומחקר בעל יכולת שחזור</p></td>
+<td><ul>
+<li><p>שריד, <a href="https://www.hebrewr.co.il/12-hebrew-in-R.html">פרק 12</a></p></li>
+<li><p><a href="https://github.com/benmarwick/rrtools">rrtools: Tools for Writing Reproducible Research in R</a></p></li>
+<li><p><a href="https://rmarkdown.rstudio.com/lesson-1.html">rmarkdown</a></p></li>
+</ul></td>
+<td>Marwick et al.&nbsp;2018,<a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375986">“Packaging Data Analytical Work Reproducibly”</a></td>
+<td><p>יצירת פרויקט מחקר באמצעות rrtools; הגדרת מבנה הפרויקט; כתיבת קוד מתועד ומסודר</p>
+<p><strong>תרגיל להגשה 1:<br>
+</strong>תבנית של אתר בתצורת דוח מחקרי ללא תוכן</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="יחידה-2-עיבוד-נתונים-והצגתם" class="level2">
+<h2 class="anchored" data-anchor-id="יחידה-2-עיבוד-נתונים-והצגתם">יחידה 2: עיבוד נתונים והצגתם</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>תאריך</th>
+<th>נושא השיעור</th>
+<th>פרקים טכניים</th>
+<th>קריאה</th>
+<th>תרגול</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>06/04/25</td>
+<td><p><strong>עיבוד נתונים ראשוני</strong></p>
+<p>סוגי נתונים ועקרונות ה-tidyverse</p></td>
+<td><ul>
+<li><p><a href="https://alisonrclarke.github.io/R-archaeology-lesson/02-starting-with-data.html">Clarke 2022, R for Arch. Starting with Data</a></p></li>
+<li><p>שריד, <a href="https://www.hebrewr.co.il/03-data-munging-tidyverse.html">פרק 3</a></p></li>
+<li><p>Wickham DS,<a href="https://r4ds.hadley.nz/data-transform">ch.&nbsp;3-5</a></p></li>
+<li><p>Introduction to dplyr</p></li>
+</ul></td>
+<td>Carlson 2017,<a href="https://drive.google.com/file/d/1NxeqOBNFiJRl-fu7hRxiSBR4cNK9oKpF/view?usp=sharing">ch.&nbsp;5-6</a></td>
+<td>ניתוח בסיסי של נתוני פאוסט וספראי: סינון, מיון, קיבוץ, חישוב סטטיסטיקות תיאוריות לפי תקופה ואזור</td>
+</tr>
+<tr class="even">
+<td>20/04/25</td>
+<td><p><strong>עיבוד נתונים מתקדם</strong></p>
+<p>ניתוח מתקדם עם dplyrלהשוואה בין-תקופתית ובין-אזורית</p></td>
+<td><ul>
+<li><p><a href="https://alisonrclarke.github.io/R-archaeology-lesson/03-dplyr.html">Clarke 2022, R for Arch. Manipulating Data</a></p></li>
+<li><p>שריד, <a href="https://www.hebrewr.co.il/05-pivot-and-join.html">פרק 5</a></p></li>
+<li><p>Wickham DS,<a href="https://r4ds.hadley.nz/EDA.html">ch.&nbsp;10</a></p></li>
+<li><p><a href="https://dplyr.tidyverse.org/articles/programming.html">dplyr: Advanced Functions</a></p></li>
+</ul></td>
+<td>Banning 2020,<a href="https://drive.google.com/file/d/1qGkEyLnwvKy-g3JJbc0-IpLa0BOky8rc/view?usp=sharing">ch.&nbsp;5</a></td>
+<td>ניתוח דפוסי התיישבות לאורך זמן; בחינת “מדד אי-היציבות”; השוואת חפירות יזומות וחפירות הצלה</td>
+</tr>
+<tr class="odd">
+<td>27/04/25</td>
+<td><p><strong>ויזואליזציה בסיסית</strong></p>
+<p>יצירת גרפים וטבלאות מסכמות עם ggplot2</p></td>
+<td><ul>
+<li><p><a href="https://alisonrclarke.github.io/R-archaeology-lesson/04-visualization-ggplot2.html">Clarke 2022, R for Arch. Visualising Data</a></p></li>
+<li><p>שריד, <a href="https://www.hebrewr.co.il/04-visualizations-ggplot2.html">פרק 4</a></p></li>
+<li><p><a href="https://ggplot2-book.org/">ggplot2: Data Visualization for Research</a></p></li>
+<li><p><a href="https://rkabacoff.github.io/datavis/">Data Visualization with R</a></p></li>
+</ul></td>
+<td>Banning 2020,<a href="https://drive.google.com/file/d/1qGkEyLnwvKy-g3JJbc0-IpLa0BOky8rc/view?usp=sharing">ch.&nbsp;5</a></td>
+<td><p>יצירת גרפים בסיסיים של נתוני התיישבות; הפקת גרפים לפי אזורים ותקופות; עיצוב ויזואליזציות לפרסום</p>
+<p><strong>תרגיל להגשה 2:<br>
+</strong>שני ניתוחים שונים כולל גרפים שיונגשו באתר הסטונדט.ית</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="יחידה-3-עיבוד-מתקדם-והעשרת-נתונים-מהמרשתת" class="level2">
+<h2 class="anchored" data-anchor-id="יחידה-3-עיבוד-מתקדם-והעשרת-נתונים-מהמרשתת">יחידה 3: עיבוד מתקדם והעשרת נתונים מהמרשתת</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>תאריך</th>
+<th>נושא השיעור</th>
+<th>פרקים טכניים</th>
+<th>קריאה</th>
+<th>תרגול</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>04/05/25</td>
+<td><p><strong>ויזואליזציה מתקדמת</strong></p>
+<p>מפות וגרפים אינטראקטיביים</p></td>
+<td><ul>
+<li><p>Weinberg 2018, <a href="https://doi.org/10.46430/phen0075">“Using Geospatial Data to Inform Historical Research in R,”</a></p></li>
+<li><p><a href="https://plotly-r.com/">Interactive Visualization with R</a></p></li>
+<li><p><a href="https://r-spatial.github.io/sf/">sf: Simple Features for R</a></p></li>
+</ul></td>
+<td>Barker, Palladino and Gordin 2024,<a href="https://doi.org/10.1017/S0009840X23002858">“Digital Approaches to Investigating Space and Place”</a></td>
+<td>מיפוי דפוסי התיישבות; יצירת מפות אינטראקטיביות המציגות שינויים לאורך זמן; שילוב נתונים גיאוגרפיים</td>
+</tr>
+<tr class="even">
+<td>11/05/25</td>
+<td><p><strong>איסוף נתונים מהרשת</strong></p>
+<p>מבוא ל-rvest ועקרונות web scraping, איסוף מידע ארכיאולוגי ממקורות מקוונים</p></td>
+<td><ul>
+<li><p><a href="https://rvest.tidyverse.org/">rvest: Scraping Web Data</a></p></li>
+<li><p><a href="https://github.com/libjohn/workshop_webscraping">Web Scraping with R</a></p></li>
+</ul></td>
+<td>Munzert Simon, <a href="https://ariel.primo.exlibrisgroup.com/permalink/972ARIEL_INST/2vc4mm/alma994423010807236">Automated Data Collection with R</a> (פרקים נבחרים)</td>
+<td>איסוף מידע ממאגרי נתונים ארכיאולוגיים מקוונים; שילוב המידע עם נתוני פאוסט וספראי</td>
+</tr>
+<tr class="odd">
+<td>18/05/25</td>
+<td><strong>איסוף נתונים מתקדם</strong> chromote ואיסוף מידע מאתרים מורכבים</td>
+<td><a href="https://blog.thecoatlessprofessor.com/videos/r/scraping-static-and-dynamic-websites-with-r-and-the-chromote-package/">Scraping dynamic websites with R and Chromote</a></td>
+<td>Guldi 2018, <a href="https://culturalanalytics.org/article/11028">"Critical Search: A Procedure for Guided Reading in Large-Scale Textual Corpora"</a></td>
+<td><p>איסוף מידע ממאגרי נתונים ארכיאולוגיים מקוונים; שילוב המידע עם נתוני פאוסט וספראי</p>
+<p><strong>תרגיל להגשה 3:<br>
+</strong> שליפת נתונים טקסטואליים מתוך ״חדשות ארכיאולוגיות״ וניתוחם</p></td>
+</tr>
+<tr class="even">
+<td>25/05/25</td>
+<td><strong>נושא שיעור ייקבע בהתאם להתקדמות בכיתה</strong></td>
+<td><a href="https://unitoassyriangovernance.github.io/kart4arch/">A tutorial for versioning archaeological data using Kart</a></td>
+<td>Titolo &amp; Palmisano 2024, <a href="https://doi.org/10.19282/ac.35.2.2024.12">"Using Kart and GitHub for versioning and collaborating with spatial data in archaeological research"</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="הצגת-דוח-מחקרי" class="level2">
+<h2 class="anchored" data-anchor-id="הצגת-דוח-מחקרי">הצגת דוח מחקרי</h2>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 19%">
+<col style="width: 22%">
+<col style="width: 34%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>תאריך</th>
+<th>מצגת</th>
+<th>נושאי השיעור</th>
+<th>פעילות / אתר / תוכנה</th>
+<th>קריאה</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>08/06/25</td>
+<td>זמן עבודה על דוח מחקרי</td>
+<td>ניתן לקבוע זום לשיחות אישיות</td>
+<td>עבודה עצמית על הצגת דוח מחקר ארכיאולוגי בבית</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>15/06/25</td>
+<td>הצגת דוח מחקר ארכיאולוגי</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>החומר המלא עליו מבוסס הקוד שנדון בשיעור. לא כל החומר יועבר לכן מומלץ לעבור על חומר זה בעצמכם. מיועד בעיקר למי שרוצה להעמיק עוד את הידע שלו בזמן ואחרי השיעור.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>קריאת חובה לשיעור–נא להשתדל לקרוא לפני השיעורים כדי שהדיונים יהיו מעמיקים ומועילים.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>אחרי השיעור חובה לבצע את התרגילים השבועיים. חובת הגשת התרגיל חלה רק על תרגילים מסומנים להגשה. ציון יינתן <strong>על הגשה</strong> ולא על הצלחה או נכונות של התרגיל.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Shai Gordin, 2025</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/shaigordin">
+      <i class="bi bi-github" role="img" aria-label="Shai Gordin GitHub">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/shgordin">
+      <i class="bi bi-twitter" role="img" aria-label="Shai Gordin Twitter">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="mailto:shygordin@gmail.com">
+      <i class="bi bi-envelope" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

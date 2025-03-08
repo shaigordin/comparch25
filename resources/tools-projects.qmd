@@ -1,0 +1,31 @@
+---
+title: "כלים ופרויקטים חישוביים"
+---
+
+## **משאבים בקוד פתוח (חבילות R, תוכנות, מדריכים ועוד)**
+
+-   CRAN Task View: Archaeological Science (a detailed list of R packages)\
+    Ben Marwick, LI-YING WANG, Domenico Giusti, Enrico R. Crema, Tal Galili, Bjørn Peare Bartholdy, Laure Spake, et al. "Benmarwick/ctv-archaeology: V1.0.0". Zenodo, November 9, 2022. <https://doi.org/10.5281/zenodo.7306328>.
+-   Open source archaeological software & resources: [https://open-archaeo.info](https://open-archaeo.info/){.uri}
+
+## **נתונים ארכיאולוגים פתוחים**
+
+-   מסד הנתונים של פאוסט וספראי: <https://lisa.biu.ac.il/faustsafrai>
+-   חדשות ארכיאולוגיות: <https://www.hadashot-esi.org.il/search.aspx>
+-   רשות העתיקות אוצרות המדינה לפי תקופה: <https://www.iaa.org.il/page/periods>
+-   Department of Antiquities of Palestine (1919 -- 1948): [https://www.iaa-archives.org.il](https://www.iaa-archives.org.il/){.uri}
+-   Stamp seals from the southern Levant: [https://levantineseals.org](https://levantineseals.org/){.uri}
+-   
+-   The Digital Archaeological Record: [https://www.tdar.org/using-tdar](https://www.tdar.org/using-tdar/){.uri}
+-   Archaeology Data Service: [https://archaeologydataservice.ac.uk](https://archaeologydataservice.ac.uk/){.uri}
+-   Journal of Open Archaeology Data: [https://openarchaeologydata.metajnl.com](https://openarchaeologydata.metajnl.com/){.uri}
+
+## **כתבי עת בארכיאולוגיה והיסטוריה חישובית**
+
+-   Internet Archaeology: [https://intarch.ac.uk](https://intarch.ac.uk/){.uri}
+-   Journal of Computer Applications in Archaeology (CAA journal):\
+    [https://journal.caa-international.org](https://journal.caa-international.org/){.uri}
+-   Open Archaeology: <https://www.degruyter.com/journal/key/opar/html>
+-   Journal of Historical Network Research: [https://jhnr.net](https://jhnr.net/){.uri}
+-   Journal of Digital History: <https://journalofdigitalhistory.org/en>
+-   Journal of Open Humanities Data: [https://openhumanitiesdata.metajnl.com](https://openhumanitiesdata.metajnl.com/){.uri}

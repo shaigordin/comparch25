@@ -1,0 +1,19 @@
+---
+title: "יצירת תבנית אתר מחקרי באמצעות rrtools"
+---
+
+**תאריך הגשה**: 20/04/25
+
+**אימייל**: shaigo\@ariel.ac.il
+
+יש לקרוא את המאמר [Marwick et al. 2018](https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375986){target="_blank"} ולענות על השאלות הבאות:
+
+-   סכמו במילים שלכם מהי שאלת המחקר של המאמר?
+
+-   מהם העקרונות המרכזיים של מחקר ״ניתן לשחזור״?
+
+-   כיצד שונה אופן המחקר הקלאסי בארכיאולוגיה והיסטוריה שאתם מכירים?
+
+יש לעבור על המידע של חבילת rrtools ולעקוב באופן צמוד אחרי ההדרכה ליצירת דוח מחקרי כפי שמפורטת באתר הגיטהאב של החבילה [כאן](https://github.com/benmarwick/rrtools/wiki/Create-a-new,-empty-research-compendium,-starting-with-an-empty-GitHub-repository){target="_blank"}. התהליך המלא ליצירת מאמר מחקרי עם כל התוכן שלו נמצא ב[קישור כאן](https://annakrystalli.me/rrresearchACCE20/creating-a-research-compendium-with-rrtools.html){target="_blank"}.
+
+**יש להגיש את התשובות במסמך מארקדאון כמו שלמדנו להכין בכיתה ולשלוח את הקישור לדוח המחקרי הריק שלכם בגיטהאב.**

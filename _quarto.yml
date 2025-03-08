@@ -1,0 +1,61 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "חקר חישובי של ארכיאולוגיה ומקורות היסטוריים / שי גורדין"
+  open-graph: true
+  reader-mode: true
+  navbar:
+    logo: ariel_logo_navbar.png
+    right:
+      - text: "תכנית הקורס"
+        href: about.qmd
+      - text: "מטלות"
+        menu:
+          - text: "מרכיבי הציון"
+            href: assignments/index.qmd
+          - text: "תבנית אתר מחקרי"
+            href: assignments/research-template.qmd
+          - text: "ניתוח נתונים ויצירת גרפים"
+            href: assignments/data-analysis.qmd
+          - text: "תרגיל בשליפת נותנים"
+            href: assignments/scraping.qmd
+          - text: "פרויקט גמר"
+            href: assignments/final-project.qmd
+      - text: "מקורות, כלים, ופרויקטים"
+        menu:
+          - text: "מקורות ובבליוגרפיה"
+            href: resources/index.qmd
+          - text: "כלים ופרויקטים"
+            href: resources/tools-projects.qmd
+  page-footer:
+    background: light
+    left: "© Shai Gordin, 2025"
+    right:
+      - icon: github
+        href: https://github.com/shaigordin
+        aria-label: Shai Gordin GitHub
+      - icon: twitter
+        href: https://twitter.com/shgordin
+        aria-label: Shai Gordin Twitter
+      - icon: envelope
+        href: mailto:shygordin@gmail.com
+
+format:
+  html:
+    include-in-header:
+      - text: |
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&display=swap" rel="stylesheet">
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-title: "בעמוד זה"
+    html-metadata:
+      lang: he
+      dir: rtl
+
+
+

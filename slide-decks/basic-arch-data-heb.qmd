@@ -1,0 +1,748 @@
+---
+title: "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R"
+subtitle: "חקר חישובי של ארכיאולוגיה ומקורות היסטוריים תשפ״ה"
+author: "ד״ר שי גורדין"
+date: "9 במרץ, 2025"
+format:
+  revealjs:
+    theme: serif
+    transition: slide
+    slide-number: true
+    chalkboard: true
+    overview: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    code-fold: true
+    code-tools: true
+    code-line-numbers: true
+    highlight-style: github
+    footer: "שיטות מתודולוגיות ב׳ / אונ׳ אריאל"
+    logo: archaeology-code-image.png
+    css: custom.css
+    rtl: true
+editor: visual
+---
+
+```{css, echo=FALSE}
+.reveal .slide-number {
+  left: 8px;
+  right: unset;
+}
+
+.reveal pre code {
+  direction: ltr;
+  text-align: left;
+  display: block;
+}
+
+.reveal p, .reveal ul, .reveal ol {
+  text-align: right;
+  direction: rtl;
+}
+
+.reveal blockquote {
+  text-align: right;
+  direction: rtl;
+  border-right: 10px solid #ccc;
+  border-left: none;
+  padding-right: 1em;
+  padding-left: 0;
+  margin-right: 0;
+}
+```
+
+# מבוא {.section}
+
+## למה ללמוד R בארכיאולוגיה?
+
+* R היא שפת תכנות חינמית ובקוד פתוח
+* גמישה במיוחד לעבודה עם נתונים סטטיסטיים
+* כלי חיוני במחקר המודרני בארכיאולוגיה
+* מאפשרת:
+  * ניתוח כמותי של ממצאים
+  * יצירת גרפים וויזואליזציות
+  * שחזור תהליכים יישוביים לאורך זמן
+  * זיהוי דפוסים בממצא הארכיאולוגי
+
+## R בשירות הארכיאולוגיה
+
+![R הפכה לכלי מרכזי במחקר ארכיאולוגי כמותי](https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs10816-019-09422-0/MediaObjects/10816_2019_9422_Fig1_HTML.png){fig-align="center" width="80%"}
+
+## הקשר בין ארכיאולוגיה לסטטיסטיקה
+
+> "רוב הארכיאולוגים התחילו ללמוד ארכיאולוגיה כי רצו להבין את דרכי החיים של אנשים מן העבר... רובם לא ציפו להפוך למומחים בסטטיסטיקה או בשיטות כמותיות."
+>
+> <span style="font-size: smaller;">— מתוך ספרם של פאוסט וספראי (2015)</span>
+
+# התקנת R ו-RStudio {.section}
+
+## התקנת R ו-RStudio
+
+1. הורידו את R מאתר ה-CRAN: [https://cran.r-project.org/](https://cran.r-project.org/)
+2. הורידו את RStudio מאתר: [https://rstudio.com/products/rstudio/download/](https://rstudio.com/products/rstudio/download/)
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/1280px-RStudio_logo_flat.svg.png){fig-align="center" width="80%"}
+
+## ממשק RStudio
+
+![](https://rstudio.com/wp-content/uploads/2014/04/rstudio-workbench.png){fig-align="center" width="85%"}
+
+* חלון עורך הקוד (שמאל עליון)
+* קונסולה (שמאל תחתון)
+* סביבת העבודה וההיסטוריה (ימין עליון)
+* קבצים, גרפים, חבילות ועזרה (ימין תחתון)
+
+# יסודות R לארכיאולוגים {.section}
+
+## חישובים בסיסיים
+
+```{r}
+#| eval: false
+#| echo: true
+
+# חישוב גיל ממצא לפי פחמן 14
+# נניח שהיחס C14/C12 הוא 0.65 מהיחס המקורי
+age_in_years <- -8033 * log(0.65)
+age_in_years
+
+# חישוב שנת המקור (בהנחה שאנו בשנת 2025)
+year_of_origin <- 2025 - age_in_years
+year_of_origin
+```
+
+## משתנים ואובייקטים
+
+```{r}
+#| eval: false
+#| echo: true
+
+# יצירת וקטור של עומקי שכבות ארכיאולוגיות (במטרים)
+depths <- c(0.5, 1.2, 1.8, 2.3, 3.0)
+
+# יצירת וקטור של תיארוכים (לפני הספירה)
+datings <- c(-1200, -900, -850, -720, -586)
+
+# שמות התקופות המתאימות
+periods <- c("ברזל 1", "ברזל 2א", "ברזל 2ב", "ברזל 2ג", "חורבן בית ראשון")
+
+# יצירת טבלה של הנתונים
+stratigraphy_data <- data.frame(
+  depth = depths,
+  dating = datings,
+  period = periods
+)
+
+# הצגת הטבלה
+stratigraphy_data
+```
+
+## פעולות על וקטורים
+
+```{r}
+#| eval: false
+#| echo: true
+
+# יצירת וקטור המייצג מספר חרסים מתקופות שונות
+pottery_count <- c(45, 78, 134, 89, 23, 56)
+periods <- c("ברונזה מאוחרת", "ברזל 1", "ברזל 2א", "ברזל 2ב", "פרסית", "הלניסטית")
+
+# חישוב סך כל החרסים
+total_sherds <- sum(pottery_count)
+total_sherds
+
+# חישוב ממוצע החרסים לתקופה
+average_sherds <- mean(pottery_count)
+average_sherds
+
+# איתור התקופה עם מספר החרסים הגבוה ביותר
+max_period_index <- which.max(pottery_count)
+most_abundant_period <- periods[max_period_index]
+most_abundant_period
+```
+
+## תנאים ופילטרים
+
+```{r}
+#| eval: false
+#| echo: true
+
+# נניח שיש לנו נתונים על אתרים ארכיאולוגיים
+site_data <- data.frame(
+  site_name = c("תל חצור", "תל לכיש", "תל מגידו", "תל דן", "תל באר שבע"),
+  elevation = c(230, 270, 180, 200, 280),
+  site_size = c(80, 30, 60, 20, 10),  # בדונמים
+  has_fortifications = c(TRUE, TRUE, TRUE, FALSE, TRUE)
+)
+
+# מציאת אתרים בגובה מעל 200 מטר
+high_elevation_sites <- site_data[site_data$elevation > 200, ]
+high_elevation_sites$site_name
+
+# מציאת אתרים גדולים (מעל 50 דונם) עם ביצורים
+large_fortified_sites <- site_data[site_data$site_size > 50 & 
+                                   site_data$has_fortifications == TRUE, ]
+large_fortified_sites$site_name
+```
+
+## פונקציות בסיסיות
+
+```{r}
+#| eval: false
+#| echo: true
+
+# פונקציה לחישוב צפיפות ממצאים לפי שטח החפירה
+calc_artifact_density <- function(artifact_count, excavation_area) {
+  density <- artifact_count / excavation_area
+  return(density)
+}
+
+# שימוש בפונקציה
+pottery_count <- 450
+excavation_area <- 25  # במ"ר
+pottery_density <- calc_artifact_density(pottery_count, excavation_area)
+pottery_density  # חרסים למ"ר
+```
+
+## יצירת גרפים בסיסיים
+
+```{r}
+#| eval: false
+#| echo: true
+
+# יצירת גרף מספר אתרים לפי תקופה
+periods <- c("ברונזה תיכונה", "ברונזה מאוחרת", "ברזל 1", "ברזל 2", "פרסית", "הלניסטית")
+sites_count <- c(65, 34, 78, 120, 60, 95)
+
+# גרף עמודות בסיסי
+barplot(sites_count, names.arg = periods, 
+        main = "מספר אתרים לפי תקופה",
+        col = "lightblue", las = 2)
+```
+
+## יצירת גרפים מתקדמים עם ggplot2
+
+```{r}
+#| eval: false
+#| echo: true
+
+# טעינת החבילה
+library(ggplot2)
+
+# יצירת נתונים לגרף
+settlement_data <- data.frame(
+  period = periods,
+  sites = sites_count
+)
+
+# יצירת גרף עמודות מתקדם
+ggplot(settlement_data, aes(x = period, y = sites, fill = period)) +
+  geom_col() +
+  labs(title = "מספר אתרים לפי תקופה",
+       x = "תקופה", y = "מספר אתרים") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(hjust = 0.5))
+```
+
+# בסיסי נתונים ארכיאולוגיים {.section}
+
+## קריאת קבצי נתונים
+
+```{r}
+#| eval: false
+#| echo: true
+
+# קריאת קובץ CSV
+sites_data <- read.csv("archaeological_sites.csv")
+
+# הצגת המבנה של בסיס הנתונים
+str(sites_data)
+
+# הצגת הרשומות הראשונות
+head(sites_data)
+```
+
+## דוגמה: ניתוח ממצאים מחפירה
+
+```{r}
+#| eval: false
+#| echo: true
+
+# יצירת נתונים לדוגמה - כלי חרס לפי שכבה וסוג
+ceramics_data <- data.frame(
+  stratum = rep(c("I", "II", "III", "IV", "V"), each = 4),
+  period = rep(c("ברזל 2ב", "ברזל 2א", "ברזל 1", "ברונזה מאוחרת", "ברונזה תיכונה"), each = 4),
+  vessel_type = rep(c("קערות", "פכים", "קנקנים", "פכיות"), times = 5),
+  count = c(45, 30, 60, 12,    # שכבה I
+            38, 25, 52, 8,     # שכבה II
+            20, 15, 30, 5,     # שכבה III
+            25, 20, 35, 7,     # שכבה IV
+            30, 18, 40, 10)    # שכבה V
+)
+
+# סיכום הנתונים לפי תקופה
+period_summary <- aggregate(count ~ period, data = ceramics_data, sum)
+period_summary
+```
+
+## ויזואליזציה של ממצאים
+
+```{r}
+#| eval: false
+#| echo: true
+
+# יצירת גרף עם ggplot2
+library(ggplot2)
+
+# סידור התקופות בסדר כרונולוגי
+ceramics_data$period <- factor(ceramics_data$period, 
+                     levels = c("ברונזה תיכונה", "ברונזה מאוחרת", 
+                               "ברזל 1", "ברזל 2א", "ברזל 2ב"))
+
+# גרף כלי חרס לפי סוג וזמן
+ggplot(ceramics_data, aes(x = period, y = count, fill = vessel_type)) +
+  geom_bar(stat = "identity", position = "stack") +
+  labs(title = "התפלגות כלי חרס לפי תקופה וסוג",
+       x = "תקופה", y = "מספר כלים",
+       fill = "סוג כלי") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(hjust = 0.5))
+```
+
+# מאגרי המידע של פאוסט וספראי (2015) {.section}
+
+## רקע על המחקר
+
+> "תולדות ההתיישבות בארץ ישראל: ניתוח כמותי לאור ממצאי חפירות ההצלה והחפירות היזומות"
+>
+> — פאוסט וספראי (2015)
+
+* מחקר מקיף על דפוסי התיישבות בארץ ישראל לאורך התקופות
+* שימוש בנתונים כמותיים מחפירות הצלה וחפירות יזומות
+* ניתוח של למעלה מ-3,500 אתרים ארכיאולוגיים
+* בחינת תהליכים יישוביים לאורך זמן
+
+## מתודולוגיה - בניית בסיסי הנתונים
+
+::: {.incremental}
+פאוסט וספראי יצרו שני בסיסי נתונים מרכזיים:
+
+1. **בסיס נתונים של חפירות הצלה**
+   * מבוסס על דיווחים מ"חדשות ארכיאולוגיות" (עד חוברת 114, תשס"ג)
+   * כולל 3,571 "אתרים" (כל תקופה בחפירה מהווה "אתר")
+   * מוטה לטובת המגזר הכפרי
+
+2. **בסיס נתונים של חפירות יזומות**
+   * מבוסס על "האנציקלופדיה החדשה לחפירות ארכיאולוגיות בארץ ישראל"
+   * כולל 2,214 "אתרים"
+   * מוטה לטובת האתרים העירוניים
+:::
+
+## מבנה בסיסי הנתונים
+
+פאוסט וספראי מתארים את מבנה הנתונים בפרק 3 של ספרם:
+
+> "מספר האתר. כל אתר קיבל מספר משל עצמו. אם יש באתר מסוים, דוגמת אזור, חפירות מספר, הרי שעדיין יהיה מספר האתר זהה."
+> 
+> — פאוסט וספראי (2015, עמ' 12)
+
+::: {.columns}
+::: {.column width="50%"}
+**בסיס נתוני חפירות ההצלה כולל:**
+* מספר אתר ומספר חפירה
+* שם האתר
+* נקודת ציון
+* אזור גיאוגרפי
+* תקופה ארכיאולוגית
+* סוג הממצא
+:::
+
+::: {.column width="50%"}
+**בסיס נתוני חפירות יזומות כולל:**
+* מספר אתר
+* שם האתר וערך משנה
+* נקודת ציון
+* אזור ותת-אזור
+* תקופה ותת-תקופה
+* סוג ממצא מפורט יותר
+:::
+:::
+
+## מדד אי-היציבות
+
+::: {.incremental}
+מדד חשוב שפיתחו פאוסט וספראי הוא "מדד אי-היציבות":
+
+> "אחת הבדיקות המרכזיות שתתבצע בעבודה היא המשכיות היישוב. זו צריכה להתבצע לא מבחינת כמות האתרים בכל תקופה, אלא ברמת האתר."
+>
+> — פאוסט וספראי (2015, עמ' 4)
+
+* בוחן את ההמשכיות היישובית בין תקופות
+* בנוי על ההנחה שיישובים חדשים שנבנו במרחק מיישובים קודמים מעידים על נטישה וחוסר המשכיות
+* מאפשר לזהות משברים יישוביים גם כאשר מספר האתרים נותר יציב
+:::
+
+## "כיול" הנתונים
+
+::: {.incremental}
+פאוסט וספראי מדגישים את חשיבות "כיול" הנתונים:
+
+> "לאור זאת אנו מבדילים בין מידע 'לא מכויל', כלומר מידע המתייחס לכלל האתרים, לבין מידע 'מכויל', כלומר ב'ניכוי' קברים, כפילויות (אתרים שנחפרו בשתי חפירות הצלה שונות ולפיכך קיבלו שני מספרים – לשיטת הרישום ראו להלן), מתקנים וכדומה"
+>
+> — פאוסט וספראי (2015, עמ' 3)
+
+* מאפשר להתמקד ביישובים בלבד
+* מסנן רעשים מהנתונים
+* משפר את המהימנות של השוואות בין-תקופתיות
+:::
+
+## טעינת בסיסי הנתונים ל-R
+
+```{r}
+#| eval: false
+#| echo: true
+
+# טעינת חבילות נדרשות
+library(readr)
+library(dplyr)
+
+# טעינת בסיס הנתונים של חפירות ההצלה
+rescue_excavations <- read_csv("http://lisa.biu.ac.il/faustsafrai", 
+                              locale = locale(encoding = "UTF-8"))
+
+# טעינת בסיס הנתונים של חפירות יזומות
+planned_excavations <- read_csv("http://lisa.biu.ac.il/faustsafrai", 
+                               locale = locale(encoding = "UTF-8"))
+
+# הצגת מבנה הנתונים
+glimpse(rescue_excavations)
+```
+
+## ניתוח התפלגות אתרים לפי תקופות
+
+```{r}
+#| eval: false
+#| echo: true
+
+# ספירת אתרים לפי תקופה
+period_counts <- rescue_excavations %>%
+  count(period) %>%
+  arrange(desc(n))
+
+# הצגת התקופות עם מספר האתרים הרב ביותר
+head(period_counts, 10)
+
+# יצירת "נתונים מכוילים" - רק אתרי יישוב
+calibrated_data <- rescue_excavations %>%
+  filter(find_type %in% c("שרידי בנייה", "קרמיקה בלבד"))
+
+# השוואת מספר האתרים לפני ואחרי ה"כיול"
+calibrated_counts <- calibrated_data %>%
+  count(period) %>%
+  arrange(desc(n))
+
+# הצגת ההשוואה
+comparison <- period_counts %>%
+  left_join(calibrated_counts, by = "period", suffix = c("_all", "_calibrated"))
+```
+
+## ניתוח לפי אזורים גיאוגרפיים
+
+```{r}
+#| eval: false
+#| echo: true
+
+# חלוקה לפי אזורים גיאוגרפיים
+region_distribution <- calibrated_data %>%
+  count(region) %>%
+  mutate(percentage = n / sum(n) * 100)
+
+# הצגת התפלגות האתרים לפי אזורים
+region_distribution
+
+# התפלגות היישובים באזורי ההר לעומת האזורים הנמוכים
+highland_regions <- c("יהודה", "שומרון", "גליל עליון", "גליל תחתון")
+lowland_regions <- c("חוף הים הצפוני", "חוף הים הדרומי", "עמק יזרעאל")
+
+regional_comparison <- calibrated_data %>%
+  mutate(region_type = case_when(
+    region %in% highland_regions ~ "אזורי הר",
+    region %in% lowland_regions ~ "אזורים נמוכים",
+    TRUE ~ "אחר"
+  )) %>%
+  count(period, region_type) %>%
+  group_by(period) %>%
+  mutate(percentage = n / sum(n) * 100)
+```
+
+## חישוב מדד אי-היציבות
+
+```{r}
+#| eval: false
+#| echo: true
+
+# פונקציה פשוטה לחישוב מדד אי-היציבות
+calculate_instability <- function(period1_sites, period2_sites) {
+  # זיהוי אתרים שמופיעים בשתי התקופות (לפי מספר האתר)
+  continuing_sites <- intersect(period1_sites$site_id, period2_sites$site_id)
+  
+  # חישוב אחוז ההמשכיות
+  continuity_percentage <- length(continuing_sites) / length(period2_sites$site_id) * 100
+  
+  # חישוב מדד אי-היציבות (100 פחות אחוז ההמשכיות)
+  instability_index <- 100 - continuity_percentage
+  
+  return(list(
+    continuing_sites_count = length(continuing_sites),
+    total_sites_period2 = length(period2_sites$site_id),
+    continuity_percentage = continuity_percentage,
+    instability_index = instability_index
+  ))
+}
+
+# דוגמה: חישוב מדד אי-היציבות בין תקופת הברזל 2 לתקופה הפרסית
+iron2_sites <- calibrated_data %>% filter(period == "ברזל 2")
+persian_sites <- calibrated_data %>% filter(period == "פרסית")
+
+instability_iron2_persian <- calculate_instability(iron2_sites, persian_sites)
+instability_iron2_persian
+```
+
+## ויזואליזציה של מדד אי-היציבות
+
+```{r}
+#| eval: false
+#| echo: true
+
+# יצירת נתונים לדוגמה של מדד אי-היציבות לאורך תקופות
+transition_periods <- c(
+  "ברונזה תיכונה-מאוחרת", 
+  "ברונזה מאוחרת-ברזל 1",
+  "ברזל 1-ברזל 2",
+  "ברזל 2-פרסית",
+  "פרסית-הלניסטית",
+  "הלניסטית-רומית"
+)
+
+instability_values <- c(72, 85, 58, 76, 65, 42)
+
+instability_data <- data.frame(
+  transition = transition_periods,
+  instability = instability_values
+)
+
+# יצירת גרף באמצעות ggplot2
+library(ggplot2)
+
+ggplot(instability_data, aes(x = transition, y = instability)) +
+  geom_bar(stat = "identity", fill = "coral") +
+  labs(title = "מדד אי-היציבות במעברים בין תקופות",
+       x = "מעבר בין תקופות", 
+       y = "מדד אי-היציבות (%)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(hjust = 0.5))
+```
+
+# תרגילים לניתוח עצמי {.section}
+
+## תרגיל 1: ניתוח דפוסי התיישבות
+
+::: {.panel-tabset}
+
+### המשימה
+
+השוו את מספר האתרים היישוביים בין תקופת הברזל 1 לתקופת הברזל 2
+
+### קוד התחלתי
+
+```{r}
+#| eval: false
+#| echo: true
+
+# קוד התחלתי
+iron_age_sites <- calibrated_data %>%
+  filter(period %in% c("ברזל 1", "ברזל 2"))
+
+# השלימו את הקוד לחישוב מספר האתרים בכל תקופה וליצירת גרף השוואתי
+```
+
+### פתרון מוצע
+
+```{r}
+#| eval: false
+#| echo: true
+
+# פתרון מוצע
+iron_age_sites <- calibrated_data %>%
+  filter(period %in% c("ברזל 1", "ברזל 2"))
+
+# חישוב מספר האתרים בכל תקופה
+iron_age_comparison <- iron_age_sites %>%
+  count(period)
+
+# יצירת גרף השוואתי
+ggplot(iron_age_comparison, aes(x = period, y = n, fill = period)) +
+  geom_col() +
+  labs(title = "השוואת מספר אתרים בין תקופת הברזל 1 לתקופת הברזל 2",
+       x = "תקופה", y = "מספר אתרים") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+:::
+
+## תרגיל 2: גרף התפתחות יישובית
+
+::: {.panel-tabset}
+
+### המשימה
+
+צרו גרף קווי המציג את התפתחות ההתיישבות מתקופת הברונזה המאוחרת ועד התקופה הפרסית
+
+### קוד התחלתי
+
+```{r}
+#| eval: false
+#| echo: true
+
+# קוד התחלתי
+periods_of_interest <- c("ברונזה מאוחרת", "ברזל 1", 
+                        "ברזל 2", "פרסית")
+
+# השלימו את הקוד לחילוץ מספר האתרים בכל תקופה וליצירת גרף קווי
+```
+
+### פתרון מוצע
+
+```{r}
+#| eval: false
+#| echo: true
+
+# פתרון מוצע
+periods_of_interest <- c("ברונזה מאוחרת", "ברזל 1", 
+                        "ברזל 2", "פרסית")
+
+# חילוץ מספר האתרים בכל תקופה
+settlement_trend <- calibrated_data %>%
+  filter(period %in% periods_of_interest) %>%
+  count(period) %>%
+  # סידור התקופות בסדר כרונולוגי
+  mutate(period = factor(period, levels = periods_of_interest))
+
+# יצירת גרף קווי
+ggplot(settlement_trend, aes(x = period, y = n, group = 1)) +
+  geom_line(color = "blue", size = 1) +
+  geom_point(color = "red", size = 3) +
+  labs(title = "התפתחות יישובית מהברונזה המאוחרת עד התקופה הפרסית",
+       x = "תקופה", y = "מספר אתרים") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        plot.title = element_text(hjust = 0.5))
+```
+
+:::
+
+## תרגיל 3: מדד אי-היציבות
+
+::: {.panel-tabset}
+
+### המשימה
+
+חשבו את מדד אי-היציבות במעבר בין תקופת הברזל 2 לתקופה הפרסית
+
+### קוד התחלתי
+
+```{r}
+#| eval: false
+#| echo: true
+
+# קוד התחלתי
+iron2_sites <- calibrated_data %>% 
+  filter(period == "ברזל 2")
+persian_sites <- calibrated_data %>% 
+  filter(period == "פרסית")
+
+# השלימו את הקוד לחישוב כמה מאתרי התקופה הפרסית ממשיכים אתרים מתקופת הברזל 2
+```
+
+### פתרון מוצע
+
+```{r}
+#| eval: false
+#| echo: true
+
+# פתרון מוצע
+iron2_sites <- calibrated_data %>% 
+  filter(period == "ברזל 2")
+persian_sites <- calibrated_data %>% 
+  filter(period == "פרסית")
+
+# זיהוי אתרים שמופיעים בשתי התקופות
+continuing_sites <- intersect(iron2_sites$site_id, persian_sites$site_id)
+
+# חישוב אחוז ההמשכיות
+continuity_percentage <- length(continuing_sites) / nrow(persian_sites) * 100
+
+# חישוב מדד אי-היציבות
+instability_index <- 100 - continuity_percentage
+
+# הצגת התוצאות
+result <- data.frame(
+  continuing_sites_count = length(continuing_sites),
+  total_persian_sites = nrow(persian_sites),
+  continuity_percentage = continuity_percentage,
+  instability_index = instability_index
+)
+
+result
+```
+
+:::
+
+# סיכום {.section}
+
+## חשיבות הניתוח הכמותי בארכיאולוגיה
+
+* מאפשר לזהות דפוסים שאינם ניכרים בתצפיות בודדות
+* מספק כלים לבחינת השערות על תהליכים יישוביים ותרבותיים
+* משלים את הניתוח האיכותני המסורתי
+* מסייע לקבל תמונה רחבה יותר על תהליכים ארוכי טווח
+
+::: {.fragment}
+כפי שציינו פאוסט וספראי (2015, עמ' 6):
+
+> "דפוסי התיישבות הם עניין כמותי, וכדי לעמוד עליהם יש להיעזר בשיטות כמותיות, וניתוח שיטתי של הנתונים העולים מחפירות ההצלה מאפשר לנו, בזהירות, לעמוד על עליות וירידות יישוביות לאורך זמן במגזרי היישוב השונים."
+:::
+
+## מקורות ומשאבים נוספים
+
+1. פאוסט, א' וספראי, ז' (2015). *תולדות ההתיישבות בארץ ישראל: ניתוח כמותי לאור ממצאי חפירות ההצלה והחפירות היזומות*. רמת גן.
+
+2. Marwick, B. (2017). Computational reproducibility in archaeological research: Basic principles and a case study of their implementation. *Journal of Archaeological Method and Theory*, 24(2), 424-450.
+
+3. קורס מקוון: [R for Archaeologists](https://benmarwick.github.io/How-To-Do-Archaeological-Science-Using-R/)
+
+4. חבילות R לארכיאולוגיה: 
+   - `archdata`: מאגרי נתונים ארכיאולוגיים לדוגמה
+   - `rcarbon`: ניתוח תיארוכי פחמן
+   - `ggarcheo`: ויזואליזציות מותאמות לארכיאולוגיה
+
+## תודה רבה!
+
+::: {.columns}
+::: {.column width="50%"}
+**לשאלות ולמידע נוסף:**
+
+* אתר הקורס: [www.archaeology-with-r.com](http://www.example.com)
+* כתובת דוא"ל: [shaigo@ariel.ac.il](mailto:shaigo@ariel.ac.il)
+* חומרי הקורס זמינים ב-GitHub:
+  [github.com/username/archaeology-r-course](http://www.github.com)
+:::
+
+::: {.column width="50%"}
+![](https://images.squarespace-cdn.com/content/v1/5736ee1c9f72662bd8fb89ba/1554493628864-FVB9AZ7OUPKVRDNX879U/3.png?format=1000w){fig-align="center" width="70%"}
+:::
+:::
