@@ -2,7 +2,7 @@
 title: "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R"
 subtitle: "חקר חישובי של ארכיאולוגיה ומקורות היסטוריים תשפ״ה"
 author: "ד״ר שי גורדין"
-date: "9 במרץ, 2025"
+date: "09/03/2025"
 format:
   revealjs:
     theme: serif
@@ -18,80 +18,55 @@ format:
     code-line-numbers: true
     highlight-style: github
     footer: "שיטות מתודולוגיות ב׳ / אונ׳ אריאל"
-    logo: archaeology-code-image.png
+    logo: img/archaeology-code-image.png
     css: custom.css
     rtl: true
 editor: visual
 ---
 
-```{css, echo=FALSE}
-.reveal .slide-number {
-  left: 8px;
-  right: unset;
-}
-
-.reveal pre code {
-  direction: ltr;
-  text-align: left;
-  display: block;
-}
-
-.reveal p, .reveal ul, .reveal ol {
-  text-align: right;
-  direction: rtl;
-}
-
-.reveal blockquote {
-  text-align: right;
-  direction: rtl;
-  border-right: 10px solid #ccc;
-  border-left: none;
-  padding-right: 1em;
-  padding-left: 0;
-  margin-right: 0;
-}
-```
-
 # מבוא {.section}
 
 ## למה ללמוד R בארכיאולוגיה?
 
-* R היא שפת תכנות חינמית ובקוד פתוח
-* גמישה במיוחד לעבודה עם נתונים סטטיסטיים
-* כלי חיוני במחקר המודרני בארכיאולוגיה
-* מאפשרת:
-  * ניתוח כמותי של ממצאים
-  * יצירת גרפים וויזואליזציות
-  * שחזור תהליכים יישוביים לאורך זמן
-  * זיהוי דפוסים בממצא הארכיאולוגי
+-   R היא שפת תכנות חינמית ובקוד פתוח
+-   גמישה במיוחד לעבודה עם נתונים סטטיסטיים
+-   כלי חיוני במחקר המודרני בארכיאולוגיה
+-   מאפשרת:
+    -   ניתוח כמותי של ממצאים
+    -   יצירת גרפים וויזואליזציות
+    -   שחזור תהליכים יישוביים לאורך זמן
+    -   זיהוי דפוסים בממצא הארכיאולוגי
 
 ## R בשירות הארכיאולוגיה
 
-![R הפכה לכלי מרכזי במחקר ארכיאולוגי כמותי](https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs10816-019-09422-0/MediaObjects/10816_2019_9422_Fig1_HTML.png){fig-align="center" width="80%"}
+R היא כלי מרכזי במחקר ארכיאולוגי כמותני
+
+![](img/quantitative_arch_R.jpg){fig-align="center" width="350"} ![](img/dacord_pottery_draw.png){fig-align="center" width="550"}
 
 ## הקשר בין ארכיאולוגיה לסטטיסטיקה
 
-> "רוב הארכיאולוגים התחילו ללמוד ארכיאולוגיה כי רצו להבין את דרכי החיים של אנשים מן העבר... רובם לא ציפו להפוך למומחים בסטטיסטיקה או בשיטות כמותיות."
->
-> <span style="font-size: smaller;">— מתוך ספרם של פאוסט וספראי (2015)</span>
+> "Most people did not go into the field of archaeology with the goal of becoming an expert in statistics or quantitative methods. We became archaeologists because we want to know about the lifeways of past people, to understand human diversity as it has played out over time, and to develop ways of making sense of the causes of this diversity. Most archaeologists, therefore, view statistics as either a necessary evil or a roadblock in the way of doing more interesting things." [מתוך ספרו של McCall 2018, p. 1]{style="font-size: smaller;"}
 
 # התקנת R ו-RStudio {.section}
 
 ## התקנת R ו-RStudio
 
-1. הורידו את R מאתר ה-CRAN: [https://cran.r-project.org/](https://cran.r-project.org/)
-2. הורידו את RStudio מאתר: [https://rstudio.com/products/rstudio/download/](https://rstudio.com/products/rstudio/download/)
+1.  הורידו את R מאתר ה-CRAN: <https://cran.r-project.org>
+2.  הורידו את RStudio מאתר: <https://rstudio.com/products/rstudio/download>
+3. עכשיו לכו לקישור של RStudio בענן <https://posit.cloud>
 
 ![](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/1280px-RStudio_logo_flat.svg.png){fig-align="center" width="80%"}
 
 ## ממשק RStudio
 
-![](https://rstudio.com/wp-content/uploads/2014/04/rstudio-workbench.png){fig-align="center" width="85%"}
+::: {style="width: 45%; float: left;"}
+-   חלון עורך הקוד (שמאל עליון)
+-   קונסולה (שמאל תחתון)
+-   סביבת העבודה וההיסטוריה (ימין עליון)
+-   קבצים, גרפים, חבילות ועזרה (ימין תחתון)
+:::
 
-* חלון עורך הקוד (שמאל עליון)
-* קונסולה (שמאל תחתון)
-* סביבת העבודה וההיסטוריה (ימין עליון)
-* קבצים, גרפים, חבילות ועזרה (ימין תחתון)
+![](https://r4ds.hadley.nz/diagrams/rstudio/console.png){.absolute right="1%" top="15%" width="50%"}
 
 # יסודות R לארכיאולוגים {.section}
 
@@ -254,7 +229,7 @@ ggplot(settlement_data, aes(x = period, y = sites, fill = period)) +
 #| echo: true
 
 # קריאת קובץ CSV
-sites_data <- read.csv("archaeological_sites.csv")
+sites_data <- read.csv("data/enc.csv")
 
 # הצגת המבנה של בסיס הנתונים
 str(sites_data)
@@ -317,27 +292,26 @@ ggplot(ceramics_data, aes(x = period, y = count, fill = vessel_type)) +
 
 > "תולדות ההתיישבות בארץ ישראל: ניתוח כמותי לאור ממצאי חפירות ההצלה והחפירות היזומות"
 >
-> — פאוסט וספראי (2015)
+> --- פאוסט וספראי (2015)
 
-* מחקר מקיף על דפוסי התיישבות בארץ ישראל לאורך התקופות
-* שימוש בנתונים כמותיים מחפירות הצלה וחפירות יזומות
-* ניתוח של למעלה מ-3,500 אתרים ארכיאולוגיים
-* בחינת תהליכים יישוביים לאורך זמן
+-   מחקר מקיף על דפוסי התיישבות בארץ ישראל לאורך התקופות
+-   שימוש בנתונים כמותיים מחפירות הצלה וחפירות יזומות
+-   ניתוח של למעלה מ-3,500 אתרים ארכיאולוגיים
+-   בחינת תהליכים יישוביים לאורך זמן
 
 ## מתודולוגיה - בניית בסיסי הנתונים
 
-::: {.incremental}
+::: incremental
 פאוסט וספראי יצרו שני בסיסי נתונים מרכזיים:
 
-1. **בסיס נתונים של חפירות הצלה**
-   * מבוסס על דיווחים מ"חדשות ארכיאולוגיות" (עד חוברת 114, תשס"ג)
-   * כולל 3,571 "אתרים" (כל תקופה בחפירה מהווה "אתר")
-   * מוטה לטובת המגזר הכפרי
-
-2. **בסיס נתונים של חפירות יזומות**
-   * מבוסס על "האנציקלופדיה החדשה לחפירות ארכיאולוגיות בארץ ישראל"
-   * כולל 2,214 "אתרים"
-   * מוטה לטובת האתרים העירוניים
+1.  **בסיס נתונים של חפירות הצלה**
+    -   מבוסס על דיווחים מ"חדשות ארכיאולוגיות" (עד חוברת 114, תשס"ג)
+    -   כולל 3,571 "אתרים" (כל תקופה בחפירה מהווה "אתר")
+    -   מוטה לטובת המגזר הכפרי
+2.  **בסיס נתונים של חפירות יזומות**
+    -   מבוסס על "האנציקלופדיה החדשה לחפירות ארכיאולוגיות בארץ ישראל"
+    -   כולל 2,214 "אתרים"
+    -   מוטה לטובת האתרים העירוניים
 :::
 
 ## מבנה בסיסי הנתונים
@@ -345,57 +319,45 @@ ggplot(ceramics_data, aes(x = period, y = count, fill = vessel_type)) +
 פאוסט וספראי מתארים את מבנה הנתונים בפרק 3 של ספרם:
 
 > "מספר האתר. כל אתר קיבל מספר משל עצמו. אם יש באתר מסוים, דוגמת אזור, חפירות מספר, הרי שעדיין יהיה מספר האתר זהה."
-> 
-> — פאוסט וספראי (2015, עמ' 12)
+>
+> --- פאוסט וספראי (2015, עמ' 12)
 
-::: {.columns}
+::: columns
 ::: {.column width="50%"}
-**בסיס נתוני חפירות ההצלה כולל:**
-* מספר אתר ומספר חפירה
-* שם האתר
-* נקודת ציון
-* אזור גיאוגרפי
-* תקופה ארכיאולוגית
-* סוג הממצא
+**בסיס נתוני חפירות ההצלה כולל:** \* מספר אתר ומספר חפירה \* שם האתר \* נקודת ציון \* אזור גיאוגרפי \* תקופה ארכיאולוגית \* סוג הממצא
 :::
 
 ::: {.column width="50%"}
-**בסיס נתוני חפירות יזומות כולל:**
-* מספר אתר
-* שם האתר וערך משנה
-* נקודת ציון
-* אזור ותת-אזור
-* תקופה ותת-תקופה
-* סוג ממצא מפורט יותר
+**בסיס נתוני חפירות יזומות כולל:** \* מספר אתר \* שם האתר וערך משנה \* נקודת ציון \* אזור ותת-אזור \* תקופה ותת-תקופה \* סוג ממצא מפורט יותר
 :::
 :::
 
 ## מדד אי-היציבות
 
-::: {.incremental}
+::: incremental
 מדד חשוב שפיתחו פאוסט וספראי הוא "מדד אי-היציבות":
 
 > "אחת הבדיקות המרכזיות שתתבצע בעבודה היא המשכיות היישוב. זו צריכה להתבצע לא מבחינת כמות האתרים בכל תקופה, אלא ברמת האתר."
 >
-> — פאוסט וספראי (2015, עמ' 4)
+> --- פאוסט וספראי (2015, עמ' 4)
 
-* בוחן את ההמשכיות היישובית בין תקופות
-* בנוי על ההנחה שיישובים חדשים שנבנו במרחק מיישובים קודמים מעידים על נטישה וחוסר המשכיות
-* מאפשר לזהות משברים יישוביים גם כאשר מספר האתרים נותר יציב
+-   בוחן את ההמשכיות היישובית בין תקופות
+-   בנוי על ההנחה שיישובים חדשים שנבנו במרחק מיישובים קודמים מעידים על נטישה וחוסר המשכיות
+-   מאפשר לזהות משברים יישוביים גם כאשר מספר האתרים נותר יציב
 :::
 
 ## "כיול" הנתונים
 
-::: {.incremental}
+::: incremental
 פאוסט וספראי מדגישים את חשיבות "כיול" הנתונים:
 
-> "לאור זאת אנו מבדילים בין מידע 'לא מכויל', כלומר מידע המתייחס לכלל האתרים, לבין מידע 'מכויל', כלומר ב'ניכוי' קברים, כפילויות (אתרים שנחפרו בשתי חפירות הצלה שונות ולפיכך קיבלו שני מספרים – לשיטת הרישום ראו להלן), מתקנים וכדומה"
+> "לאור זאת אנו מבדילים בין מידע 'לא מכויל', כלומר מידע המתייחס לכלל האתרים, לבין מידע 'מכויל', כלומר ב'ניכוי' קברים, כפילויות (אתרים שנחפרו בשתי חפירות הצלה שונות ולפיכך קיבלו שני מספרים -- לשיטת הרישום ראו להלן), מתקנים וכדומה"
 >
-> — פאוסט וספראי (2015, עמ' 3)
+> --- פאוסט וספראי (2015, עמ' 3)
 
-* מאפשר להתמקד ביישובים בלבד
-* מסנן רעשים מהנתונים
-* משפר את המהימנות של השוואות בין-תקופתיות
+-   מאפשר להתמקד ביישובים בלבד
+-   מסנן רעשים מהנתונים
+-   משפר את המהימנות של השוואות בין-תקופתיות
 :::
 
 ## טעינת בסיסי הנתונים ל-R
@@ -550,8 +512,7 @@ ggplot(instability_data, aes(x = transition, y = instability)) +
 
 ## תרגיל 1: ניתוח דפוסי התיישבות
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ### המשימה
 
 השוו את מספר האתרים היישוביים בין תקופת הברזל 1 לתקופת הברזל 2
@@ -591,13 +552,11 @@ ggplot(iron_age_comparison, aes(x = period, y = n, fill = period)) +
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
 ```
-
 :::
 
 ## תרגיל 2: גרף התפתחות יישובית
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ### המשימה
 
 צרו גרף קווי המציג את התפתחות ההתיישבות מתקופת הברונזה המאוחרת ועד התקופה הפרסית
@@ -642,13 +601,11 @@ ggplot(settlement_trend, aes(x = period, y = n, group = 1)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         plot.title = element_text(hjust = 0.5))
 ```
-
 :::
 
 ## תרגיל 3: מדד אי-היציבות
 
-::: {.panel-tabset}
-
+::: panel-tabset
 ### המשימה
 
 חשבו את מדד אי-היציבות במעבר בין תקופת הברזל 2 לתקופה הפרסית
@@ -699,19 +656,18 @@ result <- data.frame(
 
 result
 ```
-
 :::
 
 # סיכום {.section}
 
 ## חשיבות הניתוח הכמותי בארכיאולוגיה
 
-* מאפשר לזהות דפוסים שאינם ניכרים בתצפיות בודדות
-* מספק כלים לבחינת השערות על תהליכים יישוביים ותרבותיים
-* משלים את הניתוח האיכותני המסורתי
-* מסייע לקבל תמונה רחבה יותר על תהליכים ארוכי טווח
+-   מאפשר לזהות דפוסים שאינם ניכרים בתצפיות בודדות
+-   מספק כלים לבחינת השערות על תהליכים יישוביים ותרבותיים
+-   משלים את הניתוח האיכותני המסורתי
+-   מסייע לקבל תמונה רחבה יותר על תהליכים ארוכי טווח
 
-::: {.fragment}
+::: fragment
 כפי שציינו פאוסט וספראי (2015, עמ' 6):
 
 > "דפוסי התיישבות הם עניין כמותי, וכדי לעמוד עליהם יש להיעזר בשיטות כמותיות, וניתוח שיטתי של הנתונים העולים מחפירות ההצלה מאפשר לנו, בזהירות, לעמוד על עליות וירידות יישוביות לאורך זמן במגזרי היישוב השונים."
@@ -719,27 +675,27 @@ result
 
 ## מקורות ומשאבים נוספים
 
-1. פאוסט, א' וספראי, ז' (2015). *תולדות ההתיישבות בארץ ישראל: ניתוח כמותי לאור ממצאי חפירות ההצלה והחפירות היזומות*. רמת גן.
+1.  פאוסט, א' וספראי, ז' (2015). *תולדות ההתיישבות בארץ ישראל: ניתוח כמותי לאור ממצאי חפירות ההצלה והחפירות היזומות*. רמת גן.
 
-2. Marwick, B. (2017). Computational reproducibility in archaeological research: Basic principles and a case study of their implementation. *Journal of Archaeological Method and Theory*, 24(2), 424-450.
+2.  Marwick, B. (2017). Computational reproducibility in archaeological research: Basic principles and a case study of their implementation. *Journal of Archaeological Method and Theory*, 24(2), 424-450.
 
-3. קורס מקוון: [R for Archaeologists](https://benmarwick.github.io/How-To-Do-Archaeological-Science-Using-R/)
+3.  קורס מקוון: [R for Archaeologists](https://benmarwick.github.io/How-To-Do-Archaeological-Science-Using-R/)
 
-4. חבילות R לארכיאולוגיה: 
-   - `archdata`: מאגרי נתונים ארכיאולוגיים לדוגמה
-   - `rcarbon`: ניתוח תיארוכי פחמן
-   - `ggarcheo`: ויזואליזציות מותאמות לארכיאולוגיה
+4.  חבילות R לארכיאולוגיה:
+
+    -   `archdata`: מאגרי נתונים ארכיאולוגיים לדוגמה
+    -   `rcarbon`: ניתוח תיארוכי פחמן
+    -   `ggarcheo`: ויזואליזציות מותאמות לארכיאולוגיה
 
 ## תודה רבה!
 
-::: {.columns}
+::: columns
 ::: {.column width="50%"}
 **לשאלות ולמידע נוסף:**
 
-* אתר הקורס: [www.archaeology-with-r.com](http://www.example.com)
-* כתובת דוא"ל: [shaigo@ariel.ac.il](mailto:shaigo@ariel.ac.il)
-* חומרי הקורס זמינים ב-GitHub:
-  [github.com/username/archaeology-r-course](http://www.github.com)
+-   אתר הקורס: [www.archaeology-with-r.com](http://www.example.com)
+-   כתובת דוא"ל: [shaigo\@ariel.ac.il](mailto:shaigo@ariel.ac.il)
+-   חומרי הקורס זמינים ב-GitHub: [github.com/username/archaeology-r-course](http://www.github.com)
 :::
 
 ::: {.column width="50%"}

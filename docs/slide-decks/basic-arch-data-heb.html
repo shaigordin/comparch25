@@ -11,6 +11,7 @@
   <meta name="generator" content="quarto-1.3.353">
 
   <meta name="author" content="ד״ר שי גורדין">
+  <meta name="dcterms.date" content="2025-09-03">
   <title>חקר חישובי של ארכיאולוגיה ומקורות היסטוריים / שי גורדין - מבוא לניתוח כמותי בארכיאולוגיה באמצעות R</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -407,39 +408,7 @@
 </div>
 </div>
 
-  <p class="date">Invalid Date</p>
-</section>
-<section class="slide level2">
-
-<div class="cell">
-<style type="text/css">
-.reveal .slide-number {
-  left: 8px;
-  right: unset;
-}
-
-.reveal pre code {
-  direction: ltr;
-  text-align: left;
-  display: block;
-}
-
-.reveal p, .reveal ul, .reveal ol {
-  text-align: right;
-  direction: rtl;
-}
-
-.reveal blockquote {
-  text-align: right;
-  direction: rtl;
-  border-right: 10px solid #ccc;
-  border-left: none;
-  padding-right: 1em;
-  padding-left: 0;
-  margin-right: 0;
-}
-</style>
-</div>
+  <p class="date">2025-09-03</p>
 </section>
 <section>
 <section id="מבוא" class="title-slide slide level1 section center">
@@ -463,13 +432,13 @@
 </section>
 <section id="r-בשירות-הארכיאולוגיה" class="slide level2">
 <h2>R בשירות הארכיאולוגיה</h2>
-
-<img data-src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs10816-019-09422-0/MediaObjects/10816_2019_9422_Fig1_HTML.png" style="width:80.0%" class="r-stretch quarto-figure-center"><p class="caption">R הפכה לכלי מרכזי במחקר ארכיאולוגי כמותי</p></section>
+<p>R היא כלי מרכזי במחקר ארכיאולוגי כמותני</p>
+<p><img data-src="img/quantitative_arch_R.jpg" data-fig-align="center" width="350"> <img data-src="img/dacord_pottery_draw.png" data-fig-align="center" width="550"></p>
+</section>
 <section id="הקשר-בין-ארכיאולוגיה-לסטטיסטיקה" class="slide level2">
 <h2>הקשר בין ארכיאולוגיה לסטטיסטיקה</h2>
 <blockquote>
-<p>“רוב הארכיאולוגים התחילו ללמוד ארכיאולוגיה כי רצו להבין את דרכי החיים של אנשים מן העבר… רובם לא ציפו להפוך למומחים בסטטיסטיקה או בשיטות כמותיות.”</p>
-<p><span style="font-size: smaller;">— מתוך ספרם של פאוסט וספראי (2015)</span></p>
+<p>“Most people did not go into the field of archaeology with the goal of becoming an expert in statistics or quantitative methods. We became archaeologists because we want to know about the lifeways of past people, to understand human diversity as it has played out over time, and to develop ways of making sense of the causes of this diversity. Most archaeologists, therefore, view statistics as either a necessary evil or a roadblock in the way of doing more interesting things.” <span style="font-size: smaller;">מתוך ספרו של McCall 2018, p.&nbsp;1</span></p>
 </blockquote>
 </section></section>
 <section>
@@ -480,20 +449,23 @@
 <section id="התקנת-r-ו-rstudio-1" class="slide level2">
 <h2>התקנת R ו-RStudio</h2>
 <ol type="1">
-<li>הורידו את R מאתר ה-CRAN: <a href="https://cran.r-project.org/">https://cran.r-project.org/</a></li>
-<li>הורידו את RStudio מאתר: <a href="https://rstudio.com/products/rstudio/download/">https://rstudio.com/products/rstudio/download/</a></li>
+<li>הורידו את R מאתר ה-CRAN: <a href="https://cran.r-project.org" class="uri">https://cran.r-project.org</a></li>
+<li>הורידו את RStudio מאתר: <a href="https://rstudio.com/products/rstudio/download" class="uri">https://rstudio.com/products/rstudio/download</a></li>
+<li>עכשיו לכו לקישור של RStudio בענן <a href="https://posit.cloud" class="uri">https://posit.cloud</a></li>
 </ol>
 
 <img data-src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/RStudio_logo_flat.svg/1280px-RStudio_logo_flat.svg.png" style="width:80.0%" class="r-stretch quarto-figure-center"></section>
 <section id="ממשק-rstudio" class="slide level2">
 <h2>ממשק RStudio</h2>
-
-<img data-src="https://rstudio.com/wp-content/uploads/2014/04/rstudio-workbench.png" style="width:85.0%" class="r-stretch quarto-figure-center"><ul>
+<div style="width: 45%; float: left;">
+<ul>
 <li>חלון עורך הקוד (שמאל עליון)</li>
 <li>קונסולה (שמאל תחתון)</li>
 <li>סביבת העבודה וההיסטוריה (ימין עליון)</li>
 <li>קבצים, גרפים, חבילות ועזרה (ימין תחתון)</li>
 </ul>
+</div>
+<p><img data-src="https://r4ds.hadley.nz/diagrams/rstudio/console.png" class="absolute" style="top: 15%; right: 1%; width: 50%; "></p>
 </section></section>
 <section>
 <section id="יסודות-r-לארכיאולוגים" class="title-slide slide level1 section center">
@@ -661,7 +633,7 @@
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># קריאת קובץ CSV</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>sites_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"archaeological_sites.csv"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>sites_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/enc.csv"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3"></a></span>
 <span id="cb8-4"><a href="#cb8-4"></a><span class="co"># הצגת המבנה של בסיס הנתונים</span></span>
 <span id="cb8-5"><a href="#cb8-5"></a><span class="fu">str</span>(sites_data)</span>
@@ -1159,7 +1131,7 @@
 </div>
 </div>
 
-<p><img src="archaeology-code-image.png" class="slide-logo"></p>
+<p><img src="img/archaeology-code-image.png" class="slide-logo"></p>
 <div class="footer footer-default">
 <p>שיטות מתודולוגיות ב׳ / אונ׳ אריאל</p>
 </div>

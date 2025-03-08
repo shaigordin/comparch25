@@ -333,21 +333,21 @@
     "href": "slide-decks/basic-arch-data-heb.html#r-בשירות-הארכיאולוגיה",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "R בשירות הארכיאולוגיה",
-    "text": "R בשירות הארכיאולוגיה\n\nR הפכה לכלי מרכזי במחקר ארכיאולוגי כמותי"
+    "text": "R בשירות הארכיאולוגיה\nR היא כלי מרכזי במחקר ארכיאולוגי כמותני"
   },
   {
     "objectID": "slide-decks/basic-arch-data-heb.html#הקשר-בין-ארכיאולוגיה-לסטטיסטיקה",
     "href": "slide-decks/basic-arch-data-heb.html#הקשר-בין-ארכיאולוגיה-לסטטיסטיקה",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "הקשר בין ארכיאולוגיה לסטטיסטיקה",
-    "text": "הקשר בין ארכיאולוגיה לסטטיסטיקה\n\n“רוב הארכיאולוגים התחילו ללמוד ארכיאולוגיה כי רצו להבין את דרכי החיים של אנשים מן העבר… רובם לא ציפו להפוך למומחים בסטטיסטיקה או בשיטות כמותיות.”\n— מתוך ספרם של פאוסט וספראי (2015)"
+    "text": "הקשר בין ארכיאולוגיה לסטטיסטיקה\n\n“Most people did not go into the field of archaeology with the goal of becoming an expert in statistics or quantitative methods. We became archaeologists because we want to know about the lifeways of past people, to understand human diversity as it has played out over time, and to develop ways of making sense of the causes of this diversity. Most archaeologists, therefore, view statistics as either a necessary evil or a roadblock in the way of doing more interesting things.” מתוך ספרו של McCall 2018, p. 1"
   },
   {
     "objectID": "slide-decks/basic-arch-data-heb.html#התקנת-r-ו-rstudio-1",
     "href": "slide-decks/basic-arch-data-heb.html#התקנת-r-ו-rstudio-1",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "התקנת R ו-RStudio",
-    "text": "התקנת R ו-RStudio\n\nהורידו את R מאתר ה-CRAN: https://cran.r-project.org/\nהורידו את RStudio מאתר: https://rstudio.com/products/rstudio/download/"
+    "text": "התקנת R ו-RStudio\n\nהורידו את R מאתר ה-CRAN: https://cran.r-project.org\nהורידו את RStudio מאתר: https://rstudio.com/products/rstudio/download\nעכשיו לכו לקישור של RStudio בענן https://posit.cloud"
   },
   {
     "objectID": "slide-decks/basic-arch-data-heb.html#ממשק-rstudio",
@@ -410,7 +410,7 @@
     "href": "slide-decks/basic-arch-data-heb.html#קריאת-קבצי-נתונים",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "קריאת קבצי נתונים",
-    "text": "קריאת קבצי נתונים\n\n\nCode\n# קריאת קובץ CSV\nsites_data &lt;- read.csv(\"archaeological_sites.csv\")\n\n# הצגת המבנה של בסיס הנתונים\nstr(sites_data)\n\n# הצגת הרשומות הראשונות\nhead(sites_data)"
+    "text": "קריאת קבצי נתונים\n\n\nCode\n# קריאת קובץ CSV\nsites_data &lt;- read.csv(\"data/enc.csv\")\n\n# הצגת המבנה של בסיס הנתונים\nstr(sites_data)\n\n# הצגת הרשומות הראשונות\nhead(sites_data)"
   },
   {
     "objectID": "slide-decks/basic-arch-data-heb.html#דוגמה-ניתוח-ממצאים-מחפירה",

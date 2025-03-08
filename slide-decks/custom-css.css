@@ -4,7 +4,7 @@
 
 /* Global presentation styling */
 .reveal {
-  font-family: "Source Sans Pro", Helvetica, sans-serif;
+  font-family: 'Alef', sans-serif;
   font-size: 32px;
   font-weight: normal;
   color: #222;
@@ -157,7 +157,7 @@
   .reveal {
     font-size: 20pt;
   }
-  
+
   .reveal pre {
     font-size: 0.6em;
   }
