@@ -633,7 +633,7 @@
 <details>
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># קריאת קובץ CSV</span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>sites_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/enc.csv"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2"></a>sites_data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/shaigordin/comparch25/refs/heads/main/slide-decks/data/enc.csv"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3"></a></span>
 <span id="cb8-4"><a href="#cb8-4"></a><span class="co"># הצגת המבנה של בסיס הנתונים</span></span>
 <span id="cb8-5"><a href="#cb8-5"></a><span class="fu">str</span>(sites_data)</span>
@@ -699,8 +699,7 @@
 <section id="רקע-על-המחקר" class="slide level2">
 <h2>רקע על המחקר</h2>
 <blockquote>
-<p>“תולדות ההתיישבות בארץ ישראל: ניתוח כמותי לאור ממצאי חפירות ההצלה והחפירות היזומות”</p>
-<p>— פאוסט וספראי (2015)</p>
+<p>א׳ פאוסט וז׳ ספראי. 2015. <em>תולדות ההתיישבות בארץ ישראל. ניתוח כמותי לאור ממצאי חפירות ההצלה והחפירות היזומות</em>. רמת גן: פרסומי מרכז אינגבורג רנרט ללימודי ירושלים, אונ׳ בר-אילן.</p>
 </blockquote>
 <ul>
 <li>מחקר מקיף על דפוסי התיישבות בארץ ישראל לאורך התקופות</li>
@@ -711,23 +710,21 @@
 </section>
 <section id="מתודולוגיה---בניית-בסיסי-הנתונים" class="slide level2">
 <h2>מתודולוגיה - בניית בסיסי הנתונים</h2>
-<div>
-<p>פאוסט וספראי יצרו שני בסיסי נתונים מרכזיים:</p>
-<ol type="1">
-<li class="fragment"><strong>בסיס נתונים של חפירות הצלה</strong>
+</section>
+<section id="בסיסי-הנתונים-של-פאוסט-וספראי" class="slide level2">
+<h2>בסיסי הנתונים של פאוסט וספראי</h2>
+<p><strong>בסיס נתונים של חפירות הצלה</strong></p>
 <ul>
-<li class="fragment">מבוסס על דיווחים מ”חדשות ארכיאולוגיות” (עד חוברת 114, תשס”ג)</li>
-<li class="fragment">כולל 3,571 “אתרים” (כל תקופה בחפירה מהווה “אתר”)</li>
-<li class="fragment">מוטה לטובת המגזר הכפרי</li>
-</ul></li>
-<li class="fragment"><strong>בסיס נתונים של חפירות יזומות</strong>
+<li>מבוסס על דיווחים מ”חדשות ארכיאולוגיות” (עד חוברת 114)</li>
+<li>כולל 3,571 “אתרים”</li>
+<li>מוטה לטובת המגזר הכפרי</li>
+</ul>
+<p><strong>בסיס נתונים של חפירות יזומות</strong></p>
 <ul>
-<li class="fragment">מבוסס על “האנציקלופדיה החדשה לחפירות ארכיאולוגיות בארץ ישראל”</li>
-<li class="fragment">כולל 2,214 “אתרים”</li>
-<li class="fragment">מוטה לטובת האתרים העירוניים</li>
-</ul></li>
-</ol>
-</div>
+<li>מבוסס על “האנציקלופדיה החדשה לחפירות ארכיאולוגיות”</li>
+<li>כולל 2,214 “אתרים”</li>
+<li>מוטה לטובת האתרים העירוניים</li>
+</ul>
 </section>
 <section id="מבנה-בסיסי-הנתונים" class="slide level2">
 <h2>מבנה בסיסי הנתונים</h2>
@@ -736,13 +733,28 @@
 <p>“מספר האתר. כל אתר קיבל מספר משל עצמו. אם יש באתר מסוים, דוגמת אזור, חפירות מספר, הרי שעדיין יהיה מספר האתר זהה.”</p>
 <p>— פאוסט וספראי (2015, עמ’ 12)</p>
 </blockquote>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>בסיס נתוני חפירות ההצלה כולל:</strong> * מספר אתר ומספר חפירה * שם האתר * נקודת ציון * אזור גיאוגרפי * תקופה ארכיאולוגית * סוג הממצא</p>
-</div><div class="column" style="width:50%;">
-<p><strong>בסיס נתוני חפירות יזומות כולל:</strong> * מספר אתר * שם האתר וערך משנה * נקודת ציון * אזור ותת-אזור * תקופה ותת-תקופה * סוג ממצא מפורט יותר</p>
-</div>
-</div>
+</section>
+<section id="בסיס-נתוני-חפירות-ההצלה-hazala-כולל" class="slide level2">
+<h2>בסיס נתוני חפירות ההצלה (Hazala) כולל:</h2>
+<ul>
+<li>מספר אתר ומספר חפירה</li>
+<li>שם האתר</li>
+<li>נקודת ציון</li>
+<li>אזור גיאוגרפי</li>
+<li>תקופה ארכיאולוגית</li>
+<li>סוג הממצא</li>
+</ul>
+</section>
+<section id="בסיס-נתוני-חפירות-יזומות-enc-כולל" class="slide level2">
+<h2>בסיס נתוני חפירות יזומות (Enc) כולל:</h2>
+<ul>
+<li>מספר אתר</li>
+<li>שם האתר וערך משנה</li>
+<li>נקודת ציון</li>
+<li>אזור ותת-אזור</li>
+<li>תקופה ותת-תקופה</li>
+<li>סוג ממצא מפורט יותר</li>
+</ul>
 </section>
 <section id="מדד-אי-היציבות" class="slide level2">
 <h2>מדד אי-היציבות</h2>
@@ -784,11 +796,11 @@
 <span id="cb11-3"><a href="#cb11-3"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb11-4"><a href="#cb11-4"></a></span>
 <span id="cb11-5"><a href="#cb11-5"></a><span class="co"># טעינת בסיס הנתונים של חפירות ההצלה</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a>rescue_excavations <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://lisa.biu.ac.il/faustsafrai"</span>, </span>
+<span id="cb11-6"><a href="#cb11-6"></a>rescue_excavations <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/shaigordin/comparch25/refs/heads/main/slide-decks/data/hazala.csv"</span>, </span>
 <span id="cb11-7"><a href="#cb11-7"></a>                              <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"UTF-8"</span>))</span>
 <span id="cb11-8"><a href="#cb11-8"></a></span>
 <span id="cb11-9"><a href="#cb11-9"></a><span class="co"># טעינת בסיס הנתונים של חפירות יזומות</span></span>
-<span id="cb11-10"><a href="#cb11-10"></a>planned_excavations <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"http://lisa.biu.ac.il/faustsafrai"</span>, </span>
+<span id="cb11-10"><a href="#cb11-10"></a>planned_excavations <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/shaigordin/comparch25/refs/heads/main/slide-decks/data/enc.csv"</span>, </span>
 <span id="cb11-11"><a href="#cb11-11"></a>                               <span class="at">locale =</span> <span class="fu">locale</span>(<span class="at">encoding =</span> <span class="st">"UTF-8"</span>))</span>
 <span id="cb11-12"><a href="#cb11-12"></a></span>
 <span id="cb11-13"><a href="#cb11-13"></a><span class="co"># הצגת מבנה הנתונים</span></span>
@@ -801,26 +813,34 @@
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># ספירת אתרים לפי תקופה</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>period_counts <span class="ot">&lt;-</span> rescue_excavations <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">count</span>(period) <span class="sc">%&gt;%</span></span>
-<span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
-<span id="cb12-5"><a href="#cb12-5"></a></span>
-<span id="cb12-6"><a href="#cb12-6"></a><span class="co"># הצגת התקופות עם מספר האתרים הרב ביותר</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="fu">head</span>(period_counts, <span class="dv">10</span>)</span>
-<span id="cb12-8"><a href="#cb12-8"></a></span>
-<span id="cb12-9"><a href="#cb12-9"></a><span class="co"># יצירת "נתונים מכוילים" - רק אתרי יישוב</span></span>
-<span id="cb12-10"><a href="#cb12-10"></a>calibrated_data <span class="ot">&lt;-</span> rescue_excavations <span class="sc">%&gt;%</span></span>
-<span id="cb12-11"><a href="#cb12-11"></a>  <span class="fu">filter</span>(find_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"שרידי בנייה"</span>, <span class="st">"קרמיקה בלבד"</span>))</span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># הנחה: "שדה8" מייצג את התקופה הארכיאולוגית, ו"שדה12" מייצג את סוג הממצא</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="co"># יש להתאים את שמות העמודות בהתאם למבנה האמיתי של הנתונים</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="co"># ספירת אתרים לפי תקופה</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a>period_counts <span class="ot">&lt;-</span> rescue_excavations <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>  <span class="fu">count</span>(שדה8) <span class="sc">%&gt;%</span>  <span class="co"># שימוש בשדה המתאים לתקופה</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a>  <span class="fu">rename</span>(<span class="at">period =</span> שדה8) <span class="sc">%&gt;%</span>  <span class="co"># שינוי שם העמודה למען בהירות</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb12-9"><a href="#cb12-9"></a></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="co"># הצגת התקופות עם מספר האתרים הרב ביותר</span></span>
+<span id="cb12-11"><a href="#cb12-11"></a><span class="fu">head</span>(period_counts, <span class="dv">10</span>)</span>
 <span id="cb12-12"><a href="#cb12-12"></a></span>
-<span id="cb12-13"><a href="#cb12-13"></a><span class="co"># השוואת מספר האתרים לפני ואחרי ה"כיול"</span></span>
-<span id="cb12-14"><a href="#cb12-14"></a>calibrated_counts <span class="ot">&lt;-</span> calibrated_data <span class="sc">%&gt;%</span></span>
-<span id="cb12-15"><a href="#cb12-15"></a>  <span class="fu">count</span>(period) <span class="sc">%&gt;%</span></span>
-<span id="cb12-16"><a href="#cb12-16"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
-<span id="cb12-17"><a href="#cb12-17"></a></span>
-<span id="cb12-18"><a href="#cb12-18"></a><span class="co"># הצגת ההשוואה</span></span>
-<span id="cb12-19"><a href="#cb12-19"></a>comparison <span class="ot">&lt;-</span> period_counts <span class="sc">%&gt;%</span></span>
-<span id="cb12-20"><a href="#cb12-20"></a>  <span class="fu">left_join</span>(calibrated_counts, <span class="at">by =</span> <span class="st">"period"</span>, <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_all"</span>, <span class="st">"_calibrated"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-13"><a href="#cb12-13"></a><span class="co"># יצירת "נתונים מכוילים" - רק אתרי יישוב</span></span>
+<span id="cb12-14"><a href="#cb12-14"></a>calibrated_data <span class="ot">&lt;-</span> rescue_excavations <span class="sc">%&gt;%</span></span>
+<span id="cb12-15"><a href="#cb12-15"></a>  <span class="fu">filter</span>(שדה12 <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"שרידי בנייה"</span>, <span class="st">"קרמיקה בלבד"</span>))  <span class="co"># שימוש בשדה המתאים לסוג ממצא</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a></span>
+<span id="cb12-17"><a href="#cb12-17"></a><span class="co"># השוואת מספר האתרים לפני ואחרי ה"כיול"</span></span>
+<span id="cb12-18"><a href="#cb12-18"></a>calibrated_counts <span class="ot">&lt;-</span> calibrated_data <span class="sc">%&gt;%</span></span>
+<span id="cb12-19"><a href="#cb12-19"></a>  <span class="fu">count</span>(שדה8) <span class="sc">%&gt;%</span>  <span class="co"># שימוש בשדה המתאים לתקופה</span></span>
+<span id="cb12-20"><a href="#cb12-20"></a>  <span class="fu">rename</span>(<span class="at">period =</span> שדה8) <span class="sc">%&gt;%</span>  <span class="co"># שינוי שם העמודה למען בהירות</span></span>
+<span id="cb12-21"><a href="#cb12-21"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span>
+<span id="cb12-22"><a href="#cb12-22"></a></span>
+<span id="cb12-23"><a href="#cb12-23"></a><span class="co"># הצגת ההשוואה</span></span>
+<span id="cb12-24"><a href="#cb12-24"></a>comparison <span class="ot">&lt;-</span> period_counts <span class="sc">%&gt;%</span></span>
+<span id="cb12-25"><a href="#cb12-25"></a>  <span class="fu">left_join</span>(calibrated_counts, <span class="at">by =</span> <span class="st">"period"</span>, <span class="at">suffix =</span> <span class="fu">c</span>(<span class="st">"_all"</span>, <span class="st">"_calibrated"</span>))</span>
+<span id="cb12-26"><a href="#cb12-26"></a></span>
+<span id="cb12-27"><a href="#cb12-27"></a><span class="co"># הצגת הטבלה המשווה</span></span>
+<span id="cb12-28"><a href="#cb12-28"></a><span class="fu">print</span>(comparison)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -829,60 +849,73 @@
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># חלוקה לפי אזורים גיאוגרפיים</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a>region_distribution <span class="ot">&lt;-</span> calibrated_data <span class="sc">%&gt;%</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">count</span>(region) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4"></a>  <span class="fu">mutate</span>(<span class="at">percentage =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>)</span>
-<span id="cb13-5"><a href="#cb13-5"></a></span>
-<span id="cb13-6"><a href="#cb13-6"></a><span class="co"># הצגת התפלגות האתרים לפי אזורים</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a>region_distribution</span>
-<span id="cb13-8"><a href="#cb13-8"></a></span>
-<span id="cb13-9"><a href="#cb13-9"></a><span class="co"># התפלגות היישובים באזורי ההר לעומת האזורים הנמוכים</span></span>
-<span id="cb13-10"><a href="#cb13-10"></a>highland_regions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"יהודה"</span>, <span class="st">"שומרון"</span>, <span class="st">"גליל עליון"</span>, <span class="st">"גליל תחתון"</span>)</span>
-<span id="cb13-11"><a href="#cb13-11"></a>lowland_regions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"חוף הים הצפוני"</span>, <span class="st">"חוף הים הדרומי"</span>, <span class="st">"עמק יזרעאל"</span>)</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># הנחה: "שדה5" מייצג את האזור הגיאוגרפי</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="co"># יש להתאים את מספר השדה בהתאם למבנה האמיתי של הנתונים</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="co"># חלוקה לפי אזורים גיאוגרפיים</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>region_distribution <span class="ot">&lt;-</span> calibrated_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">count</span>(שדה5) <span class="sc">%&gt;%</span> <span class="co"># שימוש בשדה המתאים לאזור גיאוגרפי</span></span>
+<span id="cb13-7"><a href="#cb13-7"></a>  <span class="fu">rename</span>(<span class="at">region =</span> שדה5) <span class="sc">%&gt;%</span> <span class="co"># שינוי שם העמודה למען בהירות</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>  <span class="fu">mutate</span>(<span class="at">percentage =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb13-9"><a href="#cb13-9"></a></span>
+<span id="cb13-10"><a href="#cb13-10"></a><span class="co"># הצגת התפלגות האתרים לפי אזורים</span></span>
+<span id="cb13-11"><a href="#cb13-11"></a>region_distribution</span>
 <span id="cb13-12"><a href="#cb13-12"></a></span>
-<span id="cb13-13"><a href="#cb13-13"></a>regional_comparison <span class="ot">&lt;-</span> calibrated_data <span class="sc">%&gt;%</span></span>
-<span id="cb13-14"><a href="#cb13-14"></a>  <span class="fu">mutate</span>(<span class="at">region_type =</span> <span class="fu">case_when</span>(</span>
-<span id="cb13-15"><a href="#cb13-15"></a>    region <span class="sc">%in%</span> highland_regions <span class="sc">~</span> <span class="st">"אזורי הר"</span>,</span>
-<span id="cb13-16"><a href="#cb13-16"></a>    region <span class="sc">%in%</span> lowland_regions <span class="sc">~</span> <span class="st">"אזורים נמוכים"</span>,</span>
-<span id="cb13-17"><a href="#cb13-17"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"אחר"</span></span>
-<span id="cb13-18"><a href="#cb13-18"></a>  )) <span class="sc">%&gt;%</span></span>
-<span id="cb13-19"><a href="#cb13-19"></a>  <span class="fu">count</span>(period, region_type) <span class="sc">%&gt;%</span></span>
-<span id="cb13-20"><a href="#cb13-20"></a>  <span class="fu">group_by</span>(period) <span class="sc">%&gt;%</span></span>
-<span id="cb13-21"><a href="#cb13-21"></a>  <span class="fu">mutate</span>(<span class="at">percentage =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-13"><a href="#cb13-13"></a><span class="co"># התפלגות היישובים באזורי ההר לעומת האזורים הנמוכים</span></span>
+<span id="cb13-14"><a href="#cb13-14"></a>highland_regions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"יהודה"</span>, <span class="st">"שומרון"</span>, <span class="st">"גליל עליון"</span>, <span class="st">"גליל תחתון"</span>)</span>
+<span id="cb13-15"><a href="#cb13-15"></a>lowland_regions <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"חוף הים הצפוני"</span>, <span class="st">"חוף הים הדרומי"</span>, <span class="st">"עמק יזרעאל"</span>)</span>
+<span id="cb13-16"><a href="#cb13-16"></a></span>
+<span id="cb13-17"><a href="#cb13-17"></a>regional_comparison <span class="ot">&lt;-</span> calibrated_data <span class="sc">%&gt;%</span></span>
+<span id="cb13-18"><a href="#cb13-18"></a>  <span class="fu">mutate</span>(<span class="at">region_type =</span> <span class="fu">case_when</span>(</span>
+<span id="cb13-19"><a href="#cb13-19"></a>    שדה5 <span class="sc">%in%</span> highland_regions <span class="sc">~</span> <span class="st">"אזורי הר"</span>,</span>
+<span id="cb13-20"><a href="#cb13-20"></a>    שדה5 <span class="sc">%in%</span> lowland_regions <span class="sc">~</span> <span class="st">"אזורים נמוכים"</span>,</span>
+<span id="cb13-21"><a href="#cb13-21"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"אחר"</span></span>
+<span id="cb13-22"><a href="#cb13-22"></a>  )) <span class="sc">%&gt;%</span></span>
+<span id="cb13-23"><a href="#cb13-23"></a>  <span class="fu">count</span>(שדה8, region_type) <span class="sc">%&gt;%</span>  <span class="co"># שימוש בשדה המתאים לתקופה</span></span>
+<span id="cb13-24"><a href="#cb13-24"></a>  <span class="fu">rename</span>(<span class="at">period =</span> שדה8) <span class="sc">%&gt;%</span>  <span class="co"># שינוי שם העמודה למען בהירות</span></span>
+<span id="cb13-25"><a href="#cb13-25"></a>  <span class="fu">group_by</span>(period) <span class="sc">%&gt;%</span></span>
+<span id="cb13-26"><a href="#cb13-26"></a>  <span class="fu">mutate</span>(<span class="at">percentage =</span> n <span class="sc">/</span> <span class="fu">sum</span>(n) <span class="sc">*</span> <span class="dv">100</span>)</span>
+<span id="cb13-27"><a href="#cb13-27"></a></span>
+<span id="cb13-28"><a href="#cb13-28"></a><span class="co"># הצגת ההשוואה</span></span>
+<span id="cb13-29"><a href="#cb13-29"></a><span class="fu">print</span>(regional_comparison)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
+<section id="מפת-דפוסי-ההתיישבות" class="slide level2">
+<h2>מפת דפוסי ההתיישבות</h2>
+
+<img data-src="img/regional_compare.png" width="3500" class="r-stretch quarto-figure-center"></section>
 <section id="חישוב-מדד-אי-היציבות" class="slide level2">
 <h2>חישוב מדד אי-היציבות</h2>
 <div class="cell">
 <details>
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># פונקציה פשוטה לחישוב מדד אי-היציבות</span></span>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># פונקציה לחישוב מדד אי-היציבות</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a>calculate_instability <span class="ot">&lt;-</span> <span class="cf">function</span>(period1_sites, period2_sites) {</span>
-<span id="cb14-3"><a href="#cb14-3"></a>  <span class="co"># זיהוי אתרים שמופיעים בשתי התקופות (לפי מספר האתר)</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>  continuing_sites <span class="ot">&lt;-</span> <span class="fu">intersect</span>(period1_sites<span class="sc">$</span>site_id, period2_sites<span class="sc">$</span>site_id)</span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="co"># זיהוי אתרים שמופיעים בשתי התקופות (לפי קוד זיהוי)</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a>  continuing_sites <span class="ot">&lt;-</span> <span class="fu">intersect</span>(period1_sites<span class="sc">$</span><span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>, period2_sites<span class="sc">$</span><span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>)</span>
 <span id="cb14-5"><a href="#cb14-5"></a>  </span>
 <span id="cb14-6"><a href="#cb14-6"></a>  <span class="co"># חישוב אחוז ההמשכיות</span></span>
-<span id="cb14-7"><a href="#cb14-7"></a>  continuity_percentage <span class="ot">&lt;-</span> <span class="fu">length</span>(continuing_sites) <span class="sc">/</span> <span class="fu">length</span>(period2_sites<span class="sc">$</span>site_id) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a>  continuity_percentage <span class="ot">&lt;-</span> <span class="fu">length</span>(continuing_sites) <span class="sc">/</span> <span class="fu">length</span>(period2_sites<span class="sc">$</span><span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>) <span class="sc">*</span> <span class="dv">100</span></span>
 <span id="cb14-8"><a href="#cb14-8"></a>  </span>
 <span id="cb14-9"><a href="#cb14-9"></a>  <span class="co"># חישוב מדד אי-היציבות (100 פחות אחוז ההמשכיות)</span></span>
 <span id="cb14-10"><a href="#cb14-10"></a>  instability_index <span class="ot">&lt;-</span> <span class="dv">100</span> <span class="sc">-</span> continuity_percentage</span>
 <span id="cb14-11"><a href="#cb14-11"></a>  </span>
 <span id="cb14-12"><a href="#cb14-12"></a>  <span class="fu">return</span>(<span class="fu">list</span>(</span>
 <span id="cb14-13"><a href="#cb14-13"></a>    <span class="at">continuing_sites_count =</span> <span class="fu">length</span>(continuing_sites),</span>
-<span id="cb14-14"><a href="#cb14-14"></a>    <span class="at">total_sites_period2 =</span> <span class="fu">length</span>(period2_sites<span class="sc">$</span>site_id),</span>
+<span id="cb14-14"><a href="#cb14-14"></a>    <span class="at">total_sites_period2 =</span> <span class="fu">length</span>(period2_sites<span class="sc">$</span><span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>),</span>
 <span id="cb14-15"><a href="#cb14-15"></a>    <span class="at">continuity_percentage =</span> continuity_percentage,</span>
 <span id="cb14-16"><a href="#cb14-16"></a>    <span class="at">instability_index =</span> instability_index</span>
 <span id="cb14-17"><a href="#cb14-17"></a>  ))</span>
 <span id="cb14-18"><a href="#cb14-18"></a>}</span>
 <span id="cb14-19"><a href="#cb14-19"></a></span>
-<span id="cb14-20"><a href="#cb14-20"></a><span class="co"># דוגמה: חישוב מדד אי-היציבות בין תקופת הברזל 2 לתקופה הפרסית</span></span>
-<span id="cb14-21"><a href="#cb14-21"></a>iron2_sites <span class="ot">&lt;-</span> calibrated_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(period <span class="sc">==</span> <span class="st">"ברזל 2"</span>)</span>
-<span id="cb14-22"><a href="#cb14-22"></a>persian_sites <span class="ot">&lt;-</span> calibrated_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(period <span class="sc">==</span> <span class="st">"פרסית"</span>)</span>
-<span id="cb14-23"><a href="#cb14-23"></a></span>
-<span id="cb14-24"><a href="#cb14-24"></a>instability_iron2_persian <span class="ot">&lt;-</span> <span class="fu">calculate_instability</span>(iron2_sites, persian_sites)</span>
-<span id="cb14-25"><a href="#cb14-25"></a>instability_iron2_persian</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-20"><a href="#cb14-20"></a><span class="co"># יישום: חישוב מדד אי-היציבות בין תקופת הברזל 2 לתקופה הפרסית</span></span>
+<span id="cb14-21"><a href="#cb14-21"></a>iron2_sites <span class="ot">&lt;-</span> calibrated_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(שדה8 </span>
+<span id="cb14-22"><a href="#cb14-22"></a>                                          <span class="sc">==</span> <span class="st">"ברזל 2"</span>)</span>
+<span id="cb14-23"><a href="#cb14-23"></a>persian_sites <span class="ot">&lt;-</span> calibrated_data <span class="sc">%&gt;%</span> <span class="fu">filter</span>(שדה8 </span>
+<span id="cb14-24"><a href="#cb14-24"></a>                                            <span class="sc">==</span> <span class="st">"פרסית"</span>)</span>
+<span id="cb14-25"><a href="#cb14-25"></a>instability_iron2_persian <span class="ot">&lt;-</span> <span class="fu">calculate_instability</span>(iron2_sites, persian_sites)</span>
+<span id="cb14-26"><a href="#cb14-26"></a>instability_iron2_persian</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section>
@@ -1104,35 +1137,19 @@
 <li><p>פאוסט, א’ וספראי, ז’ (2015). <em>תולדות ההתיישבות בארץ ישראל: ניתוח כמותי לאור ממצאי חפירות ההצלה והחפירות היזומות</em>. רמת גן.</p></li>
 <li><p>Marwick, B. (2017). Computational reproducibility in archaeological research: Basic principles and a case study of their implementation. <em>Journal of Archaeological Method and Theory</em>, 24(2), 424-450.</p></li>
 <li><p>קורס מקוון: <a href="https://benmarwick.github.io/How-To-Do-Archaeological-Science-Using-R/">R for Archaeologists</a></p></li>
-<li><p>חבילות R לארכיאולוגיה:</p>
-<ul>
-<li><code>archdata</code>: מאגרי נתונים ארכיאולוגיים לדוגמה</li>
-<li><code>rcarbon</code>: ניתוח תיארוכי פחמן</li>
-<li><code>ggarcheo</code>: ויזואליזציות מותאמות לארכיאולוגיה</li>
-</ul></li>
+<li><p>חבילות R לארכיאולוגיה: <a href="https://github.com/benmarwick/ctv-archaeology" target="_blank">ctv-archaeology</a></p></li>
 </ol>
 </section>
-<section id="תודה-רבה" class="slide level2">
-<h2>תודה רבה!</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>לשאלות ולמידע נוסף:</strong></p>
+<section id="לשאלות-ולמידע-נוסף" class="slide level2">
+<h2>לשאלות ולמידע נוסף</h2>
 <ul>
-<li>אתר הקורס: <a href="http://www.example.com">www.archaeology-with-r.com</a></li>
+<li>אתר הקורס: <a href="https://shaigordin.github.io/comparch25" target="_blank">https://shaigordin.github.io/comparch25</a></li>
 <li>כתובת דוא”ל: <a href="mailto:shaigo@ariel.ac.il">shaigo@ariel.ac.il</a></li>
-<li>חומרי הקורס זמינים ב-GitHub: <a href="http://www.github.com">github.com/username/archaeology-r-course</a></li>
+<li>חומרי הקורס זמינים ב-GitHub: <a href="https://github.com/shaigordin/comparch25" target="_blank">https://github.com/shaigordin/comparch25</a></li>
 </ul>
-</div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://images.squarespace-cdn.com/content/v1/5736ee1c9f72662bd8fb89ba/1554493628864-FVB9AZ7OUPKVRDNX879U/3.png?format=1000w" style="width:70.0%"></p>
-</figure>
-</div>
-</div>
-</div>
 
-<p><img src="img/archaeology-code-image.png" class="slide-logo"></p>
-<div class="footer footer-default">
+
+<img src="img/archaeology-code-image.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>שיטות מתודולוגיות ב׳ / אונ׳ אריאל</p>
 </div>
 </section></section>

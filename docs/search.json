@@ -410,7 +410,7 @@
     "href": "slide-decks/basic-arch-data-heb.html#קריאת-קבצי-נתונים",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "קריאת קבצי נתונים",
-    "text": "קריאת קבצי נתונים\n\n\nCode\n# קריאת קובץ CSV\nsites_data &lt;- read.csv(\"data/enc.csv\")\n\n# הצגת המבנה של בסיס הנתונים\nstr(sites_data)\n\n# הצגת הרשומות הראשונות\nhead(sites_data)"
+    "text": "קריאת קבצי נתונים\n\n\nCode\n# קריאת קובץ CSV\nsites_data &lt;- read.csv(\"https://raw.githubusercontent.com/shaigordin/comparch25/refs/heads/main/slide-decks/data/enc.csv\")\n\n# הצגת המבנה של בסיס הנתונים\nstr(sites_data)\n\n# הצגת הרשומות הראשונות\nhead(sites_data)"
   },
   {
     "objectID": "slide-decks/basic-arch-data-heb.html#דוגמה-ניתוח-ממצאים-מחפירה",
@@ -431,21 +431,21 @@
     "href": "slide-decks/basic-arch-data-heb.html#רקע-על-המחקר",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "רקע על המחקר",
-    "text": "רקע על המחקר\n\n“תולדות ההתיישבות בארץ ישראל: ניתוח כמותי לאור ממצאי חפירות ההצלה והחפירות היזומות”\n— פאוסט וספראי (2015)\n\n\nמחקר מקיף על דפוסי התיישבות בארץ ישראל לאורך התקופות\nשימוש בנתונים כמותיים מחפירות הצלה וחפירות יזומות\nניתוח של למעלה מ-3,500 אתרים ארכיאולוגיים\nבחינת תהליכים יישוביים לאורך זמן"
+    "text": "רקע על המחקר\n\nא׳ פאוסט וז׳ ספראי. 2015. תולדות ההתיישבות בארץ ישראל. ניתוח כמותי לאור ממצאי חפירות ההצלה והחפירות היזומות. רמת גן: פרסומי מרכז אינגבורג רנרט ללימודי ירושלים, אונ׳ בר-אילן.\n\n\nמחקר מקיף על דפוסי התיישבות בארץ ישראל לאורך התקופות\nשימוש בנתונים כמותיים מחפירות הצלה וחפירות יזומות\nניתוח של למעלה מ-3,500 אתרים ארכיאולוגיים\nבחינת תהליכים יישוביים לאורך זמן"
   },
   {
     "objectID": "slide-decks/basic-arch-data-heb.html#מתודולוגיה---בניית-בסיסי-הנתונים",
     "href": "slide-decks/basic-arch-data-heb.html#מתודולוגיה---בניית-בסיסי-הנתונים",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "מתודולוגיה - בניית בסיסי הנתונים",
-    "text": "מתודולוגיה - בניית בסיסי הנתונים\n\nפאוסט וספראי יצרו שני בסיסי נתונים מרכזיים:\n\nבסיס נתונים של חפירות הצלה\n\nמבוסס על דיווחים מ”חדשות ארכיאולוגיות” (עד חוברת 114, תשס”ג)\nכולל 3,571 “אתרים” (כל תקופה בחפירה מהווה “אתר”)\nמוטה לטובת המגזר הכפרי\n\nבסיס נתונים של חפירות יזומות\n\nמבוסס על “האנציקלופדיה החדשה לחפירות ארכיאולוגיות בארץ ישראל”\nכולל 2,214 “אתרים”\nמוטה לטובת האתרים העירוניים"
+    "text": "מתודולוגיה - בניית בסיסי הנתונים"
   },
   {
     "objectID": "slide-decks/basic-arch-data-heb.html#מבנה-בסיסי-הנתונים",
     "href": "slide-decks/basic-arch-data-heb.html#מבנה-בסיסי-הנתונים",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "מבנה בסיסי הנתונים",
-    "text": "מבנה בסיסי הנתונים\nפאוסט וספראי מתארים את מבנה הנתונים בפרק 3 של ספרם:\n\n“מספר האתר. כל אתר קיבל מספר משל עצמו. אם יש באתר מסוים, דוגמת אזור, חפירות מספר, הרי שעדיין יהיה מספר האתר זהה.”\n— פאוסט וספראי (2015, עמ’ 12)\n\n\n\nבסיס נתוני חפירות ההצלה כולל: * מספר אתר ומספר חפירה * שם האתר * נקודת ציון * אזור גיאוגרפי * תקופה ארכיאולוגית * סוג הממצא\n\nבסיס נתוני חפירות יזומות כולל: * מספר אתר * שם האתר וערך משנה * נקודת ציון * אזור ותת-אזור * תקופה ותת-תקופה * סוג ממצא מפורט יותר"
+    "text": "מבנה בסיסי הנתונים\nפאוסט וספראי מתארים את מבנה הנתונים בפרק 3 של ספרם:\n\n“מספר האתר. כל אתר קיבל מספר משל עצמו. אם יש באתר מסוים, דוגמת אזור, חפירות מספר, הרי שעדיין יהיה מספר האתר זהה.”\n— פאוסט וספראי (2015, עמ’ 12)"
   },
   {
     "objectID": "slide-decks/basic-arch-data-heb.html#מדד-אי-היציבות",
@@ -466,28 +466,28 @@
     "href": "slide-decks/basic-arch-data-heb.html#טעינת-בסיסי-הנתונים-ל-r",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "טעינת בסיסי הנתונים ל-R",
-    "text": "טעינת בסיסי הנתונים ל-R\n\n\nCode\n# טעינת חבילות נדרשות\nlibrary(readr)\nlibrary(dplyr)\n\n# טעינת בסיס הנתונים של חפירות ההצלה\nrescue_excavations &lt;- read_csv(\"http://lisa.biu.ac.il/faustsafrai\", \n                              locale = locale(encoding = \"UTF-8\"))\n\n# טעינת בסיס הנתונים של חפירות יזומות\nplanned_excavations &lt;- read_csv(\"http://lisa.biu.ac.il/faustsafrai\", \n                               locale = locale(encoding = \"UTF-8\"))\n\n# הצגת מבנה הנתונים\nglimpse(rescue_excavations)"
+    "text": "טעינת בסיסי הנתונים ל-R\n\n\nCode\n# טעינת חבילות נדרשות\nlibrary(readr)\nlibrary(dplyr)\n\n# טעינת בסיס הנתונים של חפירות ההצלה\nrescue_excavations &lt;- read_csv(\"https://raw.githubusercontent.com/shaigordin/comparch25/refs/heads/main/slide-decks/data/hazala.csv\", \n                              locale = locale(encoding = \"UTF-8\"))\n\n# טעינת בסיס הנתונים של חפירות יזומות\nplanned_excavations &lt;- read_csv(\"https://raw.githubusercontent.com/shaigordin/comparch25/refs/heads/main/slide-decks/data/enc.csv\", \n                               locale = locale(encoding = \"UTF-8\"))\n\n# הצגת מבנה הנתונים\nglimpse(rescue_excavations)"
   },
   {
     "objectID": "slide-decks/basic-arch-data-heb.html#ניתוח-התפלגות-אתרים-לפי-תקופות",
     "href": "slide-decks/basic-arch-data-heb.html#ניתוח-התפלגות-אתרים-לפי-תקופות",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "ניתוח התפלגות אתרים לפי תקופות",
-    "text": "ניתוח התפלגות אתרים לפי תקופות\n\n\nCode\n# ספירת אתרים לפי תקופה\nperiod_counts &lt;- rescue_excavations %&gt;%\n  count(period) %&gt;%\n  arrange(desc(n))\n\n# הצגת התקופות עם מספר האתרים הרב ביותר\nhead(period_counts, 10)\n\n# יצירת \"נתונים מכוילים\" - רק אתרי יישוב\ncalibrated_data &lt;- rescue_excavations %&gt;%\n  filter(find_type %in% c(\"שרידי בנייה\", \"קרמיקה בלבד\"))\n\n# השוואת מספר האתרים לפני ואחרי ה\"כיול\"\ncalibrated_counts &lt;- calibrated_data %&gt;%\n  count(period) %&gt;%\n  arrange(desc(n))\n\n# הצגת ההשוואה\ncomparison &lt;- period_counts %&gt;%\n  left_join(calibrated_counts, by = \"period\", suffix = c(\"_all\", \"_calibrated\"))"
+    "text": "ניתוח התפלגות אתרים לפי תקופות\n\n\nCode\n# הנחה: \"שדה8\" מייצג את התקופה הארכיאולוגית, ו\"שדה12\" מייצג את סוג הממצא\n# יש להתאים את שמות העמודות בהתאם למבנה האמיתי של הנתונים\n\n# ספירת אתרים לפי תקופה\nperiod_counts &lt;- rescue_excavations %&gt;%\n  count(שדה8) %&gt;%  # שימוש בשדה המתאים לתקופה\n  rename(period = שדה8) %&gt;%  # שינוי שם העמודה למען בהירות\n  arrange(desc(n))\n\n# הצגת התקופות עם מספר האתרים הרב ביותר\nhead(period_counts, 10)\n\n# יצירת \"נתונים מכוילים\" - רק אתרי יישוב\ncalibrated_data &lt;- rescue_excavations %&gt;%\n  filter(שדה12 %in% c(\"שרידי בנייה\", \"קרמיקה בלבד\"))  # שימוש בשדה המתאים לסוג ממצא\n\n# השוואת מספר האתרים לפני ואחרי ה\"כיול\"\ncalibrated_counts &lt;- calibrated_data %&gt;%\n  count(שדה8) %&gt;%  # שימוש בשדה המתאים לתקופה\n  rename(period = שדה8) %&gt;%  # שינוי שם העמודה למען בהירות\n  arrange(desc(n))\n\n# הצגת ההשוואה\ncomparison &lt;- period_counts %&gt;%\n  left_join(calibrated_counts, by = \"period\", suffix = c(\"_all\", \"_calibrated\"))\n\n# הצגת הטבלה המשווה\nprint(comparison)"
   },
   {
     "objectID": "slide-decks/basic-arch-data-heb.html#ניתוח-לפי-אזורים-גיאוגרפיים",
     "href": "slide-decks/basic-arch-data-heb.html#ניתוח-לפי-אזורים-גיאוגרפיים",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "ניתוח לפי אזורים גיאוגרפיים",
-    "text": "ניתוח לפי אזורים גיאוגרפיים\n\n\nCode\n# חלוקה לפי אזורים גיאוגרפיים\nregion_distribution &lt;- calibrated_data %&gt;%\n  count(region) %&gt;%\n  mutate(percentage = n / sum(n) * 100)\n\n# הצגת התפלגות האתרים לפי אזורים\nregion_distribution\n\n# התפלגות היישובים באזורי ההר לעומת האזורים הנמוכים\nhighland_regions &lt;- c(\"יהודה\", \"שומרון\", \"גליל עליון\", \"גליל תחתון\")\nlowland_regions &lt;- c(\"חוף הים הצפוני\", \"חוף הים הדרומי\", \"עמק יזרעאל\")\n\nregional_comparison &lt;- calibrated_data %&gt;%\n  mutate(region_type = case_when(\n    region %in% highland_regions ~ \"אזורי הר\",\n    region %in% lowland_regions ~ \"אזורים נמוכים\",\n    TRUE ~ \"אחר\"\n  )) %&gt;%\n  count(period, region_type) %&gt;%\n  group_by(period) %&gt;%\n  mutate(percentage = n / sum(n) * 100)"
+    "text": "ניתוח לפי אזורים גיאוגרפיים\n\n\nCode\n# הנחה: \"שדה5\" מייצג את האזור הגיאוגרפי\n# יש להתאים את מספר השדה בהתאם למבנה האמיתי של הנתונים\n\n# חלוקה לפי אזורים גיאוגרפיים\nregion_distribution &lt;- calibrated_data %&gt;%\n  count(שדה5) %&gt;% # שימוש בשדה המתאים לאזור גיאוגרפי\n  rename(region = שדה5) %&gt;% # שינוי שם העמודה למען בהירות\n  mutate(percentage = n / sum(n) * 100)\n\n# הצגת התפלגות האתרים לפי אזורים\nregion_distribution\n\n# התפלגות היישובים באזורי ההר לעומת האזורים הנמוכים\nhighland_regions &lt;- c(\"יהודה\", \"שומרון\", \"גליל עליון\", \"גליל תחתון\")\nlowland_regions &lt;- c(\"חוף הים הצפוני\", \"חוף הים הדרומי\", \"עמק יזרעאל\")\n\nregional_comparison &lt;- calibrated_data %&gt;%\n  mutate(region_type = case_when(\n    שדה5 %in% highland_regions ~ \"אזורי הר\",\n    שדה5 %in% lowland_regions ~ \"אזורים נמוכים\",\n    TRUE ~ \"אחר\"\n  )) %&gt;%\n  count(שדה8, region_type) %&gt;%  # שימוש בשדה המתאים לתקופה\n  rename(period = שדה8) %&gt;%  # שינוי שם העמודה למען בהירות\n  group_by(period) %&gt;%\n  mutate(percentage = n / sum(n) * 100)\n\n# הצגת ההשוואה\nprint(regional_comparison)"
   },
   {
     "objectID": "slide-decks/basic-arch-data-heb.html#חישוב-מדד-אי-היציבות",
     "href": "slide-decks/basic-arch-data-heb.html#חישוב-מדד-אי-היציבות",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "חישוב מדד אי-היציבות",
-    "text": "חישוב מדד אי-היציבות\n\n\nCode\n# פונקציה פשוטה לחישוב מדד אי-היציבות\ncalculate_instability &lt;- function(period1_sites, period2_sites) {\n  # זיהוי אתרים שמופיעים בשתי התקופות (לפי מספר האתר)\n  continuing_sites &lt;- intersect(period1_sites$site_id, period2_sites$site_id)\n  \n  # חישוב אחוז ההמשכיות\n  continuity_percentage &lt;- length(continuing_sites) / length(period2_sites$site_id) * 100\n  \n  # חישוב מדד אי-היציבות (100 פחות אחוז ההמשכיות)\n  instability_index &lt;- 100 - continuity_percentage\n  \n  return(list(\n    continuing_sites_count = length(continuing_sites),\n    total_sites_period2 = length(period2_sites$site_id),\n    continuity_percentage = continuity_percentage,\n    instability_index = instability_index\n  ))\n}\n\n# דוגמה: חישוב מדד אי-היציבות בין תקופת הברזל 2 לתקופה הפרסית\niron2_sites &lt;- calibrated_data %&gt;% filter(period == \"ברזל 2\")\npersian_sites &lt;- calibrated_data %&gt;% filter(period == \"פרסית\")\n\ninstability_iron2_persian &lt;- calculate_instability(iron2_sites, persian_sites)\ninstability_iron2_persian"
+    "text": "חישוב מדד אי-היציבות\n\n\nCode\n# פונקציה לחישוב מדד אי-היציבות\ncalculate_instability &lt;- function(period1_sites, period2_sites) {\n  # זיהוי אתרים שמופיעים בשתי התקופות (לפי קוד זיהוי)\n  continuing_sites &lt;- intersect(period1_sites$`קוד זיהוי`, period2_sites$`קוד זיהוי`)\n  \n  # חישוב אחוז ההמשכיות\n  continuity_percentage &lt;- length(continuing_sites) / length(period2_sites$`קוד זיהוי`) * 100\n  \n  # חישוב מדד אי-היציבות (100 פחות אחוז ההמשכיות)\n  instability_index &lt;- 100 - continuity_percentage\n  \n  return(list(\n    continuing_sites_count = length(continuing_sites),\n    total_sites_period2 = length(period2_sites$`קוד זיהוי`),\n    continuity_percentage = continuity_percentage,\n    instability_index = instability_index\n  ))\n}\n\n# יישום: חישוב מדד אי-היציבות בין תקופת הברזל 2 לתקופה הפרסית\niron2_sites &lt;- calibrated_data %&gt;% filter(שדה8 \n                                          == \"ברזל 2\")\npersian_sites &lt;- calibrated_data %&gt;% filter(שדה8 \n                                            == \"פרסית\")\ninstability_iron2_persian &lt;- calculate_instability(iron2_sites, persian_sites)\ninstability_iron2_persian"
   },
   {
     "objectID": "slide-decks/basic-arch-data-heb.html#ויזואליזציה-של-מדד-אי-היציבות",
@@ -529,14 +529,14 @@
     "href": "slide-decks/basic-arch-data-heb.html#מקורות-ומשאבים-נוספים",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "מקורות ומשאבים נוספים",
-    "text": "מקורות ומשאבים נוספים\n\nפאוסט, א’ וספראי, ז’ (2015). תולדות ההתיישבות בארץ ישראל: ניתוח כמותי לאור ממצאי חפירות ההצלה והחפירות היזומות. רמת גן.\nMarwick, B. (2017). Computational reproducibility in archaeological research: Basic principles and a case study of their implementation. Journal of Archaeological Method and Theory, 24(2), 424-450.\nקורס מקוון: R for Archaeologists\nחבילות R לארכיאולוגיה:\n\narchdata: מאגרי נתונים ארכיאולוגיים לדוגמה\nrcarbon: ניתוח תיארוכי פחמן\nggarcheo: ויזואליזציות מותאמות לארכיאולוגיה"
+    "text": "מקורות ומשאבים נוספים\n\nפאוסט, א’ וספראי, ז’ (2015). תולדות ההתיישבות בארץ ישראל: ניתוח כמותי לאור ממצאי חפירות ההצלה והחפירות היזומות. רמת גן.\nMarwick, B. (2017). Computational reproducibility in archaeological research: Basic principles and a case study of their implementation. Journal of Archaeological Method and Theory, 24(2), 424-450.\nקורס מקוון: R for Archaeologists\nחבילות R לארכיאולוגיה: ctv-archaeology"
   },
   {
     "objectID": "slide-decks/basic-arch-data-heb.html#תודה-רבה",
     "href": "slide-decks/basic-arch-data-heb.html#תודה-רבה",
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "תודה רבה!",
-    "text": "תודה רבה!\n\n\nלשאלות ולמידע נוסף:\n\nאתר הקורס: www.archaeology-with-r.com\nכתובת דוא”ל: shaigo@ariel.ac.il\nחומרי הקורס זמינים ב-GitHub: github.com/username/archaeology-r-course\n\n\n\n\n\n\n\n\n\n\n\n\nשיטות מתודולוגיות ב׳ / אונ׳ אריאל"
+    "text": "תודה רבה!\nלשאלות ולמידע נוסף:\n\nאתר הקורס: https://shaigordin.github.io/comparch25\nכתובת דוא”ל: shaigo@ariel.ac.il\nחומרי הקורס זמינים ב-GitHub: https://github.com/shaigordin/comparch25\n\n\n\n\nשיטות מתודולוגיות ב׳ / אונ׳ אריאל"
   },
   {
     "objectID": "slide-decks/intro-r-arch.html#course-overview",
@@ -901,5 +901,68 @@
     "title": "סיווג מורפולוגי ממוחשב של קרמיקה",
     "section": "תודה!",
     "text": "תודה!\n\n\nשאלות?\nפרטי יצירת קשר: - אימייל: your.email@university.edu - שעות קבלה: ימי רביעי 13:00-15:00 - מעבדה: בניין ארכיאולוגיה, חדר 302\n\nהשיעור הבא\n\nמבוא ל-R לנתונים ארכיאולוגיים\nייבוא וניקוי נתוני חפירה\nניתוח סטטיסטי בסיסי\n\nהכנה: התקנת R ו-RStudio\n\n\n\nסיום המצגת עם פרטי יצירת קשר ותצוגה מקדימה של השיעור הבא. זה עוזר לסטודנטים להתכונן ומספק מסלול ברור קדימה בקורס. תמונת הרקע מוסיפה עניין חזותי תוך שמירה על קריאות הטקסט.\n\n\n\n\nשיטות מתודולוגיות ב׳ / אונ׳ אריאל"
+  },
+  {
+    "objectID": "slide-decks/basic-arch-data-heb.html#בסיסי-הנתונים-של-פאוסט-וספראי",
+    "href": "slide-decks/basic-arch-data-heb.html#בסיסי-הנתונים-של-פאוסט-וספראי",
+    "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
+    "section": "בסיסי הנתונים של פאוסט וספראי",
+    "text": "בסיסי הנתונים של פאוסט וספראי\nבסיס נתונים של חפירות הצלה\n\nמבוסס על דיווחים מ”חדשות ארכיאולוגיות” (עד חוברת 114)\nכולל 3,571 “אתרים”\nמוטה לטובת המגזר הכפרי\n\nבסיס נתונים של חפירות יזומות\n\nמבוסס על “האנציקלופדיה החדשה לחפירות ארכיאולוגיות”\nכולל 2,214 “אתרים”\nמוטה לטובת האתרים העירוניים"
+  },
+  {
+    "objectID": "slide-decks/basic-arch-data-heb.html#מבנה-בסיסי-הנתונים-המשך",
+    "href": "slide-decks/basic-arch-data-heb.html#מבנה-בסיסי-הנתונים-המשך",
+    "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
+    "section": "מבנה בסיסי הנתונים (המשך)",
+    "text": "מבנה בסיסי הנתונים (המשך)\n\n\nבסיס נתוני חפירות ההצלה כולל:\n\nמספר אתר ומספר חפירה\nשם האתר\nנקודת ציון\nאזור גיאוגרפי\nתקופה ארכיאולוגית\nסוג הממצא\n\n\nבסיס נתוני חפירות יזומות כולל:\n\nמספר אתר\nשם האתר וערך משנה\nנקודת ציון\nאזור ותת-אזור\nתקופה ותת-תקופה\nסוג ממצא מפורט יותר"
+  },
+  {
+    "objectID": "slide-decks/basic-arch-data-heb.html#בסיס-נתוני-חפירות-ההצלה-כולל",
+    "href": "slide-decks/basic-arch-data-heb.html#בסיס-נתוני-חפירות-ההצלה-כולל",
+    "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
+    "section": "בסיס נתוני חפירות ההצלה כולל:",
+    "text": "בסיס נתוני חפירות ההצלה כולל:\n\nמספר אתר ומספר חפירה\nשם האתר\nנקודת ציון\nאזור גיאוגרפי\nתקופה ארכיאולוגית\nסוג הממצא"
+  },
+  {
+    "objectID": "slide-decks/basic-arch-data-heb.html#בסיס-נתוני-חפירות-יזומות-כולל",
+    "href": "slide-decks/basic-arch-data-heb.html#בסיס-נתוני-חפירות-יזומות-כולל",
+    "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
+    "section": "בסיס נתוני חפירות יזומות כולל:",
+    "text": "בסיס נתוני חפירות יזומות כולל:\n\nמספר אתר\nשם האתר וערך משנה\nנקודת ציון\nאזור ותת-אזור\nתקופה ותת-תקופה\nסוג ממצא מפורט יותר"
+  },
+  {
+    "objectID": "slide-decks/basic-arch-data-heb.html#בסיס-נתוני-חפירות-ההצלה-hazala-כולל",
+    "href": "slide-decks/basic-arch-data-heb.html#בסיס-נתוני-חפירות-ההצלה-hazala-כולל",
+    "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
+    "section": "בסיס נתוני חפירות ההצלה (Hazala) כולל:",
+    "text": "בסיס נתוני חפירות ההצלה (Hazala) כולל:\n\nמספר אתר ומספר חפירה\nשם האתר\nנקודת ציון\nאזור גיאוגרפי\nתקופה ארכיאולוגית\nסוג הממצא"
+  },
+  {
+    "objectID": "slide-decks/basic-arch-data-heb.html#בסיס-נתוני-חפירות-יזומות-enc-כולל",
+    "href": "slide-decks/basic-arch-data-heb.html#בסיס-נתוני-חפירות-יזומות-enc-כולל",
+    "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
+    "section": "בסיס נתוני חפירות יזומות (Enc) כולל:",
+    "text": "בסיס נתוני חפירות יזומות (Enc) כולל:\n\nמספר אתר\nשם האתר וערך משנה\nנקודת ציון\nאזור ותת-אזור\nתקופה ותת-תקופה\nסוג ממצא מפורט יותר"
+  },
+  {
+    "objectID": "slide-decks/basic-arch-data-heb.html#דפוסי-התיישבות-בין-אזורי-ההר-לאזורי-השפלה",
+    "href": "slide-decks/basic-arch-data-heb.html#דפוסי-התיישבות-בין-אזורי-ההר-לאזורי-השפלה",
+    "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
+    "section": "דפוסי התיישבות בין אזורי ההר לאזורי השפלה",
+    "text": "דפוסי התיישבות בין אזורי ההר לאזורי השפלה"
+  },
+  {
+    "objectID": "slide-decks/basic-arch-data-heb.html#מפת-דפוסי-ההתיישבות",
+    "href": "slide-decks/basic-arch-data-heb.html#מפת-דפוסי-ההתיישבות",
+    "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
+    "section": "מפת דפוסי ההתיישבות",
+    "text": "מפת דפוסי ההתיישבות"
+  },
+  {
+    "objectID": "slide-decks/basic-arch-data-heb.html#לשאלות-ולמידע-נוסף",
+    "href": "slide-decks/basic-arch-data-heb.html#לשאלות-ולמידע-נוסף",
+    "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
+    "section": "לשאלות ולמידע נוסף",
+    "text": "לשאלות ולמידע נוסף\n\nאתר הקורס: https://shaigordin.github.io/comparch25\nכתובת דוא”ל: shaigo@ariel.ac.il\nחומרי הקורס זמינים ב-GitHub: https://github.com/shaigordin/comparch25\n\n\n\n\nשיטות מתודולוגיות ב׳ / אונ׳ אריאל"
   }
 ]
