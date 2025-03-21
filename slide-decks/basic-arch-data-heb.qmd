@@ -2,7 +2,8 @@
 title: "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R"
 subtitle: "חקר חישובי של ארכיאולוגיה ומקורות היסטוריים תשפ״ה"
 author: "ד״ר שי גורדין"
-date: "09/03/2025"
+date: "2025-03-09"
+date-format: "DD/MM/YYYY"
 format:
   revealjs:
     theme: serif
@@ -19,7 +20,7 @@ format:
     highlight-style: github
     footer: "שיטות מתודולוגיות ב׳ / אונ׳ אריאל"
     logo: img/archaeology-code-image.png
-    css: custom.css
+    #css: custom.css
     rtl: true
 editor: visual
 ---
@@ -463,11 +464,11 @@ regional_comparison <- calibrated_data %>%
 print(regional_comparison)
 ```
 
-## מפת דפוסי ההתיישבות
+## מפת דפוסי ההתיישבות {style="text-align: center"}
 
 ![](img/regional_compare.png){fig-align="center" width="3500"}
 
-## חישוב מדד אי-היציבות
+## חישוב מדד אי-היציבות {style="text-align: center"}
 
 ```{r}
 #| eval: false
@@ -501,7 +502,7 @@ instability_iron2_persian <- calculate_instability(iron2_sites, persian_sites)
 instability_iron2_persian
 ```
 
-## ויזואליזציה של מדד אי-היציבות
+## ויזואליזציה של מדד אי-היציבות {style="text-align: center"}
 
 ```{r}
 #| eval: false

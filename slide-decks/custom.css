@@ -3,15 +3,34 @@
 */
 
 /* Global presentation styling */
-.reveal {
+body, .reveal {
+  direction: rtl;
   font-family: 'Alef', sans-serif;
   font-size: 32px;
   font-weight: normal;
   color: #222;
 }
 
+/* Right-align text in slides */
+.reveal p, .reveal ul, .reveal ol {
+  text-align: right;
+}
+
+/* Adjust list styles for RTL */
+.reveal ul {
+  margin-right: 1em;
+  margin-left: 0;
+}
+
+/* Make sure slide numbers are visible */
+.reveal .slide-number {
+  left: 8px;
+  right: auto;
+}
+
 /* Slide title styling */
 .reveal h1 {
+  text-align: right;
   font-size: 2.5em;
   font-weight: 600;
   color: #2a76dd;
@@ -19,19 +38,28 @@
 }
 
 .reveal h2 {
+  text-align: right;
   font-size: 1.6em;
   font-weight: 600;
   color: #2a76dd;
 }
 
 .reveal h3 {
+  text-align: right;
   font-size: 1.3em;
   font-weight: 600;
   color: #1a66cd;
 }
 
+/* Custom styles for slides with exercises */
+.smaller {
+  font-size: 0.8em;
+}
+
 /* Code styling */
-.reveal pre {
+.reveal pre, .reveal code {
+  direction: ltr;
+  text-align: left;
   font-family: monospace;
   display: block;
   font-size: 0.7em;
@@ -41,13 +69,25 @@
   border-radius: 5px;
 }
 
-.reveal code {
-  font-family: monospace;
+/* Improve code highlighting */
+.hljs {
+  background: #f8f8f8;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+/* Style for exercise sections */
+.exercise {
+  background-color: #f5f5f5;
+  border-left: 5px solid #2f54eb;
+  padding: 10px 15px;
+  margin: 20px 0;
+  border-radius: 0 5px 5px 0;
 }
 
 /* Styling for center aligned content */
-.center {
-  text-align: center;
+.center, .center p, .center h1, .center h2, .center h3, .center ul, .center ol {
+  text-align: center !important;
 }
 
 /* Enhanced styling for callouts */
@@ -104,7 +144,7 @@
 .footer {
   font-size: 0.6em;
   color: #666;
-  position: absolute;
+  position: center;
   bottom: 1em;
   left: 1em;
 }
@@ -158,7 +198,4 @@
     font-size: 20pt;
   }
 
-  .reveal pre {
-    font-size: 0.6em;
-  }
 }
