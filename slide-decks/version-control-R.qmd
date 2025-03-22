@@ -92,7 +92,7 @@ GitHub משלים את Git על ידי מתן ממשק ידידותי למשתמ
 
 ## תרגיל מעשי 1: התקנה והגדרה ראשונית {.smaller .center style="text-align: center"}
 
-### עבדו ביחד עם המרצה: {style="text-align: right"}
+### עבדו ביחד עם המרצה (סרטונים [[**בקישור הבא**]{.underline}](https://git-rfun.library.duke.edu/){target="_blank"}): {style="text-align: right"}
 
 ::: incremental
 1.  פתחו חשבון GitHub
@@ -102,11 +102,16 @@ GitHub משלים את Git על ידי מתן ממשק ידידותי למשתמ
 :::
 
 ``` bash
+## בדקו בקונסולה של הסטודיו (Console)
+system("git --version")
+
+## עברו לשורת הטרמינל (Terminal)
+# התקינו git: https://git-scm.com/downloads/win
 # הגדרת שם משתמש ודוא"ל
 git config --global user.name "השם שלכם"
 git config --global user.email "האימייל שלכם"
 
-# יצירת מאגר חדש
+## יצירת מאגר חדש
 git init excavation-project
 cd excavation-project
 ```
@@ -114,6 +119,55 @@ cd excavation-project
 ::: notes
 עכשיו בואו נתרגל את הצעדים הראשונים בעבודה עם Git ו-GitHub. אני אנחה אתכם צעד אחר צעד בתהליך ההתקנה וההגדרה הראשונית. זו התקנה חד-פעמית שתאפשר לכם להשתמש ב-Git בכל הפרויקטים העתידיים שלכם.
 :::
+
+## הגדרה של גיטהאב: {.smaller style="text-align: right"}
+
+::: incremental
+1.  התקינו את חבילת usethis
+2.  הגדירו את שם המשתמש והדוא"ל שלכם ב-Github
+3.  צרו טוקן לגיטהאב - זהו שלב אבטחה חיוני שתצטרכו לעשות מדי פעם
+:::
+
+``` r
+# התקינו את חבילת usethis
+install.packages("usethis")
+library(usethis)
+
+# הגדרת שם משתמש ודוא"ל
+use_git_config(user.name = "Jane Doe", user.email = "jane@example.com")
+
+## יצירת טוקן לגיטהאב
+# Read: https://usethis.r-lib.org/articles/articles/git-credentials.html
+# Read: https://usethis.r-lib.org/articles/articles/usethis-setup.html
+usethis::create_github_token()  # generates a PAT token you can copy/paste in the next step.
+gitcreds::gitcreds_set()  # paste the PAT from the previous step
+
+# בדקו אם הגדרתם נכון את משתמש הגיטהאב שלכם 
+# השתמשו בפונקציה הבאה אם לא: usethis::use_git_config()
+gh::gh_whoami()
+usethis::gh_token_help()
+```
+
+## יצירת פרויקט גיטהאב מסטודיו: {style="text-align: right"}
+
+::: incremental
+1.  הגדירו פרויקט חדש ובחרו create a git repository
+2.  **התיקייה והמיקום** שלה יהיו הגיטהאב המקומי על המחשב שלכם
+3.  הוסיפו קובץ Readme וקובץ רישיון
+4.  התחברו לגיטהאב
+:::
+
+``` r
+# צרו קובץ readme
+use_readme.md()
+
+# הוסיפו רישיון
+use_ccby_license() # https://creativecommons.org/share-your-work/cclicenses/
+
+# לפני הצעד הבא בצעו: stage & commit changes
+# התחברו לגיטהאב
+use_github()       
+```
 
 # חלק 2: כלי AI למחקר ארכיאולוגי ב-R Studio {.section style="text-align: center"}
 
@@ -349,7 +403,7 @@ git push origin main
     -   [gpttools](https://jameshwade.github.io/gpttools/) - חבילה משלימה
 -   **מדריכים לשילוב הכלים במחקר ארכיאולוגי**:
     -   [rrtools: Tools for Writing Reproducible Research in R](https://github.com/benmarwick/rrtools)
-    -   Batist, Z. and Roe, J. 2024. ‘Open Archaeology, Open Source? Collaborative practices in an emerging community of archaeological software engineers’. *Internet Archaeology* 67. <https://doi.org/10.11141/ia.67.13>
+    -   Batist, Z. and Roe, J. 2024. 'Open Archaeology, Open Source? Collaborative practices in an emerging community of archaeological software engineers'. *Internet Archaeology* 67. <https://doi.org/10.11141/ia.67.13>
 
 ::: notes
 לפני שנסיים, הנה כמה משאבים מומלצים ללמידה נוספת. עבור Git ו-GitHub, אני ממליץ במיוחד על "Happy Git with R" מאת ג'ניפר בריאן, שמתמקד בשימוש ב-Git עם R. עבור gptstudio ו-AI ב-R, האתר הרשמי של gptstudio הוא מקור מצוין, וכך גם החבילה המשלימה gpttools. ישנם גם מדריכים מצוינים לשילוב כלים אלה במחקר ארכיאולוגי.
