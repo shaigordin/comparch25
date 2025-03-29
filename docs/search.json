@@ -340,53 +340,193 @@
     "href": "slide-decks/version-control-R.html#תרגיל-מעשי-1-התקנה-והגדרה-ראשונית",
     "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
     "section": "תרגיל מעשי 1: התקנה והגדרה ראשונית",
-    "text": "תרגיל מעשי 1: התקנה והגדרה ראשונית\nעבדו ביחד עם המרצה:\n\n\nפתחו חשבון GitHub\nהתקינו Git במחשב שלכם\nהגדירו את שם המשתמש והדוא”ל שלכם ב-Git\nצרו מאגר ראשון למחקר ארכיאולוגי\n\n\n# הגדרת שם משתמש ודוא\"ל\ngit config --global user.name \"השם שלכם\"\ngit config --global user.email \"האימייל שלכם\"\n\n# יצירת מאגר חדש\ngit init excavation-project\ncd excavation-project\n\nעכשיו בואו נתרגל את הצעדים הראשונים בעבודה עם Git ו-GitHub. אני אנחה אתכם צעד אחר צעד בתהליך ההתקנה וההגדרה הראשונית. זו התקנה חד-פעמית שתאפשר לכם להשתמש ב-Git בכל הפרויקטים העתידיים שלכם."
+    "text": "תרגיל מעשי 1: התקנה והגדרה ראשונית\nעבדו ביחד עם המרצה (סרטונים בקישור הבא):\n\n\nפתחו חשבון GitHub\nהתקינו Git במחשב שלכם\nהגדירו את שם המשתמש והדוא”ל שלכם ב-Git\nצרו מאגר ראשון למחקר ארכיאולוגי\n\n\n## בדקו בקונסולה של הסטודיו (Console)\nsystem(\"git --version\")\n\n## עברו לשורת הטרמינל (Terminal)\n# התקינו git: https://git-scm.com/downloads/win\n# הגדרת שם משתמש ודוא\"ל\ngit config --global user.name \"השם שלכם\"\ngit config --global user.email \"האימייל שלכם\"\n\n## יצירת מאגר חדש\ngit init excavation-project\ncd excavation-project\n\nעכשיו בואו נתרגל את הצעדים הראשונים בעבודה עם Git ו-GitHub. אני אנחה אתכם צעד אחר צעד בתהליך ההתקנה וההגדרה הראשונית. זו התקנה חד-פעמית שתאפשר לכם להשתמש ב-Git בכל הפרויקטים העתידיים שלכם."
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#הגדרה-של-גיטהאב",
+    "href": "slide-decks/version-control-R.html#הגדרה-של-גיטהאב",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "הגדרה של גיטהאב:",
+    "text": "הגדרה של גיטהאב:\n\n\nהתקינו את חבילת usethis\nהגדירו את שם המשתמש והדוא”ל שלכם ב-Github\nצרו טוקן לגיטהאב - זהו שלב אבטחה חיוני שתצטרכו לעשות מדי פעם\n\n\n# התקינו את חבילת usethis\ninstall.packages(\"usethis\")\nlibrary(usethis)\n\n# הגדרת שם משתמש ודוא\"ל\nuse_git_config(user.name = \"Jane Doe\", user.email = \"jane@example.com\")\n\n## יצירת טוקן לגיטהאב\n# Read: https://usethis.r-lib.org/articles/articles/git-credentials.html\n# Read: https://usethis.r-lib.org/articles/articles/usethis-setup.html\nusethis::create_github_token()  # generates a PAT token you can copy/paste in the next step.\ngitcreds::gitcreds_set()  # paste the PAT from the previous step\n\n# בדקו אם הגדרתם נכון את משתמש הגיטהאב שלכם \n# השתמשו בפונקציה הבאה אם לא: usethis::use_git_config()\ngh::gh_whoami()\nusethis::gh_token_help()"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#יצירת-פרויקט-גיטהאב-מסטודיו",
+    "href": "slide-decks/version-control-R.html#יצירת-פרויקט-גיטהאב-מסטודיו",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "יצירת פרויקט גיטהאב מסטודיו:",
+    "text": "יצירת פרויקט גיטהאב מסטודיו:\n\n\nהגדירו פרויקט חדש ובחרו create a git repository\nהתיקייה והמיקום שלה יהיו הגיטהאב המקומי על המחשב שלכם\nהוסיפו קובץ Readme וקובץ רישיון\nהתחברו לגיטהאב\n\n\n# צרו קובץ readme\nuse_readme.md()\n\n# הוסיפו רישיון\nuse_ccby_license() # https://creativecommons.org/share-your-work/cclicenses/\n\n# לפני הצעד הבא בצעו: stage & commit changes\n# התחברו לגיטהאב\nuse_github()"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#פתרון-בעיות-נפוצות-בהתקנת-git",
+    "href": "slide-decks/version-control-R.html#פתרון-בעיות-נפוצות-בהתקנת-git",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "פתרון בעיות נפוצות בהתקנת Git",
+    "text": "פתרון בעיות נפוצות בהתקנת Git\nבדיקה בסיסית: האם Git מותקן כראוי?\n# בדקו אם Git מותקן ומזוהה על ידי R\nsystem(\"git --version\")\n\n# אם מקבלים שגיאה, יש לבצע את הצעדים הבאים:\n\n\nאם Git לא מזוהה:\n\nוודאו שהתקנתם Git מהאתר הרשמי: https://git-scm.com/downloads/win\nבחרו באפשרות “Git from the command line and also from 3rd-party software” בהתקנה\nהפעילו מחדש את RStudio אחרי ההתקנה\n\nבדקו את נתיב ההתקנה של Git בהגדרות RStudio:\n\nפתחו Tools -> Global Options -> Git/SVN\nוודאו שנתיב ה-Git executable תקין (בדרך כלל C:/Program Files/Git/bin/git.exe)"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#בעיות-נתיב-path-במערכת-windows",
+    "href": "slide-decks/version-control-R.html#בעיות-נתיב-path-במערכת-windows",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "בעיות נתיב (PATH) במערכת Windows",
+    "text": "בעיות נתיב (PATH) במערכת Windows\n# בדיקת נתיב Git בשורת הפקודה של Windows\nwhere git\n\n# אם אינכם רואים תוצאה, הוסיפו את נתיב Git ל-PATH:\n\n\nפתחו “Environment Variables” במערכת (חפשו “environment variables” בחיפוש Windows)\nתחת “System variables”, מצאו את המשתנה PATH ולחצו על “Edit”\nהוסיפו את הנתיב למיקום קובץ ה-git.exe (בדרך כלל C:Files)\nאתחלו את המחשב\nפתחו RStudio מחדש ובדקו שוב"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#בעיות-אימות-מול-github",
+    "href": "slide-decks/version-control-R.html#בעיות-אימות-מול-github",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "בעיות אימות מול GitHub",
+    "text": "בעיות אימות מול GitHub\n\n\nוודאו שאתם משתמשים ב-PAT (Personal Access Token) ולא בסיסמה רגילה:\n\nנוצר באמצעות usethis::create_github_token()\nיש להגדיר הרשאות מתאימות (לפחות repo, workflow, user)\n\nבדקו שהטוקן נשמר כראוי:\n\nהשתמשו ב-gitcreds::gitcreds_get() לבדיקה אם הטוקן קיים\nאם יש בעיה, השתמשו ב-gitcreds::gitcreds_set() מחדש\n\n\n\n# בדיקת אימות GitHub\nusethis::gh_token_help()\ngh::gh_whoami()\n\n# אם אתם מקבלים שגיאה, נסו:\ngitcreds::gitcreds_set()  # הזינו את הטוקן שלכם מחדש"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#שגיאות-נפוצות-בעת-חיבור-rstudio-לגיטהאב",
+    "href": "slide-decks/version-control-R.html#שגיאות-נפוצות-בעת-חיבור-rstudio-לגיטהאב",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "שגיאות נפוצות בעת חיבור RStudio לגיטהאב",
+    "text": "שגיאות נפוצות בעת חיבור RStudio לגיטהאב\n\n\n\n\n\n\nשגיאת RStudio: could not find git executable\n\n\n\nפתרון: וודאו שהנתיב ל-Git נכון ב-Tools -> Global Options -> Git/SVN\n\n\n\n\n\n\n\n\n\n\nשגיאת “Authentication failed”\n\n\n\nפתרון: בדקו שהטוקן תקף ושיש לו הרשאות מתאימות\nצרו טוקן חדש ב-GitHub (Settings -> Developer Settings -> Personal Access Tokens)\nהגדירו מחדש עם gitcreds::gitcreds_set()\n\n\n\n\n\n\n\n\n\n\nשגיאת “Error: unable to create (repo): HTTP 422”\n\n\n\nפתרון: כנראה שכבר קיים מאגר באותו שם בחשבון שלכם\nשנו את שם המאגר ב-usethis::use_github(name = \"שם_חדש\")"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#צעדי-הגדרה-מתוקנים-ובסדר-מדויק",
+    "href": "slide-decks/version-control-R.html#צעדי-הגדרה-מתוקנים-ובסדר-מדויק",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "צעדי הגדרה מתוקנים ובסדר מדויק",
+    "text": "צעדי הגדרה מתוקנים ובסדר מדויק\n\nהתקינו Git והגדירו משתמש:\n\n# בטרמינל\ngit config --global user.name \"השם שלכם\"\ngit config --global user.email \"האימייל שלכם\"\n\nהתקינו חבילות נדרשות ב-R (סדר חשוב!):\n\n# התקינו את כל החבילות הנדרשות\ninstall.packages(c(\"usethis\", \"gitcreds\", \"gh\", \"credentials\"))\nlibrary(usethis)\n\nוודאו שהגדרות המשתמש זהות ב-Git וב-GitHub:\n\n# הגדרת שם משתמש ודוא\"ל זהים ל-Git\nuse_git_config(user.name = \"השם שלכם\", user.email = \"האימייל שלכם\")"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#צעדי-הגדרה-מתוקנים---המשך",
+    "href": "slide-decks/version-control-R.html#צעדי-הגדרה-מתוקנים---המשך",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "צעדי הגדרה מתוקנים - המשך",
+    "text": "צעדי הגדרה מתוקנים - המשך\n\nצרו וקשרו טוקן GitHub:\n\n# יצירת טוקן חדש (יפתח בדפדפן)\nusethis::create_github_token()\n\n# שמירת הטוקן (העתיקו את הטוקן שנוצר)\ngitcreds::gitcreds_set()\n\n# בדיקת האימות\ngh::gh_whoami()\n\nצרו פרויקט RStudio וחברו אותו לגיטהאב:\n\n# יצירת README וביצוע commit ראשון \nusethis::use_readme_md()\n\n# הוספת התיקייה ל-git\nusethis::use_git()\n\n# חיבור לגיטהאב (וודאו שביצעתם commit לפני כן!)\nusethis::use_github()"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#פתרון-בעיית-proxy-בקמפוס",
+    "href": "slide-decks/version-control-R.html#פתרון-בעיית-proxy-בקמפוס",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "פתרון בעיית Proxy בקמפוס",
+    "text": "פתרון בעיית Proxy בקמפוס\nאם אתם מתחברים דרך רשת הקמפוס וחווים בעיות התחברות:\n# הגדרת proxy בגיט (הזינו את כתובת ה-proxy של האוניברסיטה)\ngit config --global http.proxy http://proxy.ariel.ac.il:8080\ngit config --global https.proxy https://proxy.ariel.ac.il:8080\n\n# אם אתם מתחברים מהבית ולא צריכים proxy, בטלו את ההגדרות:\ngit config --global --unset http.proxy\ngit config --global --unset https.proxy"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#איך-לבדוק-אם-החיבור-בין-rstudio-ל-github-עובד",
+    "href": "slide-decks/version-control-R.html#איך-לבדוק-אם-החיבור-בין-rstudio-ל-github-עובד",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "איך לבדוק אם החיבור בין RStudio ל-GitHub עובד?",
+    "text": "איך לבדוק אם החיבור בין RStudio ל-GitHub עובד?\nבדיקה פשוטה:\n# צרו שינוי קטן בקובץ README.md\nwriteLines(\"# פרויקט מחקר ארכיאולוגי\\n\\nזהו פרויקט מחקר בארכיאולוגיה.\", \"README.md\")\n\n# בדקו אם השינויים מזוהים ב-Git (צריכה להופיע הודעה בחלון Git)\n\n\nבממשק RStudio, בדקו את הלשונית Git (בדרך כלל בפינה הימנית העליונה)\nסמנו V ליד השינויים שברצונכם לשלוח (stage changes)\nלחצו על “Commit” ורשמו הודעת commit\nלחצו על “Push” כדי לשלוח את השינויים לגיטהאב\nבדקו באתר GitHub שהשינויים הגיעו"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#משאבים-לפתרון-בעיות-נוספות",
+    "href": "slide-decks/version-control-R.html#משאבים-לפתרון-בעיות-נוספות",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "משאבים לפתרון בעיות נוספות",
+    "text": "משאבים לפתרון בעיות נוספות\n\n\n\n\n\n\nמקורות מידע לפתרון בעיות:\n\n\n\nמדריך Happy Git with R\nפתרון בעיות RStudio & Git\nמדריך אינטראקטיבי לעבודה עם Git\n\n\n\n\n\nחשוב שהסטודנטים יבינו שפתרון בעיות הוא חלק נורמלי מהעבודה עם כלים טכנולוגיים. כדאי להדגיש שהשקעת הזמן בהגדרה הנכונה תשתלם מאוד בהמשך המחקר שלהם."
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#מדוע-להשתמש-בבינה-מלאכותית-במחקר-ארכיאולוגי",
+    "href": "slide-decks/version-control-R.html#מדוע-להשתמש-בבינה-מלאכותית-במחקר-ארכיאולוגי",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "מדוע להשתמש בבינה מלאכותית במחקר ארכיאולוגי?",
+    "text": "מדוע להשתמש בבינה מלאכותית במחקר ארכיאולוגי?\n\n\nניתוח טקסטים היסטוריים בהיקף נרחב\nזיהוי דפוסים בנתונים ארכיאולוגיים\nסיוע בתרגום ופענוח כתובות עתיקות\nהצלבת מקורות ומציאת קשרים בין ממצאים\nיצירת שחזורים והדמיות של אתרים עתיקים"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#מודלי-בינה-מלאכותית-לשימוש-החוקר",
+    "href": "slide-decks/version-control-R.html#מודלי-בינה-מלאכותית-לשימוש-החוקר",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "מודלי בינה מלאכותית לשימוש החוקר",
+    "text": "מודלי בינה מלאכותית לשימוש החוקר\n\n\nHugging Face\n\nמגוון מודלים מוכנים לשימוש\nגישה באמצעות API מקוון\nחינמי לשימוש בסיסי\nמתאים למחקר אקדמי\n\n\nOllama\n\nהרצה מקומית על המחשב האישי\nללא צורך בחיבור לאינטרנט לאחר ההורדה\nשליטה מלאה על המודלים\nפרטיות מוחלטת של הנתונים"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#תרגיל-מעשי-2-התקנת-hugging-face-api",
+    "href": "slide-decks/version-control-R.html#תרגיל-מעשי-2-התקנת-hugging-face-api",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "תרגיל מעשי 2: התקנת Hugging Face API",
+    "text": "תרגיל מעשי 2: התקנת Hugging Face API\nצעד 1: יצירת חשבון ב-Hugging Face\n\n\nגשו לאתר huggingface.co והירשמו לחשבון חינמי\nנווטו אל הפרופיל שלכם ← הגדרות ← Access Tokens\nצרו טוקן חדש (בחרו ברמת הרשאות “Read” לגישה חינמית)\n\n\n\n\nR Console\n\n# שמירת הטוקן בקובץ סביבה (.Renviron)\n# Opens the file for editing (creates if doesn't exist)\nusethis::edit_r_environ(scope = \"user\")\n\n# הדבק את השורה הבאה בתוך הקובץ .Renviron\nHUGGINGFACE_API_KEY=\"הדביקו את התוקן של האגינגפייס כאן\"\n\n# גישה אלטרנטיבית עם usethis לא זמין\nfile.edit(\"~/.Renviron\")  # Unix/Mac\nfile.edit(file.path(Sys.getenv(\"HOME\"), \".Renviron\"))  # Windows alternative\n\n# הוספת .Renviron ל-.gitignore באמצעות usethis (חשוב במידה ודוחפים לגיטהאב)\nusethis::use_git_ignore(\".Renviron\")"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#צעד-2-התקנת-חבילות-נדרשות-ב-r",
+    "href": "slide-decks/version-control-R.html#צעד-2-התקנת-חבילות-נדרשות-ב-r",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "צעד 2: התקנת חבילות נדרשות ב-R",
+    "text": "צעד 2: התקנת חבילות נדרשות ב-R\n\n\nR Console\n\n# התקנת חבילות נדרשות\ninstall.packages(c(\"httr\", \"jsonlite\"))\nlibrary(httr)\nlibrary(jsonlite)"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#צעד-3-יצירת-פונקציה-לגישה-ל-api",
+    "href": "slide-decks/version-control-R.html#צעד-3-יצירת-פונקציה-לגישה-ל-api",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "צעד 3: יצירת פונקציה לגישה ל-API",
+    "text": "צעד 3: יצירת פונקציה לגישה ל-API\n\n\nR Function\n\nhf_inference <- function(model_id, inputs, task = \"text-generation\", parameters = NULL) {\n  API_URL <- paste0(\"https://api-inference.huggingface.co/models/\", model_id)\n  \n  body <- list(inputs = inputs)\n  if (!is.null(parameters)) {\n    body$parameters <- parameters\n  }\n  \n  response <- POST(\n    url = API_URL,\n    add_headers(\n      Authorization = paste(\"Bearer\", Sys.getenv(\"HF_API_TOKEN\")),\n      \"Content-Type\" = \"application/json\"\n    ),\n    body = toJSON(body, auto_unbox = TRUE)\n  )\n  \n  content(response)\n}"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#צעד-4-שימוש-במודלים-ספציפיים---דוגמה-ראשונה",
+    "href": "slide-decks/version-control-R.html#צעד-4-שימוש-במודלים-ספציפיים---דוגמה-ראשונה",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "צעד 4: שימוש במודלים ספציפיים - דוגמה ראשונה",
+    "text": "צעד 4: שימוש במודלים ספציפיים - דוגמה ראשונה\n\n\nText Generation with Mistral\n\n# יצירת טקסט באמצעות Mistral-7B-Instruct\nresult <- hf_inference(\n  model_id = \"mistralai/Mistral-7B-Instruct-v0.2\",\n  inputs = \"<s>[INST] תאר את הממלכה האשורית החדשה בתקופת שלטונו של אשורבניפל [/INST]\",\n  parameters = list(\n    max_new_tokens = 250,\n    temperature = 0.7,\n    return_full_text = FALSE\n  )\n)\n\n# הדפסת התוצאה\ncat(result[[1]]$generated_text)"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#צעד-5-שימוש-במודלים-ספציפיים---דוגמה-שנייה",
+    "href": "slide-decks/version-control-R.html#צעד-5-שימוש-במודלים-ספציפיים---דוגמה-שנייה",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "צעד 5: שימוש במודלים ספציפיים - דוגמה שנייה",
+    "text": "צעד 5: שימוש במודלים ספציפיים - דוגמה שנייה\n\n\nQuestion Answering with BERT\n\nresult <- hf_inference(\n  model_id = \"deepset/roberta-base-squad2\",\n  inputs = list(\n    question = \"מה היה הישג מרכזי של אשורבניפל?\",\n    context = \"אשורבניפל (668-627 לפנה״ס) היה המלך האחרון של האימפריה האשורית החדשה. הוא ידוע בהקמת הספרייה הגדולה בנינוה, שבה נאספו אלפי לוחות חרס ובהם טקסטים מסופוטמיים.\"\n  )\n)\n\n# הדפסת התשובה\ncat(\"תשובה:\", result$answer)"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#התקנת-ollama-api",
+    "href": "slide-decks/version-control-R.html#התקנת-ollama-api",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "התקנת Ollama API",
+    "text": "התקנת Ollama API\nצעד 1: התקנת Ollama\n\n\nגשו לאתר ollama.ai והורידו את הגרסה המתאימה למערכת ההפעלה שלכם\nWindows: הורידו והתקינו את התוכנה\nmacOS: הורידו את האפליקציה או הריצו curl -fsSL https://ollama.ai/install.sh | sh\nLinux: הריצו curl -fsSL https://ollama.ai/install.sh | sh"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#צעד-2-הפעלת-ollama-והורדת-מודל",
+    "href": "slide-decks/version-control-R.html#צעד-2-הפעלת-ollama-והורדת-מודל",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "צעד 2: הפעלת Ollama והורדת מודל",
+    "text": "צעד 2: הפעלת Ollama והורדת מודל\n\n\nTerminal\n\n# הפעלת השירות\nollama serve\n\n# הורדת מודל קל משקל להתחלה\nollama pull tinyllama\n\n# הורדת מודל עם הקשר רחב יותר\nollama pull llama2"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#צעד-3-יצירת-פונקציות-ב-r-לשימוש-ב-ollama",
+    "href": "slide-decks/version-control-R.html#צעד-3-יצירת-פונקציות-ב-r-לשימוש-ב-ollama",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "צעד 3: יצירת פונקציות ב-R לשימוש ב-Ollama",
+    "text": "צעד 3: יצירת פונקציות ב-R לשימוש ב-Ollama\n\n\nR Functions\n\nlibrary(httr)\nlibrary(jsonlite)\n\nollama_generate <- function(prompt, model = \"tinyllama\", parameters = NULL) {\n  # פרמטרים בסיסיים\n  body <- list(\n    model = model,\n    prompt = prompt\n  )\n  \n  # הוספת פרמטרים מותאמים אישית\n  if (!is.null(parameters)) {\n    body <- c(body, parameters)\n  }\n  \n  response <- POST(\n    url = \"http://localhost:11434/api/generate\",\n    body = toJSON(body, auto_unbox = TRUE),\n    encode = \"json\"\n  )\n  \n  content(response)\n}"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#צעד-4-פונקציית-צאט-לשיחות-מורכבות",
+    "href": "slide-decks/version-control-R.html#צעד-4-פונקציית-צאט-לשיחות-מורכבות",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "צעד 4: פונקציית צ׳אט לשיחות מורכבות",
+    "text": "צעד 4: פונקציית צ׳אט לשיחות מורכבות\n\n\nChat Function\n\nollama_chat <- function(messages, model = \"tinyllama\") {\n  response <- POST(\n    url = \"http://localhost:11434/api/chat\",\n    body = toJSON(list(\n      model = model,\n      messages = messages\n    ), auto_unbox = TRUE),\n    encode = \"json\"\n  )\n  \n  content(response)\n}"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#צעד-5-שימוש-בפונקציות",
+    "href": "slide-decks/version-control-R.html#צעד-5-שימוש-בפונקציות",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "צעד 5: שימוש בפונקציות",
+    "text": "צעד 5: שימוש בפונקציות\n\n\nUsing Ollama\n\n# יצירת טקסט פשוטה\nresult <- ollama_generate(\n  prompt = \"תאר את חורבן ממלכת ישראל על ידי האשורים בשנת 722 לפנה״ס\",\n  model = \"llama2\"\n)\n\n# הצגת התוצאה\ncat(result$response)\n\n# לשיחה בסגנון צ׳אט\nchat_result <- ollama_chat(\n  messages = list(\n    list(role = \"user\", content = \"מה היו הסיבות העיקריות להתמוטטות הערים הכנעניות בסוף תקופת הברונזה המאוחרת?\")\n  ),\n  model = \"llama2\"\n)\n\ncat(chat_result$message$content)"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#חלונות-הקשר-context-windows",
+    "href": "slide-decks/version-control-R.html#חלונות-הקשר-context-windows",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "חלונות הקשר (Context Windows)",
+    "text": "חלונות הקשר (Context Windows)\nמהו חלון הקשר?\n\n\nחלון הקשר הוא כמות המידע שהמודל יכול ״לזכור״ ולעבד בבת אחת\nנמדד בטוקנים (בערך שווה ל-0.75 אורך מילה בעברית)\nמשפיע מאוד על יכולת הניתוח של טקסטים ארוכים\nככל שחלון ההקשר גדול יותר, כך המודל ״זוכר״ יותר מידע"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#השוואה-בין-חלונות-הקשר",
+    "href": "slide-decks/version-control-R.html#השוואה-בין-חלונות-הקשר",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "השוואה בין חלונות הקשר",
+    "text": "השוואה בין חלונות הקשר\n\n\nחלון הקשר רגיל (2K-4K טוקנים)\n\nמתאים למחשבים עם 8GB RAM\nתגובות מהירות יותר\nמספיק לשאלות קצרות\nלניתוח טקסטים קצרים\n\n\nחלון הקשר גדול (8K-32K+ טוקנים)\n\nדורש 16GB+ RAM\nאיטי יותר בהרצה\nמתאים לניתוח מסמכים שלמים\nזוכר פרטים משיחות ארוכות"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#מודלים-לפי-גודל-חלון-הקשר",
+    "href": "slide-decks/version-control-R.html#מודלים-לפי-גודל-חלון-הקשר",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "מודלים לפי גודל חלון הקשר",
+    "text": "מודלים לפי גודל חלון הקשר\n\n\nחלון הקשר רגיל\n\nollama pull tinyllama (~2K)\nollama pull llama2 (~4K)\nollama pull mistral (~4K)\nollama pull phi (~4K)\n\n\nחלון הקשר גדול\n\nollama pull llama2-70b (~8K)\nollama pull wizard:13b (~8K)\nollama pull mixtral (~8K)\nollama pull claude-instant (~16K)"
   },
   {
     "objectID": "slide-decks/version-control-R.html#section",
     "href": "slide-decks/version-control-R.html#section",
-    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
-    "section": "",
-    "text": "עכשיו נעבור לחלק השני של השיעור, שבו נלמד על כלי בינה מלאכותית שיכולים לסייע לנו במחקר ארכיאולוגי והיסטורי. אחד הכלים המרכזיים שנתמקד בו הוא gptstudio, שמשלב מודלי שפה גדולים כמו GPT ו-Claude ישירות בסביבת העבודה של RStudio."
-  },
-  {
-    "objectID": "slide-decks/version-control-R.html#מהו-gptstudio",
-    "href": "slide-decks/version-control-R.html#מהו-gptstudio",
-    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
-    "section": "מהו gptstudio?",
-    "text": "מהו gptstudio?\n\nתוסף ל-RStudio המשלב מודלי שפה גדולים (LLMs)\nמאפשר לשאול שאלות ולקבל עזרה בזמן אמת\nתומך במגוון ספקי AI:\n\nOpenAI (GPT-4, GPT-3.5)\nAnthropic (Claude)\nOllama (מודלים מקומיים)\nועוד רבים אחרים\n\n\n\ngptstudio היא חבילת R שפותחה על ידי מישל ניברד ואחרים, המאפשרת לשלב מודלי שפה גדולים ישירות בסביבת העבודה של RStudio. התוסף מאפשר לנו לשאול שאלות, לקבל עזרה בקידוד, לתקן שגיאות, ואפילו לקבל פירושים לממצאים ארכיאולוגיים - כל זאת מבלי לצאת מסביבת העבודה שלנו."
-  },
-  {
-    "objectID": "slide-decks/version-control-R.html#התקנת-gptstudio",
-    "href": "slide-decks/version-control-R.html#התקנת-gptstudio",
-    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
-    "section": "התקנת gptstudio",
-    "text": "התקנת gptstudio\n# התקנה מ-CRAN\ninstall.packages(\"gptstudio\")\n\n# או, עבור הגרסה המתפתחת מ-GitHub\n# install.packages(\"pak\")\npak::pak(\"MichelNivard/gptstudio\")\nהגדרת מפתח API ל-OpenAI\nrequire(usethis)\nedit_r_environ()\n\n# הוסיפו את השורה הבאה ל-.Renviron\n# OPENAI_API_KEY=\"המפתח שלכם\"\n\nכדי להשתמש ב-gptstudio, צריך תחילה להתקין את החבילה ולהגדיר מפתח API לאחד משירותי הבינה המלאכותית. ברירת המחדל היא OpenAI, אבל אפשר להשתמש גם בשירותים אחרים. בואו נעבור על תהליך ההתקנה וההגדרה יחד."
-  },
-  {
-    "objectID": "slide-decks/version-control-R.html#תרגיל-מעשי-2-שימוש-ב-gptstudio",
-    "href": "slide-decks/version-control-R.html#תרגיל-מעשי-2-שימוש-ב-gptstudio",
-    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
-    "section": "תרגיל מעשי 2: שימוש ב-gptstudio",
-    "text": "תרגיל מעשי 2: שימוש ב-gptstudio\nתרגלו שימוש בצ’אט AI לניתוח ארכיאולוגי:\n\n\nהתקינו את gptstudio\nפתחו את RStudio\nפתחו את תוסף הצ’אט: Addins > gptstudio > Chat\nשאלו שאלה על ניתוח נתונים ארכיאולוגיים\n\n\n# דוגמה לשאלה:\n\"מהם המבחנים הסטטיסטיים המתאימים ביותר לניתוח התפלגות של \nממצאי חרס לפי תקופות זמן שונות באתר חפירות?\"\n\nעכשיו בואו נתרגל שימוש ב-gptstudio. אחרי ההתקנה, אפשר לפתוח את תוסף הצ’אט מתפריט ה-Addins ב-RStudio. נסו לשאול שאלות שקשורות למחקר ארכיאולוגי והיסטורי, כמו שיטות ניתוח נתונים, טכניקות ויזואליזציה, או פירוש של תוצאות סטטיסטיות."
-  },
-  {
-    "objectID": "slide-decks/version-control-R.html#פונקציות-מרכזיות-ב-gptstudio",
-    "href": "slide-decks/version-control-R.html#פונקציות-מרכזיות-ב-gptstudio",
-    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
-    "section": "פונקציות מרכזיות ב-gptstudio",
-    "text": "פונקציות מרכזיות ב-gptstudio\n\nChat: צ’אט עם מודל AI\nChat in Source: קבלת עזרה לקוד שנבחר\nSpelling and Grammar: בדיקת איות ודקדוק בטקסט\nComment your code: הוספת הערות מפורטות לקוד\n\nמודלים נתמכים:\n\nOpenAI (GPT-4, GPT-3.5)\nAnthropic (Claude 3.5, Claude 2.1)\nOllama (מודלים מקומיים)\nGoogle (Gemini)\nועוד…\n\n\ngptstudio מציע מספר פונקציות שימושיות למחקר ארכיאולוגי והיסטורי. הפונקציה הבסיסית ביותר היא הצ’אט, שמאפשר לשאול שאלות ולקבל תשובות. אבל יש גם פונקציות ייעודיות כמו “Chat in Source” שמאפשרת לקבל עזרה לגבי קוד ספציפי, “Spelling and Grammar” לבדיקת טקסטים, ו-“Comment your code” להוספת הערות מפורטות לקוד. החבילה תומכת במגוון רחב של מודלי AI."
-  },
-  {
-    "objectID": "slide-decks/version-control-R.html#תרגיל-מעשי-3-ניתוח-נתונים-ארכיאולוגיים-עם-ai",
-    "href": "slide-decks/version-control-R.html#תרגיל-מעשי-3-ניתוח-נתונים-ארכיאולוגיים-עם-ai",
-    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
-    "section": "תרגיל מעשי 3: ניתוח נתונים ארכיאולוגיים עם AI",
-    "text": "תרגיל מעשי 3: ניתוח נתונים ארכיאולוגיים עם AI\nתרגלו ניתוח התפלגות ממצאים בעזרת AI:\n# יצירת נתוני דוגמה של ממצאים ארכיאולוגיים\nset.seed(123)  # לשחזוריות התוצאות\n\nartifacts <- tibble(\n  x = runif(200, 0, 10),          # קואורדינטה מזרח-מערב\n  y = runif(200, 0, 10),          # קואורדינטה צפון-דרום\n  period = sample(c(\"תקופת הברונזה\", \"תקופת הברזל\", \"התקופה ההלניסטית\"), \n                 200, replace = TRUE)  # תקופה היסטורית\n)\n\n# סמנו את הקוד וכעת:\n# Addins > gptstudio > Chat in Source\n# בקשו: \"שפר את הקוד הזה ליצירת ויזואליזציה של התפלגות הממצאים\"\n\nבתרגיל הזה, נלמד להשתמש בפונקציית “Chat in Source” כדי לקבל עזרה בשיפור קוד לניתוח נתונים ארכיאולוגיים. נתחיל ביצירת מסד נתונים לדוגמה, ואז נבקש מה-AI לעזור לנו ליצור ויזואליזציה טובה יותר של הנתונים. זו דוגמה מצוינת לאיך AI יכול לסייע בעבודה היומיומית של חוקר."
-  },
-  {
-    "objectID": "slide-decks/version-control-R.html#section-1",
-    "href": "slide-decks/version-control-R.html#section-1",
     "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
     "section": "",
     "text": "כעת נראה איך אפשר לשלב את שני הכלים האלה - Git/GitHub ו-AI - בזרימת עבודה אחת משולבת למחקר ארכיאולוגי והיסטורי. השילוב הזה יכול להעצים מאוד את היכולות שלנו כחוקרים."
@@ -406,11 +546,102 @@
     "text": "שלבים בזרימת עבודה משולבת (חלק ב׳)\n\nשיתוף פעולה וביקורת\n\nשיתוף הקוד והתוצאות דרך GitHub\nקבלת משוב וניהול שינויים\n\nפרסום\n\nיצירת דו”חות ופרסומים בעזרת Quarto Markdown\nשיתוף הפרויקט כולו דרך GitHub\n\n\n\nזרימת העבודה המשולבת מורכבת מחמישה שלבים עיקריים, כשבכל אחד מהם יש מקום הן לבקרת גרסאות והן לשימוש בכלי AI. זה מתחיל באיסוף נתונים, עובר דרך ניתוח ראשוני ומתקדם, שיתוף פעולה וביקורת, ומסתיים בפרסום. בכל שלב, Git מסייע לנו בתיעוד ובשיתוף, וה-AI מסייע בניתוח ובפירוש."
   },
   {
-    "objectID": "slide-decks/version-control-R.html#תרגיל-מעשי-4-יצירת-זרימת-עבודה-משולבת",
-    "href": "slide-decks/version-control-R.html#תרגיל-מעשי-4-יצירת-זרימת-עבודה-משולבת",
+    "objectID": "slide-decks/version-control-R.html#תרגיל-מעשי-3-ניתוח-נתונים-ארכיאולוגיים-עם-ai",
+    "href": "slide-decks/version-control-R.html#תרגיל-מעשי-3-ניתוח-נתונים-ארכיאולוגיים-עם-ai",
     "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
-    "section": "תרגיל מעשי 4: יצירת זרימת עבודה משולבת",
-    "text": "תרגיל מעשי 4: יצירת זרימת עבודה משולבת\nתרגלו שילוב של Git ו-AI בפרויקט ארכיאולוגי:\n\n\nצרו מאגר Git חדש לפרויקט ארכיאולוגי\nהוסיפו קובץ Quarto Markdown לניתוח נתונים\nהשתמשו ב-gptstudio לשיפור הקוד והניתוח\nבצעו commit לשינויים עם הסבר מפורט\nדחפו את השינויים ל-GitHub\nשתפו את הקישור עם עמית ובקשו משוב\n\n\ngit add analysis.qmd\ngit commit -m \"הוספתי ניתוח מרחבי של ממצאי תקופת הברונזה בעזרת AI\"\ngit push origin main\n\nבתרגיל הזה, נשלב את כל מה שלמדנו עד כה ליצירת זרימת עבודה משולבת לפרויקט ארכיאולוגי. נתחיל ביצירת מאגר Git, נוסיף קובץ R Markdown לניתוח נתונים, נשתמש ב-gptstudio לשיפור הקוד, נבצע commit לשינויים, נדחוף אותם ל-GitHub, ונשתף את הפרויקט עם עמית לקבלת משוב. זה תרגיל מקיף שמדגים את הערך של שילוב הכלים האלה."
+    "section": "תרגיל מעשי 3: ניתוח נתונים ארכיאולוגיים עם AI",
+    "text": "תרגיל מעשי 3: ניתוח נתונים ארכיאולוגיים עם AI\nשילוב Huggingface API בניתוח ממצאים ארכיאולוגיים\n\n\nנלמד כיצד לחבר את הקוד שלנו למודלי AI מתקדמים\nננתח התפלגות מרחבית של ממצאים ארכיאולוגיים\nנשתמש במודלים שפותחו על ידי הקהילה המדעית הבינלאומית\n\n\n\nהסבירו לסטודנטים שבניגוד לחבילת AI, השימוש ב-Huggingface API מאפשר: 1. שליטה על בחירת המודלים (כולל מודלים בעברית) 2. שקיפות גדולה יותר בתהליך 3. יכולת להגדיר פרמטרים מדויקים לאינטראקציה עם המודל 4. אפשרות לשלב את התהליך בפייפליינים מחקריים מובנים"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#הכנת-סביבת-העבודה",
+    "href": "slide-decks/version-control-R.html#הכנת-סביבת-העבודה",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "הכנת סביבת העבודה",
+    "text": "הכנת סביבת העבודה\nהתקנת החבילות הנדרשות:\n# התקנת חבילות נדרשות (פעם אחת בלבד)\nif (!requireNamespace(\"tidyverse\", quietly = TRUE)) install.packages(\"tidyverse\")\nif (!requireNamespace(\"httr\", quietly = TRUE)) install.packages(\"httr\")\nif (!requireNamespace(\"jsonlite\", quietly = TRUE)) install.packages(\"jsonlite\")\nif (!requireNamespace(\"plotly\", quietly = TRUE)) install.packages(\"plotly\")\n\n# טעינת חבילות\nlibrary(tidyverse)\nlibrary(httr)\nlibrary(jsonlite)\nlibrary(plotly)"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#מהן-החבילות-הנדרשות",
+    "href": "slide-decks/version-control-R.html#מהן-החבילות-הנדרשות",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "מהן החבילות הנדרשות?",
+    "text": "מהן החבילות הנדרשות?\n\n\ntidyverse - לטיפול בנתונים וויזואליזציה\nhttr - לביצוע בקשות API\njsonlite - לעיבוד תשובות בפורמט JSON\nplotly - חבילת וויזואליזציות אינטראקטיביות ב-html\n\n\n\nהדגישו לסטודנטים את החשיבות של הבנת ההיררכיה של החבילות: - tidyverse משמש לניתוח הנתונים הארכיאולוגיים עצמם - httr ו-jsonlite מאפשרים את התקשורת עם ה-API של מודלי השפה מומלץ להסביר בקצרה את מבנה ה-API של Huggingface ולהדגיש את היתרונות של השימוש ב-Huggingface על פני פלטפורמות סגורות אחרות."
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#יצירת-נתוני-דוגמה",
+    "href": "slide-decks/version-control-R.html#יצירת-נתוני-דוגמה",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "יצירת נתוני דוגמה",
+    "text": "יצירת נתוני דוגמה\nיצירת מערך נתוני חפירה:\n# יצירת נתוני דוגמה של ממצאים ארכיאולוגיים\nset.seed(123)  # לשחזוריות התוצאות\nartifacts <- tibble(\n  x = runif(200, 0, 10),          # קואורדינטה מזרח-מערב\n  y = runif(200, 0, 10),          # קואורדינטה צפון-דרום\n  period = sample(c(\"תקופת הברונזה\", \"תקופת הברזל\", \"התקופה ההלניסטית\"), \n                 200, replace = TRUE)  # תקופה היסטורית\n)\n\n# הצגת מבנה הנתונים\nhead(artifacts)\n\nכדאי להדגיש לסטודנטים: 1. השימוש ב-set.seed חשוב לשחזוריות הניתוח - הרעיון של מחקר שקוף וניתן לשחזור 2. המבנה המדויק של הנתונים והמשמעות של הקואורדינטות 3. זהו מודל מפושט - במציאות יהיו שדות נוספים כמו עומק, תיאור הממצא, מסת הממצא וכו’"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#ויזואליזציה-בסיסית",
+    "href": "slide-decks/version-control-R.html#ויזואליזציה-בסיסית",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "ויזואליזציה בסיסית",
+    "text": "ויזואליזציה בסיסית\nתצוגה מרחבית של הממצאים:\n# יצירת תרשים פיזור בסיסי עם תמיכה מלאה ביוניקוד\nplotly_visualization <- ggplotly(\n  ggplot(artifacts, aes(x = x, y = y, color = period)) +\n    geom_point(alpha = 0.7) +\n    theme_minimal()\n) %>%\n  layout(\n    title = list(text = \"התפלגות ממצאים ארכיאולוגיים לפי תקופה\"),\n    xaxis = list(title = \"קואורדינטה מזרח-מערב\"),\n    yaxis = list(title = \"קואורדינטה צפון-דרום\"),\n    legend = list(title = list(text = \"תקופה\"))\n  )\n  \n# שמירת התרשים כאוביקט HTML\nhtmlwidgets::saveWidget(plotly_visualization, \"archaeological_distribution.html\")\n\nחשוב להסביר את בחירת הייצוג הוויזואלי: 1. השימוש בצבע לסימון התקופות השונות 2. הבחירה ב-theme_minimal כדי להדגיש את הנתונים ולא את הרקע 3. ההתאמה לעברית עם הגדרת גופן David 4. הערך המוסף של ויזואליזציה למחקר ארכיאולוגי"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#פונקציית-האינטגרציה-עם-huggingface",
+    "href": "slide-decks/version-control-R.html#פונקציית-האינטגרציה-עם-huggingface",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "פונקציית האינטגרציה עם Huggingface",
+    "text": "פונקציית האינטגרציה עם Huggingface\nבניית פונקציה לניתוח AI:\n# הגדרת פונקציה לשימוש ב-Huggingface API\nanalyze_with_ai <- function(data_summary, prompt, \n                           api_key = Sys.getenv(\"HUGGINGFACE_API_KEY\"), \n                           model_id = \"mistralai/Mistral-7B-Instruct-v0.2\") {\n  \n  # בדיקה שיש מפתח API\n  if (api_key == \"\") {\n    stop(\"נא להגדיר מפתח API של Huggingface\")\n  }\n  \n  # הכנת הנתונים עבור ה-API\n  artifacts_summary <- capture.output(summary(data_summary))\n  artifacts_str <- paste(artifacts_summary, collapse = \"\\n\")\n  \n  # יצירת הבקשה ל-API\n  endpoint <- paste0(\"https://api-inference.huggingface.co/models/\", model_id)\n\nהדגישו את: 1. השימוש במשתני סביבה לאחסון המפתח - שיטה מקובלת לניהול סודות בקוד 2. האפשרות לבחור מודלים שונים לפי הצורך (והמלצו על מודלים ספציפיים) 3. חשיבות בדיקות התקינות לפני שליחת הבקשה 4. ההיגיון של המרת נתוני הממצאים לפורמט טקסטואלי שהמודל יוכל להבין"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#המשך-פונקציית-האינטגרציה-עם-huggingface",
+    "href": "slide-decks/version-control-R.html#המשך-פונקציית-האינטגרציה-עם-huggingface",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "המשך: פונקציית האינטגרציה עם Huggingface",
+    "text": "המשך: פונקציית האינטגרציה עם Huggingface\n  # בניית הבקשה בפורמט המתאים למודל\n  full_prompt <- paste0(\n    \"להלן נתונים על ממצאים ארכיאולוגיים:\\n\\n\",\n    artifacts_str,\n    \"\\n\\n\",\n    prompt\n  )\n  \n  payload <- list(\n    inputs = full_prompt,\n    parameters = list(\n      max_new_tokens = 500,\n      temperature = 0.7,\n      return_full_text = FALSE\n    )\n  )\n  \n  # שליחת הבקשה ל-API\n  response <- POST(\n    url = endpoint,\n    body = toJSON(payload, auto_unbox = TRUE),\n    add_headers(\n      \"Authorization\" = paste(\"Bearer\", api_key),\n      \"Content-Type\" = \"application/json\"\n    ),\n    encode = \"json\"\n  )\n\nחשוב להסביר: 1. מבנה ה-prompt וחשיבותו - איך לנסח שאלות למודל בצורה אפקטיבית 2. משמעות הפרמטרים כמו temperature (איזון בין יצירתיות לדיוק) 3. מבנה בקשת ה-API והכותרות הנדרשות 4. התאמת הפרומפט לשפה העברית ולמחקר ארכיאולוגי"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#סיום-הפונקציה-וטיפול-בתשובות",
+    "href": "slide-decks/version-control-R.html#סיום-הפונקציה-וטיפול-בתשובות",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "סיום הפונקציה וטיפול בתשובות",
+    "text": "סיום הפונקציה וטיפול בתשובות\n  # טיפול בתשובה\n  if (http_status(response)$category == \"Success\") {\n    content <- content(response, \"parsed\")\n    if (is.list(content) && length(content) > 0 && \"generated_text\" %in% names(content[[1]])) {\n      return(content[[1]]$generated_text)\n    } else {\n      return(\"התקבלה תשובה בפורמט לא צפוי\")\n    }\n  } else {\n    return(paste(\"שגיאה:\", http_status(response)$message))\n  }\n}\n\n\nחשוב לטפל בשגיאות אפשריות בתקשורת עם ה-API\nהמבנה של התשובה יכול להשתנות בין מודלים שונים\nשימוש בפונקציות מספריית httr לניתוח הסטטוס\n\n\n\nהדגישו את חשיבות הטיפול בשגיאות באפליקציות מבוססות API: 1. תקלות רשת 2. בעיות באימות 3. שינויים אפשריים בתגובת ה-API זו הזדמנות טובה להסביר על המבנה הסטנדרטי של תשובות JSON וכיצד לנתח אותן."
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#הדגמת-השימוש-בפונקציה",
+    "href": "slide-decks/version-control-R.html#הדגמת-השימוש-בפונקציה",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "הדגמת השימוש בפונקציה",
+    "text": "הדגמת השימוש בפונקציה\nניתוח כמותי ושאילת שאלות למודל:\n# ניתוח כמותי בסיסי של הנתונים\nperiod_counts <- artifacts %>% count(period)\nprint(period_counts)\n\n# שאלה לניתוח ב-AI\nanalysis_prompt <- \"אני חוקר/ת ארכיאולוג/ית. על סמך ההתפלגות של הממצאים:\n1. האם ניתן לזהות דפוסים מעניינים בפיזור המרחבי?\n2. מה המשמעות הארכיאולוגית האפשרית של ההתפלגות הנצפית?\n3. אילו בדיקות נוספות היית ממליץ/ה לבצע?\nאנא ספק/י ניתוח מקצועי מנקודת מבט ארכיאולוגית.\"\n\n# הרצת הניתוח (הורידו את ה-# כאשר יש לכם מפתח API)\n# Sys.setenv(HUGGINGFACE_API_KEY = \"your_api_key_here\")\n# ai_analysis <- analyze_with_ai(artifacts, analysis_prompt)\n# cat(ai_analysis)\n\nכדאי לציין: 1. כיצד לקבל מפתח API מ-Huggingface 2. חשיבות ניסוח שאלות ברורות ומדויקות למודל 3. הדגישו שהמודל אינו מחליף את החוקר אלא מסייע לו לראות דפוסים ולהעלות השערות 4. אפשרו לסטודנטים לנסח שאלות שונות כתרגיל"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#ויזואליזציה-מתקדמת",
+    "href": "slide-decks/version-control-R.html#ויזואליזציה-מתקדמת",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "ויזואליזציה מתקדמת",
+    "text": "ויזואליזציה מתקדמת\nניתוח צפיפות לפי תקופה:\n# דוגמה ליצירת ויזואליזציה מתקדמת (ללא תלות ב-AI)\n# Initialize visualization framework with period-specific parameters\nperiods <- unique(artifacts$period)\nplot_objects <- list()\n\n# Implement period-specific analytical units with direct density estimation\nfor(i in seq_along(periods)) {\n  period_data <- filter(artifacts, period == periods[i])\n\n  # Construct individual period visualization with integrated density estimation\n  p <- plot_ly(data = period_data, x = ~x, y = ~y, type = \"scatter\",\n               mode = \"markers\", marker = list(opacity = 0.7),\n               name = periods[i]) %>%\n    layout(\n      title = periods[i],\n      xaxis = list(title = \"קואורדינטות מזרח-מערב\"),\n      yaxis = list(title = \"קואורדינטות צפון-דרום\")\n    )\n\n  # Add direct density visualization without matrix transformation\n  # Calculate kernel density estimate\n  kd <- MASS::kde2d(period_data$x, period_data$y, n = 50)\n\n  # Add contour visualization directly from density object\n  p <- p %>% add_contour(\n    x = kd$x,\n    y = kd$y,\n    z = kd$z,  # Direct matrix representation\n    contours = list(coloring = \"heatmap\"),\n    colorscale = \"Viridis\",\n    opacity = 0.3,\n    showlegend = FALSE\n  )\n\n  plot_objects[[i]] <- p\n}\n\nהסבירו לסטודנטים: 1. משמעות מפות צפיפות (density maps) בהקשר ארכיאולוגי 2. יתרונות השימוש ב-facet_wrap לפיצול הנתונים לפי תקופות 3. כיצד לקרוא ולפרש את התוצאות בהקשר של ניתוח דפוסי התיישבות 4. את חשיבות בחירת סקאלת הצבעים המתאימה (כאן viridis שמתאימה גם לעיוורי צבעים)"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#ניתוח-צפיפות-לפי-תקופה-1",
+    "href": "slide-decks/version-control-R.html#ניתוח-צפיפות-לפי-תקופה-1",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "ניתוח צפיפות לפי תקופה:",
+    "text": "ניתוח צפיפות לפי תקופה:\n# Synthesize period-specific analytical units into comparative framework\ncomposite_visualization <- subplot(\n  plot_objects,\n  nrows = 1,\n  shareY = TRUE,\n  titleX = TRUE,\n  margin = 0.05\n) %>%\n  layout(\n    title = list(\n      text = \"ניתוח צפיפות ממצאים ארכיאולוגיים לפי תקופה\",\n      font = list(size = 18)\n    ),\n    margin = list(l = 100, r = 50, t = 100, b = 80),\n    annotations = list(\n      list(x = 0.16, y = 1.05, text = periods[1], showarrow = FALSE, xref = \"paper\", yref = \"paper\"),\n      list(x = 0.5, y = 1.05, text = periods[2], showarrow = FALSE, xref = \"paper\", yref = \"paper\"),\n      list(x = 0.84, y = 1.05, text = periods[3], showarrow = FALSE, xref = \"paper\", yref = \"paper\")\n    )\n  ) %>%\n  config(locale = \"he\")\n\n# Materialize analytical framework as interactive document\nhtmlwidgets::saveWidget(composite_visualization, \"archaeological_density_analysis.html\", selfcontained = TRUE)"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#הנחיות-לשימוש-ב-huggingface-api",
+    "href": "slide-decks/version-control-R.html#הנחיות-לשימוש-ב-huggingface-api",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "הנחיות לשימוש ב-Huggingface API",
+    "text": "הנחיות לשימוש ב-Huggingface API\n\n\n\n\n\n\nהערות לסטודנטים:\n\n\n\nיש להשיג מפתח API מ-Huggingface (https://huggingface.co/settings/tokens)\nניתן להחליף את המודל למודלים אחרים, למשל:\n\n“google/gemma-7b-it” - מודל של גוגל\n“microsoft/phi-2” - מודל קטן ומהיר\n“avichay/Hebrew-mistral-7b-instruct” - מודל בעברית\n\nשמרו על המפתח שלכם בסוד ואל תכללו אותו בקוד שאתם מעלים לגיטהאב\n\n\n\n\n\n\nהתנסו בפרמטרים שונים כמו temperature לקבלת תוצאות מגוונות\nנסו לשלב את תוצאות האנליזה עם הויזואליזציות\nתעדו את הפרומפטים ואת התוצאות במחברת המחקר שלכם\n\n\n\nחשוב להדגיש: 1. אתיקה בשימוש במודלי AI במחקר אקדמי 2. כיצד לצטט ולהתייחס לתוצאות שהתקבלו באמצעות AI 3. חשיבות הבחירה במודל המתאים למשימה 4. המלצות לגבי בחירת המודלים הטובים ביותר לניתוח טקסט בעברית 5. אמצעי אבטחה בעבודה עם מפתחות API"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#תרגיל-סיכום-יחידה-ראשונה",
+    "href": "slide-decks/version-control-R.html#תרגיל-סיכום-יחידה-ראשונה",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "תרגיל סיכום יחידה ראשונה",
+    "text": "תרגיל סיכום יחידה ראשונה\nמטלה להגשה:\n\n\nבחרו מערך נתונים ארכיאולוגי משלכם או השתמשו בנתוני הדוגמה\nצרו לפחות 2 ויזואליזציות שונות המציגות היבטים שונים של הנתונים\nנסחו 2-3 שאלות למודל ה-AI ונתחו את התשובות\nהגישו דוח קצר המשלב את הויזואליזציות, השאלות והתשובות\nהעלו את כל החומרים למאגר הגיטהאב שיצרתם\n\n\n\nהדגישו לסטודנטים: 1. המטרה היא ללמוד לשלב כלים חישוביים עם חשיבה ארכיאולוגית 2. עודדו אותם להיות ביקורתיים כלפי התוצאות שמתקבלות מה-AI 3. הזכירו להם את חשיבות התיעוד השיטתי של התהליך כולו 4. הסבירו כיצד לשלב את התובנות מהמודל בדוח המחקר באופן ראוי"
+  },
+  {
+    "objectID": "slide-decks/version-control-R.html#הוראות-לגיטהאב",
+    "href": "slide-decks/version-control-R.html#הוראות-לגיטהאב",
+    "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
+    "section": "הוראות לגיטהאב",
+    "text": "הוראות לגיטהאב\n\n\nצרו מאגר Git חדש לפרויקט ארכיאולוגי\nהוסיפו קובץ Quarto Markdown לניתוח נתונים\nהשתמשו ב-AI לשיפור הקוד והניתוח\nבצעו commit לשינויים עם הסבר מפורט\nדחפו את השינויים ל-GitHub\nשתפו את הקישור עם עמית ובקשו משוב\n\n\ngit add analysis.qmd\ngit commit -m \"הוספתי ניתוח מרחבי של ממצאי תקופת הברונזה בעזרת AI\"\ngit push origin main\n\nבתרגיל הזה, נשלב את כל מה שלמדנו עד כה ליצירת זרימת עבודה משולבת לפרויקט ארכיאולוגי. נתחיל ביצירת מאגר Git, נוסיף קובץ R Markdown לניתוח נתונים, נשתמש ב-gptstudio לשיפור הקוד, נבצע commit לשינויים, נדחוף אותם ל-GitHub, ונשתף את הפרויקט עם עמית לקבלת משוב. זה תרגיל מקיף שמדגים את הערך של שילוב הכלים האלה."
   },
   {
     "objectID": "slide-decks/version-control-R.html#שאלות-אתיות-בשימוש-ב-ai-במחקר",
@@ -420,11 +651,11 @@
     "text": "שאלות אתיות בשימוש ב-AI במחקר\n\nפרטיות נתונים: האם הנתונים ששולחים ל-AI רגישים?\nשקיפות: כיצד לתעד את השימוש ב-AI במחקר?\nדיוק: כיצד לוודא את נכונות התוצאות והניתוחים?\nקרדיט: כיצד לתת קרדיט נאות לכלי AI במחקר?\nהטיות: האם ישנן הטיות במודלים שעלולות להשפיע על המחקר?\n\n\nחשוב לדון גם בשאלות האתיות שעולות משימוש בכלי AI במחקר ארכיאולוגי והיסטורי. אלה כוללות שאלות על פרטיות נתונים, שקיפות בתיעוד השימוש ב-AI, דיוק התוצאות, מתן קרדיט נאות, והתמודדות עם הטיות אפשריות במודלים. כחוקרים, עלינו להתייחס לשאלות אלה ברצינות ולפתח פרקטיקות עבודה אתיות."
   },
   {
-    "objectID": "slide-decks/version-control-R.html#תרגיל-מעשי-5-תיעוד-אתי-של-שימוש-ב-ai",
-    "href": "slide-decks/version-control-R.html#תרגיל-מעשי-5-תיעוד-אתי-של-שימוש-ב-ai",
+    "objectID": "slide-decks/version-control-R.html#תרגלו-תיעוד-נאות-של-שימוש-ב-ai-במחקר",
+    "href": "slide-decks/version-control-R.html#תרגלו-תיעוד-נאות-של-שימוש-ב-ai-במחקר",
     "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
-    "section": "תרגיל מעשי 5: תיעוד אתי של שימוש ב-AI",
-    "text": "תרגיל מעשי 5: תיעוד אתי של שימוש ב-AI\nתרגלו תיעוד נאות של שימוש ב-AI במחקר:\n\n\nפתחו קובץ README.md בפרויקט שלכם\nהוסיפו סעיף על שיטות המחקר\nתעדו במפורט את השימוש בכלי AI\nציינו אילו חלקים מהניתוח נעשו בעזרת AI\nתארו את התהליך של בדיקת התוצאות\n\n\n## שיטות מחקר\n\nבניתוח הממצאים השתמשנו בכלים הבאים:\n- ניתוח סטטיסטי באמצעות R (גרסה 4.2.0)\n- בקרת גרסאות באמצעות Git ו-GitHub\n- סיוע בכתיבת קוד וניתוח באמצעות gptstudio (גרסה 0.3.0) \n  המשתמש במודל GPT-4 של OpenAI\n\nכל התוצאות שהתקבלו באמצעות AI נבדקו ואומתו באופן ידני.\n\nבתרגיל האחרון שלנו, נתמקד בתיעוד אתי ושקוף של השימוש בכלי AI במחקר. נפתח את קובץ README.md בפרויקט ונוסיף סעיף מפורט על שיטות המחקר, כולל תיעוד מדויק של השימוש בכלי AI. תיעוד כזה חשוב לשקיפות ולשחזוריות המחקר, ומהווה פרקטיקה מומלצת בקהילה המדעית."
+    "section": "תרגלו תיעוד נאות של שימוש ב-AI במחקר:",
+    "text": "תרגלו תיעוד נאות של שימוש ב-AI במחקר:\n\n\nפתחו קובץ README.md בפרויקט שלכם\nהוסיפו סעיף על שיטות המחקר\nתעדו במפורט את השימוש בכלי AI\nציינו אילו חלקים מהניתוח נעשו בעזרת AI\nתארו את התהליך של בדיקת התוצאות\n\n\n## שיטות מחקר\n\nבניתוח הממצאים השתמשנו בכלים הבאים:\n- ניתוח סטטיסטי באמצעות R (גרסה 4.2.0)\n- בקרת גרסאות באמצעות Git ו-GitHub\n- סיוע בכתיבת קוד וניתוח באמצעות gptstudio (גרסה 0.3.0) \n  המשתמש במודל GPT-4 של OpenAI\n\nכל התוצאות שהתקבלו באמצעות AI נבדקו ואומתו באופן ידני.\n\nבתרגיל האחרון שלנו, נתמקד בתיעוד אתי ושקוף של השימוש בכלי AI במחקר. נפתח את קובץ README.md בפרויקט ונוסיף סעיף מפורט על שיטות המחקר, כולל תיעוד מדויק של השימוש בכלי AI. תיעוד כזה חשוב לשקיפות ולשחזוריות המחקר, ומהווה פרקטיקה מומלצת בקהילה המדעית."
   },
   {
     "objectID": "slide-decks/version-control-R.html#סיכום-יתרונות-הגישה-המשולבת",
@@ -438,7 +669,7 @@
     "href": "slide-decks/version-control-R.html#משאבים-נוספים-ללמידה",
     "title": "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי",
     "section": "משאבים נוספים ללמידה",
-    "text": "משאבים נוספים ללמידה\n\nGit & GitHub:\n\nHappy Git with R מאת ג’ניפר בריאן\nPro Git - ספר חינמי ומקיף\n\ngptstudio ו-AI ב-R:\n\nאתר gptstudio\ngpttools - חבילה משלימה\n\nמדריכים לשילוב הכלים במחקר ארכיאולוגי:\n\nrrtools: Tools for Writing Reproducible Research in R\nBatist, Z. and Roe, J. 2024. ‘Open Archaeology, Open Source? Collaborative practices in an emerging community of archaeological software engineers’. Internet Archaeology 67. https://doi.org/10.11141/ia.67.13\n\n\n\nלפני שנסיים, הנה כמה משאבים מומלצים ללמידה נוספת. עבור Git ו-GitHub, אני ממליץ במיוחד על “Happy Git with R” מאת ג’ניפר בריאן, שמתמקד בשימוש ב-Git עם R. עבור gptstudio ו-AI ב-R, האתר הרשמי של gptstudio הוא מקור מצוין, וכך גם החבילה המשלימה gpttools. ישנם גם מדריכים מצוינים לשילוב כלים אלה במחקר ארכיאולוגי."
+    "text": "משאבים נוספים ללמידה\n\nGit & GitHub:\n\nHappy Git with R מאת ג’ניפר בריאן\nPro Git - ספר חינמי ומקיף\n\nhuggingface ו-AI ב-R:\n\nשלום מודלים ללמידה עמוקה (Transformers)\ntext - חבילה שמשתמשת במודלי שפה גדולים (LLMs) מהאגינגפייס\n\nמדריכים לשילוב הכלים במחקר ארכיאולוגי:\n\nrrtools: Tools for Writing Reproducible Research in R\nBatist, Z. and Roe, J. 2024. ‘Open Archaeology, Open Source? Collaborative practices in an emerging community of archaeological software engineers’. Internet Archaeology 67. https://doi.org/10.11141/ia.67.13\n\n\n\nלפני שנסיים, הנה כמה משאבים מומלצים ללמידה נוספת. עבור Git ו-GitHub, אני ממליץ במיוחד על “Happy Git with R” מאת ג’ניפר בריאן, שמתמקד בשימוש ב-Git עם R. עבור gptstudio ו-AI ב-R, האתר הרשמי של gptstudio הוא מקור מצוין, וכך גם החבילה המשלימה gpttools. ישנם גם מדריכים מצוינים לשילוב כלים אלה במחקר ארכיאולוגי."
   },
   {
     "objectID": "slide-decks/version-control-R.html#שאלות",
@@ -1048,5 +1279,194 @@
     "title": "מבוא לניתוח כמותי בארכיאולוגיה באמצעות R",
     "section": "לשאלות ולמידע נוסף",
     "text": "לשאלות ולמידע נוסף\n\nאתר הקורס: https://shaigordin.github.io/comparch25\nכתובת דוא”ל: shaigo@ariel.ac.il\nחומרי הקורס זמינים ב-GitHub: https://github.com/shaigordin/comparch25\n\n\n\n\nשיטות מתודולוגיות ב׳ / אונ׳ אריאל"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#מדוע-להשתמש-בבינה-מלאכותית-במחקר-ארכיאולוגי",
+    "href": "slide-decks/api-ai-draft.html#מדוע-להשתמש-בבינה-מלאכותית-במחקר-ארכיאולוגי",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "מדוע להשתמש בבינה מלאכותית במחקר ארכיאולוגי?",
+    "text": "מדוע להשתמש בבינה מלאכותית במחקר ארכיאולוגי?\n\n\nניתוח טקסטים היסטוריים בהיקף נרחב\nזיהוי דפוסים בנתונים ארכיאולוגיים\nסיוע בתרגום ופענוח כתובות עתיקות\nהצלבת מקורות ומציאת קשרים בין ממצאים\nיצירת שחזורים והדמיות של אתרים עתיקים"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#מודלי-בינה-מלאכותית-לשימוש-החוקר",
+    "href": "slide-decks/api-ai-draft.html#מודלי-בינה-מלאכותית-לשימוש-החוקר",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "מודלי בינה מלאכותית לשימוש החוקר",
+    "text": "מודלי בינה מלאכותית לשימוש החוקר\n\n\nHugging Face\n\nמגוון מודלים מוכנים לשימוש\nגישה באמצעות API מקוון\nחינמי לשימוש בסיסי\nמתאים למחקר אקדמי\n\n\nOllama\n\nהרצה מקומית על המחשב האישי\nללא צורך בחיבור לאינטרנט לאחר ההורדה\nשליטה מלאה על המודלים\nפרטיות מוחלטת של הנתונים"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#צעד-1-יצירת-חשבון-ב-hugging-face",
+    "href": "slide-decks/api-ai-draft.html#צעד-1-יצירת-חשבון-ב-hugging-face",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "צעד 1: יצירת חשבון ב-Hugging Face",
+    "text": "צעד 1: יצירת חשבון ב-Hugging Face\n\n\nגשו לאתר huggingface.co והירשמו לחשבון חינמי\nנווטו אל הפרופיל שלכם ← הגדרות ← Access Tokens\nצרו טוקן חדש (בחרו ברמת הרשאות “Read” לגישה חינמית)\n\n\n\n\nTerminal\n\n# שמירת הטוקן כמשתנה סביבה\nexport HF_API_TOKEN=\"hf_your_token_here\""
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#צעד-2-התקנת-חבילות-נדרשות-ב-r",
+    "href": "slide-decks/api-ai-draft.html#צעד-2-התקנת-חבילות-נדרשות-ב-r",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "צעד 2: התקנת חבילות נדרשות ב-R",
+    "text": "צעד 2: התקנת חבילות נדרשות ב-R\n\n\nR Console\n\n# התקנת חבילות נדרשות\ninstall.packages(c(\"httr\", \"jsonlite\"))\nlibrary(httr)\nlibrary(jsonlite)\n\n# הגדרת הטוקן כמשתנה סביבה\nSys.setenv(HF_API_TOKEN = \"hf_your_token_here\")"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#צעד-3-יצירת-פונקציה-לגישה-ל-api",
+    "href": "slide-decks/api-ai-draft.html#צעד-3-יצירת-פונקציה-לגישה-ל-api",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "צעד 3: יצירת פונקציה לגישה ל-API",
+    "text": "צעד 3: יצירת פונקציה לגישה ל-API\n\n\nR Function\n\nhf_inference <- function(model_id, inputs, task = \"text-generation\", parameters = NULL) {\n  API_URL <- paste0(\"https://api-inference.huggingface.co/models/\", model_id)\n  \n  body <- list(inputs = inputs)\n  if (!is.null(parameters)) {\n    body$parameters <- parameters\n  }\n  \n  response <- POST(\n    url = API_URL,\n    add_headers(\n      Authorization = paste(\"Bearer\", Sys.getenv(\"HF_API_TOKEN\")),\n      \"Content-Type\" = \"application/json\"\n    ),\n    body = toJSON(body, auto_unbox = TRUE)\n  )\n  \n  content(response)\n}"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#צעד-4-שימוש-במודלים-ספציפיים---דוגמה-ראשונה",
+    "href": "slide-decks/api-ai-draft.html#צעד-4-שימוש-במודלים-ספציפיים---דוגמה-ראשונה",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "צעד 4: שימוש במודלים ספציפיים - דוגמה ראשונה",
+    "text": "צעד 4: שימוש במודלים ספציפיים - דוגמה ראשונה\n\n\nText Generation with Mistral\n\n# יצירת טקסט באמצעות Mistral-7B-Instruct\nresult <- hf_inference(\n  model_id = \"mistralai/Mistral-7B-Instruct-v0.2\",\n  inputs = \"<s>[INST] תאר את הממלכה האשורית החדשה בתקופת שלטונו של אשורבניפל [/INST]\",\n  parameters = list(\n    max_new_tokens = 250,\n    temperature = 0.7,\n    return_full_text = FALSE\n  )\n)\n\n# הדפסת התוצאה\ncat(result[[1]]$generated_text)"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#צעד-5-שימוש-במודלים-ספציפיים---דוגמה-שנייה",
+    "href": "slide-decks/api-ai-draft.html#צעד-5-שימוש-במודלים-ספציפיים---דוגמה-שנייה",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "צעד 5: שימוש במודלים ספציפיים - דוגמה שנייה",
+    "text": "צעד 5: שימוש במודלים ספציפיים - דוגמה שנייה\n\n\nQuestion Answering with BERT\n\nresult <- hf_inference(\n  model_id = \"deepset/roberta-base-squad2\",\n  inputs = list(\n    question = \"מה היה הישג מרכזי של אשורבניפל?\",\n    context = \"אשורבניפל (668-627 לפנה״ס) היה המלך האחרון של האימפריה האשורית החדשה. הוא ידוע בהקמת הספרייה הגדולה בנינוה, שבה נאספו אלפי לוחות חרס ובהם טקסטים מסופוטמיים.\"\n  )\n)\n\n# הדפסת התשובה\ncat(\"תשובה:\", result$answer)"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#צעד-1-התקנת-ollama",
+    "href": "slide-decks/api-ai-draft.html#צעד-1-התקנת-ollama",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "צעד 1: התקנת Ollama",
+    "text": "צעד 1: התקנת Ollama\n\n\nגשו לאתר ollama.ai והורידו את הגרסה המתאימה למערכת ההפעלה שלכם\nWindows: הורידו והתקינו את התוכנה\nmacOS: הורידו את האפליקציה או הריצו curl -fsSL https://ollama.ai/install.sh | sh\nLinux: הריצו curl -fsSL https://ollama.ai/install.sh | sh"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#צעד-2-הפעלת-ollama-והורדת-מודל",
+    "href": "slide-decks/api-ai-draft.html#צעד-2-הפעלת-ollama-והורדת-מודל",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "צעד 2: הפעלת Ollama והורדת מודל",
+    "text": "צעד 2: הפעלת Ollama והורדת מודל\n\n\nTerminal\n\n# הפעלת השירות\nollama serve\n\n# הורדת מודל קל משקל להתחלה\nollama pull tinyllama\n\n# הורדת מודל עם הקשר רחב יותר\nollama pull llama2"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#צעד-3-יצירת-פונקציות-ב-r-לשימוש-ב-ollama",
+    "href": "slide-decks/api-ai-draft.html#צעד-3-יצירת-פונקציות-ב-r-לשימוש-ב-ollama",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "צעד 3: יצירת פונקציות ב-R לשימוש ב-Ollama",
+    "text": "צעד 3: יצירת פונקציות ב-R לשימוש ב-Ollama\n\n\nR Functions\n\nlibrary(httr)\nlibrary(jsonlite)\n\nollama_generate <- function(prompt, model = \"tinyllama\", parameters = NULL) {\n  # פרמטרים בסיסיים\n  body <- list(\n    model = model,\n    prompt = prompt\n  )\n  \n  # הוספת פרמטרים מותאמים אישית\n  if (!is.null(parameters)) {\n    body <- c(body, parameters)\n  }\n  \n  response <- POST(\n    url = \"http://localhost:11434/api/generate\",\n    body = toJSON(body, auto_unbox = TRUE),\n    encode = \"json\"\n  )\n  \n  content(response)\n}"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#צעד-4-פונקציית-צאט-לשיחות-מורכבות",
+    "href": "slide-decks/api-ai-draft.html#צעד-4-פונקציית-צאט-לשיחות-מורכבות",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "צעד 4: פונקציית צ׳אט לשיחות מורכבות",
+    "text": "צעד 4: פונקציית צ׳אט לשיחות מורכבות\n\n\nChat Function\n\nollama_chat <- function(messages, model = \"tinyllama\") {\n  response <- POST(\n    url = \"http://localhost:11434/api/chat\",\n    body = toJSON(list(\n      model = model,\n      messages = messages\n    ), auto_unbox = TRUE),\n    encode = \"json\"\n  )\n  \n  content(response)\n}"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#צעד-5-שימוש-בפונקציות",
+    "href": "slide-decks/api-ai-draft.html#צעד-5-שימוש-בפונקציות",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "צעד 5: שימוש בפונקציות",
+    "text": "צעד 5: שימוש בפונקציות\n\n\nUsing Ollama\n\n# יצירת טקסט פשוטה\nresult <- ollama_generate(\n  prompt = \"תאר את חורבן ממלכת ישראל על ידי האשורים בשנת 722 לפנה״ס\",\n  model = \"llama2\"\n)\n\n# הצגת התוצאה\ncat(result$response)\n\n# לשיחה בסגנון צ׳אט\nchat_result <- ollama_chat(\n  messages = list(\n    list(role = \"user\", content = \"מה היו הסיבות העיקריות להתמוטטות הערים הכנעניות בסוף תקופת הברונזה המאוחרת?\")\n  ),\n  model = \"llama2\"\n)\n\ncat(chat_result$message$content)"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#מהו-חלון-הקשר",
+    "href": "slide-decks/api-ai-draft.html#מהו-חלון-הקשר",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "מהו חלון הקשר?",
+    "text": "מהו חלון הקשר?\n\n\nחלון הקשר הוא כמות המידע שהמודל יכול “לזכור” ולעבד בבת אחת\nנמדד בטוקנים (בערך 0.75 מילים בעברית)\nמשפיע מאוד על יכולת הניתוח של טקסטים ארוכים\nככל שחלון ההקשר גדול יותר, כך המודל “זוכר” יותר מידע"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#השוואה-בין-חלונות-הקשר",
+    "href": "slide-decks/api-ai-draft.html#השוואה-בין-חלונות-הקשר",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "השוואה בין חלונות הקשר",
+    "text": "השוואה בין חלונות הקשר\n\n\nחלון הקשר רגיל (2K-4K טוקנים)\n\nמתאים למחשבים עם 8GB RAM\nתגובות מהירות יותר\nמספיק לשאלות קצרות\nלניתוח טקסטים קצרים\n\n\nחלון הקשר גדול (8K-32K+ טוקנים)\n\nדורש 16GB+ RAM\nאיטי יותר בהרצה\nמתאים לניתוח מסמכים שלמים\nזוכר פרטים משיחות ארוכות"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#מודלים-לפי-גודל-חלון-הקשר",
+    "href": "slide-decks/api-ai-draft.html#מודלים-לפי-גודל-חלון-הקשר",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "מודלים לפי גודל חלון הקשר",
+    "text": "מודלים לפי גודל חלון הקשר\n\n\nחלון הקשר רגיל\n\nollama pull tinyllama (~2K)\nollama pull llama2 (~4K)\nollama pull mistral (~4K)\nollama pull phi (~4K)\n\n\nחלון הקשר גדול\n\nollama pull llama2-70b (~8K)\nollama pull wizard:13b (~8K)\nollama pull mixtral (~8K)\nollama pull claude-instant (~16K)"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#תקופת-הברונזה-המאוחרת-מכתבי-אל-עמארנה",
+    "href": "slide-decks/api-ai-draft.html#תקופת-הברונזה-המאוחרת-מכתבי-אל-עמארנה",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "תקופת הברונזה המאוחרת: מכתבי אל-עמארנה",
+    "text": "תקופת הברונזה המאוחרת: מכתבי אל-עמארנה\n\n\nאתגר המחקר:\n\n382 לוחות חרס בכתב יתדות\nמכתבים דיפלומטיים בין מצרים לכנען\nמקור מידע מרכזי על הלבנט במאה ה-14 לפנה״ס\nהבנת יחסי הכוחות בין ערי כנען\n\nמודל מומלץ: מודל עם חלון הקשר גדול\n\n\n\n\nמכתב מארכיון אל-עמארנה"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#קוד-לדוגמה-ניתוח-מכתבי-אל-עמארנה",
+    "href": "slide-decks/api-ai-draft.html#קוד-לדוגמה-ניתוח-מכתבי-אל-עמארנה",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "קוד לדוגמה: ניתוח מכתבי אל-עמארנה",
+    "text": "קוד לדוגמה: ניתוח מכתבי אל-עמארנה\n\n\nAmarna Letters Analysis\n\n# ניתוח ארכיון אל-עמארנה עם חלון הקשר גדול\namarna_analysis <- ollama_chat(\n  messages = list(\n    list(role = \"user\", content = \"להלן תעתיק של מכתב EA 286 מארכיון אל-עמארנה, שנשלח על ידי עבדי-חבה מירושלים לפרעה. נתח את התוכן, הקשר ההיסטורי והמשמעות הפוליטית שלו:\n\n[כאן יופיע תעתיק מלא של המכתב שאורכו כ-300 מילים]\")\n  ),\n  model = \"wizard:13b\"  # מודל עם חלון הקשר גדול\n)\n\ncat(amarna_analysis$message$content)"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#תקופת-הברזל-כתובת-מישע",
+    "href": "slide-decks/api-ai-draft.html#תקופת-הברזל-כתובת-מישע",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "תקופת הברזל: כתובת מישע",
+    "text": "תקופת הברזל: כתובת מישע\n\n\nאתגר המחקר:\n\nכתובת מואבית מהמאה ה-9 לפנה״ס\n34 שורות בכתב עברי קדום\nמקור היסטורי מקביל לתנ״ך\nמשקפת את המתחים בין ישראל ומואב\n\nמודל מומלץ: מודל עם חלון הקשר רגיל\n\n\n\n\nכתובת מישע"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#קוד-לדוגמה-השוואת-גרסאות-של-כתובת-מישע",
+    "href": "slide-decks/api-ai-draft.html#קוד-לדוגמה-השוואת-גרסאות-של-כתובת-מישע",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "קוד לדוגמה: השוואת גרסאות של כתובת מישע",
+    "text": "קוד לדוגמה: השוואת גרסאות של כתובת מישע\n\n\nMesha Stele Comparison\n\n# השוואת פרשנויות שונות לכתובת מישע\nmesha_interpretations <- hf_inference(\n  model_id = \"mistralai/Mistral-7B-Instruct-v0.2\",\n  inputs = \"<s>[INST] השווה בין הפרשנויות של אנדרה למואר ומארק ליידנר לשורות 31-32 בכתובת מישע, בהקשר לאזכור 'בית דוד'. האם ניתן לראות בכתובת זו עדות חוץ-מקראית לקיומה של שושלת דוד? [/INST]\",\n  parameters = list(\n    max_new_tokens = 500,\n    temperature = 0.3\n  )\n)\n\ncat(mesha_interpretations[[1]]$generated_text)"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#מקורות-אשוריים-ובבליים-פריזמת-סנחריב",
+    "href": "slide-decks/api-ai-draft.html#מקורות-אשוריים-ובבליים-פריזמת-סנחריב",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "מקורות אשוריים ובבליים: פריזמת סנחריב",
+    "text": "מקורות אשוריים ובבליים: פריזמת סנחריב\n\n\nאתגר המחקר:\n\nטקסט ארוך על 6 צדדים של פריזמה\nתיאור מסעות הכיבוש של סנחריב\nכולל מידע על המצור על ירושלים\nמקור היסטורי מקביל לתנ״ך\n\nמודל מומלץ: מודל עם חלון הקשר גדול\n\n\n\n\nפריזמת סנחריב"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#קוד-לדוגמה-ניתוח-פריזמת-סנחריב",
+    "href": "slide-decks/api-ai-draft.html#קוד-לדוגמה-ניתוח-פריזמת-סנחריב",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "קוד לדוגמה: ניתוח פריזמת סנחריב",
+    "text": "קוד לדוגמה: ניתוח פריזמת סנחריב\n\n\nSennacherib Prism Analysis\n\n# ניתוח מלא של פריזמת סנחריב (טקסט ארוך)\nsennacherib_analysis <- ollama_chat(\n  messages = list(\n    list(role = \"user\", content = \"להלן התרגום המלא של פריזמת טיילור (פריזמת סנחריב) המתארת את מסע המלחמה השלישי של סנחריב לארץ ישראל בשנת 701 לפנה״ס. נתח את הטקסט המלא, השווה אותו למקורות המקראיים במלכים ב, ישעיהו ודברי הימים, והסבר את המשמעות ההיסטורית והארכיאולוגית:\n\n[כאן יופיע התרגום המלא של הפריזמה, שאורכו כ-1000 מילים]\"),\n  ),\n  model = \"claude-instant\"  # מודל עם חלון הקשר גדול במיוחד\n)\n\ncat(sennacherib_analysis$message$content)"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#תעודות-בבליות-יומני-אסטרונומיה",
+    "href": "slide-decks/api-ai-draft.html#תעודות-בבליות-יומני-אסטרונומיה",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "תעודות בבליות: יומני אסטרונומיה",
+    "text": "תעודות בבליות: יומני אסטרונומיה\n\n\nאתגר המחקר:\n\nיומנים אסטרונומיים מבבל\nרישום תופעות שמיימיות לאורך 700 שנה\nסיוע בתיארוך אירועים היסטוריים\nמאפשר לייצר כרונולוגיה אבסולוטית\n\nמודל מומלץ: מודל עם חלון הקשר בינוני\n\n\n\n\nיומן אסטרונומי בבלי"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#קוד-לדוגמה-תיארוך-ליקוי-חמה",
+    "href": "slide-decks/api-ai-draft.html#קוד-לדוגמה-תיארוך-ליקוי-חמה",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "קוד לדוגמה: תיארוך ליקוי חמה",
+    "text": "קוד לדוגמה: תיארוך ליקוי חמה\n\n\nBabylonian Astronomical Diaries\n\n# ניתוח יומן אסטרונומי ותיארוך אירוע היסטורי\nastronomical_dating <- hf_inference(\n  model_id = \"mistralai/Mistral-7B-Instruct-v0.2\",\n  inputs = \"<s>[INST] לפי היומן האסטרונומי הבבלי BM 32312, ליקוי חמה נצפה בחודש סיון בשנה ה-7 למלך נבוכדנאצר השני. בהתבסס על חישובים אסטרונומיים מודרניים, מתי התרחש ליקוי זה בלוח השנה הגרגוריאני? מה המשמעות של תאריך זה לכרונולוגיה של חורבן ירושלים? [/INST]\",\n  parameters = list(\n    max_new_tokens = 400,\n    temperature = 0.2\n  )\n)\n\ncat(astronomical_dating[[1]]$generated_text)"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#בחירת-המודל-המתאים-למחקר",
+    "href": "slide-decks/api-ai-draft.html#בחירת-המודל-המתאים-למחקר",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "בחירת המודל המתאים למחקר",
+    "text": "בחירת המודל המתאים למחקר\n\n\nטקסטים קצרים וממוקדים - מודל עם חלון הקשר רגיל:\n\nכתובות בודדות (מישע, שילוח, כתובות קבורה)\nניתוח פריטים ארכיאולוגיים ספציפיים\nתיארוך וקטלוג ממצאים\n\nטקסטים ארוכים ומורכבים - מודל עם חלון הקשר גדול:\n\nארכיונים שלמים (אל-עמארנה, לכיש)\nאנאלים מלכותיים אשוריים ובבליים\nהשוואה בין מקורות היסטוריים מרובים"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#המלצות-מעשיות-לשימוש",
+    "href": "slide-decks/api-ai-draft.html#המלצות-מעשיות-לשימוש",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "המלצות מעשיות לשימוש",
+    "text": "המלצות מעשיות לשימוש\n\nהתחילו עם Hugging Face לניסויים ראשוניים\nהתקינו Ollama עבור מחקר מתמשך ועמוק\nבחרו את גודל החלון בהתאם לטקסט הנחקר\nשמרו על גישה ביקורתית - המודלים אינם מושלמים\nתעדו את השאילתות והתוצאות כחלק ממתודולוגיית המחקר"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#תודה-רבה",
+    "href": "slide-decks/api-ai-draft.html#תודה-רבה",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "תודה רבה!",
+    "text": "תודה רבה!\nשאלות?"
+  },
+  {
+    "objectID": "slide-decks/api-ai-draft.html#מקורות-וקישורים-שימושיים",
+    "href": "slide-decks/api-ai-draft.html#מקורות-וקישורים-שימושיים",
+    "title": "שילוב בינה מלאכותית במחקר ארכיאולוגי",
+    "section": "מקורות וקישורים שימושיים",
+    "text": "מקורות וקישורים שימושיים\n\nHugging Face - אתר רשמי\nOllama - אתר רשמי\nמדריך למודלים שפתיים בארכיאולוגיה\nפרויקט DigitalPasts - כלי בינה מלאכותית בארכיאולוגיה"
   }
 ]

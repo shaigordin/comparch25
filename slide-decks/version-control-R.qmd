@@ -1,6 +1,6 @@
 ---
 title: "בקרת גרסאות וכלי AI למחקר ארכיאולוגי והיסטורי"
-subtitle: "שילוב Git, GitHub ו-gptstudio ב-R Studio"
+subtitle: "שילוב Git, GitHub ו-Huggingface ב-R Studio"
 author: "ד״ר שי גורדין"
 date: "2025-03-23"
 date-format: "DD/MM/YYYY"
@@ -169,118 +169,459 @@ use_ccby_license() # https://creativecommons.org/share-your-work/cclicenses/
 use_github()       
 ```
 
-# חלק 2: כלי AI למחקר ארכיאולוגי ב-R Studio {.section style="text-align: center"}
+## פתרון בעיות נפוצות בהתקנת Git {.smaller .center style="text-align: center"}
 
-## 
-
-![](img/ai-tools-diagram.png)
-
-::: notes
-עכשיו נעבור לחלק השני של השיעור, שבו נלמד על כלי בינה מלאכותית שיכולים לסייע לנו במחקר ארכיאולוגי והיסטורי. אחד הכלים המרכזיים שנתמקד בו הוא gptstudio, שמשלב מודלי שפה גדולים כמו GPT ו-Claude ישירות בסביבת העבודה של RStudio.
-:::
-
-## מהו gptstudio? {style="text-align: center"}
-
--   תוסף ל-RStudio המשלב מודלי שפה גדולים (LLMs)
--   מאפשר לשאול שאלות ולקבל עזרה בזמן אמת
--   תומך במגוון ספקי AI:
-    -   OpenAI (GPT-4, GPT-3.5)
-    -   Anthropic (Claude)
-    -   Ollama (מודלים מקומיים)
-    -   ועוד רבים אחרים
-
-::: notes
-gptstudio היא חבילת R שפותחה על ידי מישל ניברד ואחרים, המאפשרת לשלב מודלי שפה גדולים ישירות בסביבת העבודה של RStudio. התוסף מאפשר לנו לשאול שאלות, לקבל עזרה בקידוד, לתקן שגיאות, ואפילו לקבל פירושים לממצאים ארכיאולוגיים - כל זאת מבלי לצאת מסביבת העבודה שלנו.
-:::
-
-## התקנת gptstudio {.smaller style="text-align: center"}
+### בדיקה בסיסית: האם Git מותקן כראוי? {style="text-align: right"}
 
 ``` r
-# התקנה מ-CRAN
-install.packages("gptstudio")
+# בדקו אם Git מותקן ומזוהה על ידי R
+system("git --version")
 
-# או, עבור הגרסה המתפתחת מ-GitHub
-# install.packages("pak")
-pak::pak("MichelNivard/gptstudio")
+# אם מקבלים שגיאה, יש לבצע את הצעדים הבאים:
 ```
-
-### הגדרת מפתח API ל-OpenAI {style="text-align: center"}
-
-``` r
-require(usethis)
-edit_r_environ()
-
-# הוסיפו את השורה הבאה ל-.Renviron
-# OPENAI_API_KEY="המפתח שלכם"
-```
-
-::: notes
-כדי להשתמש ב-gptstudio, צריך תחילה להתקין את החבילה ולהגדיר מפתח API לאחד משירותי הבינה המלאכותית. ברירת המחדל היא OpenAI, אבל אפשר להשתמש גם בשירותים אחרים. בואו נעבור על תהליך ההתקנה וההגדרה יחד.
-:::
-
-## תרגיל מעשי 2: שימוש ב-gptstudio {.smaller .center style="text-align: center"}
-
-### תרגלו שימוש בצ'אט AI לניתוח ארכיאולוגי: {style="text-align: right"}
 
 ::: incremental
-1.  התקינו את gptstudio
-2.  פתחו את RStudio
-3.  פתחו את תוסף הצ'אט: **Addins \> gptstudio \> Chat**
-4.  שאלו שאלה על ניתוח נתונים ארכיאולוגיים
+1.  אם Git לא מזוהה:
+    -   וודאו שהתקנתם Git מהאתר הרשמי: https://git-scm.com/downloads/win
+    -   בחרו באפשרות "Git from the command line and also from 3rd-party software" בהתקנה
+    -   הפעילו מחדש את RStudio אחרי ההתקנה
+2.  בדקו את נתיב ההתקנה של Git בהגדרות RStudio:
+    -   פתחו Tools -\> Global Options -\> Git/SVN
+    -   וודאו שנתיב ה-Git executable תקין (בדרך כלל C:/Program Files/Git/bin/git.exe)
 :::
 
-``` r
-# דוגמה לשאלה:
-"מהם המבחנים הסטטיסטיים המתאימים ביותר לניתוח התפלגות של 
-ממצאי חרס לפי תקופות זמן שונות באתר חפירות?"
+## בעיות נתיב (PATH) במערכת Windows {.smaller style="text-align: center"}
+
+``` bash
+# בדיקת נתיב Git בשורת הפקודה של Windows
+where git
+
+# אם אינכם רואים תוצאה, הוסיפו את נתיב Git ל-PATH:
 ```
 
-::: notes
-עכשיו בואו נתרגל שימוש ב-gptstudio. אחרי ההתקנה, אפשר לפתוח את תוסף הצ'אט מתפריט ה-Addins ב-RStudio. נסו לשאול שאלות שקשורות למחקר ארכיאולוגי והיסטורי, כמו שיטות ניתוח נתונים, טכניקות ויזואליזציה, או פירוש של תוצאות סטטיסטיות.
+::: incremental
+1.  פתחו "Environment Variables" במערכת (חפשו "environment variables" בחיפוש Windows)
+2.  תחת "System variables", מצאו את המשתנה PATH ולחצו על "Edit"
+3.  הוסיפו את הנתיב למיקום קובץ ה-git.exe (בדרך כלל C:\Program Files\Git\bin)
+4.  אתחלו את המחשב
+5.  פתחו RStudio מחדש ובדקו שוב
 :::
 
-## פונקציות מרכזיות ב-gptstudio {.smaller style="text-align: center"}
+## בעיות אימות מול GitHub {.smaller style="text-align: center"}
 
--   **Chat**: צ'אט עם מודל AI
--   **Chat in Source**: קבלת עזרה לקוד שנבחר
--   **Spelling and Grammar**: בדיקת איות ודקדוק בטקסט
--   **Comment your code**: הוספת הערות מפורטות לקוד
-
-### מודלים נתמכים:
-
--   OpenAI (GPT-4, GPT-3.5)
--   Anthropic (Claude 3.5, Claude 2.1)
--   Ollama (מודלים מקומיים)
--   Google (Gemini)
--   ועוד...
-
-::: notes
-gptstudio מציע מספר פונקציות שימושיות למחקר ארכיאולוגי והיסטורי. הפונקציה הבסיסית ביותר היא הצ'אט, שמאפשר לשאול שאלות ולקבל תשובות. אבל יש גם פונקציות ייעודיות כמו "Chat in Source" שמאפשרת לקבל עזרה לגבי קוד ספציפי, "Spelling and Grammar" לבדיקת טקסטים, ו-"Comment your code" להוספת הערות מפורטות לקוד. החבילה תומכת במגוון רחב של מודלי AI.
+::: incremental
+1.  וודאו שאתם משתמשים ב-PAT (Personal Access Token) ולא בסיסמה רגילה:
+    -   נוצר באמצעות `usethis::create_github_token()`
+    -   יש להגדיר הרשאות מתאימות (לפחות `repo`, `workflow`, `user`)
+2.  בדקו שהטוקן נשמר כראוי:
+    -   השתמשו ב-`gitcreds::gitcreds_get()` לבדיקה אם הטוקן קיים
+    -   אם יש בעיה, השתמשו ב-`gitcreds::gitcreds_set()` מחדש
 :::
-
-## תרגיל מעשי 3: ניתוח נתונים ארכיאולוגיים עם AI {.smaller .center style="text-align: center"}
-
-### תרגלו ניתוח התפלגות ממצאים בעזרת AI: {style="text-align: center"}
 
 ``` r
-# יצירת נתוני דוגמה של ממצאים ארכיאולוגיים
-set.seed(123)  # לשחזוריות התוצאות
+# בדיקת אימות GitHub
+usethis::gh_token_help()
+gh::gh_whoami()
 
-artifacts <- tibble(
-  x = runif(200, 0, 10),          # קואורדינטה מזרח-מערב
-  y = runif(200, 0, 10),          # קואורדינטה צפון-דרום
-  period = sample(c("תקופת הברונזה", "תקופת הברזל", "התקופה ההלניסטית"), 
-                 200, replace = TRUE)  # תקופה היסטורית
+# אם אתם מקבלים שגיאה, נסו:
+gitcreds::gitcreds_set()  # הזינו את הטוקן שלכם מחדש
+```
+
+## שגיאות נפוצות בעת חיבור RStudio לגיטהאב {.smaller style="text-align: right"}
+
+::: callout-warning
+### שגיאת RStudio: could not find git executable
+
+-   פתרון: וודאו שהנתיב ל-Git נכון ב-Tools -\> Global Options -\> Git/SVN
+:::
+
+::: callout-warning
+### שגיאת "Authentication failed"
+
+-   פתרון: בדקו שהטוקן תקף ושיש לו הרשאות מתאימות
+-   צרו טוקן חדש ב-GitHub (Settings -\> Developer Settings -\> Personal Access Tokens)
+-   הגדירו מחדש עם `gitcreds::gitcreds_set()`
+:::
+
+::: callout-warning
+### שגיאת "Error: unable to create (repo): HTTP 422"
+
+-   פתרון: כנראה שכבר קיים מאגר באותו שם בחשבון שלכם
+-   שנו את שם המאגר ב-`usethis::use_github(name = "שם_חדש")`
+:::
+
+## צעדי הגדרה מתוקנים ובסדר מדויק {.smaller style="text-align: right"}
+
+1.  התקינו Git והגדירו משתמש:
+
+``` bash
+# בטרמינל
+git config --global user.name "השם שלכם"
+git config --global user.email "האימייל שלכם"
+```
+
+2.  התקינו חבילות נדרשות ב-R (סדר חשוב!):
+
+``` r
+# התקינו את כל החבילות הנדרשות
+install.packages(c("usethis", "gitcreds", "gh", "credentials"))
+library(usethis)
+```
+
+3.  וודאו שהגדרות המשתמש זהות ב-Git וב-GitHub:
+
+``` r
+# הגדרת שם משתמש ודוא"ל זהים ל-Git
+use_git_config(user.name = "השם שלכם", user.email = "האימייל שלכם")
+```
+
+## צעדי הגדרה מתוקנים - המשך {.smaller style="text-align: right"}
+
+4.  צרו וקשרו טוקן GitHub:
+
+``` r
+# יצירת טוקן חדש (יפתח בדפדפן)
+usethis::create_github_token()
+
+# שמירת הטוקן (העתיקו את הטוקן שנוצר)
+gitcreds::gitcreds_set()
+
+# בדיקת האימות
+gh::gh_whoami()
+```
+
+5.  צרו פרויקט RStudio וחברו אותו לגיטהאב:
+
+``` r
+# יצירת README וביצוע commit ראשון 
+usethis::use_readme_md()
+
+# הוספת התיקייה ל-git
+usethis::use_git()
+
+# חיבור לגיטהאב (וודאו שביצעתם commit לפני כן!)
+usethis::use_github()
+```
+
+## פתרון בעיית Proxy בקמפוס {.smaller style="text-align: right"}
+
+אם אתם מתחברים דרך רשת הקמפוס וחווים בעיות התחברות:
+
+``` bash
+# הגדרת proxy בגיט (הזינו את כתובת ה-proxy של האוניברסיטה)
+git config --global http.proxy http://proxy.ariel.ac.il:8080
+git config --global https.proxy https://proxy.ariel.ac.il:8080
+
+# אם אתם מתחברים מהבית ולא צריכים proxy, בטלו את ההגדרות:
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
+
+## איך לבדוק אם החיבור בין RStudio ל-GitHub עובד? {.smaller style="text-align: right"}
+
+בדיקה פשוטה:
+
+``` r
+# צרו שינוי קטן בקובץ README.md
+writeLines("# פרויקט מחקר ארכיאולוגי\n\nזהו פרויקט מחקר בארכיאולוגיה.", "README.md")
+
+# בדקו אם השינויים מזוהים ב-Git (צריכה להופיע הודעה בחלון Git)
+```
+
+::: incremental
+1.  בממשק RStudio, בדקו את הלשונית Git (בדרך כלל בפינה הימנית העליונה)
+2.  סמנו V ליד השינויים שברצונכם לשלוח (stage changes)
+3.  לחצו על "Commit" ורשמו הודעת commit
+4.  לחצו על "Push" כדי לשלוח את השינויים לגיטהאב
+5.  בדקו באתר GitHub שהשינויים הגיעו
+:::
+
+## משאבים לפתרון בעיות נוספות {.smaller style="text-align: center"}
+
+::: callout-tip
+### מקורות מידע לפתרון בעיות:
+
+-   [מדריך Happy Git with R](https://happygitwithr.com/troubleshooting.html)
+-   [פתרון בעיות RStudio & Git](https://docs.posit.co/ide/user/ide/guide/tools/version-control.html)
+-   [מדריך אינטראקטיבי לעבודה עם Git](https://learngitbranching.js.org/?locale=he)
+:::
+
+::: notes
+חשוב שהסטודנטים יבינו שפתרון בעיות הוא חלק נורמלי מהעבודה עם כלים טכנולוגיים. כדאי להדגיש שהשקעת הזמן בהגדרה הנכונה תשתלם מאוד בהמשך המחקר שלהם.
+:::
+
+# חלק 2: כלי AI למחקר ארכיאולוגי ב-R Studio {.section style="text-align: center"}
+
+## מדוע להשתמש בבינה מלאכותית במחקר ארכיאולוגי? {style="text-align: right"}
+
+::: incremental
+-   ניתוח טקסטים היסטוריים בהיקף נרחב
+-   זיהוי דפוסים בנתונים ארכיאולוגיים
+-   סיוע בתרגום ופענוח כתובות עתיקות
+-   הצלבת מקורות ומציאת קשרים בין ממצאים
+-   יצירת שחזורים והדמיות של אתרים עתיקים
+:::
+
+## מודלי בינה מלאכותית לשימוש החוקר {.smaller style="text-align: center"}
+
+::::: columns
+::: {.column width="50%"}
+**Hugging Face**
+
+-   מגוון מודלים מוכנים לשימוש
+-   גישה באמצעות API מקוון
+-   חינמי לשימוש בסיסי
+-   מתאים למחקר אקדמי
+:::
+
+::: {.column width="50%"}
+**Ollama**
+
+-   הרצה מקומית על המחשב האישי
+-   ללא צורך בחיבור לאינטרנט לאחר ההורדה
+-   שליטה מלאה על המודלים
+-   פרטיות מוחלטת של הנתונים
+:::
+:::::
+
+## תרגיל מעשי 2: התקנת Hugging Face API {.smaller style="text-align: center"}
+
+### צעד 1: יצירת חשבון ב-Hugging Face {style="text-align: right"}
+
+::: incremental
+1.  גשו לאתר [huggingface.co](https://huggingface.co/) והירשמו לחשבון חינמי
+2.  נווטו אל הפרופיל שלכם ← הגדרות ← Access Tokens
+3.  צרו טוקן חדש (בחרו ברמת הרשאות "Read" לגישה חינמית)
+:::
+
+``` {.r filename="R Console"}
+# שמירת הטוקן בקובץ סביבה (.Renviron)
+# Opens the file for editing (creates if doesn't exist)
+usethis::edit_r_environ(scope = "user")
+
+# הדבק את השורה הבאה בתוך הקובץ .Renviron
+HUGGINGFACE_API_KEY="הדביקו את התוקן של האגינגפייס כאן"
+
+# גישה אלטרנטיבית עם usethis לא זמין
+file.edit("~/.Renviron")  # Unix/Mac
+file.edit(file.path(Sys.getenv("HOME"), ".Renviron"))  # Windows alternative
+
+# הוספת .Renviron ל-.gitignore באמצעות usethis (חשוב במידה ודוחפים לגיטהאב)
+usethis::use_git_ignore(".Renviron")
+```
+
+## צעד 2: התקנת חבילות נדרשות ב-R {style="text-align: right"}
+
+``` {.r filename="R Console"}
+# התקנת חבילות נדרשות
+install.packages(c("httr", "jsonlite"))
+library(httr)
+library(jsonlite)
+```
+
+## צעד 3: יצירת פונקציה לגישה ל-API {.smaller style="text-align: right"}
+
+``` {.r filename="R Function"}
+hf_inference <- function(model_id, inputs, task = "text-generation", parameters = NULL) {
+  API_URL <- paste0("https://api-inference.huggingface.co/models/", model_id)
+  
+  body <- list(inputs = inputs)
+  if (!is.null(parameters)) {
+    body$parameters <- parameters
+  }
+  
+  response <- POST(
+    url = API_URL,
+    add_headers(
+      Authorization = paste("Bearer", Sys.getenv("HF_API_TOKEN")),
+      "Content-Type" = "application/json"
+    ),
+    body = toJSON(body, auto_unbox = TRUE)
+  )
+  
+  content(response)
+}
+```
+
+## צעד 4: שימוש במודלים ספציפיים - דוגמה ראשונה {.smaller style="text-align: right"}
+
+``` {.r filename="Text Generation with Mistral"}
+# יצירת טקסט באמצעות Mistral-7B-Instruct
+result <- hf_inference(
+  model_id = "mistralai/Mistral-7B-Instruct-v0.2",
+  inputs = "<s>[INST] תאר את הממלכה האשורית החדשה בתקופת שלטונו של אשורבניפל [/INST]",
+  parameters = list(
+    max_new_tokens = 250,
+    temperature = 0.7,
+    return_full_text = FALSE
+  )
 )
 
-# סמנו את הקוד וכעת:
-# Addins > gptstudio > Chat in Source
-# בקשו: "שפר את הקוד הזה ליצירת ויזואליזציה של התפלגות הממצאים"
+# הדפסת התוצאה
+cat(result[[1]]$generated_text)
 ```
 
-::: notes
-בתרגיל הזה, נלמד להשתמש בפונקציית "Chat in Source" כדי לקבל עזרה בשיפור קוד לניתוח נתונים ארכיאולוגיים. נתחיל ביצירת מסד נתונים לדוגמה, ואז נבקש מה-AI לעזור לנו ליצור ויזואליזציה טובה יותר של הנתונים. זו דוגמה מצוינת לאיך AI יכול לסייע בעבודה היומיומית של חוקר.
+## צעד 5: שימוש במודלים ספציפיים - דוגמה שנייה {.smaller style="text-align: right"}
+
+``` {.r filename="Question Answering with BERT"}
+result <- hf_inference(
+  model_id = "deepset/roberta-base-squad2",
+  inputs = list(
+    question = "מה היה הישג מרכזי של אשורבניפל?",
+    context = "אשורבניפל (668-627 לפנה״ס) היה המלך האחרון של האימפריה האשורית החדשה. הוא ידוע בהקמת הספרייה הגדולה בנינוה, שבה נאספו אלפי לוחות חרס ובהם טקסטים מסופוטמיים."
+  )
+)
+
+# הדפסת התשובה
+cat("תשובה:", result$answer)
+```
+
+## התקנת Ollama API {style="text-align: center"}
+
+### צעד 1: התקנת Ollama {style="text-align: right"}
+
+::: incremental
+1.  גשו לאתר [ollama.ai](https://ollama.ai/) והורידו את הגרסה המתאימה למערכת ההפעלה שלכם
+2.  **Windows**: הורידו והתקינו את התוכנה
+3.  **macOS**: הורידו את האפליקציה או הריצו `curl -fsSL https://ollama.ai/install.sh | sh`
+4.  **Linux**: הריצו `curl -fsSL https://ollama.ai/install.sh | sh`
 :::
+
+## צעד 2: הפעלת Ollama והורדת מודל {style="text-align: right"}
+
+``` {.bash filename="Terminal"}
+# הפעלת השירות
+ollama serve
+
+# הורדת מודל קל משקל להתחלה
+ollama pull tinyllama
+
+# הורדת מודל עם הקשר רחב יותר
+ollama pull llama2
+```
+
+## צעד 3: יצירת פונקציות ב-R לשימוש ב-Ollama {.smaller style="text-align: right"}
+
+``` {.r filename="R Functions"}
+library(httr)
+library(jsonlite)
+
+ollama_generate <- function(prompt, model = "tinyllama", parameters = NULL) {
+  # פרמטרים בסיסיים
+  body <- list(
+    model = model,
+    prompt = prompt
+  )
+  
+  # הוספת פרמטרים מותאמים אישית
+  if (!is.null(parameters)) {
+    body <- c(body, parameters)
+  }
+  
+  response <- POST(
+    url = "http://localhost:11434/api/generate",
+    body = toJSON(body, auto_unbox = TRUE),
+    encode = "json"
+  )
+  
+  content(response)
+}
+```
+
+## צעד 4: פונקציית צ׳אט לשיחות מורכבות {.smaller style="text-align: right"}
+
+``` {.r filename="Chat Function"}
+ollama_chat <- function(messages, model = "tinyllama") {
+  response <- POST(
+    url = "http://localhost:11434/api/chat",
+    body = toJSON(list(
+      model = model,
+      messages = messages
+    ), auto_unbox = TRUE),
+    encode = "json"
+  )
+  
+  content(response)
+}
+```
+
+## צעד 5: שימוש בפונקציות {.smaller style="text-align: right"}
+
+``` {.r filename="Using Ollama"}
+# יצירת טקסט פשוטה
+result <- ollama_generate(
+  prompt = "תאר את חורבן ממלכת ישראל על ידי האשורים בשנת 722 לפנה״ס",
+  model = "llama2"
+)
+
+# הצגת התוצאה
+cat(result$response)
+
+# לשיחה בסגנון צ׳אט
+chat_result <- ollama_chat(
+  messages = list(
+    list(role = "user", content = "מה היו הסיבות העיקריות להתמוטטות הערים הכנעניות בסוף תקופת הברונזה המאוחרת?")
+  ),
+  model = "llama2"
+)
+
+cat(chat_result$message$content)
+```
+
+## חלונות הקשר (Context Windows) {style="text-align: center"}
+
+### מהו חלון הקשר? {style="text-align: right"}
+
+::: incremental
+-   **חלון הקשר** הוא כמות המידע שהמודל יכול ״לזכור״ ולעבד בבת אחת
+-   נמדד ב**טוקנים** (בערך שווה ל-0.75 אורך מילה בעברית)
+-   משפיע מאוד על יכולת הניתוח של טקסטים ארוכים
+-   ככל שחלון ההקשר גדול יותר, כך המודל ״זוכר״ יותר מידע
+:::
+
+## השוואה בין חלונות הקשר {.smaller style="text-align: center"}
+
+::::: columns
+::: {.column width="50%"}
+**חלון הקשר רגיל (2K-4K טוקנים)**
+
+-   מתאים למחשבים עם 8GB RAM
+-   תגובות מהירות יותר
+-   מספיק לשאלות קצרות
+-   לניתוח טקסטים קצרים
+:::
+
+::: {.column width="50%"}
+**חלון הקשר גדול (8K-32K+ טוקנים)**
+
+-   דורש 16GB+ RAM
+-   איטי יותר בהרצה
+-   מתאים לניתוח מסמכים שלמים
+-   זוכר פרטים משיחות ארוכות
+:::
+:::::
+
+## מודלים לפי גודל חלון הקשר {.smaller style="text-align: right"}
+
+::::: columns
+::: {.column width="50%"}
+**חלון הקשר רגיל**
+
+-   `ollama pull tinyllama` (\~2K)
+-   `ollama pull llama2` (\~4K)
+-   `ollama pull mistral` (\~4K)
+-   `ollama pull phi` (\~4K)
+:::
+
+::: {.column width="50%"}
+**חלון הקשר גדול**
+
+-   `ollama pull llama2-70b` (\~8K)
+-   `ollama pull wizard:13b` (\~8K)
+-   `ollama pull mixtral` (\~8K)
+-   `ollama pull claude-instant` (\~16K)
+:::
+:::::
 
 # חלק 3: שילוב Git/GitHub ו-AI בזרימת עבודה {.section style="text-align: center"}
 
@@ -317,14 +658,336 @@ artifacts <- tibble(
 זרימת העבודה המשולבת מורכבת מחמישה שלבים עיקריים, כשבכל אחד מהם יש מקום הן לבקרת גרסאות והן לשימוש בכלי AI. זה מתחיל באיסוף נתונים, עובר דרך ניתוח ראשוני ומתקדם, שיתוף פעולה וביקורת, ומסתיים בפרסום. בכל שלב, Git מסייע לנו בתיעוד ובשיתוף, וה-AI מסייע בניתוח ובפירוש.
 :::
 
-## תרגיל מעשי 4: יצירת זרימת עבודה משולבת {.smaller .center style="text-align: center"}
+## תרגיל מעשי 3: ניתוח נתונים ארכיאולוגיים עם AI {.smaller .center style="text-align: center"}
 
-### תרגלו שילוב של Git ו-AI בפרויקט ארכיאולוגי: {style="text-align: right"}
+### שילוב Huggingface API בניתוח ממצאים ארכיאולוגיים {style="text-align: right"}
+
+::: incremental
+1.  נלמד כיצד לחבר את הקוד שלנו למודלי AI מתקדמים
+2.  ננתח התפלגות מרחבית של ממצאים ארכיאולוגיים
+3.  נשתמש במודלים שפותחו על ידי הקהילה המדעית הבינלאומית
+:::
+
+::: notes
+הסבירו לסטודנטים שבניגוד לחבילת AI, השימוש ב-Huggingface API מאפשר: 1. שליטה על בחירת המודלים (כולל מודלים בעברית) 2. שקיפות גדולה יותר בתהליך 3. יכולת להגדיר פרמטרים מדויקים לאינטראקציה עם המודל 4. אפשרות לשלב את התהליך בפייפליינים מחקריים מובנים
+:::
+
+## הכנת סביבת העבודה {.smaller style="text-align: center"}
+
+### התקנת החבילות הנדרשות: {style="text-align: right"}
+
+``` r
+# התקנת חבילות נדרשות (פעם אחת בלבד)
+if (!requireNamespace("tidyverse", quietly = TRUE)) install.packages("tidyverse")
+if (!requireNamespace("httr", quietly = TRUE)) install.packages("httr")
+if (!requireNamespace("jsonlite", quietly = TRUE)) install.packages("jsonlite")
+if (!requireNamespace("plotly", quietly = TRUE)) install.packages("plotly")
+
+# טעינת חבילות
+library(tidyverse)
+library(httr)
+library(jsonlite)
+library(plotly)
+```
+
+## מהן החבילות הנדרשות? {style="text-align: center"}
+
+::: incremental
+1.  **tidyverse** - לטיפול בנתונים וויזואליזציה
+2.  **httr** - לביצוע בקשות API
+3.  **jsonlite** - לעיבוד תשובות בפורמט JSON
+4.  **plotly** - חבילת וויזואליזציות אינטראקטיביות ב-html
+:::
+
+::: notes
+הדגישו לסטודנטים את החשיבות של הבנת ההיררכיה של החבילות: - tidyverse משמש לניתוח הנתונים הארכיאולוגיים עצמם - httr ו-jsonlite מאפשרים את התקשורת עם ה-API של מודלי השפה מומלץ להסביר בקצרה את מבנה ה-API של Huggingface ולהדגיש את היתרונות של השימוש ב-Huggingface על פני פלטפורמות סגורות אחרות.
+:::
+
+## יצירת נתוני דוגמה {.smaller style="text-align: center"}
+
+### יצירת מערך נתוני חפירה: {style="text-align: right"}
+
+``` r
+# יצירת נתוני דוגמה של ממצאים ארכיאולוגיים
+set.seed(123)  # לשחזוריות התוצאות
+artifacts <- tibble(
+  x = runif(200, 0, 10),          # קואורדינטה מזרח-מערב
+  y = runif(200, 0, 10),          # קואורדינטה צפון-דרום
+  period = sample(c("תקופת הברונזה", "תקופת הברזל", "התקופה ההלניסטית"), 
+                 200, replace = TRUE)  # תקופה היסטורית
+)
+
+# הצגת מבנה הנתונים
+head(artifacts)
+```
+
+::: notes
+כדאי להדגיש לסטודנטים: 1. השימוש ב-set.seed חשוב לשחזוריות הניתוח - הרעיון של מחקר שקוף וניתן לשחזור 2. המבנה המדויק של הנתונים והמשמעות של הקואורדינטות 3. זהו מודל מפושט - במציאות יהיו שדות נוספים כמו עומק, תיאור הממצא, מסת הממצא וכו'
+:::
+
+## ויזואליזציה בסיסית {.smaller style="text-align: center"}
+
+### תצוגה מרחבית של הממצאים: {style="text-align: right"}
+
+``` r
+# יצירת תרשים פיזור בסיסי עם תמיכה מלאה ביוניקוד
+plotly_visualization <- ggplotly(
+  ggplot(artifacts, aes(x = x, y = y, color = period)) +
+    geom_point(alpha = 0.7) +
+    theme_minimal()
+) %>%
+  layout(
+    title = list(text = "התפלגות ממצאים ארכיאולוגיים לפי תקופה"),
+    xaxis = list(title = "קואורדינטה מזרח-מערב"),
+    yaxis = list(title = "קואורדינטה צפון-דרום"),
+    legend = list(title = list(text = "תקופה"))
+  )
+  
+# שמירת התרשים כאוביקט HTML
+htmlwidgets::saveWidget(plotly_visualization, "archaeological_distribution.html")
+```
+
+::: notes
+חשוב להסביר את בחירת הייצוג הוויזואלי: 1. השימוש בצבע לסימון התקופות השונות 2. הבחירה ב-theme_minimal כדי להדגיש את הנתונים ולא את הרקע 3. ההתאמה לעברית עם הגדרת גופן David 4. הערך המוסף של ויזואליזציה למחקר ארכיאולוגי
+:::
+
+## פונקציית האינטגרציה עם Huggingface {.smaller style="text-align: center"}
+
+### בניית פונקציה לניתוח AI: {style="text-align: right"}
+
+``` r
+# הגדרת פונקציה לשימוש ב-Huggingface API
+analyze_with_ai <- function(data_summary, prompt, 
+                           api_key = Sys.getenv("HUGGINGFACE_API_KEY"), 
+                           model_id = "mistralai/Mistral-7B-Instruct-v0.2") {
+  
+  # בדיקה שיש מפתח API
+  if (api_key == "") {
+    stop("נא להגדיר מפתח API של Huggingface")
+  }
+  
+  # הכנת הנתונים עבור ה-API
+  artifacts_summary <- capture.output(summary(data_summary))
+  artifacts_str <- paste(artifacts_summary, collapse = "\n")
+  
+  # יצירת הבקשה ל-API
+  endpoint <- paste0("https://api-inference.huggingface.co/models/", model_id)
+```
+
+::: notes
+הדגישו את: 1. השימוש במשתני סביבה לאחסון המפתח - שיטה מקובלת לניהול סודות בקוד 2. האפשרות לבחור מודלים שונים לפי הצורך (והמלצו על מודלים ספציפיים) 3. חשיבות בדיקות התקינות לפני שליחת הבקשה 4. ההיגיון של המרת נתוני הממצאים לפורמט טקסטואלי שהמודל יוכל להבין
+:::
+
+## המשך: פונקציית האינטגרציה עם Huggingface {.smaller style="text-align: center"}
+
+``` r
+  # בניית הבקשה בפורמט המתאים למודל
+  full_prompt <- paste0(
+    "להלן נתונים על ממצאים ארכיאולוגיים:\n\n",
+    artifacts_str,
+    "\n\n",
+    prompt
+  )
+  
+  payload <- list(
+    inputs = full_prompt,
+    parameters = list(
+      max_new_tokens = 500,
+      temperature = 0.7,
+      return_full_text = FALSE
+    )
+  )
+  
+  # שליחת הבקשה ל-API
+  response <- POST(
+    url = endpoint,
+    body = toJSON(payload, auto_unbox = TRUE),
+    add_headers(
+      "Authorization" = paste("Bearer", api_key),
+      "Content-Type" = "application/json"
+    ),
+    encode = "json"
+  )
+```
+
+::: notes
+חשוב להסביר: 1. מבנה ה-prompt וחשיבותו - איך לנסח שאלות למודל בצורה אפקטיבית 2. משמעות הפרמטרים כמו temperature (איזון בין יצירתיות לדיוק) 3. מבנה בקשת ה-API והכותרות הנדרשות 4. התאמת הפרומפט לשפה העברית ולמחקר ארכיאולוגי
+:::
+
+## סיום הפונקציה וטיפול בתשובות {.smaller style="text-align: center"}
+
+``` r
+  # טיפול בתשובה
+  if (http_status(response)$category == "Success") {
+    content <- content(response, "parsed")
+    if (is.list(content) && length(content) > 0 && "generated_text" %in% names(content[[1]])) {
+      return(content[[1]]$generated_text)
+    } else {
+      return("התקבלה תשובה בפורמט לא צפוי")
+    }
+  } else {
+    return(paste("שגיאה:", http_status(response)$message))
+  }
+}
+```
+
+::: incremental
+1.  חשוב לטפל בשגיאות אפשריות בתקשורת עם ה-API
+2.  המבנה של התשובה יכול להשתנות בין מודלים שונים
+3.  שימוש בפונקציות מספריית httr לניתוח הסטטוס
+:::
+
+::: notes
+הדגישו את חשיבות הטיפול בשגיאות באפליקציות מבוססות API: 1. תקלות רשת 2. בעיות באימות 3. שינויים אפשריים בתגובת ה-API זו הזדמנות טובה להסביר על המבנה הסטנדרטי של תשובות JSON וכיצד לנתח אותן.
+:::
+
+## הדגמת השימוש בפונקציה {.smaller style="text-align: center"}
+
+### ניתוח כמותי ושאילת שאלות למודל: {style="text-align: right"}
+
+``` r
+# ניתוח כמותי בסיסי של הנתונים
+period_counts <- artifacts %>% count(period)
+print(period_counts)
+
+# שאלה לניתוח ב-AI
+analysis_prompt <- "אני חוקר/ת ארכיאולוג/ית. על סמך ההתפלגות של הממצאים:
+1. האם ניתן לזהות דפוסים מעניינים בפיזור המרחבי?
+2. מה המשמעות הארכיאולוגית האפשרית של ההתפלגות הנצפית?
+3. אילו בדיקות נוספות היית ממליץ/ה לבצע?
+אנא ספק/י ניתוח מקצועי מנקודת מבט ארכיאולוגית."
+
+# הרצת הניתוח (הורידו את ה-# כאשר יש לכם מפתח API)
+# Sys.setenv(HUGGINGFACE_API_KEY = "your_api_key_here")
+# ai_analysis <- analyze_with_ai(artifacts, analysis_prompt)
+# cat(ai_analysis)
+```
+
+::: notes
+כדאי לציין: 1. כיצד לקבל מפתח API מ-Huggingface 2. חשיבות ניסוח שאלות ברורות ומדויקות למודל 3. הדגישו שהמודל אינו מחליף את החוקר אלא מסייע לו לראות דפוסים ולהעלות השערות 4. אפשרו לסטודנטים לנסח שאלות שונות כתרגיל
+:::
+
+## ויזואליזציה מתקדמת {.smaller style="text-align: center"}
+
+### ניתוח צפיפות לפי תקופה: {style="text-align: right"}
+
+``` r
+# דוגמה ליצירת ויזואליזציה מתקדמת (ללא תלות ב-AI)
+# Initialize visualization framework with period-specific parameters
+periods <- unique(artifacts$period)
+plot_objects <- list()
+
+# Implement period-specific analytical units with direct density estimation
+for(i in seq_along(periods)) {
+  period_data <- filter(artifacts, period == periods[i])
+
+  # Construct individual period visualization with integrated density estimation
+  p <- plot_ly(data = period_data, x = ~x, y = ~y, type = "scatter",
+               mode = "markers", marker = list(opacity = 0.7),
+               name = periods[i]) %>%
+    layout(
+      title = periods[i],
+      xaxis = list(title = "קואורדינטות מזרח-מערב"),
+      yaxis = list(title = "קואורדינטות צפון-דרום")
+    )
+
+  # Add direct density visualization without matrix transformation
+  # Calculate kernel density estimate
+  kd <- MASS::kde2d(period_data$x, period_data$y, n = 50)
+
+  # Add contour visualization directly from density object
+  p <- p %>% add_contour(
+    x = kd$x,
+    y = kd$y,
+    z = kd$z,  # Direct matrix representation
+    contours = list(coloring = "heatmap"),
+    colorscale = "Viridis",
+    opacity = 0.3,
+    showlegend = FALSE
+  )
+
+  plot_objects[[i]] <- p
+}
+```
+
+::: notes
+הסבירו לסטודנטים: 1. משמעות מפות צפיפות (density maps) בהקשר ארכיאולוגי 2. יתרונות השימוש ב-facet_wrap לפיצול הנתונים לפי תקופות 3. כיצד לקרוא ולפרש את התוצאות בהקשר של ניתוח דפוסי התיישבות 4. את חשיבות בחירת סקאלת הצבעים המתאימה (כאן viridis שמתאימה גם לעיוורי צבעים)
+:::
+
+## ניתוח צפיפות לפי תקופה: {.smaller style="text-align: right"}
+
+``` r
+# Synthesize period-specific analytical units into comparative framework
+composite_visualization <- subplot(
+  plot_objects,
+  nrows = 1,
+  shareY = TRUE,
+  titleX = TRUE,
+  margin = 0.05
+) %>%
+  layout(
+    title = list(
+      text = "ניתוח צפיפות ממצאים ארכיאולוגיים לפי תקופה",
+      font = list(size = 18)
+    ),
+    margin = list(l = 100, r = 50, t = 100, b = 80),
+    annotations = list(
+      list(x = 0.16, y = 1.05, text = periods[1], showarrow = FALSE, xref = "paper", yref = "paper"),
+      list(x = 0.5, y = 1.05, text = periods[2], showarrow = FALSE, xref = "paper", yref = "paper"),
+      list(x = 0.84, y = 1.05, text = periods[3], showarrow = FALSE, xref = "paper", yref = "paper")
+    )
+  ) %>%
+  config(locale = "he")
+
+# Materialize analytical framework as interactive document
+htmlwidgets::saveWidget(composite_visualization, "archaeological_density_analysis.html", selfcontained = TRUE)
+```
+
+## הנחיות לשימוש ב-Huggingface API {.smaller style="text-align: center"}
+
+::: callout-tip
+### הערות לסטודנטים:
+
+1.  יש להשיג מפתח API מ-Huggingface (https://huggingface.co/settings/tokens)
+2.  ניתן להחליף את המודל למודלים אחרים, למשל:
+    -   "google/gemma-7b-it" - מודל של גוגל
+    -   "microsoft/phi-2" - מודל קטן ומהיר
+    -   "avichay/Hebrew-mistral-7b-instruct" - מודל בעברית
+3.  שמרו על המפתח שלכם בסוד ואל תכללו אותו בקוד שאתם מעלים לגיטהאב
+:::
+
+::: incremental
+1.  התנסו בפרמטרים שונים כמו temperature לקבלת תוצאות מגוונות
+2.  נסו לשלב את תוצאות האנליזה עם הויזואליזציות
+3.  תעדו את הפרומפטים ואת התוצאות במחברת המחקר שלכם
+:::
+
+::: notes
+חשוב להדגיש: 1. אתיקה בשימוש במודלי AI במחקר אקדמי 2. כיצד לצטט ולהתייחס לתוצאות שהתקבלו באמצעות AI 3. חשיבות הבחירה במודל המתאים למשימה 4. המלצות לגבי בחירת המודלים הטובים ביותר לניתוח טקסט בעברית 5. אמצעי אבטחה בעבודה עם מפתחות API
+:::
+
+## תרגיל סיכום יחידה ראשונה {.smaller style="text-align: center"}
+
+### מטלה להגשה: {style="text-align: right"}
+
+::: incremental
+1.  בחרו מערך נתונים ארכיאולוגי משלכם או השתמשו בנתוני הדוגמה
+2.  צרו לפחות 2 ויזואליזציות שונות המציגות היבטים שונים של הנתונים
+3.  נסחו 2-3 שאלות למודל ה-AI ונתחו את התשובות
+4.  הגישו דוח קצר המשלב את הויזואליזציות, השאלות והתשובות
+5.  העלו את כל החומרים למאגר הגיטהאב שיצרתם
+:::
+
+::: notes
+הדגישו לסטודנטים: 1. המטרה היא ללמוד לשלב כלים חישוביים עם חשיבה ארכיאולוגית 2. עודדו אותם להיות ביקורתיים כלפי התוצאות שמתקבלות מה-AI 3. הזכירו להם את חשיבות התיעוד השיטתי של התהליך כולו 4. הסבירו כיצד לשלב את התובנות מהמודל בדוח המחקר באופן ראוי
+:::
+
+## הוראות לגיטהאב {.smaller .center style="text-align: center"}
 
 ::: incremental
 1.  צרו מאגר Git חדש לפרויקט ארכיאולוגי
 2.  הוסיפו קובץ Quarto Markdown לניתוח נתונים
-3.  השתמשו ב-gptstudio לשיפור הקוד והניתוח
+3.  השתמשו ב-AI לשיפור הקוד והניתוח
 4.  בצעו commit לשינויים עם הסבר מפורט
 5.  דחפו את השינויים ל-GitHub
 6.  שתפו את הקישור עם עמית ובקשו משוב
@@ -340,7 +1003,7 @@ git push origin main
 בתרגיל הזה, נשלב את כל מה שלמדנו עד כה ליצירת זרימת עבודה משולבת לפרויקט ארכיאולוגי. נתחיל ביצירת מאגר Git, נוסיף קובץ R Markdown לניתוח נתונים, נשתמש ב-gptstudio לשיפור הקוד, נבצע commit לשינויים, נדחוף אותם ל-GitHub, ונשתף את הפרויקט עם עמית לקבלת משוב. זה תרגיל מקיף שמדגים את הערך של שילוב הכלים האלה.
 :::
 
-## שאלות אתיות בשימוש ב-AI במחקר {.smaller style="text-align: center"}
+## שאלות אתיות בשימוש ב-AI במחקר {style="text-align: center"}
 
 -   **פרטיות נתונים**: האם הנתונים ששולחים ל-AI רגישים?
 -   **שקיפות**: כיצד לתעד את השימוש ב-AI במחקר?
@@ -352,9 +1015,7 @@ git push origin main
 חשוב לדון גם בשאלות האתיות שעולות משימוש בכלי AI במחקר ארכיאולוגי והיסטורי. אלה כוללות שאלות על פרטיות נתונים, שקיפות בתיעוד השימוש ב-AI, דיוק התוצאות, מתן קרדיט נאות, והתמודדות עם הטיות אפשריות במודלים. כחוקרים, עלינו להתייחס לשאלות אלה ברצינות ולפתח פרקטיקות עבודה אתיות.
 :::
 
-## תרגיל מעשי 5: תיעוד אתי של שימוש ב-AI {.smaller .center style="text-align: center"}
-
-### תרגלו תיעוד נאות של שימוש ב-AI במחקר: {style="text-align: right"}
+## תרגלו תיעוד נאות של שימוש ב-AI במחקר: {.smaller style="text-align: center"}
 
 ::: incremental
 1.  פתחו קובץ README.md בפרויקט שלכם
@@ -380,7 +1041,7 @@ git push origin main
 בתרגיל האחרון שלנו, נתמקד בתיעוד אתי ושקוף של השימוש בכלי AI במחקר. נפתח את קובץ README.md בפרויקט ונוסיף סעיף מפורט על שיטות המחקר, כולל תיעוד מדויק של השימוש בכלי AI. תיעוד כזה חשוב לשקיפות ולשחזוריות המחקר, ומהווה פרקטיקה מומלצת בקהילה המדעית.
 :::
 
-## סיכום: יתרונות הגישה המשולבת {.smaller style="text-align: center"}
+## סיכום: יתרונות הגישה המשולבת {style="text-align: center"}
 
 -   **שיפור השחזוריות**: תיעוד מלא של כל שלבי המחקר
 -   **יעילות**: חיסכון בזמן באמצעות כלי AI
@@ -398,9 +1059,9 @@ git push origin main
 -   **Git & GitHub**:
     -   [Happy Git with R](https://happygitwithr.com/) מאת ג'ניפר בריאן
     -   [Pro Git](https://git-scm.com/book/en/v2) - ספר חינמי ומקיף
--   **gptstudio ו-AI ב-R**:
-    -   [אתר gptstudio](https://michelnivard.github.io/gptstudio/)
-    -   [gpttools](https://jameshwade.github.io/gpttools/) - חבילה משלימה
+-   **huggingface ו-AI ב-R**:
+    -   [שלום מודלים ללמידה עמוקה (Transformers)](https://rpubs.com/eR_ic/transfoRmers){target="_blank"}
+    -   [text](https://r-text.org/){target="_blank"} - חבילה שמשתמשת במודלי שפה גדולים (LLMs) מהאגינגפייס
 -   **מדריכים לשילוב הכלים במחקר ארכיאולוגי**:
     -   [rrtools: Tools for Writing Reproducible Research in R](https://github.com/benmarwick/rrtools)
     -   Batist, Z. and Roe, J. 2024. 'Open Archaeology, Open Source? Collaborative practices in an emerging community of archaeological software engineers'. *Internet Archaeology* 67. <https://doi.org/10.11141/ia.67.13>

@@ -2,6 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+.Renviron
+.env
 
 /.quarto/
 .Rhistory*
