@@ -1,0 +1,697 @@
+---
+title: "מבוא לעיבוד נתונים באמצעות tidyverse"
+subtitle: "חקר חישובי של ארכיאולוגיה ומקורות היסטוריים תשפ״ה"
+author: "ד״ר שי גורדין"
+date: "2025-04-20"
+date-format: "DD/MM/YYYY"
+format:
+  revealjs:
+    theme: serif
+    transition: slide
+    slide-number: true
+    chalkboard: true
+    overview: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    code-fold: true
+    code-tools: true
+    code-line-numbers: true
+    highlight-style: github
+    footer: "שיטות מתודולוגיות ב׳ / אונ׳ אריאל"
+    logo: img/archaeology-code-image.png
+    #css: custom.css
+    rtl: true
+editor: visual
+---
+
+# חלק 1: מבוא לעיבוד נתונים
+
+## מטרות השיעור {.center style="text-align: center"}
+
+-   להבין את הצורך בטרנספורמציות נתונים במחקר ארכיאולוגי
+-   להכיר את השיטות הנפוצות לטרנספורמציה של נתונים
+-   ללמוד כיצד להשתמש בחבילת `tidyverse` לביצוע טרנספורמציות יעילות
+-   לתרגל טרנספורמציות על מערכי נתונים ארכיאולוגיים אמיתיים
+
+## למה צריך טרנספורמציות נתונים? {.center style="text-align: center"}
+
+::: incremental
+-   התפלגויות א-סימטריות (לא נורמליות)
+-   הבדלי סדרי גודל בין משתנים
+-   פיקוח על הבדלי גודל בין פריטים או מכלולים
+-   הכנת נתונים לניתוחים סטטיסטיים מתקדמים
+-   התמודדות עם נתונים קומפוזיציוניים (compositional data)
+:::
+
+## סוגי טרנספורמציות נפוצים במחקר ארכיאולוגי {.center style="text-align: center"}
+
+::: incremental
+-   **טרנספורמציות משתנים (עמודות)**:
+    -   לוגריתמיות, שורש ריבועי, Z-scores
+-   **טרנספורמציות תצפיות (שורות)**:
+    -   אחוזים, ממוצעים גיאומטריים, יחסים
+-   **טרנספורמציות למערכי נתונים קומפוזיציוניים**:
+    -   log-ratio transformations
+:::
+
+# חלק 2: הפילוסופיה מאחורי tidyverse
+
+## מהי חבילת tidyverse? {.center style="text-align: center"}
+
+::: incremental
+-   "חבילה של חבילות" לעבודה עם נתונים ב-R
+-   כוללת חבילות כמו `dplyr`, `tidyr`, `ggplot2`, `stringr`
+-   מבוססת על עקרונות של "נתונים מסודרים" (tidy data)
+-   מציעה תחביר עקבי ואינטואיטיבי באמצעות "צינורות" (pipes)
+:::
+
+``` r
+# טעינת חבילת tidyverse
+library(tidyverse)
+```
+
+## מהם נתונים מסודרים (tidy data)? {.center style="text-align: center"}
+
+![](img/tidy-data-diagram.png){fig-align="center"}
+
+::: notes
+\[תיאור תמונה: דוגמה חזותית להמחשת ההבדל בין נתונים מסודרים לנתונים לא מסודרים\]
+:::
+
+## אופרטור הצינור (pipe) {.center style="text-align: center"}
+
+אופרטור הצינור מאפשר לנו לקשר פעולות ברצף:
+
+``` r
+# תחביר ישן (Base R)
+result <- function3(function2(function1(data)))
+
+# תחביר עם צינור (tidyverse)
+result <- data %>% 
+  function1() %>% 
+  function2() %>% 
+  function3()
+
+# הצינור החדש ב-R 4.1 ואילך
+result <- data |> 
+  function1() |> 
+  function2() |> 
+  function3()
+```
+
+# חלק 3: ניקוי וארגון נתונים ארכיאולוגיים
+
+## האתגרים בנתונים ארכיאולוגיים {.center style="text-align: center"}
+
+::: incremental
+-   שמות עמודות לא אינטואיטיביים או חסרי משמעות
+-   ערכים חסרים (NA) ונתונים חסרים (שדות ריקים)
+-   נתונים מספריים שיובאו כמחרוזות טקסט
+-   שגיאות הקלדה ואי עקביות בערכים
+-   קידוד לא תקין של טקסט בשפות שונות (כמו עברית)
+:::
+
+## אסטרטגיה לניקוי נתונים ארכיאולוגיים {.center style="text-align: center"}
+
+1.  **חקירה ראשונית** - הבנת המבנה והבעיות
+2.  **טיפול בשמות העמודות** - מתן שמות ברורים ועקביים
+3.  **טיפול בסוגי נתונים** - המרה לסוגים מתאימים
+4.  **טיפול בערכים חסרים** - זיהוי והחלטה כיצד לטפל
+5.  **סטנדרטיזציה של ערכים** - תיקון שגיאות והאחדת ערכים
+6.  **תיעוד** - תיעוד כל השינויים שבוצעו בנתונים
+
+## ניקוי נתונים בצעדים עם tidyverse {.center style="text-align: center"}
+
+מבנה הקובץ שלנו: - 2214 שורות - 22 עמודות (קוד זיהוי + 21 עמודות מספריות) - שמות עמודות בעברית ומספרים
+
+נטפל בבעיות אלו בהדרגה:
+
+``` r
+# טעינת חבילות
+library(tidyverse)
+library(janitor)  # חבילה מעולה לניקוי נתונים
+
+# טעינת הנתונים
+archaeological_data <- read_csv("https://raw.githubusercontent.com/shaigordin/comparch25/refs/heads/main/slide-decks/data/enc.csv", locale = locale(encoding = "UTF-8"))
+
+# הצצה בנתונים
+glimpse(archaeological_data)
+```
+
+## צעד 1: זיהוי מבנה הנתונים וקריאת השדות הנכונים {.center style="text-align: center"}
+
+אחת הבעיות הנפוצות בנתונים מבולגנים היא ששמות השדות האמיתיים אינם בשורה הראשונה:
+
+``` r
+# קריאה ראשונית בלי הנחות לגבי כותרות
+raw_peek <- read_csv("https://raw.githubusercontent.com/shaigordin/comparch25/refs/heads/main/slide-decks/data/enc.csv", col_names = FALSE, n_max = 5)
+print(raw_peek)
+
+# ניתן לראות ששמות השדות האמיתיים מופיעים בשורה השנייה! 
+# נקרא שוב עם הגדרות מתאימות
+
+archaeological_data <- read_csv("https://raw.githubusercontent.com/shaigordin/comparch25/refs/heads/main/slide-decks/data/enc.csv", 
+                               skip = 1,             # דילוג על שורה ראשונה
+                               col_names = TRUE,     # השורה הראשונה שנקרא תהיה כותרות
+                               locale = locale(encoding = "UTF-8")) # קידוד עברית
+
+# נבדוק את שמות העמודות החדשים
+names(archaeological_data)
+
+# הצגת המבנה החדש
+glimpse(archaeological_data)
+```
+
+## צעד 2: יצירת מילון מונחים למשתנים {.center style="text-align: center"}
+
+כעת, כשיש לנו את שמות השדות האמיתיים, נוכל לפרש אותם בהקשר ארכיאולוגי:
+
+``` r
+# יצירת טבלת מילון מונחים
+field_dictionary <- tribble(
+  ~original_name, ~clean_name, ~meaning, ~category,
+  "מס'", "site_id", "מספר ייחודי לאתר הארכיאולוגי", "מידע מנהלי",
+  "שם אתר", "site_name", "שם האתר כפי שמופיע באנציקלופדיה", "מידע מנהלי",
+  "ערך משנה", "sub_entry", "למקרים שבהם יש ערך משנה בתוך ערך גדול יותר באנציקלופדיה", "מידע מנהלי",
+  "נ\"צ X", "coordinate_x", "קואורדינטות האתר ברשת ישראל", "מידע גיאוגרפי",
+  "נ\"צ Y", "coordinate_y", "קואורדינטות האתר ברשת ישראל", "מידע גיאוגרפי",
+  "אזור", "region", "האזור הגיאוגרפי הכללי בו נמצא האתר", "מידע גיאוגרפי",
+  "תת אזור", "sub_region", "חלוקה מפורטת יותר של האזור הגיאוגרפי", "מידע גיאוגרפי",
+  "חופר", "excavator", "שמות הארכיאולוגים שביצעו את החפירה", "מידע מנהלי",
+  "מחבר הערך", "entry_author", "שם החוקר האחראי על הערך באנציקלופדיה", "מידע ביבליוגרפי",
+  "תקופה כללי", "general_period", "התקופה הארכיאולוגית המיוצגת באתר", "מידע כרונולוגי",
+  "תק' מעבר", "transition_period", "אתרים או שכבות שהוגדרו כתקופת מעבר", "מידע כרונולוגי",
+  "תק' מיוצגת", "represented_period", "תת-תקופה ארכיאולוגית אם קיימת", "מידע כרונולוגי",
+  "תארוך ממצא", "find_dating", "מידע מפורט יותר על תאריך הממצא", "מידע כרונולוגי",
+  "סוג ממצא", "find_type", "סוג הממצא שהתגלה (מתקן/צור/קבר/קרמיקה/בנייה)", "מידע ארכיאולוגי",
+  "סוג אתר", "site_type", "סיווג האתר (תל/ח׳ירבה/מערה/מחצבה וכו׳)", "מידע ארכיאולוגי",
+  "אופי אתר", "site_nature", "אופי היישוב (כפרי/עירוני/קבר/שרידים חקלאיים)", "מידע יישובי",
+  "גודל אתר", "site_size", "גודל האתר הארכיאולוגי המשוער", "מידע יישובי",
+  "גודל חפירה", "excavation_size", "גודל החפירה הארכיאולוגית אם דווח", "מידע מנהלי",
+  "הערות", "notes", "נתונים נוספים שלא התאימו לשום שדה אחר", "מידע ביבליוגרפי",
+  "הפניה", "bibliographic_reference", "מקור הדיווח על החפירה באנציקלופדיה", "מידע ביבליוגרפי"
+)
+
+# הצגת המילון
+view(field_dictionary)
+```
+
+## צעד 3: ניקוי וסטנדרטיזציה של שמות המשתנים {.center style="text-align: center"}
+
+נשפר את שמות העמודות לפורמט סטנדרטי ועקבי:
+
+``` r
+# יצירת מפת שמות עבור העמודות באמצעות המילון שיצרנו
+column_name_map <- setNames(
+  field_dictionary$clean_name,
+  field_dictionary$original_name
+)
+
+# הצג שמות העמודות המקוריים לצורך בדיקה
+cat("Original column names:\n")
+print(names(archaeological_data))
+
+# השתמש במיפוי לצורך שינוי שמות העמודות
+cleaned_data <- archaeological_data %>%
+  # שנה עמודות לפי מיפוי - רק עבור עמודות קיימות
+  rename_with(~ column_name_map[.x],
+              .cols = intersect(names(archaeological_data), names(column_name_map))) %>%
+  # נקה עמודות שנותרו
+  janitor::clean_names()
+
+# הצג שמות העמודות החדשים
+cat("\nStandardized column names:\n")
+print(names(cleaned_data))
+
+view(cleaned_data)
+```
+
+## צעד 4: ניצול שמות המשתנים האמיתיים לקבוצות ניתוח {.center style="text-align: center"}
+
+כעת שיש לנו שמות משמעותיים, נוכל לקבץ את המשתנים לפי קטגוריות ניתוח:
+
+``` r
+# זיהוי ויצירת קבוצות משתנים לפי קטגוריות
+# משתנים מרחביים - מיקום גיאוגרפי ומרחבי
+spatial_vars <- c("coordinate_x", "coordinate_y", "region", "sub_region")
+
+# משתנים כרונולוגיים - מיצוב זמני ומחזוריות
+chronological_vars <- c("general_period", "transition_period", "represented_period", "find_dating")
+
+# משתנים טיפולוגיים - סיווג ופרשנות חומרית
+typological_vars <- c("find_type", "site_type", "site_nature")
+
+# משתנים כמותיים - ממדים מדידים לניתוח סטטיסטי
+quantitative_vars <- c("site_size", "excavation_size")
+
+# משתנים מנהליים - תיעוד וניהול חפירות ומחקר
+administrative_vars <- c("site_id", "site_name", "sub_entry", "excavator", 
+                         "entry_author", "notes", "bibliographic_reference")
+
+# רשימות משתנים מסוננות על סמך מערך הנתונים בפועל
+existing_spatial_vars <- intersect(spatial_vars, names(cleaned_data))
+existing_chronological_vars <- intersect(chronological_vars, names(cleaned_data))
+existing_typological_vars <- intersect(typological_vars, names(cleaned_data))
+existing_quantitative_vars <- intersect(quantitative_vars, names(cleaned_data))
+
+# ניתוח כרונולוגי-טיפולוגי - התפלגות סוגי ממצא על פני תקופות
+if(length(existing_chronological_vars) > 0 && length(existing_typological_vars) > 0) {
+  # Select the most appropriate period variable
+  period_var <- existing_chronological_vars[1]
+  type_var <- existing_typological_vars[1]
+  
+  # טבלת התפלגות כרונולוגית-טיפולוגית
+  period_type_distribution <- cleaned_data %>%
+    count(.data[[period_var]], .data[[type_var]]) %>%
+    spread(.data[[type_var]], n, fill = 0)
+  
+  # הצג התפלגות
+  cat("\nCHRONOLOGICAL-TYPOLOGICAL DISTRIBUTION:\n")
+  print(head(period_type_distribution))
+}
+```
+
+## בעיות: חוסר עקביות בסוגי משתנים כמותיים {.center style="text-align: center"}
+
+כיצד ניגש לבחון סוגי משתנים כדי לזהות חוסר עקביות? למשל בנתון שאמור להיות כמותי כמו גודל אתר
+
+``` r
+# ניתוח גודל אתר לפי תקופה
+# בדקו את מבנה הנתונים כדי להבין את חוסר העקביות בסוג הנתונים
+site_size_types <- cleaned_data %>%
+  group_by(general_period) %>%
+  summarise(
+    n_rows = n(),
+    data_type = first(class(site_size)),
+    example_values = paste(head(site_size, 2), collapse = ", ")
+  )
+
+print("DATA TYPE ANALYSIS BY PERIOD:")
+print(site_size_types)
+view(site_size_types)
+```
+
+## צעד 5: טיפול במשתנים קטגוריאליים עם שמות אמיתיים {.center style="text-align: center"}
+
+עכשיו נוכל לנתח את המשתנים הקטגוריאליים בצורה משמעותית יותר:
+
+``` r
+# יצירת מטריצת תפוצה טיפולוגית-כרונולוגית
+# שימוש בשמות משתנים סטנדרטיים המבוססים על מיפוי הנתונים הקודם שלנו
+find_period_summary <- cleaned_data %>%
+  # Use standardized field names: represented_period for chronology, find_type for typology
+  count(represented_period, find_type) %>%
+  arrange(represented_period, desc(n))
+view(find_period_summary)
+
+# סידור כרונולוגי המבוסס על חלוקת תקופות ארכיאולוגיות
+# The archaeological chronology must be adapted to match actual periods in dataset
+cleaned_data <- cleaned_data %>%
+  mutate(
+    # Converting period to factor with archaeologically-informed chronological order
+    # This sequence reflects standard Near Eastern archaeological periodization
+    represented_period = factor(represented_period),
+    # Converting typological classification to factor
+    # Using standardized field name for find type
+    find_type = factor(find_type)
+  )
+summary(cleaned_data$represented_period)
+summary(cleaned_data$find_type)
+
+# יצירת ניתוח התפלגות כרונולוגי
+period_counts <- cleaned_data %>%
+  count(represented_period) %>%
+  arrange(represented_period)
+
+# הצגת דפוסי התפלגות כרונולוגיים
+print(period_counts)
+view(period_counts)
+```
+
+::: notes
+\[תיאור תמונה: גרף עמודות המציג את התפלגות הממצאים לפי תקופות ארכיאולוגיות\]
+:::
+
+## גרף התפלגות סוגי ממצא {.center style="text-align: center"}
+
+![](/figures/Rplot.png){fig-align="center"}
+
+## סיכום: יתרונות העבודה עם נתונים אמיתיים {.center style="text-align: center"}
+
+::: incremental
+-   **פרשנות מדויקת יותר** - שמות שדות אמיתיים מאפשרים הבנה טובה יותר של משמעות הנתונים
+-   **קטגוריזציה מושכלת** - ניתן לקבץ משתנים לקבוצות ניתוח משמעותיות
+-   **יצירת מדדים מורכבים** - שימוש בידע מתחום הארכיאולוגיה ליצירת מדדים רלוונטיים
+-   **תקשורת טובה יותר** - הצגת ממצאים בצורה ברורה יותר לקהילה המדעית
+-   **ניתוח תחומי** - אפשרות לניתוח מותאם לשאלות מחקר ספציפיות
+:::
+
+## נקודות מפתח בעבודה עם קבצי נתונים ארכיאולוגיים {.center style="text-align: center"}
+
+::: incremental
+1.  **תמיד בדוק את המבנה** - אל תניח ששמות העמודות נמצאים בשורה הראשונה
+2.  **הבן את ההקשר** - שמות השדות האמיתיים יכולים לספק מידע קריטי על פרוטוקול איסוף הנתונים
+3.  **תעד את השינויים** - שמור את מיפוי השמות המקוריים והחדשים
+4.  **התאם לתחום** - השתמש במונחים מתחום הארכיאולוגיה בשמות המשתנים
+5.  **חשוב על ניתוח עתידי** - בחר שמות שיקלו על ניתוח נתונים מתקדם
+:::
+
+# חלק 5: טרנספורמציות משתנים בנתונים ארכיאולוגיים
+
+## טרנספורמציות בסיסיות עם dplyr {.center style="text-align: center"}
+
+הפעולה `mutate` מאפשרת לנו ליצור או לשנות משתנים:
+
+``` r
+# יצירת עותק של הנתונים לעבודה
+working_data <- archaeological_data %>%
+  # נבחר עמודות מספריות לדוגמה
+  select(`קוד זיהוי`, where(is.numeric)) %>%
+  # ניצור טרנספורמציה פשוטה - המרה מיחידות אחת לאחרת
+  mutate(
+    normalized_value = `1` / 10,  # לדוגמה: המרה לס"מ
+    log_value = log10(`1` + 1)    # טרנספורמציה לוגריתמית עם הוספת 1 למניעת log(0)
+  )
+
+# הצגת התוצאות
+head(working_data)
+```
+
+## לוגריתמים ושורשים ריבועיים {.center style="text-align: center"}
+
+טרנספורמציות לוגריתמיות ושורש ריבועי שימושיות להתמודדות עם התפלגויות מוטות ימינה:
+
+``` r
+# טרנספורמציות נפוצות
+transformed_data <- archaeological_data %>%
+  select(`קוד זיהוי`, where(is.numeric)) %>%
+  mutate(
+    log10_transform = log10(`1` + 1),          # לוגריתם בבסיס 10
+    natural_log = log(`1` + 1),                # לוגריתם טבעי
+    sqrt_transform = sqrt(`1`),                # שורש ריבועי
+    inverse_transform = 1 / (`1` + 0.001),     # טרנספורמציית הופכי
+    cube_root = sign(`1`) * abs(`1`)^(1/3)     # שורש שלישי
+  )
+
+# הצגת ההשפעה על ההתפלגות
+hist_original <- hist(transformed_data$`1`, main = "התפלגות מקורית")
+hist_log <- hist(transformed_data$log10_transform, main = "התפלגות אחרי טרנספורמציה לוגריתמית")
+```
+
+::: notes
+\[תיאור תמונה: היסטוגרמות המשוות בין ההתפלגות המקורית לבין ההתפלגות אחרי טרנספורמציה לוגריתמית\]
+:::
+
+## סטנדרטיזציה (Z-scores) {.center style="text-align: center"}
+
+סטנדרטיזציה מאפשרת להשוות בין משתנים בסקלות שונות:
+
+``` r
+# חישוב ציוני Z (Z-scores)
+standardized_data <- archaeological_data %>%
+  select(`קוד זיהוי`, where(is.numeric)) %>%
+  mutate(across(where(is.numeric), ~scale(.x)[,1], .names = "z_{.col}"))
+
+# הצגת התוצאות
+head(standardized_data)
+```
+
+``` r
+# ויזואליזציה של נתונים מקוריים מול מתוקננים
+library(ggplot2)
+
+# נשתמש בפונקציית pivot_longer מחבילת tidyr
+comparison_data <- standardized_data %>%
+  select(`קוד זיהוי`, `1`, z_`1`) %>%
+  pivot_longer(cols = c(`1`, z_`1`), 
+               names_to = "variable_type", 
+               values_to = "value")
+
+# נוצר גרף השוואה
+ggplot(comparison_data, aes(x = value)) +
+  geom_density() +
+  facet_wrap(~ variable_type, scales = "free") +
+  theme_minimal() +
+  labs(title = "השוואה בין נתונים מקוריים למתוקננים")
+```
+
+::: notes
+\[תיאור תמונה: גרף צפיפות המשווה בין ההתפלגות המקורית להתפלגות המתוקננת\]
+:::
+
+## טרנספורמציות Box-Cox {.center style="text-align: center"}
+
+טרנספורמציית Box-Cox היא משפחה של טרנספורמציות עוצמה:
+
+$$
+T_{BC}(x, \lambda) = 
+\begin{cases}
+\frac{x^\lambda - 1}{\lambda} & \text{if } \lambda \neq 0 \\
+\log(x) & \text{if } \lambda = 0
+\end{cases}
+$$
+
+``` r
+# שימוש בחבילת car לטרנספורמציית Box-Cox
+library(car)
+
+# בחירת מספר ערכי למבדא לבדיקה
+lambda_values <- c(-2, -1, -0.5, 0, 0.5, 1, 2)
+
+# יצירת טרנספורמציות Box-Cox (רק למשתנים חיוביים)
+positive_values <- archaeological_data %>%
+  filter(`1` > 0) %>%
+  pull(`1`)
+
+# חישוב טרנספורמציות Box-Cox שונות
+box_cox_transforms <- sapply(lambda_values, function(lambda) {
+  if (lambda == 0) {
+    return(log(positive_values))
+  } else {
+    return((positive_values^lambda - 1) / lambda)
+  }
+})
+```
+
+::: notes
+\[תיאור תמונה: גרף המציג את ההשפעה של ערכי למבדא שונים על ההתפלגות\]
+:::
+
+# חלק 5: טרנספורמציות תצפיות (שורות)
+
+## טרנספורמציות יחסיות {.center style="text-align: center"}
+
+חישוב יחסים בין ממדים שונים חשוב לניתוח הבדלי צורה:
+
+``` r
+# יצירת יחסים בין מדדים
+ratio_data <- archaeological_data %>%
+  select(`קוד זיהוי`, where(is.numeric)) %>%
+  mutate(
+    ratio_1_2 = `1` / `2`,  # יחס בין המדד הראשון לשני
+    ratio_1_3 = `1` / `3`   # יחס בין המדד הראשון לשלישי
+  )
+
+# הצגת התוצאות
+head(ratio_data)
+```
+
+## התאמה לגודל באמצעות ממוצע גיאומטרי {.center style="text-align: center"}
+
+הממוצע הגיאומטרי משמש לנטרול השפעות גודל:
+
+``` r
+# חישוב ממוצע גיאומטרי עבור כל שורה (מדגים על מספר עמודות)
+size_adjusted_data <- archaeological_data %>%
+  select(`קוד זיהוי`, `1`:`5`) %>%
+  rowwise() %>%
+  mutate(
+    # חישוב ממוצע גיאומטרי (נוסיף ערך קטן למניעת 0)
+    geom_mean = exp(mean(log(c_across(`1`:`5`) + 0.001), na.rm = TRUE)),
+    # חלוקה בממוצע הגיאומטרי
+    `1_adj` = `1` / geom_mean,
+    `2_adj` = `2` / geom_mean,
+    `3_adj` = `3` / geom_mean,
+    `4_adj` = `4` / geom_mean,
+    `5_adj` = `5` / geom_mean
+  ) %>%
+  ungroup()
+
+# הצגת התוצאות
+head(size_adjusted_data)
+```
+
+::: notes
+\[תיאור תמונה: פיזור דו-ממדי המשווה בין המדדים המקוריים לבין המדדים המותאמים לגודל\]
+:::
+
+## נתונים קומפוזיציוניים - אחוזים {.center style="text-align: center"}
+
+בניתוח מכלולים ארכיאולוגיים, נפוץ להמיר ספירות לאחוזים:
+
+``` r
+# המרת נתונים לאחוזים (נתונים קומפוזיציוניים)
+percentage_data <- archaeological_data %>%
+  select(`קוד זיהוי`, `1`:`5`) %>%
+  rowwise() %>%
+  mutate(
+    row_sum = sum(c_across(`1`:`5`), na.rm = TRUE),
+    # המרה לאחוזים
+    `1_pct` = `1` / row_sum * 100,
+    `2_pct` = `2` / row_sum * 100,
+    `3_pct` = `3` / row_sum * 100,
+    `4_pct` = `4` / row_sum * 100,
+    `5_pct` = `5` / row_sum * 100
+  ) %>%
+  ungroup()
+
+# הצגת התוצאות
+head(percentage_data)
+```
+
+## מגבלות נתונים קומפוזיציוניים {.center style="text-align: center"}
+
+בעיות בשימוש באחוזים:
+
+::: incremental
+-   סכום השורות קבוע (100%), מה שיוצר סגירות (closure)
+-   קורלציות שליליות מלאכותיות בין משתנים
+-   התפלגויות א-סימטריות בקצוות (0% או 100%)
+:::
+
+::: notes
+\[תיאור תמונה: גרף פיזור המציג קורלציות מלאכותיות בין מדדים לאחר המרה לאחוזים\]
+:::
+
+## פתרון: טרנספורמציות log-ratio {.center style="text-align: center"}
+
+``` r
+# טרנספורמציות log-ratio
+# נייבא את חבילת compositions
+library(compositions)
+
+# נטפל בערכי 0 על ידי הוספת ערך קטן
+compositional_data <- archaeological_data %>%
+  select(`קוד זיהוי`, `1`:`5`) %>%
+  mutate(across(`1`:`5`, ~ifelse(.x == 0, 0.001, .x)))
+
+# חישוב additive log-ratio (alr)
+alr_data <- compositional_data %>%
+  select(-`קוד זיהוי`) %>%
+  as.matrix() %>%
+  alr() %>%
+  as_tibble() %>%
+  bind_cols(select(compositional_data, `קוד זיהוי`))
+
+# חישוב centered log-ratio (clr)
+clr_data <- compositional_data %>%
+  select(-`קוד זיהוי`) %>%
+  as.matrix() %>%
+  clr() %>%
+  as_tibble() %>%
+  bind_cols(select(compositional_data, `קוד זיהוי`))
+
+# הצגת התוצאות
+head(clr_data)
+```
+
+::: notes
+\[תיאור תמונה: השוואה בין קורלציות בנתונים מקוריים, באחוזים, ובטרנספורמציות log-ratio\]
+:::
+
+# חלק 6: יישום מתקדם וסיכום
+
+## דוגמה מעשית: השוואת שיטות טרנספורמציה {.center style="text-align: center"}
+
+בואו נשווה את ההשפעה של שיטות טרנספורמציה שונות על הנתונים שלנו:
+
+``` r
+# יצירת מסגרת נתונים להשוואה
+comparison_framework <- archaeological_data %>%
+  select(`קוד זיהוי`, `1`) %>%
+  mutate(
+    original = `1`,
+    log10 = log10(`1` + 1),
+    sqrt = sqrt(`1`),
+    cube_root = sign(`1`) * abs(`1`)^(1/3),
+    z_score = scale(`1`)[,1]
+  ) %>%
+  pivot_longer(cols = c(original, log10, sqrt, cube_root, z_score),
+               names_to = "transformation",
+               values_to = "value")
+
+# יצירת גרף המשווה את ההתפלגויות
+ggplot(comparison_framework, aes(x = value)) +
+  geom_density() +
+  facet_wrap(~ transformation, scales = "free") +
+  theme_minimal() +
+  labs(title = "השוואה בין שיטות טרנספורמציה שונות")
+```
+
+::: notes
+\[תיאור תמונה: גרף צפיפות המשווה בין התפלגויות אחרי טרנספורמציות שונות\]
+:::
+
+## מתי להשתמש בכל טרנספורמציה? {.center style="text-align: center"}
+
+::::: columns
+::: {.column width="50%"}
+**טרנספורמציה לוגריתמית** - התפלגויות עם זנב ימני ארוך - יחסים אקספוננציאליים - נתונים בסדרי גודל שונים מאוד
+:::
+
+::: {.column width="50%"}
+**שורש ריבועי / שלישי** - נתוני ספירה (count data) - התפלגויות מוטות ימינה באופן מתון - משתנים עם שונות הגדלה עם הממוצע
+:::
+:::::
+
+::::: columns
+::: {.column width="50%"}
+**Z-scores** - השוואה בין משתנים בסקלות שונות - סטנדרטיזציה למודלים סטטיסטיים - הסרת הבדלי גודל בין משתנים
+:::
+
+::: {.column width="50%"}
+**Log-ratio** - נתונים קומפוזיציוניים - בעיות סגירות (closure) - הסרת קורלציות מלאכותיות
+:::
+:::::
+
+## קווים מנחים לטרנספורמציות נתונים {.center style="text-align: center"}
+
+::: incremental
+1.  **הבן את הנתונים** לפני שאתה מבצע טרנספורמציה
+2.  **בחן את ההתפלגות** של המשתנים המקוריים
+3.  **בחר טרנספורמציה** המתאימה לסוג הנתונים והמטרה האנליטית
+4.  **בדוק את ההשפעה** של הטרנספורמציה על ההתפלגות והיחסים בין המשתנים
+5.  **תעד את הטרנספורמציות** שביצעת בדו"ח המחקר
+6.  **פרש את התוצאות** בהקשר של הנתונים המקוריים
+:::
+
+## סיכום {.center style="text-align: center"}
+
+::: incremental
+-   טרנספורמציות הן כלי חיוני לניתוח נתונים ארכיאולוגיים
+-   חבילת `tidyverse` מספקת כלים יעילים לטרנספורמציות נתונים
+-   יש לבחור את הטרנספורמציה המתאימה לאופי הנתונים ומטרות המחקר
+-   הבנת הרקע התיאורטי מסייעת בפירוש התוצאות
+:::
+
+## קריאה נוספת ומקורות {.center style="text-align: center"}
+
+::: nonincremental
+-   Baxter, M. J. (2003). [Statistics in Archaeology](http://ndl.ethernet.edu.et/bitstream/123456789/28397/1/216.pdf){target="_blank"}. Wiley.
+-   Drennan, R. D. (2009). [Statistics for Archaeologists: A Common Sense Approach](https://doi.org/10.1007/978-1-4419-0413-3){target="_blank"}. Springer.
+-   Wickham, H. & Grolemund, G. (2016). [R for Data Science](https://r4ds.hadley.nz/){target="_blank"}. O'Reilly.
+-   Van den Boogaart, K. G., & Tolosana-Delgado, R. (2013). [Analyzing Compositional Data with R](https://doi.org/10.1007/978-3-642-36809-7){target="_blank"}. Springer.
+-   [Tidyverse Documentation](https://www.tidyverse.org/)
+:::
+
+## תודה! {.center style="text-align: center"}
+
+**שאלות?**
+
+``` r
+# רמז: תמיד אפשר לקבל עזרה ב-R
+?transform
+?dplyr::mutate
+?scale
+```

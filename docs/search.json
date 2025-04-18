@@ -95,7 +95,7 @@
     "href": "about.html",
     "title": "תכנית הוראה מפורטת",
     "section": "",
-    "text": "תאריך\nנושא השיעור\nפרקים טכניים1\nקריאה2\nתרגול3\n\n\n\n\n09/03/25\nמבוא לקורס\nהתקנת כלים, והיכרות עם נתוני החפירות בארץ ישראל\n\nשריד, פרקים 1-2\nWickham DS,ch. 1-2\nClarke 2022, R for Arch. Intro\n\n\nפאוסט וספראי, “שיטת העבודה”\nMcCall 2018,ch. 1\n\nהתקנת R ו-RStudio; פקודות בסיסיות; טעינת קבצי נתונים; היכרות עם מבנה נתונים\n\n\n23/03/25\nמבוא ל-GitHub ו-AI\nהטמעת גיטהאב ב-RStudio gptstudio כעוזר קוד AI\n\nHappy Git with R\nGitHub Guides\nGetting started with AI assisted coding\ngptstudio\n\nBryan 2018,“Excuse me, do you have a moment to talk about version control?”\nGitHub - המדריך המלא למתחילים\nהתחברות ל-GitHub דרך RStudio; יצירת repository; עבודה בסיסית עם git (add, commit, push, pull); מהו API? הטמעת gptstudio\n\n\n30/03/25\nכתיבה מחקרית ברשת\nחבילת rrtools ומחקר בעל יכולת שחזור\n\nשריד, פרק 12\nrrtools: Tools for Writing Reproducible Research in R\nrmarkdown\n\nMarwick et al. 2018,“Packaging Data Analytical Work Reproducibly”\nיצירת פרויקט מחקר באמצעות rrtools; הגדרת מבנה הפרויקט; כתיבת קוד מתועד ומסודר\nתרגיל להגשה 1:\nתבנית של אתר בתצורת דוח מחקרי ללא תוכן"
+    "text": "תאריך\nנושא השיעור\nפרקים טכניים1\nקריאה2\nתרגול3\n\n\n\n\n09/03/25\nמבוא לקורס\nהתקנת כלים, והיכרות עם נתוני החפירות בארץ ישראל\n\nשריד, פרקים 1-2\nWickham DS,ch. 1-2\nClarke 2022, R for Arch. Intro\n\n\nפאוסט וספראי, “שיטת העבודה”\nMcCall 2018,ch. 1\n\nהתקנת R ו-RStudio; פקודות בסיסיות; טעינת קבצי נתונים; היכרות עם מבנה נתונים\n\n\n23/03/25\nמבוא ל-GitHub ו-AI\nהטמעת גיטהאב ב-RStudio huggingface כעוזר קוד AI\n\nHappy Git with R\nGitHub Guides\nGetting started with AI assisted coding\nR Language Analysis Suite\n\nBryan 2018,“Excuse me, do you have a moment to talk about version control?”\nGitHub - המדריך המלא למתחילים\nהתחברות ל-GitHub דרך RStudio; יצירת repository; עבודה בסיסית עם git (add, commit, push, pull); מהו API? הטמעת huggingface\n\n\n30/03/25\nכתיבה מחקרית ברשת\nחבילת rrtools ומחקר בעל יכולת שחזור\n\nשריד, פרק 12\nrrtools: Tools for Writing Reproducible Research in R\nrmarkdown\n\nMarwick et al. 2018,“Packaging Data Analytical Work Reproducibly”\nיצירת פרויקט מחקר באמצעות rrtools; הגדרת מבנה הפרויקט; כתיבת קוד מתועד ומסודר\nתרגיל להגשה 1:\nתבנית של אתר בתצורת דוח מחקרי ללא תוכן"
   },
   {
     "objectID": "about.html#יחידה-2-עיבוד-נתונים-והצגתם",
@@ -859,6 +859,237 @@
     "title": "סיווג מורפולוגי ממוחשב של קרמיקה",
     "section": "תודה!",
     "text": "תודה!\n\n\nשאלות?\nפרטי יצירת קשר: - אימייל: your.email@university.edu - שעות קבלה: ימי רביעי 13:00-15:00 - מעבדה: בניין ארכיאולוגיה, חדר 302\n\nהשיעור הבא\n\nמבוא ל-R לנתונים ארכיאולוגיים\nייבוא וניקוי נתוני חפירה\nניתוח סטטיסטי בסיסי\n\nהכנה: התקנת R ו-RStudio\n\n\n\nסיום המצגת עם פרטי יצירת קשר ותצוגה מקדימה של השיעור הבא. זה עוזר לסטודנטים להתכונן ומספק מסלול ברור קדימה בקורס. תמונת הרקע מוסיפה עניין חזותי תוך שמירה על קריאות הטקסט.\n\n\n\n\nשיטות מתודולוגיות ב׳ / אונ׳ אריאל"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#מטרות-השיעור",
+    "href": "slide-decks/tidyverse-intro.html#מטרות-השיעור",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "מטרות השיעור",
+    "text": "מטרות השיעור\n\nלהבין את הצורך בטרנספורמציות נתונים במחקר ארכיאולוגי\nלהכיר את השיטות הנפוצות לטרנספורמציה של נתונים\nללמוד כיצד להשתמש בחבילת tidyverse לביצוע טרנספורמציות יעילות\nלתרגל טרנספורמציות על מערכי נתונים ארכיאולוגיים אמיתיים"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#למה-צריך-טרנספורמציות-נתונים",
+    "href": "slide-decks/tidyverse-intro.html#למה-צריך-טרנספורמציות-נתונים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "למה צריך טרנספורמציות נתונים?",
+    "text": "למה צריך טרנספורמציות נתונים?\n\n\nהתפלגויות א-סימטריות (לא נורמליות)\nהבדלי סדרי גודל בין משתנים\nפיקוח על הבדלי גודל בין פריטים או מכלולים\nהכנת נתונים לניתוחים סטטיסטיים מתקדמים\nהתמודדות עם נתונים קומפוזיציוניים (compositional data)"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#סוגי-טרנספורמציות-נפוצים-במחקר-ארכיאולוגי",
+    "href": "slide-decks/tidyverse-intro.html#סוגי-טרנספורמציות-נפוצים-במחקר-ארכיאולוגי",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "סוגי טרנספורמציות נפוצים במחקר ארכיאולוגי",
+    "text": "סוגי טרנספורמציות נפוצים במחקר ארכיאולוגי\n\n\nטרנספורמציות משתנים (עמודות):\n\nלוגריתמיות, שורש ריבועי, Z-scores\n\nטרנספורמציות תצפיות (שורות):\n\nאחוזים, ממוצעים גיאומטריים, יחסים\n\nטרנספורמציות למערכי נתונים קומפוזיציוניים:\n\nlog-ratio transformations"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#מהי-חבילת-tidyverse",
+    "href": "slide-decks/tidyverse-intro.html#מהי-חבילת-tidyverse",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "מהי חבילת tidyverse?",
+    "text": "מהי חבילת tidyverse?\n\n\n“חבילה של חבילות” לעבודה עם נתונים ב-R\nכוללת חבילות כמו dplyr, tidyr, ggplot2, stringr\nמבוססת על עקרונות של “נתונים מסודרים” (tidy data)\nמציעה תחביר עקבי ואינטואיטיבי באמצעות “צינורות” (pipes)\n\n\n# טעינת חבילת tidyverse\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#מהם-נתונים-מסודרים-tidy-data",
+    "href": "slide-decks/tidyverse-intro.html#מהם-נתונים-מסודרים-tidy-data",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "מהם נתונים מסודרים (tidy data)?",
+    "text": "מהם נתונים מסודרים (tidy data)?\n\n\n[תיאור תמונה: דוגמה חזותית להמחשת ההבדל בין נתונים מסודרים לנתונים לא מסודרים]"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#אופרטור-הצינור-pipe",
+    "href": "slide-decks/tidyverse-intro.html#אופרטור-הצינור-pipe",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "אופרטור הצינור (pipe)",
+    "text": "אופרטור הצינור (pipe)\nאופרטור הצינור מאפשר לנו לקשר פעולות ברצף:\n# תחביר ישן (Base R)\nresult <- function3(function2(function1(data)))\n\n# תחביר עם צינור (tidyverse)\nresult <- data %>% \n  function1() %>% \n  function2() %>% \n  function3()\n\n# הצינור החדש ב-R 4.1 ואילך\nresult <- data |> \n  function1() |> \n  function2() |> \n  function3()"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#האתגרים-בנתונים-ארכיאולוגיים",
+    "href": "slide-decks/tidyverse-intro.html#האתגרים-בנתונים-ארכיאולוגיים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "האתגרים בנתונים ארכיאולוגיים",
+    "text": "האתגרים בנתונים ארכיאולוגיים\n\n\nשמות עמודות לא אינטואיטיביים או חסרי משמעות\nערכים חסרים (NA) ונתונים חסרים (שדות ריקים)\nנתונים מספריים שיובאו כמחרוזות טקסט\nשגיאות הקלדה ואי עקביות בערכים\nקידוד לא תקין של טקסט בשפות שונות (כמו עברית)"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#אסטרטגיה-לניקוי-נתונים-ארכיאולוגיים",
+    "href": "slide-decks/tidyverse-intro.html#אסטרטגיה-לניקוי-נתונים-ארכיאולוגיים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "אסטרטגיה לניקוי נתונים ארכיאולוגיים",
+    "text": "אסטרטגיה לניקוי נתונים ארכיאולוגיים\n\nחקירה ראשונית - הבנת המבנה והבעיות\nטיפול בשמות העמודות - מתן שמות ברורים ועקביים\nטיפול בסוגי נתונים - המרה לסוגים מתאימים\nטיפול בערכים חסרים - זיהוי והחלטה כיצד לטפל\nסטנדרטיזציה של ערכים - תיקון שגיאות והאחדת ערכים\nתיעוד - תיעוד כל השינויים שבוצעו בנתונים"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#ניקוי-נתונים-בצעדים-עם-tidyverse",
+    "href": "slide-decks/tidyverse-intro.html#ניקוי-נתונים-בצעדים-עם-tidyverse",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "ניקוי נתונים בצעדים עם tidyverse",
+    "text": "ניקוי נתונים בצעדים עם tidyverse\nמבנה הקובץ שלנו: - 2214 שורות - 22 עמודות (קוד זיהוי + 21 עמודות מספריות) - שמות עמודות בעברית ומספרים\nנטפל בבעיות אלו בהדרגה:\n# טעינת חבילות\nlibrary(tidyverse)\nlibrary(janitor)  # חבילה מעולה לניקוי נתונים\n\n# טעינת הנתונים\narchaeological_data <- read_csv(\"https://raw.githubusercontent.com/shaigordin/comparch25/refs/heads/main/slide-decks/data/enc.csv\", locale = locale(encoding = \"UTF-8\"))\n\n# הצצה בנתונים\nglimpse(archaeological_data)"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#צעד-1-זיהוי-מבנה-הנתונים-וקריאת-השדות-הנכונים",
+    "href": "slide-decks/tidyverse-intro.html#צעד-1-זיהוי-מבנה-הנתונים-וקריאת-השדות-הנכונים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "צעד 1: זיהוי מבנה הנתונים וקריאת השדות הנכונים",
+    "text": "צעד 1: זיהוי מבנה הנתונים וקריאת השדות הנכונים\nאחת הבעיות הנפוצות בנתונים מבולגנים היא ששמות השדות האמיתיים אינם בשורה הראשונה:\n# קריאה ראשונית בלי הנחות לגבי כותרות\nraw_peek <- read_csv(\"https://raw.githubusercontent.com/shaigordin/comparch25/refs/heads/main/slide-decks/data/enc.csv\", col_names = FALSE, n_max = 5)\nprint(raw_peek)\n\n# ניתן לראות ששמות השדות האמיתיים מופיעים בשורה השנייה! \n# נקרא שוב עם הגדרות מתאימות\n\narchaeological_data <- read_csv(\"https://raw.githubusercontent.com/shaigordin/comparch25/refs/heads/main/slide-decks/data/enc.csv\", \n                               skip = 1,             # דילוג על שורה ראשונה\n                               col_names = TRUE,     # השורה הראשונה שנקרא תהיה כותרות\n                               locale = locale(encoding = \"UTF-8\")) # קידוד עברית\n\n# נבדוק את שמות העמודות החדשים\nnames(archaeological_data)\n\n# הצגת המבנה החדש\nglimpse(archaeological_data)"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#צעד-2-יצירת-מילון-מונחים-למשתנים",
+    "href": "slide-decks/tidyverse-intro.html#צעד-2-יצירת-מילון-מונחים-למשתנים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "צעד 2: יצירת מילון מונחים למשתנים",
+    "text": "צעד 2: יצירת מילון מונחים למשתנים\nכעת, כשיש לנו את שמות השדות האמיתיים, נוכל לפרש אותם בהקשר ארכיאולוגי:\n# יצירת טבלת מילון מונחים\nfield_dictionary <- tribble(\n  ~original_name, ~clean_name, ~meaning, ~category,\n  \"מס'\", \"site_id\", \"מספר ייחודי לאתר הארכיאולוגי\", \"מידע מנהלי\",\n  \"שם אתר\", \"site_name\", \"שם האתר כפי שמופיע באנציקלופדיה\", \"מידע מנהלי\",\n  \"ערך משנה\", \"sub_entry\", \"למקרים שבהם יש ערך משנה בתוך ערך גדול יותר באנציקלופדיה\", \"מידע מנהלי\",\n  \"נ\\\"צ X\", \"coordinate_x\", \"קואורדינטות האתר ברשת ישראל\", \"מידע גיאוגרפי\",\n  \"נ\\\"צ Y\", \"coordinate_y\", \"קואורדינטות האתר ברשת ישראל\", \"מידע גיאוגרפי\",\n  \"אזור\", \"region\", \"האזור הגיאוגרפי הכללי בו נמצא האתר\", \"מידע גיאוגרפי\",\n  \"תת אזור\", \"sub_region\", \"חלוקה מפורטת יותר של האזור הגיאוגרפי\", \"מידע גיאוגרפי\",\n  \"חופר\", \"excavator\", \"שמות הארכיאולוגים שביצעו את החפירה\", \"מידע מנהלי\",\n  \"מחבר הערך\", \"entry_author\", \"שם החוקר האחראי על הערך באנציקלופדיה\", \"מידע ביבליוגרפי\",\n  \"תקופה כללי\", \"general_period\", \"התקופה הארכיאולוגית המיוצגת באתר\", \"מידע כרונולוגי\",\n  \"תק' מעבר\", \"transition_period\", \"אתרים או שכבות שהוגדרו כתקופת מעבר\", \"מידע כרונולוגי\",\n  \"תק' מיוצגת\", \"represented_period\", \"תת-תקופה ארכיאולוגית אם קיימת\", \"מידע כרונולוגי\",\n  \"תארוך ממצא\", \"find_dating\", \"מידע מפורט יותר על תאריך הממצא\", \"מידע כרונולוגי\",\n  \"סוג ממצא\", \"find_type\", \"סוג הממצא שהתגלה (מתקן/צור/קבר/קרמיקה/בנייה)\", \"מידע ארכיאולוגי\",\n  \"סוג אתר\", \"site_type\", \"סיווג האתר (תל/ח׳ירבה/מערה/מחצבה וכו׳)\", \"מידע ארכיאולוגי\",\n  \"אופי אתר\", \"site_nature\", \"אופי היישוב (כפרי/עירוני/קבר/שרידים חקלאיים)\", \"מידע יישובי\",\n  \"גודל אתר\", \"site_size\", \"גודל האתר הארכיאולוגי המשוער\", \"מידע יישובי\",\n  \"גודל חפירה\", \"excavation_size\", \"גודל החפירה הארכיאולוגית אם דווח\", \"מידע מנהלי\",\n  \"הערות\", \"notes\", \"נתונים נוספים שלא התאימו לשום שדה אחר\", \"מידע ביבליוגרפי\",\n  \"הפניה\", \"bibliographic_reference\", \"מקור הדיווח על החפירה באנציקלופדיה\", \"מידע ביבליוגרפי\"\n)\n\n# הצגת המילון\nview(field_dictionary)"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#צעד-3-ניקוי-וסטנדרטיזציה-של-שמות-המשתנים",
+    "href": "slide-decks/tidyverse-intro.html#צעד-3-ניקוי-וסטנדרטיזציה-של-שמות-המשתנים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "צעד 3: ניקוי וסטנדרטיזציה של שמות המשתנים",
+    "text": "צעד 3: ניקוי וסטנדרטיזציה של שמות המשתנים\nנשפר את שמות העמודות לפורמט סטנדרטי ועקבי:\n# יצירת מפת שמות עבור העמודות באמצעות המילון שיצרנו\ncolumn_name_map <- setNames(\n  field_dictionary$clean_name,\n  field_dictionary$original_name\n)\n\n# הצג שמות העמודות המקוריים לצורך בדיקה\ncat(\"Original column names:\\n\")\nprint(names(archaeological_data))\n\n# השתמש במיפוי לצורך שינוי שמות העמודות\ncleaned_data <- archaeological_data %>%\n  # שנה עמודות לפי מיפוי - רק עבור עמודות קיימות\n  rename_with(~ column_name_map[.x],\n              .cols = intersect(names(archaeological_data), names(column_name_map))) %>%\n  # נקה עמודות שנותרו\n  janitor::clean_names()\n\n# הצג שמות העמודות החדשים\ncat(\"\\nStandardized column names:\\n\")\nprint(names(cleaned_data))\n\nview(cleaned_data)"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#צעד-4-ניצול-שמות-המשתנים-האמיתיים-לקבוצות-ניתוח",
+    "href": "slide-decks/tidyverse-intro.html#צעד-4-ניצול-שמות-המשתנים-האמיתיים-לקבוצות-ניתוח",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "צעד 4: ניצול שמות המשתנים האמיתיים לקבוצות ניתוח",
+    "text": "צעד 4: ניצול שמות המשתנים האמיתיים לקבוצות ניתוח\nכעת שיש לנו שמות משמעותיים, נוכל לקבץ את המשתנים לפי קטגוריות ניתוח:\n# זיהוי ויצירת קבוצות משתנים לפי קטגוריות\n# משתנים מרחביים - מיקום גיאוגרפי ומרחבי\nspatial_vars <- c(\"coordinate_x\", \"coordinate_y\", \"region\", \"sub_region\")\n\n# משתנים כרונולוגיים - מיצוב זמני ומחזוריות\nchronological_vars <- c(\"general_period\", \"transition_period\", \"represented_period\", \"find_dating\")\n\n# משתנים טיפולוגיים - סיווג ופרשנות חומרית\ntypological_vars <- c(\"find_type\", \"site_type\", \"site_nature\")\n\n# משתנים כמותיים - ממדים מדידים לניתוח סטטיסטי\nquantitative_vars <- c(\"site_size\", \"excavation_size\")\n\n# משתנים מנהליים - תיעוד וניהול חפירות ומחקר\nadministrative_vars <- c(\"site_id\", \"site_name\", \"sub_entry\", \"excavator\", \n                         \"entry_author\", \"notes\", \"bibliographic_reference\")\n\n# רשימות משתנים מסוננות על סמך מערך הנתונים בפועל\nexisting_spatial_vars <- intersect(spatial_vars, names(cleaned_data))\nexisting_chronological_vars <- intersect(chronological_vars, names(cleaned_data))\nexisting_typological_vars <- intersect(typological_vars, names(cleaned_data))\nexisting_quantitative_vars <- intersect(quantitative_vars, names(cleaned_data))\n\n# ניתוח כרונולוגי-טיפולוגי - התפלגות סוגי ממצא על פני תקופות\nif(length(existing_chronological_vars) > 0 && length(existing_typological_vars) > 0) {\n  # Select the most appropriate period variable\n  period_var <- existing_chronological_vars[1]\n  type_var <- existing_typological_vars[1]\n  \n  # טבלת התפלגות כרונולוגית-טיפולוגית\n  period_type_distribution <- cleaned_data %>%\n    count(.data[[period_var]], .data[[type_var]]) %>%\n    spread(.data[[type_var]], n, fill = 0)\n  \n  # הצג התפלגות\n  cat(\"\\nCHRONOLOGICAL-TYPOLOGICAL DISTRIBUTION:\\n\")\n  print(head(period_type_distribution))\n}"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#בעיות-חוסר-עקביות-בסוגי-משתנים-כמותיים",
+    "href": "slide-decks/tidyverse-intro.html#בעיות-חוסר-עקביות-בסוגי-משתנים-כמותיים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "בעיות: חוסר עקביות בסוגי משתנים כמותיים",
+    "text": "בעיות: חוסר עקביות בסוגי משתנים כמותיים\nכיצד ניגש לבחון סוגי משתנים כדי לזהות חוסר עקביות? למשל בנתון שאמור להיות כמותי כמו גודל אתר\n# ניתוח גודל אתר לפי תקופה\n# בדקו את מבנה הנתונים כדי להבין את חוסר העקביות בסוג הנתונים\nsite_size_types <- cleaned_data %>%\n  group_by(general_period) %>%\n  summarise(\n    n_rows = n(),\n    data_type = first(class(site_size)),\n    example_values = paste(head(site_size, 2), collapse = \", \")\n  )\n\nprint(\"DATA TYPE ANALYSIS BY PERIOD:\")\nprint(site_size_types)\nview(site_size_types)"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#צעד-5-טיפול-במשתנים-קטגוריאליים-עם-שמות-אמיתיים",
+    "href": "slide-decks/tidyverse-intro.html#צעד-5-טיפול-במשתנים-קטגוריאליים-עם-שמות-אמיתיים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "צעד 5: טיפול במשתנים קטגוריאליים עם שמות אמיתיים",
+    "text": "צעד 5: טיפול במשתנים קטגוריאליים עם שמות אמיתיים\nעכשיו נוכל לנתח את המשתנים הקטגוריאליים בצורה משמעותית יותר:\n# יצירת מטריצת תפוצה טיפולוגית-כרונולוגית\n# שימוש בשמות משתנים סטנדרטיים המבוססים על מיפוי הנתונים הקודם שלנו\nfind_period_summary <- cleaned_data %>%\n  # Use standardized field names: represented_period for chronology, find_type for typology\n  count(represented_period, find_type) %>%\n  arrange(represented_period, desc(n))\nview(find_period_summary)\n\n# סידור כרונולוגי המבוסס על חלוקת תקופות ארכיאולוגיות\n# The archaeological chronology must be adapted to match actual periods in dataset\ncleaned_data <- cleaned_data %>%\n  mutate(\n    # Converting period to factor with archaeologically-informed chronological order\n    # This sequence reflects standard Near Eastern archaeological periodization\n    represented_period = factor(represented_period),\n    # Converting typological classification to factor\n    # Using standardized field name for find type\n    find_type = factor(find_type)\n  )\nsummary(cleaned_data$represented_period)\nsummary(cleaned_data$find_type)\n\n# יצירת ניתוח התפלגות כרונולוגי\nperiod_counts <- cleaned_data %>%\n  count(represented_period) %>%\n  arrange(represented_period)\n\n# הצגת דפוסי התפלגות כרונולוגיים\nprint(period_counts)\nview(period_counts)\n\n[תיאור תמונה: גרף עמודות המציג את התפלגות הממצאים לפי תקופות ארכיאולוגיות]"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#גרף-התפלגות-סוגי-ממצא",
+    "href": "slide-decks/tidyverse-intro.html#גרף-התפלגות-סוגי-ממצא",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "גרף התפלגות סוגי ממצא",
+    "text": "גרף התפלגות סוגי ממצא"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#סיכום-יתרונות-העבודה-עם-נתונים-אמיתיים",
+    "href": "slide-decks/tidyverse-intro.html#סיכום-יתרונות-העבודה-עם-נתונים-אמיתיים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "סיכום: יתרונות העבודה עם נתונים אמיתיים",
+    "text": "סיכום: יתרונות העבודה עם נתונים אמיתיים\n\n\nפרשנות מדויקת יותר - שמות שדות אמיתיים מאפשרים הבנה טובה יותר של משמעות הנתונים\nקטגוריזציה מושכלת - ניתן לקבץ משתנים לקבוצות ניתוח משמעותיות\nיצירת מדדים מורכבים - שימוש בידע מתחום הארכיאולוגיה ליצירת מדדים רלוונטיים\nתקשורת טובה יותר - הצגת ממצאים בצורה ברורה יותר לקהילה המדעית\nניתוח תחומי - אפשרות לניתוח מותאם לשאלות מחקר ספציפיות"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#נקודות-מפתח-בעבודה-עם-קבצי-נתונים-ארכיאולוגיים",
+    "href": "slide-decks/tidyverse-intro.html#נקודות-מפתח-בעבודה-עם-קבצי-נתונים-ארכיאולוגיים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "נקודות מפתח בעבודה עם קבצי נתונים ארכיאולוגיים",
+    "text": "נקודות מפתח בעבודה עם קבצי נתונים ארכיאולוגיים\n\n\nתמיד בדוק את המבנה - אל תניח ששמות העמודות נמצאים בשורה הראשונה\nהבן את ההקשר - שמות השדות האמיתיים יכולים לספק מידע קריטי על פרוטוקול איסוף הנתונים\nתעד את השינויים - שמור את מיפוי השמות המקוריים והחדשים\nהתאם לתחום - השתמש במונחים מתחום הארכיאולוגיה בשמות המשתנים\nחשוב על ניתוח עתידי - בחר שמות שיקלו על ניתוח נתונים מתקדם"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#טרנספורמציות-בסיסיות-עם-dplyr",
+    "href": "slide-decks/tidyverse-intro.html#טרנספורמציות-בסיסיות-עם-dplyr",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "טרנספורמציות בסיסיות עם dplyr",
+    "text": "טרנספורמציות בסיסיות עם dplyr\nהפעולה mutate מאפשרת לנו ליצור או לשנות משתנים:\n# יצירת עותק של הנתונים לעבודה\nworking_data <- archaeological_data %>%\n  # נבחר עמודות מספריות לדוגמה\n  select(`קוד זיהוי`, where(is.numeric)) %>%\n  # ניצור טרנספורמציה פשוטה - המרה מיחידות אחת לאחרת\n  mutate(\n    normalized_value = `1` / 10,  # לדוגמה: המרה לס\"מ\n    log_value = log10(`1` + 1)    # טרנספורמציה לוגריתמית עם הוספת 1 למניעת log(0)\n  )\n\n# הצגת התוצאות\nhead(working_data)"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#לוגריתמים-ושורשים-ריבועיים",
+    "href": "slide-decks/tidyverse-intro.html#לוגריתמים-ושורשים-ריבועיים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "לוגריתמים ושורשים ריבועיים",
+    "text": "לוגריתמים ושורשים ריבועיים\nטרנספורמציות לוגריתמיות ושורש ריבועי שימושיות להתמודדות עם התפלגויות מוטות ימינה:\n# טרנספורמציות נפוצות\ntransformed_data <- archaeological_data %>%\n  select(`קוד זיהוי`, where(is.numeric)) %>%\n  mutate(\n    log10_transform = log10(`1` + 1),          # לוגריתם בבסיס 10\n    natural_log = log(`1` + 1),                # לוגריתם טבעי\n    sqrt_transform = sqrt(`1`),                # שורש ריבועי\n    inverse_transform = 1 / (`1` + 0.001),     # טרנספורמציית הופכי\n    cube_root = sign(`1`) * abs(`1`)^(1/3)     # שורש שלישי\n  )\n\n# הצגת ההשפעה על ההתפלגות\nhist_original <- hist(transformed_data$`1`, main = \"התפלגות מקורית\")\nhist_log <- hist(transformed_data$log10_transform, main = \"התפלגות אחרי טרנספורמציה לוגריתמית\")\n\n[תיאור תמונה: היסטוגרמות המשוות בין ההתפלגות המקורית לבין ההתפלגות אחרי טרנספורמציה לוגריתמית]"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#סטנדרטיזציה-z-scores",
+    "href": "slide-decks/tidyverse-intro.html#סטנדרטיזציה-z-scores",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "סטנדרטיזציה (Z-scores)",
+    "text": "סטנדרטיזציה (Z-scores)\nסטנדרטיזציה מאפשרת להשוות בין משתנים בסקלות שונות:\n# חישוב ציוני Z (Z-scores)\nstandardized_data <- archaeological_data %>%\n  select(`קוד זיהוי`, where(is.numeric)) %>%\n  mutate(across(where(is.numeric), ~scale(.x)[,1], .names = \"z_{.col}\"))\n\n# הצגת התוצאות\nhead(standardized_data)\n# ויזואליזציה של נתונים מקוריים מול מתוקננים\nlibrary(ggplot2)\n\n# נשתמש בפונקציית pivot_longer מחבילת tidyr\ncomparison_data <- standardized_data %>%\n  select(`קוד זיהוי`, `1`, z_`1`) %>%\n  pivot_longer(cols = c(`1`, z_`1`), \n               names_to = \"variable_type\", \n               values_to = \"value\")\n\n# נוצר גרף השוואה\nggplot(comparison_data, aes(x = value)) +\n  geom_density() +\n  facet_wrap(~ variable_type, scales = \"free\") +\n  theme_minimal() +\n  labs(title = \"השוואה בין נתונים מקוריים למתוקננים\")\n\n[תיאור תמונה: גרף צפיפות המשווה בין ההתפלגות המקורית להתפלגות המתוקננת]"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#טרנספורמציות-box-cox",
+    "href": "slide-decks/tidyverse-intro.html#טרנספורמציות-box-cox",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "טרנספורמציות Box-Cox",
+    "text": "טרנספורמציות Box-Cox\nטרנספורמציית Box-Cox היא משפחה של טרנספורמציות עוצמה:\n\\[\nT_{BC}(x, \\lambda) =\n\\begin{cases}\n\\frac{x^\\lambda - 1}{\\lambda} & \\text{if } \\lambda \\neq 0 \\\\\n\\log(x) & \\text{if } \\lambda = 0\n\\end{cases}\n\\]\n# שימוש בחבילת car לטרנספורמציית Box-Cox\nlibrary(car)\n\n# בחירת מספר ערכי למבדא לבדיקה\nlambda_values <- c(-2, -1, -0.5, 0, 0.5, 1, 2)\n\n# יצירת טרנספורמציות Box-Cox (רק למשתנים חיוביים)\npositive_values <- archaeological_data %>%\n  filter(`1` > 0) %>%\n  pull(`1`)\n\n# חישוב טרנספורמציות Box-Cox שונות\nbox_cox_transforms <- sapply(lambda_values, function(lambda) {\n  if (lambda == 0) {\n    return(log(positive_values))\n  } else {\n    return((positive_values^lambda - 1) / lambda)\n  }\n})\n\n[תיאור תמונה: גרף המציג את ההשפעה של ערכי למבדא שונים על ההתפלגות]"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#טרנספורמציות-יחסיות",
+    "href": "slide-decks/tidyverse-intro.html#טרנספורמציות-יחסיות",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "טרנספורמציות יחסיות",
+    "text": "טרנספורמציות יחסיות\nחישוב יחסים בין ממדים שונים חשוב לניתוח הבדלי צורה:\n# יצירת יחסים בין מדדים\nratio_data <- archaeological_data %>%\n  select(`קוד זיהוי`, where(is.numeric)) %>%\n  mutate(\n    ratio_1_2 = `1` / `2`,  # יחס בין המדד הראשון לשני\n    ratio_1_3 = `1` / `3`   # יחס בין המדד הראשון לשלישי\n  )\n\n# הצגת התוצאות\nhead(ratio_data)"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#התאמה-לגודל-באמצעות-ממוצע-גיאומטרי",
+    "href": "slide-decks/tidyverse-intro.html#התאמה-לגודל-באמצעות-ממוצע-גיאומטרי",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "התאמה לגודל באמצעות ממוצע גיאומטרי",
+    "text": "התאמה לגודל באמצעות ממוצע גיאומטרי\nהממוצע הגיאומטרי משמש לנטרול השפעות גודל:\n# חישוב ממוצע גיאומטרי עבור כל שורה (מדגים על מספר עמודות)\nsize_adjusted_data <- archaeological_data %>%\n  select(`קוד זיהוי`, `1`:`5`) %>%\n  rowwise() %>%\n  mutate(\n    # חישוב ממוצע גיאומטרי (נוסיף ערך קטן למניעת 0)\n    geom_mean = exp(mean(log(c_across(`1`:`5`) + 0.001), na.rm = TRUE)),\n    # חלוקה בממוצע הגיאומטרי\n    `1_adj` = `1` / geom_mean,\n    `2_adj` = `2` / geom_mean,\n    `3_adj` = `3` / geom_mean,\n    `4_adj` = `4` / geom_mean,\n    `5_adj` = `5` / geom_mean\n  ) %>%\n  ungroup()\n\n# הצגת התוצאות\nhead(size_adjusted_data)\n\n[תיאור תמונה: פיזור דו-ממדי המשווה בין המדדים המקוריים לבין המדדים המותאמים לגודל]"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#נתונים-קומפוזיציוניים---אחוזים",
+    "href": "slide-decks/tidyverse-intro.html#נתונים-קומפוזיציוניים---אחוזים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "נתונים קומפוזיציוניים - אחוזים",
+    "text": "נתונים קומפוזיציוניים - אחוזים\nבניתוח מכלולים ארכיאולוגיים, נפוץ להמיר ספירות לאחוזים:\n# המרת נתונים לאחוזים (נתונים קומפוזיציוניים)\npercentage_data <- archaeological_data %>%\n  select(`קוד זיהוי`, `1`:`5`) %>%\n  rowwise() %>%\n  mutate(\n    row_sum = sum(c_across(`1`:`5`), na.rm = TRUE),\n    # המרה לאחוזים\n    `1_pct` = `1` / row_sum * 100,\n    `2_pct` = `2` / row_sum * 100,\n    `3_pct` = `3` / row_sum * 100,\n    `4_pct` = `4` / row_sum * 100,\n    `5_pct` = `5` / row_sum * 100\n  ) %>%\n  ungroup()\n\n# הצגת התוצאות\nhead(percentage_data)"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#מגבלות-נתונים-קומפוזיציוניים",
+    "href": "slide-decks/tidyverse-intro.html#מגבלות-נתונים-קומפוזיציוניים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "מגבלות נתונים קומפוזיציוניים",
+    "text": "מגבלות נתונים קומפוזיציוניים\nבעיות בשימוש באחוזים:\n\n\nסכום השורות קבוע (100%), מה שיוצר סגירות (closure)\nקורלציות שליליות מלאכותיות בין משתנים\nהתפלגויות א-סימטריות בקצוות (0% או 100%)\n\n\n\n[תיאור תמונה: גרף פיזור המציג קורלציות מלאכותיות בין מדדים לאחר המרה לאחוזים]"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#פתרון-טרנספורמציות-log-ratio",
+    "href": "slide-decks/tidyverse-intro.html#פתרון-טרנספורמציות-log-ratio",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "פתרון: טרנספורמציות log-ratio",
+    "text": "פתרון: טרנספורמציות log-ratio\n# טרנספורמציות log-ratio\n# נייבא את חבילת compositions\nlibrary(compositions)\n\n# נטפל בערכי 0 על ידי הוספת ערך קטן\ncompositional_data <- archaeological_data %>%\n  select(`קוד זיהוי`, `1`:`5`) %>%\n  mutate(across(`1`:`5`, ~ifelse(.x == 0, 0.001, .x)))\n\n# חישוב additive log-ratio (alr)\nalr_data <- compositional_data %>%\n  select(-`קוד זיהוי`) %>%\n  as.matrix() %>%\n  alr() %>%\n  as_tibble() %>%\n  bind_cols(select(compositional_data, `קוד זיהוי`))\n\n# חישוב centered log-ratio (clr)\nclr_data <- compositional_data %>%\n  select(-`קוד זיהוי`) %>%\n  as.matrix() %>%\n  clr() %>%\n  as_tibble() %>%\n  bind_cols(select(compositional_data, `קוד זיהוי`))\n\n# הצגת התוצאות\nhead(clr_data)\n\n[תיאור תמונה: השוואה בין קורלציות בנתונים מקוריים, באחוזים, ובטרנספורמציות log-ratio]"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#דוגמה-מעשית-השוואת-שיטות-טרנספורמציה",
+    "href": "slide-decks/tidyverse-intro.html#דוגמה-מעשית-השוואת-שיטות-טרנספורמציה",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "דוגמה מעשית: השוואת שיטות טרנספורמציה",
+    "text": "דוגמה מעשית: השוואת שיטות טרנספורמציה\nבואו נשווה את ההשפעה של שיטות טרנספורמציה שונות על הנתונים שלנו:\n# יצירת מסגרת נתונים להשוואה\ncomparison_framework <- archaeological_data %>%\n  select(`קוד זיהוי`, `1`) %>%\n  mutate(\n    original = `1`,\n    log10 = log10(`1` + 1),\n    sqrt = sqrt(`1`),\n    cube_root = sign(`1`) * abs(`1`)^(1/3),\n    z_score = scale(`1`)[,1]\n  ) %>%\n  pivot_longer(cols = c(original, log10, sqrt, cube_root, z_score),\n               names_to = \"transformation\",\n               values_to = \"value\")\n\n# יצירת גרף המשווה את ההתפלגויות\nggplot(comparison_framework, aes(x = value)) +\n  geom_density() +\n  facet_wrap(~ transformation, scales = \"free\") +\n  theme_minimal() +\n  labs(title = \"השוואה בין שיטות טרנספורמציה שונות\")\n\n[תיאור תמונה: גרף צפיפות המשווה בין התפלגויות אחרי טרנספורמציות שונות]"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#מתי-להשתמש-בכל-טרנספורמציה",
+    "href": "slide-decks/tidyverse-intro.html#מתי-להשתמש-בכל-טרנספורמציה",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "מתי להשתמש בכל טרנספורמציה?",
+    "text": "מתי להשתמש בכל טרנספורמציה?\n\n\nטרנספורמציה לוגריתמית - התפלגויות עם זנב ימני ארוך - יחסים אקספוננציאליים - נתונים בסדרי גודל שונים מאוד\n\nשורש ריבועי / שלישי - נתוני ספירה (count data) - התפלגויות מוטות ימינה באופן מתון - משתנים עם שונות הגדלה עם הממוצע\n\n\n\n\nZ-scores - השוואה בין משתנים בסקלות שונות - סטנדרטיזציה למודלים סטטיסטיים - הסרת הבדלי גודל בין משתנים\n\nLog-ratio - נתונים קומפוזיציוניים - בעיות סגירות (closure) - הסרת קורלציות מלאכותיות"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#קווים-מנחים-לטרנספורמציות-נתונים",
+    "href": "slide-decks/tidyverse-intro.html#קווים-מנחים-לטרנספורמציות-נתונים",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "קווים מנחים לטרנספורמציות נתונים",
+    "text": "קווים מנחים לטרנספורמציות נתונים\n\n\nהבן את הנתונים לפני שאתה מבצע טרנספורמציה\nבחן את ההתפלגות של המשתנים המקוריים\nבחר טרנספורמציה המתאימה לסוג הנתונים והמטרה האנליטית\nבדוק את ההשפעה של הטרנספורמציה על ההתפלגות והיחסים בין המשתנים\nתעד את הטרנספורמציות שביצעת בדו”ח המחקר\nפרש את התוצאות בהקשר של הנתונים המקוריים"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#סיכום",
+    "href": "slide-decks/tidyverse-intro.html#סיכום",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "סיכום",
+    "text": "סיכום\n\n\nטרנספורמציות הן כלי חיוני לניתוח נתונים ארכיאולוגיים\nחבילת tidyverse מספקת כלים יעילים לטרנספורמציות נתונים\nיש לבחור את הטרנספורמציה המתאימה לאופי הנתונים ומטרות המחקר\nהבנת הרקע התיאורטי מסייעת בפירוש התוצאות"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#קריאה-נוספת-ומקורות",
+    "href": "slide-decks/tidyverse-intro.html#קריאה-נוספת-ומקורות",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "קריאה נוספת ומקורות",
+    "text": "קריאה נוספת ומקורות\n\n\nBaxter, M. J. (2003). Statistics in Archaeology. Wiley.\nDrennan, R. D. (2009). Statistics for Archaeologists: A Common Sense Approach. Springer.\nWickham, H. & Grolemund, G. (2016). R for Data Science. O’Reilly.\nVan den Boogaart, K. G., & Tolosana-Delgado, R. (2013). Analyzing Compositional Data with R. Springer.\nTidyverse Documentation"
+  },
+  {
+    "objectID": "slide-decks/tidyverse-intro.html#תודה",
+    "href": "slide-decks/tidyverse-intro.html#תודה",
+    "title": "מבוא לעיבוד נתונים באמצעות tidyverse",
+    "section": "תודה!",
+    "text": "תודה!\nשאלות?\n# רמז: תמיד אפשר לקבל עזרה ב-R\n?transform\n?dplyr::mutate\n?scale\n\n\n\nשיטות מתודולוגיות ב׳ / אונ׳ אריאל"
   },
   {
     "objectID": "slide-decks/git-with-r.html#סקירה-כללית",
