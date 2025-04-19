@@ -1,0 +1,183 @@
+---
+title: "מבוא לעיבוד נתונים באמצעות tidyverse"
+subtitle: "חקר חישובי של ארכיאולוגיה ומקורות היסטוריים תשפ״ה"
+author: "ד״ר שי גורדין"
+date: "2025-04-20"
+date-format: "DD/MM/YYYY"
+format:
+  revealjs:
+    theme: serif
+    transition: slide
+    slide-number: true
+    chalkboard: true
+    overview: true
+    navigation-mode: vertical
+    controls-layout: bottom-right
+    controls-tutorial: true
+    code-fold: true
+    code-tools: true
+    code-line-numbers: true
+    code-overflow: wrap
+    highlight-style: github
+    footer: "שיטות מתודולוגיות ב׳ / אונ׳ אריאל"
+    logo: img/archaeology-code-image.png
+    #css: custom.css
+    rtl: true
+editor: visual
+---
+
+# חלק 5: טרנספורמציות תצפיות (שורות)
+
+## טרנספורמציות יחסיות {.center style="text-align: center"}
+
+חישוב יחסים בין ממדים שונים חשוב לניתוח הבדלי צורה:
+
+``` r
+# יצירת יחסים בין מדדים
+ratio_data <- archaeological_data %>%
+  select(`קוד זיהוי`, where(is.numeric)) %>%
+  mutate(
+    ratio_1_2 = `1` / `2`,  # יחס בין המדד הראשון לשני
+    ratio_1_3 = `1` / `3`   # יחס בין המדד הראשון לשלישי
+  )
+
+# הצגת התוצאות
+head(ratio_data)
+```
+
+## התאמה לגודל באמצעות ממוצע גיאומטרי {.center style="text-align: center"}
+
+הממוצע הגיאומטרי משמש לנטרול השפעות גודל:
+
+``` r
+# חישוב ממוצע גיאומטרי עבור כל שורה (מדגים על מספר עמודות)
+size_adjusted_data <- archaeological_data %>%
+  select(`קוד זיהוי`, `1`:`5`) %>%
+  rowwise() %>%
+  mutate(
+    # חישוב ממוצע גיאומטרי (נוסיף ערך קטן למניעת 0)
+    geom_mean = exp(mean(log(c_across(`1`:`5`) + 0.001), na.rm = TRUE)),
+    # חלוקה בממוצע הגיאומטרי
+    `1_adj` = `1` / geom_mean,
+    `2_adj` = `2` / geom_mean,
+    `3_adj` = `3` / geom_mean,
+    `4_adj` = `4` / geom_mean,
+    `5_adj` = `5` / geom_mean
+  ) %>%
+  ungroup()
+
+# הצגת התוצאות
+head(size_adjusted_data)
+```
+
+::: notes
+\[תיאור תמונה: פיזור דו-ממדי המשווה בין המדדים המקוריים לבין המדדים המותאמים לגודל\]
+:::
+
+## נתונים קומפוזיציוניים - אחוזים {.center style="text-align: center"}
+
+בניתוח מכלולים ארכיאולוגיים, נפוץ להמיר ספירות לאחוזים:
+
+``` r
+# המרת נתונים לאחוזים (נתונים קומפוזיציוניים)
+percentage_data <- archaeological_data %>%
+  select(`קוד זיהוי`, `1`:`5`) %>%
+  rowwise() %>%
+  mutate(
+    row_sum = sum(c_across(`1`:`5`), na.rm = TRUE),
+    # המרה לאחוזים
+    `1_pct` = `1` / row_sum * 100,
+    `2_pct` = `2` / row_sum * 100,
+    `3_pct` = `3` / row_sum * 100,
+    `4_pct` = `4` / row_sum * 100,
+    `5_pct` = `5` / row_sum * 100
+  ) %>%
+  ungroup()
+
+# הצגת התוצאות
+head(percentage_data)
+```
+
+## מגבלות נתונים קומפוזיציוניים {.center style="text-align: center"}
+
+בעיות בשימוש באחוזים:
+
+::: incremental
+-   סכום השורות קבוע (100%), מה שיוצר סגירות (closure)
+-   קורלציות שליליות מלאכותיות בין משתנים
+-   התפלגויות א-סימטריות בקצוות (0% או 100%)
+:::
+
+::: notes
+\[תיאור תמונה: גרף פיזור המציג קורלציות מלאכותיות בין מדדים לאחר המרה לאחוזים\]
+:::
+
+## פתרון: טרנספורמציות log-ratio {.center style="text-align: center"}
+
+``` r
+# טרנספורמציות log-ratio
+# נייבא את חבילת compositions
+library(compositions)
+
+# נטפל בערכי 0 על ידי הוספת ערך קטן
+compositional_data <- archaeological_data %>%
+  select(`קוד זיהוי`, `1`:`5`) %>%
+  mutate(across(`1`:`5`, ~ifelse(.x == 0, 0.001, .x)))
+
+# חישוב additive log-ratio (alr)
+alr_data <- compositional_data %>%
+  select(-`קוד זיהוי`) %>%
+  as.matrix() %>%
+  alr() %>%
+  as_tibble() %>%
+  bind_cols(select(compositional_data, `קוד זיהוי`))
+
+# חישוב centered log-ratio (clr)
+clr_data <- compositional_data %>%
+  select(-`קוד זיהוי`) %>%
+  as.matrix() %>%
+  clr() %>%
+  as_tibble() %>%
+  bind_cols(select(compositional_data, `קוד זיהוי`))
+
+# הצגת התוצאות
+head(clr_data)
+```
+
+::: notes
+\[תיאור תמונה: השוואה בין קורלציות בנתונים מקוריים, באחוזים, ובטרנספורמציות log-ratio\]
+:::
+
+
+## דוגמה מעשית: השוואת שיטות טרנספורמציה {.center style="text-align: center"}
+
+בואו נשווה את ההשפעה של שיטות טרנספורמציה שונות על הנתונים שלנו:
+
+``` r
+# יצירת מסגרת נתונים להשוואה
+comparison_framework <- archaeological_data %>%
+  select(`קוד זיהוי`, `1`) %>%
+  mutate(
+    original = `1`,
+    log10 = log10(`1` + 1),
+    sqrt = sqrt(`1`),
+    cube_root = sign(`1`) * abs(`1`)^(1/3),
+    z_score = scale(`1`)[,1]
+  ) %>%
+  pivot_longer(cols = c(original, log10, sqrt, cube_root, z_score),
+               names_to = "transformation",
+               values_to = "value")
+
+# יצירת גרף המשווה את ההתפלגויות
+ggplot(comparison_framework, aes(x = value)) +
+  geom_density() +
+  facet_wrap(~ transformation, scales = "free") +
+  theme_minimal() +
+  labs(title = "השוואה בין שיטות טרנספורמציה שונות")
+```
+
+::: notes
+\[תיאור תמונה: גרף צפיפות המשווה בין התפלגויות אחרי טרנספורמציות שונות\]
+:::
+
+

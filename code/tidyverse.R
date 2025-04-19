@@ -183,3 +183,90 @@ print(period_counts)
 view(period_counts)
 
 plot(cleaned_data$find_type)
+
+#############################################################
+## צעד 6: טרנספורמציות בסיסיות עם dplyr
+#############################################################
+
+# יצירת עותק של הנתונים לעבודה
+working_data <- period_type_distribution %>%
+  # נבחר עמודות מספריות לדוגמה
+  select(where(is.numeric)) %>%
+  # ניצור טרנספורמציה פשוטה - המרה מיחידות אחת לאחרת
+  mutate(
+    normalized_value = .[[2]] / 10, # לדוגמה: המרה לס"מ
+    log_value = log10(.[[2]] + 1)   # טרנספורמציה לוגריתמית עם הוספת 1 למניעת log(0)
+  )
+
+# הצגת התוצאות
+head(working_data)
+
+
+# טרנספורמציות נפוצות
+transformed_data <- period_type_distribution %>%
+  select(where(is.numeric)) %>%
+  mutate(
+    log10_transform = log10(.[[1]] + 1),          # לוגריתם בבסיס 10
+    natural_log = log(.[[1]] + 1),                # לוגריתם טבעי
+    sqrt_transform = sqrt(.[[1]]),                # שורש ריבועי
+    inverse_transform = 1 / (.[[1]] + 0.001),     # טרנספורמציית הופכי
+    cube_root = sign(.[[1]]) * abs(.[[1]])^(1/3)     # שורש שלישי
+  )
+
+# הצגת ההשפעה על ההתפלגות
+hist_original <- hist(transformed_data$natural_log, main = "התפלגות מקורית")
+hist_log <- hist(transformed_data$log10_transform, main = "התפלגות אחרי טרנספורמציה לוגריתמית")
+
+
+# חישוב מתוקנן Z (Z-scores)
+standardized_data <- period_type_distribution %>%
+  select(`general_period`, where(is.numeric)) %>%
+  mutate(across(where(is.numeric), ~scale(.x)[,1], .names = "z_{.col}"))
+
+# הצגת התוצאות
+head(standardized_data)
+
+# ויזואליזציה של נתונים מקוריים מול מתוקננים
+library(ggplot2)
+
+# נשתמש בפונקציית pivot_longer מחבילת tidyr
+comparison_data <- standardized_data %>%
+  select(`general_period`,
+         `ארכיטקטורה`
+         , `z_ארכיטקטורה`) %>%
+  pivot_longer(cols = c(`ארכיטקטורה`
+                        , `z_ארכיטקטורה`),
+               names_to = "variable_type",
+               values_to = "value")
+
+# נוצר גרף השוואה
+comparison_plot <- ggplot(comparison_data, aes(x = value)) +
+  geom_density() +
+  facet_wrap(~ variable_type, scales = "free") +
+  theme_minimal() +
+  labs(title = "השוואה בין נתונים מקוריים למתוקננים")
+
+ggsave("comparison_plot.png", comparison_plot, width = 8, height = 5)
+
+
+# שימוש בחבילת car לטרנספורמציית Box-Cox
+library(car)
+
+# בחירת מספר ערכי למבדא לבדיקה
+lambda_values <- c(-2, -1, -0.5, 0, 0.5, 1, 2)
+
+# יצירת טרנספורמציות Box-Cox (רק למשתנים חיוביים)
+positive_values <- period_type_distribution %>%
+  filter(`ארכיטקטורה` > 0) %>%
+  pull(`ארכיטקטורה`)
+
+# חישוב טרנספורמציות Box-Cox שונות
+box_cox_transforms <- sapply(lambda_values, function(lambda) {
+  if (lambda == 0) {
+    return(log(positive_values))
+  } else {
+    return((positive_values^lambda - 1) / lambda)
+  }
+})
+
+plot(box_cox_transforms)

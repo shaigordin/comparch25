@@ -17,6 +17,7 @@ format:
     code-fold: true
     code-tools: true
     code-line-numbers: true
+    code-overflow: wrap
     highlight-style: github
     footer: "שיטות מתודולוגיות ב׳ / אונ׳ אריאל"
     logo: img/archaeology-code-image.png
@@ -121,11 +122,15 @@ result <- data |>
 5.  **סטנדרטיזציה של ערכים** - תיקון שגיאות והאחדת ערכים
 6.  **תיעוד** - תיעוד כל השינויים שבוצעו בנתונים
 
-## ניקוי נתונים בצעדים עם tidyverse {.center style="text-align: center"}
+## ניקוי נתונים בצעדים עם tidyverse {style="text-align: center"}
 
-מבנה הקובץ שלנו: - 2214 שורות - 22 עמודות (קוד זיהוי + 21 עמודות מספריות) - שמות עמודות בעברית ומספרים
+::: {style="text-align: right"}
+**מבנה הקובץ שלנו**: - 2214 שורות - 22 עמודות (קוד זיהוי + 21 עמודות מספריות) - שמות עמודות בעברית ומספרים
+:::
 
+::: {style="text-align: right"}
 נטפל בבעיות אלו בהדרגה:
+:::
 
 ``` r
 # טעינת חבילות
@@ -139,9 +144,11 @@ archaeological_data <- read_csv("https://raw.githubusercontent.com/shaigordin/co
 glimpse(archaeological_data)
 ```
 
-## צעד 1: זיהוי מבנה הנתונים וקריאת השדות הנכונים {.center style="text-align: center"}
+## צעד 1: זיהוי מבנה הנתונים וקריאת השדות הנכונים {.smaller style="text-align: center"}
 
+::: {style="text-align: right"}
 אחת הבעיות הנפוצות בנתונים מבולגנים היא ששמות השדות האמיתיים אינם בשורה הראשונה:
+:::
 
 ``` r
 # קריאה ראשונית בלי הנחות לגבי כותרות
@@ -163,9 +170,11 @@ names(archaeological_data)
 glimpse(archaeological_data)
 ```
 
-## צעד 2: יצירת מילון מונחים למשתנים {.center style="text-align: center"}
+## צעד 2: יצירת מילון מונחים למשתנים {.smaller style="text-align: center"}
 
+::: {style="text-align: right"}
 כעת, כשיש לנו את שמות השדות האמיתיים, נוכל לפרש אותם בהקשר ארכיאולוגי:
+:::
 
 ``` r
 # יצירת טבלת מילון מונחים
@@ -197,9 +206,11 @@ field_dictionary <- tribble(
 view(field_dictionary)
 ```
 
-## צעד 3: ניקוי וסטנדרטיזציה של שמות המשתנים {.center style="text-align: center"}
+## צעד 3: ניקוי וסטנדרטיזציה של שמות המשתנים {.smaller style="text-align: center"}
 
+::: {style="text-align: right"}
 נשפר את שמות העמודות לפורמט סטנדרטי ועקבי:
+:::
 
 ``` r
 # יצירת מפת שמות עבור העמודות באמצעות המילון שיצרנו
@@ -227,9 +238,11 @@ print(names(cleaned_data))
 view(cleaned_data)
 ```
 
-## צעד 4: ניצול שמות המשתנים האמיתיים לקבוצות ניתוח {.center style="text-align: center"}
+## צעד 4: ניצול שמות המשתנים האמיתיים לקבוצות ניתוח {.smaller style="text-align: center"}
 
+::: {style="text-align: right"}
 כעת שיש לנו שמות משמעותיים, נוכל לקבץ את המשתנים לפי קטגוריות ניתוח:
+:::
 
 ``` r
 # זיהוי ויצירת קבוצות משתנים לפי קטגוריות
@@ -274,7 +287,9 @@ if(length(existing_chronological_vars) > 0 && length(existing_typological_vars) 
 
 ## בעיות: חוסר עקביות בסוגי משתנים כמותיים {.center style="text-align: center"}
 
+::: {style="text-align: right"}
 כיצד ניגש לבחון סוגי משתנים כדי לזהות חוסר עקביות? למשל בנתון שאמור להיות כמותי כמו גודל אתר
+:::
 
 ``` r
 # ניתוח גודל אתר לפי תקופה
@@ -292,9 +307,11 @@ print(site_size_types)
 view(site_size_types)
 ```
 
-## צעד 5: טיפול במשתנים קטגוריאליים עם שמות אמיתיים {.center style="text-align: center"}
+## צעד 5: טיפול במשתנים קטגוריאליים {.smaller style="text-align: center"}
 
+::: {style="text-align: right"}
 עכשיו נוכל לנתח את המשתנים הקטגוריאליים בצורה משמעותית יותר:
+:::
 
 ``` r
 # יצירת מטריצת תפוצה טיפולוגית-כרונולוגית
@@ -327,6 +344,8 @@ period_counts <- cleaned_data %>%
 # הצגת דפוסי התפלגות כרונולוגיים
 print(period_counts)
 view(period_counts)
+
+plot(cleaned_data$find_type)
 ```
 
 ::: notes
@@ -337,7 +356,7 @@ view(period_counts)
 
 ![](/figures/Rplot.png){fig-align="center"}
 
-## סיכום: יתרונות העבודה עם נתונים אמיתיים {.center style="text-align: center"}
+## סיכום: יתרונות העבודה עם נתונים מובנים {.center style="text-align: center"}
 
 ::: incremental
 -   **פרשנות מדויקת יותר** - שמות שדות אמיתיים מאפשרים הבנה טובה יותר של משמעות הנתונים
@@ -357,21 +376,23 @@ view(period_counts)
 5.  **חשוב על ניתוח עתידי** - בחר שמות שיקלו על ניתוח נתונים מתקדם
 :::
 
-# חלק 5: טרנספורמציות משתנים בנתונים ארכיאולוגיים
+# חלק 4: טרנספורמציות משתנים בנתונים ארכיאולוגיים
 
 ## טרנספורמציות בסיסיות עם dplyr {.center style="text-align: center"}
 
+::: {style="text-align: right"}
 הפעולה `mutate` מאפשרת לנו ליצור או לשנות משתנים:
+:::
 
 ``` r
 # יצירת עותק של הנתונים לעבודה
-working_data <- archaeological_data %>%
+working_data <- period_type_distribution %>%
   # נבחר עמודות מספריות לדוגמה
-  select(`קוד זיהוי`, where(is.numeric)) %>%
+  select(where(is.numeric)) %>%
   # ניצור טרנספורמציה פשוטה - המרה מיחידות אחת לאחרת
   mutate(
-    normalized_value = `1` / 10,  # לדוגמה: המרה לס"מ
-    log_value = log10(`1` + 1)    # טרנספורמציה לוגריתמית עם הוספת 1 למניעת log(0)
+    normalized_value = .[[2]] / 10, # לדוגמה: המרה לס"מ
+    log_value = log10(.[[2]] + 1)   # טרנספורמציה לוגריתמית עם הוספת 1 למניעת log(0)
   )
 
 # הצגת התוצאות
@@ -380,22 +401,24 @@ head(working_data)
 
 ## לוגריתמים ושורשים ריבועיים {.center style="text-align: center"}
 
+::: {style="text-align: right"}
 טרנספורמציות לוגריתמיות ושורש ריבועי שימושיות להתמודדות עם התפלגויות מוטות ימינה:
+:::
 
 ``` r
 # טרנספורמציות נפוצות
-transformed_data <- archaeological_data %>%
-  select(`קוד זיהוי`, where(is.numeric)) %>%
+transformed_data <- period_type_distribution %>%
+  select(where(is.numeric)) %>%
   mutate(
-    log10_transform = log10(`1` + 1),          # לוגריתם בבסיס 10
-    natural_log = log(`1` + 1),                # לוגריתם טבעי
-    sqrt_transform = sqrt(`1`),                # שורש ריבועי
-    inverse_transform = 1 / (`1` + 0.001),     # טרנספורמציית הופכי
-    cube_root = sign(`1`) * abs(`1`)^(1/3)     # שורש שלישי
+    log10_transform = log10(.[[1]] + 1),          # לוגריתם בבסיס 10
+    natural_log = log(.[[1]] + 1),                # לוגריתם טבעי
+    sqrt_transform = sqrt(.[[1]]),                # שורש ריבועי
+    inverse_transform = 1 / (.[[1]] + 0.001),     # טרנספורמציית הופכי
+    cube_root = sign(.[[1]]) * abs(.[[1]])^(1/3)     # שורש שלישי
   )
 
 # הצגת ההשפעה על ההתפלגות
-hist_original <- hist(transformed_data$`1`, main = "התפלגות מקורית")
+hist_original <- hist(transformed_data$natural_log, main = "התפלגות מקורית")
 hist_log <- hist(transformed_data$log10_transform, main = "התפלגות אחרי טרנספורמציה לוגריתמית")
 ```
 
@@ -403,29 +426,44 @@ hist_log <- hist(transformed_data$log10_transform, main = "התפלגות אחר
 \[תיאור תמונה: היסטוגרמות המשוות בין ההתפלגות המקורית לבין ההתפלגות אחרי טרנספורמציה לוגריתמית\]
 :::
 
+## היסטוגרמות של הטרנספורמציות {.center style="text-align: center"}
+
+::::: columns
+::: {.column width="50%"}
+![](/figures/log_dist.png){width="450"}
+:::
+
+::: {.column width="50%"}
+![](/figures/orig_dist.png){width="450"}
+:::
+:::::
+
 ## סטנדרטיזציה (Z-scores) {.center style="text-align: center"}
 
+::: {style="text-align: right"}
 סטנדרטיזציה מאפשרת להשוות בין משתנים בסקלות שונות:
+:::
 
 ``` r
-# חישוב ציוני Z (Z-scores)
-standardized_data <- archaeological_data %>%
-  select(`קוד זיהוי`, where(is.numeric)) %>%
+# חישוב מתוקנן Z (Z-scores)
+standardized_data <- period_type_distribution %>%
+  select(`general_period`, where(is.numeric)) %>%
   mutate(across(where(is.numeric), ~scale(.x)[,1], .names = "z_{.col}"))
 
 # הצגת התוצאות
 head(standardized_data)
-```
 
-``` r
 # ויזואליזציה של נתונים מקוריים מול מתוקננים
 library(ggplot2)
 
 # נשתמש בפונקציית pivot_longer מחבילת tidyr
 comparison_data <- standardized_data %>%
-  select(`קוד זיהוי`, `1`, z_`1`) %>%
-  pivot_longer(cols = c(`1`, z_`1`), 
-               names_to = "variable_type", 
+  select(`general_period`,
+         `ארכיטקטורה`
+         , `z_ארכיטקטורה`) %>%
+  pivot_longer(cols = c(`ארכיטקטורה`
+                        , `z_ארכיטקטורה`),
+               names_to = "variable_type",
                values_to = "value")
 
 # נוצר גרף השוואה
@@ -440,9 +478,11 @@ ggplot(comparison_data, aes(x = value)) +
 \[תיאור תמונה: גרף צפיפות המשווה בין ההתפלגות המקורית להתפלגות המתוקננת\]
 :::
 
-## טרנספורמציות Box-Cox {.center style="text-align: center"}
+## טרנספורמציות Box-Cox {.smaller style="text-align: center"}
 
-טרנספורמציית Box-Cox היא משפחה של טרנספורמציות עוצמה:
+::: {style="text-align: right"}
+טרנספורמציית Box-Cox היא שיטה סטטיסטית המשמשת להפוך נתונים לקירוב של התפלגות נורמלית.
+:::
 
 $$
 T_{BC}(x, \lambda) = 
@@ -460,9 +500,9 @@ library(car)
 lambda_values <- c(-2, -1, -0.5, 0, 0.5, 1, 2)
 
 # יצירת טרנספורמציות Box-Cox (רק למשתנים חיוביים)
-positive_values <- archaeological_data %>%
-  filter(`1` > 0) %>%
-  pull(`1`)
+positive_values <- period_type_distribution %>%
+  filter(`ארכיטקטורה` > 0) %>%
+  pull(`ארכיטקטורה`)
 
 # חישוב טרנספורמציות Box-Cox שונות
 box_cox_transforms <- sapply(lambda_values, function(lambda) {
@@ -478,160 +518,7 @@ box_cox_transforms <- sapply(lambda_values, function(lambda) {
 \[תיאור תמונה: גרף המציג את ההשפעה של ערכי למבדא שונים על ההתפלגות\]
 :::
 
-# חלק 5: טרנספורמציות תצפיות (שורות)
-
-## טרנספורמציות יחסיות {.center style="text-align: center"}
-
-חישוב יחסים בין ממדים שונים חשוב לניתוח הבדלי צורה:
-
-``` r
-# יצירת יחסים בין מדדים
-ratio_data <- archaeological_data %>%
-  select(`קוד זיהוי`, where(is.numeric)) %>%
-  mutate(
-    ratio_1_2 = `1` / `2`,  # יחס בין המדד הראשון לשני
-    ratio_1_3 = `1` / `3`   # יחס בין המדד הראשון לשלישי
-  )
-
-# הצגת התוצאות
-head(ratio_data)
-```
-
-## התאמה לגודל באמצעות ממוצע גיאומטרי {.center style="text-align: center"}
-
-הממוצע הגיאומטרי משמש לנטרול השפעות גודל:
-
-``` r
-# חישוב ממוצע גיאומטרי עבור כל שורה (מדגים על מספר עמודות)
-size_adjusted_data <- archaeological_data %>%
-  select(`קוד זיהוי`, `1`:`5`) %>%
-  rowwise() %>%
-  mutate(
-    # חישוב ממוצע גיאומטרי (נוסיף ערך קטן למניעת 0)
-    geom_mean = exp(mean(log(c_across(`1`:`5`) + 0.001), na.rm = TRUE)),
-    # חלוקה בממוצע הגיאומטרי
-    `1_adj` = `1` / geom_mean,
-    `2_adj` = `2` / geom_mean,
-    `3_adj` = `3` / geom_mean,
-    `4_adj` = `4` / geom_mean,
-    `5_adj` = `5` / geom_mean
-  ) %>%
-  ungroup()
-
-# הצגת התוצאות
-head(size_adjusted_data)
-```
-
-::: notes
-\[תיאור תמונה: פיזור דו-ממדי המשווה בין המדדים המקוריים לבין המדדים המותאמים לגודל\]
-:::
-
-## נתונים קומפוזיציוניים - אחוזים {.center style="text-align: center"}
-
-בניתוח מכלולים ארכיאולוגיים, נפוץ להמיר ספירות לאחוזים:
-
-``` r
-# המרת נתונים לאחוזים (נתונים קומפוזיציוניים)
-percentage_data <- archaeological_data %>%
-  select(`קוד זיהוי`, `1`:`5`) %>%
-  rowwise() %>%
-  mutate(
-    row_sum = sum(c_across(`1`:`5`), na.rm = TRUE),
-    # המרה לאחוזים
-    `1_pct` = `1` / row_sum * 100,
-    `2_pct` = `2` / row_sum * 100,
-    `3_pct` = `3` / row_sum * 100,
-    `4_pct` = `4` / row_sum * 100,
-    `5_pct` = `5` / row_sum * 100
-  ) %>%
-  ungroup()
-
-# הצגת התוצאות
-head(percentage_data)
-```
-
-## מגבלות נתונים קומפוזיציוניים {.center style="text-align: center"}
-
-בעיות בשימוש באחוזים:
-
-::: incremental
--   סכום השורות קבוע (100%), מה שיוצר סגירות (closure)
--   קורלציות שליליות מלאכותיות בין משתנים
--   התפלגויות א-סימטריות בקצוות (0% או 100%)
-:::
-
-::: notes
-\[תיאור תמונה: גרף פיזור המציג קורלציות מלאכותיות בין מדדים לאחר המרה לאחוזים\]
-:::
-
-## פתרון: טרנספורמציות log-ratio {.center style="text-align: center"}
-
-``` r
-# טרנספורמציות log-ratio
-# נייבא את חבילת compositions
-library(compositions)
-
-# נטפל בערכי 0 על ידי הוספת ערך קטן
-compositional_data <- archaeological_data %>%
-  select(`קוד זיהוי`, `1`:`5`) %>%
-  mutate(across(`1`:`5`, ~ifelse(.x == 0, 0.001, .x)))
-
-# חישוב additive log-ratio (alr)
-alr_data <- compositional_data %>%
-  select(-`קוד זיהוי`) %>%
-  as.matrix() %>%
-  alr() %>%
-  as_tibble() %>%
-  bind_cols(select(compositional_data, `קוד זיהוי`))
-
-# חישוב centered log-ratio (clr)
-clr_data <- compositional_data %>%
-  select(-`קוד זיהוי`) %>%
-  as.matrix() %>%
-  clr() %>%
-  as_tibble() %>%
-  bind_cols(select(compositional_data, `קוד זיהוי`))
-
-# הצגת התוצאות
-head(clr_data)
-```
-
-::: notes
-\[תיאור תמונה: השוואה בין קורלציות בנתונים מקוריים, באחוזים, ובטרנספורמציות log-ratio\]
-:::
-
-# חלק 6: יישום מתקדם וסיכום
-
-## דוגמה מעשית: השוואת שיטות טרנספורמציה {.center style="text-align: center"}
-
-בואו נשווה את ההשפעה של שיטות טרנספורמציה שונות על הנתונים שלנו:
-
-``` r
-# יצירת מסגרת נתונים להשוואה
-comparison_framework <- archaeological_data %>%
-  select(`קוד זיהוי`, `1`) %>%
-  mutate(
-    original = `1`,
-    log10 = log10(`1` + 1),
-    sqrt = sqrt(`1`),
-    cube_root = sign(`1`) * abs(`1`)^(1/3),
-    z_score = scale(`1`)[,1]
-  ) %>%
-  pivot_longer(cols = c(original, log10, sqrt, cube_root, z_score),
-               names_to = "transformation",
-               values_to = "value")
-
-# יצירת גרף המשווה את ההתפלגויות
-ggplot(comparison_framework, aes(x = value)) +
-  geom_density() +
-  facet_wrap(~ transformation, scales = "free") +
-  theme_minimal() +
-  labs(title = "השוואה בין שיטות טרנספורמציה שונות")
-```
-
-::: notes
-\[תיאור תמונה: גרף צפיפות המשווה בין התפלגויות אחרי טרנספורמציות שונות\]
-:::
+# חלק 5: כמה מסקנות ביניים
 
 ## מתי להשתמש בכל טרנספורמציה? {.center style="text-align: center"}
 
@@ -695,3 +582,5 @@ ggplot(comparison_framework, aes(x = value)) +
 ?dplyr::mutate
 ?scale
 ```
+
+::::::::::::::::::::::::

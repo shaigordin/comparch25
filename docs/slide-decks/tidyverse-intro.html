@@ -532,10 +532,14 @@
 <li><strong>תיעוד</strong> - תיעוד כל השינויים שבוצעו בנתונים</li>
 </ol>
 </section>
-<section id="ניקוי-נתונים-בצעדים-עם-tidyverse" class="slide level2 center" style="text-align: center">
+<section id="ניקוי-נתונים-בצעדים-עם-tidyverse" class="slide level2" style="text-align: center">
 <h2>ניקוי נתונים בצעדים עם tidyverse</h2>
-<p>מבנה הקובץ שלנו: - 2214 שורות - 22 עמודות (קוד זיהוי + 21 עמודות מספריות) - שמות עמודות בעברית ומספרים</p>
+<div style="text-align: right">
+<p><strong>מבנה הקובץ שלנו</strong>: - 2214 שורות - 22 עמודות (קוד זיהוי + 21 עמודות מספריות) - שמות עמודות בעברית ומספרים</p>
+</div>
+<div style="text-align: right">
 <p>נטפל בבעיות אלו בהדרגה:</p>
+</div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># טעינת חבילות</span></span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="fu">library</span>(janitor)  <span class="co"># חבילה מעולה לניקוי נתונים</span></span>
@@ -546,9 +550,11 @@
 <span id="cb3-8"><a href="#cb3-8"></a><span class="co"># הצצה בנתונים</span></span>
 <span id="cb3-9"><a href="#cb3-9"></a><span class="fu">glimpse</span>(archaeological_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="צעד-1-זיהוי-מבנה-הנתונים-וקריאת-השדות-הנכונים" class="slide level2 center" style="text-align: center">
+<section id="צעד-1-זיהוי-מבנה-הנתונים-וקריאת-השדות-הנכונים" class="slide level2 smaller" style="text-align: center">
 <h2>צעד 1: זיהוי מבנה הנתונים וקריאת השדות הנכונים</h2>
+<div style="text-align: right">
 <p>אחת הבעיות הנפוצות בנתונים מבולגנים היא ששמות השדות האמיתיים אינם בשורה הראשונה:</p>
+</div>
 <div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># קריאה ראשונית בלי הנחות לגבי כותרות</span></span>
 <span id="cb4-2"><a href="#cb4-2"></a>raw_peek <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/shaigordin/comparch25/refs/heads/main/slide-decks/data/enc.csv"</span>, <span class="at">col_names =</span> <span class="cn">FALSE</span>, <span class="at">n_max =</span> <span class="dv">5</span>)</span>
 <span id="cb4-3"><a href="#cb4-3"></a><span class="fu">print</span>(raw_peek)</span>
@@ -567,9 +573,11 @@
 <span id="cb4-16"><a href="#cb4-16"></a><span class="co"># הצגת המבנה החדש</span></span>
 <span id="cb4-17"><a href="#cb4-17"></a><span class="fu">glimpse</span>(archaeological_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="צעד-2-יצירת-מילון-מונחים-למשתנים" class="slide level2 center" style="text-align: center">
+<section id="צעד-2-יצירת-מילון-מונחים-למשתנים" class="slide level2 smaller" style="text-align: center">
 <h2>צעד 2: יצירת מילון מונחים למשתנים</h2>
+<div style="text-align: right">
 <p>כעת, כשיש לנו את שמות השדות האמיתיים, נוכל לפרש אותם בהקשר ארכיאולוגי:</p>
+</div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># יצירת טבלת מילון מונחים</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a>field_dictionary <span class="ot">&lt;-</span> <span class="fu">tribble</span>(</span>
 <span id="cb5-3"><a href="#cb5-3"></a>  <span class="sc">~</span>original_name, <span class="sc">~</span>clean_name, <span class="sc">~</span>meaning, <span class="sc">~</span>category,</span>
@@ -598,9 +606,11 @@
 <span id="cb5-26"><a href="#cb5-26"></a><span class="co"># הצגת המילון</span></span>
 <span id="cb5-27"><a href="#cb5-27"></a><span class="fu">view</span>(field_dictionary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="צעד-3-ניקוי-וסטנדרטיזציה-של-שמות-המשתנים" class="slide level2 center" style="text-align: center">
+<section id="צעד-3-ניקוי-וסטנדרטיזציה-של-שמות-המשתנים" class="slide level2 smaller" style="text-align: center">
 <h2>צעד 3: ניקוי וסטנדרטיזציה של שמות המשתנים</h2>
+<div style="text-align: right">
 <p>נשפר את שמות העמודות לפורמט סטנדרטי ועקבי:</p>
+</div>
 <div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># יצירת מפת שמות עבור העמודות באמצעות המילון שיצרנו</span></span>
 <span id="cb6-2"><a href="#cb6-2"></a>column_name_map <span class="ot">&lt;-</span> <span class="fu">setNames</span>(</span>
 <span id="cb6-3"><a href="#cb6-3"></a>  field_dictionary<span class="sc">$</span>clean_name,</span>
@@ -625,9 +635,11 @@
 <span id="cb6-22"><a href="#cb6-22"></a></span>
 <span id="cb6-23"><a href="#cb6-23"></a><span class="fu">view</span>(cleaned_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="צעד-4-ניצול-שמות-המשתנים-האמיתיים-לקבוצות-ניתוח" class="slide level2 center" style="text-align: center">
+<section id="צעד-4-ניצול-שמות-המשתנים-האמיתיים-לקבוצות-ניתוח" class="slide level2 smaller" style="text-align: center">
 <h2>צעד 4: ניצול שמות המשתנים האמיתיים לקבוצות ניתוח</h2>
+<div style="text-align: right">
 <p>כעת שיש לנו שמות משמעותיים, נוכל לקבץ את המשתנים לפי קטגוריות ניתוח:</p>
+</div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># זיהוי ויצירת קבוצות משתנים לפי קטגוריות</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co"># משתנים מרחביים - מיקום גיאוגרפי ומרחבי</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a>spatial_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"coordinate_x"</span>, <span class="st">"coordinate_y"</span>, <span class="st">"region"</span>, <span class="st">"sub_region"</span>)</span>
@@ -669,7 +681,9 @@
 </section>
 <section id="בעיות-חוסר-עקביות-בסוגי-משתנים-כמותיים" class="slide level2 center" style="text-align: center">
 <h2>בעיות: חוסר עקביות בסוגי משתנים כמותיים</h2>
+<div style="text-align: right">
 <p>כיצד ניגש לבחון סוגי משתנים כדי לזהות חוסר עקביות? למשל בנתון שאמור להיות כמותי כמו גודל אתר</p>
+</div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># ניתוח גודל אתר לפי תקופה</span></span>
 <span id="cb8-2"><a href="#cb8-2"></a><span class="co"># בדקו את מבנה הנתונים כדי להבין את חוסר העקביות בסוג הנתונים</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a>site_size_types <span class="ot">&lt;-</span> cleaned_data <span class="sc">%&gt;%</span></span>
@@ -684,9 +698,11 @@
 <span id="cb8-12"><a href="#cb8-12"></a><span class="fu">print</span>(site_size_types)</span>
 <span id="cb8-13"><a href="#cb8-13"></a><span class="fu">view</span>(site_size_types)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="צעד-5-טיפול-במשתנים-קטגוריאליים-עם-שמות-אמיתיים" class="slide level2 center" style="text-align: center">
-<h2>צעד 5: טיפול במשתנים קטגוריאליים עם שמות אמיתיים</h2>
+<section id="צעד-5-טיפול-במשתנים-קטגוריאליים" class="slide level2 smaller" style="text-align: center">
+<h2>צעד 5: טיפול במשתנים קטגוריאליים</h2>
+<div style="text-align: right">
 <p>עכשיו נוכל לנתח את המשתנים הקטגוריאליים בצורה משמעותית יותר:</p>
+</div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># יצירת מטריצת תפוצה טיפולוגית-כרונולוגית</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co"># שימוש בשמות משתנים סטנדרטיים המבוססים על מיפוי הנתונים הקודם שלנו</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a>find_period_summary <span class="ot">&lt;-</span> cleaned_data <span class="sc">%&gt;%</span></span>
@@ -716,7 +732,9 @@
 <span id="cb9-27"><a href="#cb9-27"></a></span>
 <span id="cb9-28"><a href="#cb9-28"></a><span class="co"># הצגת דפוסי התפלגות כרונולוגיים</span></span>
 <span id="cb9-29"><a href="#cb9-29"></a><span class="fu">print</span>(period_counts)</span>
-<span id="cb9-30"><a href="#cb9-30"></a><span class="fu">view</span>(period_counts)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-30"><a href="#cb9-30"></a><span class="fu">view</span>(period_counts)</span>
+<span id="cb9-31"><a href="#cb9-31"></a></span>
+<span id="cb9-32"><a href="#cb9-32"></a><span class="fu">plot</span>(cleaned_data<span class="sc">$</span>find_type)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>[תיאור תמונה: גרף עמודות המציג את התפלגות הממצאים לפי תקופות ארכיאולוגיות]</p>
 <style type="text/css">
@@ -735,8 +753,8 @@
 <h2>גרף התפלגות סוגי ממצא</h2>
 
 <img data-src="../figures/Rplot.png" class="r-stretch quarto-figure-center"></section>
-<section id="סיכום-יתרונות-העבודה-עם-נתונים-אמיתיים" class="slide level2 center" style="text-align: center">
-<h2>סיכום: יתרונות העבודה עם נתונים אמיתיים</h2>
+<section id="סיכום-יתרונות-העבודה-עם-נתונים-מובנים" class="slide level2 center" style="text-align: center">
+<h2>סיכום: יתרונות העבודה עם נתונים מובנים</h2>
 <div>
 <ul>
 <li class="fragment"><strong>פרשנות מדויקת יותר</strong> - שמות שדות אמיתיים מאפשרים הבנה טובה יותר של משמעות הנתונים</li>
@@ -760,21 +778,23 @@
 </div>
 </section></section>
 <section>
-<section id="חלק-5-טרנספורמציות-משתנים-בנתונים-ארכיאולוגיים" class="title-slide slide level1 center">
-<h1>חלק 5: טרנספורמציות משתנים בנתונים ארכיאולוגיים</h1>
+<section id="חלק-4-טרנספורמציות-משתנים-בנתונים-ארכיאולוגיים" class="title-slide slide level1 center">
+<h1>חלק 4: טרנספורמציות משתנים בנתונים ארכיאולוגיים</h1>
 
 </section>
 <section id="טרנספורמציות-בסיסיות-עם-dplyr" class="slide level2 center" style="text-align: center">
 <h2>טרנספורמציות בסיסיות עם dplyr</h2>
+<div style="text-align: right">
 <p>הפעולה <code>mutate</code> מאפשרת לנו ליצור או לשנות משתנים:</p>
+</div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="co"># יצירת עותק של הנתונים לעבודה</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a>working_data <span class="ot">&lt;-</span> archaeological_data <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>working_data <span class="ot">&lt;-</span> period_type_distribution <span class="sc">%&gt;%</span></span>
 <span id="cb10-3"><a href="#cb10-3"></a>  <span class="co"># נבחר עמודות מספריות לדוגמה</span></span>
-<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>, <span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
 <span id="cb10-5"><a href="#cb10-5"></a>  <span class="co"># ניצור טרנספורמציה פשוטה - המרה מיחידות אחת לאחרת</span></span>
 <span id="cb10-6"><a href="#cb10-6"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb10-7"><a href="#cb10-7"></a>    <span class="at">normalized_value =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">/</span> <span class="dv">10</span>,  <span class="co"># לדוגמה: המרה לס"מ</span></span>
-<span id="cb10-8"><a href="#cb10-8"></a>    <span class="at">log_value =</span> <span class="fu">log10</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">+</span> <span class="dv">1</span>)    <span class="co"># טרנספורמציה לוגריתמית עם הוספת 1 למניעת log(0)</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>    <span class="at">normalized_value =</span> .[[<span class="dv">2</span>]] <span class="sc">/</span> <span class="dv">10</span>, <span class="co"># לדוגמה: המרה לס"מ</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>    <span class="at">log_value =</span> <span class="fu">log10</span>(.[[<span class="dv">2</span>]] <span class="sc">+</span> <span class="dv">1</span>)   <span class="co"># טרנספורמציה לוגריתמית עם הוספת 1 למניעת log(0)</span></span>
 <span id="cb10-9"><a href="#cb10-9"></a>  )</span>
 <span id="cb10-10"><a href="#cb10-10"></a></span>
 <span id="cb10-11"><a href="#cb10-11"></a><span class="co"># הצגת התוצאות</span></span>
@@ -782,20 +802,22 @@
 </section>
 <section id="לוגריתמים-ושורשים-ריבועיים" class="slide level2 center" style="text-align: center">
 <h2>לוגריתמים ושורשים ריבועיים</h2>
+<div style="text-align: right">
 <p>טרנספורמציות לוגריתמיות ושורש ריבועי שימושיות להתמודדות עם התפלגויות מוטות ימינה:</p>
+</div>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># טרנספורמציות נפוצות</span></span>
-<span id="cb11-2"><a href="#cb11-2"></a>transformed_data <span class="ot">&lt;-</span> archaeological_data <span class="sc">%&gt;%</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>, <span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>transformed_data <span class="ot">&lt;-</span> period_type_distribution <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">select</span>(<span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
 <span id="cb11-4"><a href="#cb11-4"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb11-5"><a href="#cb11-5"></a>    <span class="at">log10_transform =</span> <span class="fu">log10</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">+</span> <span class="dv">1</span>),          <span class="co"># לוגריתם בבסיס 10</span></span>
-<span id="cb11-6"><a href="#cb11-6"></a>    <span class="at">natural_log =</span> <span class="fu">log</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">+</span> <span class="dv">1</span>),                <span class="co"># לוגריתם טבעי</span></span>
-<span id="cb11-7"><a href="#cb11-7"></a>    <span class="at">sqrt_transform =</span> <span class="fu">sqrt</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>),                <span class="co"># שורש ריבועי</span></span>
-<span id="cb11-8"><a href="#cb11-8"></a>    <span class="at">inverse_transform =</span> <span class="dv">1</span> <span class="sc">/</span> (<span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">+</span> <span class="fl">0.001</span>),     <span class="co"># טרנספורמציית הופכי</span></span>
-<span id="cb11-9"><a href="#cb11-9"></a>    <span class="at">cube_root =</span> <span class="fu">sign</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>) <span class="sc">*</span> <span class="fu">abs</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)     <span class="co"># שורש שלישי</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>    <span class="at">log10_transform =</span> <span class="fu">log10</span>(.[[<span class="dv">1</span>]] <span class="sc">+</span> <span class="dv">1</span>),          <span class="co"># לוגריתם בבסיס 10</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a>    <span class="at">natural_log =</span> <span class="fu">log</span>(.[[<span class="dv">1</span>]] <span class="sc">+</span> <span class="dv">1</span>),                <span class="co"># לוגריתם טבעי</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>    <span class="at">sqrt_transform =</span> <span class="fu">sqrt</span>(.[[<span class="dv">1</span>]]),                <span class="co"># שורש ריבועי</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a>    <span class="at">inverse_transform =</span> <span class="dv">1</span> <span class="sc">/</span> (.[[<span class="dv">1</span>]] <span class="sc">+</span> <span class="fl">0.001</span>),     <span class="co"># טרנספורמציית הופכי</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a>    <span class="at">cube_root =</span> <span class="fu">sign</span>(.[[<span class="dv">1</span>]]) <span class="sc">*</span> <span class="fu">abs</span>(.[[<span class="dv">1</span>]])<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>)     <span class="co"># שורש שלישי</span></span>
 <span id="cb11-10"><a href="#cb11-10"></a>  )</span>
 <span id="cb11-11"><a href="#cb11-11"></a></span>
 <span id="cb11-12"><a href="#cb11-12"></a><span class="co"># הצגת ההשפעה על ההתפלגות</span></span>
-<span id="cb11-13"><a href="#cb11-13"></a>hist_original <span class="ot">&lt;-</span> <span class="fu">hist</span>(transformed_data<span class="sc">$</span><span class="st">`</span><span class="at">1</span><span class="st">`</span>, <span class="at">main =</span> <span class="st">"התפלגות מקורית"</span>)</span>
+<span id="cb11-13"><a href="#cb11-13"></a>hist_original <span class="ot">&lt;-</span> <span class="fu">hist</span>(transformed_data<span class="sc">$</span>natural_log, <span class="at">main =</span> <span class="st">"התפלגות מקורית"</span>)</span>
 <span id="cb11-14"><a href="#cb11-14"></a>hist_log <span class="ot">&lt;-</span> <span class="fu">hist</span>(transformed_data<span class="sc">$</span>log10_transform, <span class="at">main =</span> <span class="st">"התפלגות אחרי טרנספורמציה לוגריתמית"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>[תיאור תמונה: היסטוגרמות המשוות בין ההתפלגות המקורית לבין ההתפלגות אחרי טרנספורמציה לוגריתמית]</p>
@@ -811,32 +833,48 @@
           display:block!important;
       }</style></aside>
 </section>
+<section id="היסטוגרמות-של-הטרנספורמציות" class="slide level2 center" style="text-align: center">
+<h2>היסטוגרמות של הטרנספורמציות</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><img data-src="../figures/log_dist.png" width="450"></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="../figures/orig_dist.png" width="450"></p>
+</div>
+</div>
+</section>
 <section id="סטנדרטיזציה-z-scores" class="slide level2 center" style="text-align: center">
 <h2>סטנדרטיזציה (Z-scores)</h2>
+<div style="text-align: right">
 <p>סטנדרטיזציה מאפשרת להשוות בין משתנים בסקלות שונות:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># חישוב ציוני Z (Z-scores)</span></span>
-<span id="cb12-2"><a href="#cb12-2"></a>standardized_data <span class="ot">&lt;-</span> archaeological_data <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>, <span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
+</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="co"># חישוב מתוקנן Z (Z-scores)</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>standardized_data <span class="ot">&lt;-</span> period_type_distribution <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">general_period</span><span class="st">`</span>, <span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
 <span id="cb12-4"><a href="#cb12-4"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), <span class="sc">~</span><span class="fu">scale</span>(.x)[,<span class="dv">1</span>], <span class="at">.names =</span> <span class="st">"z_{.col}"</span>))</span>
 <span id="cb12-5"><a href="#cb12-5"></a></span>
 <span id="cb12-6"><a href="#cb12-6"></a><span class="co"># הצגת התוצאות</span></span>
-<span id="cb12-7"><a href="#cb12-7"></a><span class="fu">head</span>(standardized_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># ויזואליזציה של נתונים מקוריים מול מתוקננים</span></span>
-<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb13-3"><a href="#cb13-3"></a></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="co"># נשתמש בפונקציית pivot_longer מחבילת tidyr</span></span>
-<span id="cb13-5"><a href="#cb13-5"></a>comparison_data <span class="ot">&lt;-</span> standardized_data <span class="sc">%&gt;%</span></span>
-<span id="cb13-6"><a href="#cb13-6"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>, <span class="st">`</span><span class="at">1</span><span class="st">`</span>, z_<span class="st">`</span><span class="at">1</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-7"><a href="#cb13-7"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>, z_<span class="st">`</span><span class="at">1</span><span class="st">`</span>), </span>
-<span id="cb13-8"><a href="#cb13-8"></a>               <span class="at">names_to =</span> <span class="st">"variable_type"</span>, </span>
-<span id="cb13-9"><a href="#cb13-9"></a>               <span class="at">values_to =</span> <span class="st">"value"</span>)</span>
-<span id="cb13-10"><a href="#cb13-10"></a></span>
-<span id="cb13-11"><a href="#cb13-11"></a><span class="co"># נוצר גרף השוואה</span></span>
-<span id="cb13-12"><a href="#cb13-12"></a><span class="fu">ggplot</span>(comparison_data, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
-<span id="cb13-13"><a href="#cb13-13"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb13-14"><a href="#cb13-14"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variable_type, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
-<span id="cb13-15"><a href="#cb13-15"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb13-16"><a href="#cb13-16"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"השוואה בין נתונים מקוריים למתוקננים"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="fu">head</span>(standardized_data)</span>
+<span id="cb12-8"><a href="#cb12-8"></a></span>
+<span id="cb12-9"><a href="#cb12-9"></a><span class="co"># ויזואליזציה של נתונים מקוריים מול מתוקננים</span></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb12-11"><a href="#cb12-11"></a></span>
+<span id="cb12-12"><a href="#cb12-12"></a><span class="co"># נשתמש בפונקציית pivot_longer מחבילת tidyr</span></span>
+<span id="cb12-13"><a href="#cb12-13"></a>comparison_data <span class="ot">&lt;-</span> standardized_data <span class="sc">%&gt;%</span></span>
+<span id="cb12-14"><a href="#cb12-14"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">general_period</span><span class="st">`</span>,</span>
+<span id="cb12-15"><a href="#cb12-15"></a>         <span class="st">`</span><span class="at">ארכיטקטורה</span><span class="st">`</span></span>
+<span id="cb12-16"><a href="#cb12-16"></a>         , <span class="st">`</span><span class="at">z_ארכיטקטורה</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-17"><a href="#cb12-17"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">ארכיטקטורה</span><span class="st">`</span></span>
+<span id="cb12-18"><a href="#cb12-18"></a>                        , <span class="st">`</span><span class="at">z_ארכיטקטורה</span><span class="st">`</span>),</span>
+<span id="cb12-19"><a href="#cb12-19"></a>               <span class="at">names_to =</span> <span class="st">"variable_type"</span>,</span>
+<span id="cb12-20"><a href="#cb12-20"></a>               <span class="at">values_to =</span> <span class="st">"value"</span>)</span>
+<span id="cb12-21"><a href="#cb12-21"></a></span>
+<span id="cb12-22"><a href="#cb12-22"></a><span class="co"># נוצר גרף השוואה</span></span>
+<span id="cb12-23"><a href="#cb12-23"></a><span class="fu">ggplot</span>(comparison_data, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
+<span id="cb12-24"><a href="#cb12-24"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb12-25"><a href="#cb12-25"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> variable_type, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb12-26"><a href="#cb12-26"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb12-27"><a href="#cb12-27"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"השוואה בין נתונים מקוריים למתוקננים"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>[תיאור תמונה: גרף צפיפות המשווה בין ההתפלגות המקורית להתפלגות המתוקננת]</p>
 <style type="text/css">
@@ -851,9 +889,11 @@
           display:block!important;
       }</style></aside>
 </section>
-<section id="טרנספורמציות-box-cox" class="slide level2 center" style="text-align: center">
+<section id="טרנספורמציות-box-cox" class="slide level2 smaller" style="text-align: center">
 <h2>טרנספורמציות Box-Cox</h2>
-<p>טרנספורמציית Box-Cox היא משפחה של טרנספורמציות עוצמה:</p>
+<div style="text-align: right">
+<p>טרנספורמציית Box-Cox היא שיטה סטטיסטית המשמשת להפוך נתונים לקירוב של התפלגות נורמלית.</p>
+</div>
 <p><span class="math display">\[
 T_{BC}(x, \lambda) =
 \begin{cases}
@@ -861,25 +901,25 @@ T_{BC}(x, \lambda) =
 \log(x) &amp; \text{if } \lambda = 0
 \end{cases}
 \]</span></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># שימוש בחבילת car לטרנספורמציית Box-Cox</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">library</span>(car)</span>
-<span id="cb14-3"><a href="#cb14-3"></a></span>
-<span id="cb14-4"><a href="#cb14-4"></a><span class="co"># בחירת מספר ערכי למבדא לבדיקה</span></span>
-<span id="cb14-5"><a href="#cb14-5"></a>lambda_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
-<span id="cb14-6"><a href="#cb14-6"></a></span>
-<span id="cb14-7"><a href="#cb14-7"></a><span class="co"># יצירת טרנספורמציות Box-Cox (רק למשתנים חיוביים)</span></span>
-<span id="cb14-8"><a href="#cb14-8"></a>positive_values <span class="ot">&lt;-</span> archaeological_data <span class="sc">%&gt;%</span></span>
-<span id="cb14-9"><a href="#cb14-9"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-10"><a href="#cb14-10"></a>  <span class="fu">pull</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>)</span>
-<span id="cb14-11"><a href="#cb14-11"></a></span>
-<span id="cb14-12"><a href="#cb14-12"></a><span class="co"># חישוב טרנספורמציות Box-Cox שונות</span></span>
-<span id="cb14-13"><a href="#cb14-13"></a>box_cox_transforms <span class="ot">&lt;-</span> <span class="fu">sapply</span>(lambda_values, <span class="cf">function</span>(lambda) {</span>
-<span id="cb14-14"><a href="#cb14-14"></a>  <span class="cf">if</span> (lambda <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb14-15"><a href="#cb14-15"></a>    <span class="fu">return</span>(<span class="fu">log</span>(positive_values))</span>
-<span id="cb14-16"><a href="#cb14-16"></a>  } <span class="cf">else</span> {</span>
-<span id="cb14-17"><a href="#cb14-17"></a>    <span class="fu">return</span>((positive_values<span class="sc">^</span>lambda <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> lambda)</span>
-<span id="cb14-18"><a href="#cb14-18"></a>  }</span>
-<span id="cb14-19"><a href="#cb14-19"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># שימוש בחבילת car לטרנספורמציית Box-Cox</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">library</span>(car)</span>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="co"># בחירת מספר ערכי למבדא לבדיקה</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a>lambda_values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">1</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb13-6"><a href="#cb13-6"></a></span>
+<span id="cb13-7"><a href="#cb13-7"></a><span class="co"># יצירת טרנספורמציות Box-Cox (רק למשתנים חיוביים)</span></span>
+<span id="cb13-8"><a href="#cb13-8"></a>positive_values <span class="ot">&lt;-</span> period_type_distribution <span class="sc">%&gt;%</span></span>
+<span id="cb13-9"><a href="#cb13-9"></a>  <span class="fu">filter</span>(<span class="st">`</span><span class="at">ארכיטקטורה</span><span class="st">`</span> <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-10"><a href="#cb13-10"></a>  <span class="fu">pull</span>(<span class="st">`</span><span class="at">ארכיטקטורה</span><span class="st">`</span>)</span>
+<span id="cb13-11"><a href="#cb13-11"></a></span>
+<span id="cb13-12"><a href="#cb13-12"></a><span class="co"># חישוב טרנספורמציות Box-Cox שונות</span></span>
+<span id="cb13-13"><a href="#cb13-13"></a>box_cox_transforms <span class="ot">&lt;-</span> <span class="fu">sapply</span>(lambda_values, <span class="cf">function</span>(lambda) {</span>
+<span id="cb13-14"><a href="#cb13-14"></a>  <span class="cf">if</span> (lambda <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb13-15"><a href="#cb13-15"></a>    <span class="fu">return</span>(<span class="fu">log</span>(positive_values))</span>
+<span id="cb13-16"><a href="#cb13-16"></a>  } <span class="cf">else</span> {</span>
+<span id="cb13-17"><a href="#cb13-17"></a>    <span class="fu">return</span>((positive_values<span class="sc">^</span>lambda <span class="sc">-</span> <span class="dv">1</span>) <span class="sc">/</span> lambda)</span>
+<span id="cb13-18"><a href="#cb13-18"></a>  }</span>
+<span id="cb13-19"><a href="#cb13-19"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>[תיאור תמונה: גרף המציג את ההשפעה של ערכי למבדא שונים על ההתפלגות]</p>
 <style type="text/css">
@@ -895,188 +935,9 @@ T_{BC}(x, \lambda) =
       }</style></aside>
 </section></section>
 <section>
-<section id="חלק-5-טרנספורמציות-תצפיות-שורות" class="title-slide slide level1 center">
-<h1>חלק 5: טרנספורמציות תצפיות (שורות)</h1>
+<section id="חלק-5-כמה-מסקנות-ביניים" class="title-slide slide level1 center">
+<h1>חלק 5: כמה מסקנות ביניים</h1>
 
-</section>
-<section id="טרנספורמציות-יחסיות" class="slide level2 center" style="text-align: center">
-<h2>טרנספורמציות יחסיות</h2>
-<p>חישוב יחסים בין ממדים שונים חשוב לניתוח הבדלי צורה:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># יצירת יחסים בין מדדים</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a>ratio_data <span class="ot">&lt;-</span> archaeological_data <span class="sc">%&gt;%</span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>, <span class="fu">where</span>(is.numeric)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-4"><a href="#cb15-4"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb15-5"><a href="#cb15-5"></a>    <span class="at">ratio_1_2 =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">/</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span>,  <span class="co"># יחס בין המדד הראשון לשני</span></span>
-<span id="cb15-6"><a href="#cb15-6"></a>    <span class="at">ratio_1_3 =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">/</span> <span class="st">`</span><span class="at">3</span><span class="st">`</span>   <span class="co"># יחס בין המדד הראשון לשלישי</span></span>
-<span id="cb15-7"><a href="#cb15-7"></a>  )</span>
-<span id="cb15-8"><a href="#cb15-8"></a></span>
-<span id="cb15-9"><a href="#cb15-9"></a><span class="co"># הצגת התוצאות</span></span>
-<span id="cb15-10"><a href="#cb15-10"></a><span class="fu">head</span>(ratio_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="התאמה-לגודל-באמצעות-ממוצע-גיאומטרי" class="slide level2 center" style="text-align: center">
-<h2>התאמה לגודל באמצעות ממוצע גיאומטרי</h2>
-<p>הממוצע הגיאומטרי משמש לנטרול השפעות גודל:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># חישוב ממוצע גיאומטרי עבור כל שורה (מדגים על מספר עמודות)</span></span>
-<span id="cb16-2"><a href="#cb16-2"></a>size_adjusted_data <span class="ot">&lt;-</span> archaeological_data <span class="sc">%&gt;%</span></span>
-<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>, <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">5</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb16-4"><a href="#cb16-4"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb16-5"><a href="#cb16-5"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb16-6"><a href="#cb16-6"></a>    <span class="co"># חישוב ממוצע גיאומטרי (נוסיף ערך קטן למניעת 0)</span></span>
-<span id="cb16-7"><a href="#cb16-7"></a>    <span class="at">geom_mean =</span> <span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(<span class="fu">c_across</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">5</span><span class="st">`</span>) <span class="sc">+</span> <span class="fl">0.001</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
-<span id="cb16-8"><a href="#cb16-8"></a>    <span class="co"># חלוקה בממוצע הגיאומטרי</span></span>
-<span id="cb16-9"><a href="#cb16-9"></a>    <span class="st">`</span><span class="at">1_adj</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">/</span> geom_mean,</span>
-<span id="cb16-10"><a href="#cb16-10"></a>    <span class="st">`</span><span class="at">2_adj</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span> <span class="sc">/</span> geom_mean,</span>
-<span id="cb16-11"><a href="#cb16-11"></a>    <span class="st">`</span><span class="at">3_adj</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">3</span><span class="st">`</span> <span class="sc">/</span> geom_mean,</span>
-<span id="cb16-12"><a href="#cb16-12"></a>    <span class="st">`</span><span class="at">4_adj</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">4</span><span class="st">`</span> <span class="sc">/</span> geom_mean,</span>
-<span id="cb16-13"><a href="#cb16-13"></a>    <span class="st">`</span><span class="at">5_adj</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">5</span><span class="st">`</span> <span class="sc">/</span> geom_mean</span>
-<span id="cb16-14"><a href="#cb16-14"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb16-15"><a href="#cb16-15"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb16-16"><a href="#cb16-16"></a></span>
-<span id="cb16-17"><a href="#cb16-17"></a><span class="co"># הצגת התוצאות</span></span>
-<span id="cb16-18"><a href="#cb16-18"></a><span class="fu">head</span>(size_adjusted_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<aside class="notes">
-<p>[תיאור תמונה: פיזור דו-ממדי המשווה בין המדדים המקוריים לבין המדדים המותאמים לגודל]</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="נתונים-קומפוזיציוניים---אחוזים" class="slide level2 center" style="text-align: center">
-<h2>נתונים קומפוזיציוניים - אחוזים</h2>
-<p>בניתוח מכלולים ארכיאולוגיים, נפוץ להמיר ספירות לאחוזים:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="co"># המרת נתונים לאחוזים (נתונים קומפוזיציוניים)</span></span>
-<span id="cb17-2"><a href="#cb17-2"></a>percentage_data <span class="ot">&lt;-</span> archaeological_data <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>, <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">5</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="#cb17-4"></a>  <span class="fu">rowwise</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb17-5"><a href="#cb17-5"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb17-6"><a href="#cb17-6"></a>    <span class="at">row_sum =</span> <span class="fu">sum</span>(<span class="fu">c_across</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">5</span><span class="st">`</span>), <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb17-7"><a href="#cb17-7"></a>    <span class="co"># המרה לאחוזים</span></span>
-<span id="cb17-8"><a href="#cb17-8"></a>    <span class="st">`</span><span class="at">1_pct</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">/</span> row_sum <span class="sc">*</span> <span class="dv">100</span>,</span>
-<span id="cb17-9"><a href="#cb17-9"></a>    <span class="st">`</span><span class="at">2_pct</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">2</span><span class="st">`</span> <span class="sc">/</span> row_sum <span class="sc">*</span> <span class="dv">100</span>,</span>
-<span id="cb17-10"><a href="#cb17-10"></a>    <span class="st">`</span><span class="at">3_pct</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">3</span><span class="st">`</span> <span class="sc">/</span> row_sum <span class="sc">*</span> <span class="dv">100</span>,</span>
-<span id="cb17-11"><a href="#cb17-11"></a>    <span class="st">`</span><span class="at">4_pct</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">4</span><span class="st">`</span> <span class="sc">/</span> row_sum <span class="sc">*</span> <span class="dv">100</span>,</span>
-<span id="cb17-12"><a href="#cb17-12"></a>    <span class="st">`</span><span class="at">5_pct</span><span class="st">`</span> <span class="ot">=</span> <span class="st">`</span><span class="at">5</span><span class="st">`</span> <span class="sc">/</span> row_sum <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb17-13"><a href="#cb17-13"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb17-14"><a href="#cb17-14"></a>  <span class="fu">ungroup</span>()</span>
-<span id="cb17-15"><a href="#cb17-15"></a></span>
-<span id="cb17-16"><a href="#cb17-16"></a><span class="co"># הצגת התוצאות</span></span>
-<span id="cb17-17"><a href="#cb17-17"></a><span class="fu">head</span>(percentage_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="מגבלות-נתונים-קומפוזיציוניים" class="slide level2 center" style="text-align: center">
-<h2>מגבלות נתונים קומפוזיציוניים</h2>
-<p>בעיות בשימוש באחוזים:</p>
-<div>
-<ul>
-<li class="fragment">סכום השורות קבוע (100%), מה שיוצר סגירות (closure)</li>
-<li class="fragment">קורלציות שליליות מלאכותיות בין משתנים</li>
-<li class="fragment">התפלגויות א-סימטריות בקצוות (0% או 100%)</li>
-</ul>
-</div>
-<aside class="notes">
-<p>[תיאור תמונה: גרף פיזור המציג קורלציות מלאכותיות בין מדדים לאחר המרה לאחוזים]</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="פתרון-טרנספורמציות-log-ratio" class="slide level2 center" style="text-align: center">
-<h2>פתרון: טרנספורמציות log-ratio</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># טרנספורמציות log-ratio</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="co"># נייבא את חבילת compositions</span></span>
-<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">library</span>(compositions)</span>
-<span id="cb18-4"><a href="#cb18-4"></a></span>
-<span id="cb18-5"><a href="#cb18-5"></a><span class="co"># נטפל בערכי 0 על ידי הוספת ערך קטן</span></span>
-<span id="cb18-6"><a href="#cb18-6"></a>compositional_data <span class="ot">&lt;-</span> archaeological_data <span class="sc">%&gt;%</span></span>
-<span id="cb18-7"><a href="#cb18-7"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>, <span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">5</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-8"><a href="#cb18-8"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">5</span><span class="st">`</span>, <span class="sc">~</span><span class="fu">ifelse</span>(.x <span class="sc">==</span> <span class="dv">0</span>, <span class="fl">0.001</span>, .x)))</span>
-<span id="cb18-9"><a href="#cb18-9"></a></span>
-<span id="cb18-10"><a href="#cb18-10"></a><span class="co"># חישוב additive log-ratio (alr)</span></span>
-<span id="cb18-11"><a href="#cb18-11"></a>alr_data <span class="ot">&lt;-</span> compositional_data <span class="sc">%&gt;%</span></span>
-<span id="cb18-12"><a href="#cb18-12"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-13"><a href="#cb18-13"></a>  <span class="fu">as.matrix</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-14"><a href="#cb18-14"></a>  <span class="fu">alr</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-15"><a href="#cb18-15"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-16"><a href="#cb18-16"></a>  <span class="fu">bind_cols</span>(<span class="fu">select</span>(compositional_data, <span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>))</span>
-<span id="cb18-17"><a href="#cb18-17"></a></span>
-<span id="cb18-18"><a href="#cb18-18"></a><span class="co"># חישוב centered log-ratio (clr)</span></span>
-<span id="cb18-19"><a href="#cb18-19"></a>clr_data <span class="ot">&lt;-</span> compositional_data <span class="sc">%&gt;%</span></span>
-<span id="cb18-20"><a href="#cb18-20"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb18-21"><a href="#cb18-21"></a>  <span class="fu">as.matrix</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-22"><a href="#cb18-22"></a>  <span class="fu">clr</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-23"><a href="#cb18-23"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb18-24"><a href="#cb18-24"></a>  <span class="fu">bind_cols</span>(<span class="fu">select</span>(compositional_data, <span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>))</span>
-<span id="cb18-25"><a href="#cb18-25"></a></span>
-<span id="cb18-26"><a href="#cb18-26"></a><span class="co"># הצגת התוצאות</span></span>
-<span id="cb18-27"><a href="#cb18-27"></a><span class="fu">head</span>(clr_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<aside class="notes">
-<p>[תיאור תמונה: השוואה בין קורלציות בנתונים מקוריים, באחוזים, ובטרנספורמציות log-ratio]</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section></section>
-<section>
-<section id="חלק-6-יישום-מתקדם-וסיכום" class="title-slide slide level1 center">
-<h1>חלק 6: יישום מתקדם וסיכום</h1>
-
-</section>
-<section id="דוגמה-מעשית-השוואת-שיטות-טרנספורמציה" class="slide level2 center" style="text-align: center">
-<h2>דוגמה מעשית: השוואת שיטות טרנספורמציה</h2>
-<p>בואו נשווה את ההשפעה של שיטות טרנספורמציה שונות על הנתונים שלנו:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># יצירת מסגרת נתונים להשוואה</span></span>
-<span id="cb19-2"><a href="#cb19-2"></a>comparison_framework <span class="ot">&lt;-</span> archaeological_data <span class="sc">%&gt;%</span></span>
-<span id="cb19-3"><a href="#cb19-3"></a>  <span class="fu">select</span>(<span class="st">`</span><span class="at">קוד זיהוי</span><span class="st">`</span>, <span class="st">`</span><span class="at">1</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb19-4"><a href="#cb19-4"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb19-5"><a href="#cb19-5"></a>    <span class="at">original =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>,</span>
-<span id="cb19-6"><a href="#cb19-6"></a>    <span class="at">log10 =</span> <span class="fu">log10</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span> <span class="sc">+</span> <span class="dv">1</span>),</span>
-<span id="cb19-7"><a href="#cb19-7"></a>    <span class="at">sqrt =</span> <span class="fu">sqrt</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>),</span>
-<span id="cb19-8"><a href="#cb19-8"></a>    <span class="at">cube_root =</span> <span class="fu">sign</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>) <span class="sc">*</span> <span class="fu">abs</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>)<span class="sc">^</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>),</span>
-<span id="cb19-9"><a href="#cb19-9"></a>    <span class="at">z_score =</span> <span class="fu">scale</span>(<span class="st">`</span><span class="at">1</span><span class="st">`</span>)[,<span class="dv">1</span>]</span>
-<span id="cb19-10"><a href="#cb19-10"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb19-11"><a href="#cb19-11"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(original, log10, sqrt, cube_root, z_score),</span>
-<span id="cb19-12"><a href="#cb19-12"></a>               <span class="at">names_to =</span> <span class="st">"transformation"</span>,</span>
-<span id="cb19-13"><a href="#cb19-13"></a>               <span class="at">values_to =</span> <span class="st">"value"</span>)</span>
-<span id="cb19-14"><a href="#cb19-14"></a></span>
-<span id="cb19-15"><a href="#cb19-15"></a><span class="co"># יצירת גרף המשווה את ההתפלגויות</span></span>
-<span id="cb19-16"><a href="#cb19-16"></a><span class="fu">ggplot</span>(comparison_framework, <span class="fu">aes</span>(<span class="at">x =</span> value)) <span class="sc">+</span></span>
-<span id="cb19-17"><a href="#cb19-17"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
-<span id="cb19-18"><a href="#cb19-18"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> transformation, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
-<span id="cb19-19"><a href="#cb19-19"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb19-20"><a href="#cb19-20"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"השוואה בין שיטות טרנספורמציה שונות"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<aside class="notes">
-<p>[תיאור תמונה: גרף צפיפות המשווה בין התפלגויות אחרי טרנספורמציות שונות]</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="מתי-להשתמש-בכל-טרנספורמציה" class="slide level2 center" style="text-align: center">
 <h2>מתי להשתמש בכל טרנספורמציה?</h2>
@@ -1134,10 +995,11 @@ T_{BC}(x, \lambda) =
 <section id="תודה" class="slide level2 center" style="text-align: center">
 <h2>תודה!</h2>
 <p><strong>שאלות?</strong></p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># רמז: תמיד אפשר לקבל עזרה ב-R</span></span>
-<span id="cb20-2"><a href="#cb20-2"></a>?transform</span>
-<span id="cb20-3"><a href="#cb20-3"></a>?dplyr<span class="sc">::</span>mutate</span>
-<span id="cb20-4"><a href="#cb20-4"></a>?scale</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># רמז: תמיד אפשר לקבל עזרה ב-R</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>?transform</span>
+<span id="cb14-3"><a href="#cb14-3"></a>?dplyr<span class="sc">::</span>mutate</span>
+<span id="cb14-4"><a href="#cb14-4"></a>?scale</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>::::::::::::::::::::::::</p>
 
 
 <img src="img/archaeology-code-image.png" class="slide-logo r-stretch"><div class="footer footer-default">
