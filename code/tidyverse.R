@@ -7,6 +7,7 @@ archaeological_data <- read_csv("https://raw.githubusercontent.com/shaigordin/co
 
 # הצצה בנתונים
 glimpse(archaeological_data)
+view(archaeological_data)
 
 #############################################################
 ## צעד 1: זיהוי מבנה הנתונים וקריאת השדות הנכונים
